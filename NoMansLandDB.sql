@@ -8,8 +8,10 @@ create table Characters (
 	ID int not null auto_increment, primary key(ID), 
     -- Demographics
     Name varchar(60), 
+    Picture varchar(128), -- filename
     Occupation varchar(60), 
-    BaseOfOperations varchar(60), 
+    BaseOfOperations varchar(60),
+    LocationID int, -- foreign key to Location Table
     Gender varchar(15), 
     Race varchar(25), 
     Height varchar(60), 
@@ -149,3 +151,31 @@ create table Characters (
     Pack14 varchar(64),
     Pack15 varchar(64)
     )
+    
+    -- Locations are places such as C Building
+    create table Locations (
+    ID int not null auto_increment, primary key (ID),
+    Name varchar(64),
+    Area varchar(64),
+    Leader int -- foreign key to Character
+    -- This line reserved for list of characters present
+    -- This line reserved for list of items present
+    )
+    
+    -- Areas are places such as Colgate Heights
+    create table Areas (
+    ID int not null auto_increment, primary key (ID),
+    Name varchar(64),
+    Leader int, -- foreign key to Character
+    -- This line reserved for list of characters present
+    -- This line reserved for list of Locations present
+    )
+    
+    -- Hubs are places such as Archduchy
+    create table Hubs (
+    ID int not null auto_increment, primary key (ID),
+    Name varchar(64),
+    Leader int -- foreign key to Character
+    -- This line reserved for list of Areas present
+    )
+    

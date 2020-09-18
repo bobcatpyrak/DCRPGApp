@@ -1,115 +1,52 @@
+-- script to create No Man's Land database
+
 use sys;
 drop database if exists noMansLand;
 create database noMansLand;
 use noMansLand;
 
 -- create all tables
+-- NEED UPDATE - FK's for all items, socials in Character Table
 create table Characters (
 	ID int not null auto_increment, primary key(ID), 
     -- Demographics
-    Name varchar(60), 
-    Picture varchar(128), -- filename
-    Occupation varchar(60), 
-    BaseOfOperations varchar(60),
-    LocationID int, -- foreign key to Location Table
-    Gender varchar(15), 
-    Race varchar(25), 
-    Height varchar(60), 
-    Weight varchar(60), 
-    EyeColor varchar(15), 
-    HairColor varchar(15),
+		Name varchar(64) not null, 
+		Picture varchar(128), -- filename
+		Occupation varchar(64), 
+		BaseOfOperations varchar(64),
+		LocationID int, -- FK to Location Table
+		Gender varchar(16), 
+		Race varchar(16), 
+		Height varchar(16), 
+		Weight varchar(16), 
+		EyeColor varchar(16), 
+		HairColor varchar(16),
     -- Misc. Stats
-    UDO varchar(15), 
-    Speed int, 
-    HeroPoints int, 
-    VillainPoints int, 
-    AvailableRenown int, 
-    PowerPoints int, 
-    SkillPoints int, 
-    BodyPointsCurrent int, 
-    BodyPointsMax int,
+		UDODice varchar(16), -- the dice value for UDO, ie. 1d6
+		UDOBonus int, -- the bonus to damage added to the UDO, ie. +5
+		Speed int, 
+		HeroPoints int, VillainPoints int, AvailableRenown int, 
+		PowerPoints int, SkillPoints int, 
+		BodyPointsCurrent int, BodyPointsMax int,
     -- Stats
-    Reflexes int, 
-    Acrobatics int,
-    AcrobaticsSpecs varchar(128),
-	Dodge int,
-    DodgeSpecs varchar(128)
-	HandToHand int,
-    HandToHandSpecs varchar(128)
-    MeleeWeapons int,
-    MeleeWeaponsSpecs varchar(128)
-    Stealth int,
-    StealthSpecs varchar(128)
-    Coordination int,
-    Catch int,
-    CatchSpecs varchar(128)
-    Climb int,
-    ClimbSpecs varchar(128)
-    Drive int,
-    DriveSpecs varchar(128)
-    Marksmanship int,
-    MarksmanshipSpecs varchar(128),
-    Thievery int,
-    ThieverySpecs varchar(128),
-    ThrownWeapons int,
-    ThrownWeaponsSpecs varchar(128),
-    Physique int,
-    Athletics int,
-    AthleticsSpecs varchar(128),
-    Leap int,
-    LeapSpecs varchar(128),
-    Lifting int,
-    LiftingSpecs varchar(128),
-    Resistance int,
-    ResistanceSpecs varchar(128),
-    Running int, 
-    RunningSpecs varchar(128),
-    Swimming int,
-    SwimmingSpecs varchar(128),
-    Knowledge int,
-    ArcaneLore int,
-    ArcaneLoreSpecs varchar(128),
-    Demolitions int,
-    DemolitionsSpecs varchar(128),
-    Languages int,
-    LanguagesSpecs varchar(128),
-    Medicine int,
-    MedicineSpecs varchar(128),
-    Scholar int,
-    ScholarSpecs varchar(128),
-    Science int,
-    ScienceSpecs varchar(128),
-    Security int,
-    SecuritySpecs varchar(128),
-    Perception int,
-    Artist int,
-    ArtistSpecs varchar(128),
-    Engineering int,
-    EngineeringSpecs varchar(128),
-    Search int,
-    SearchSpecs varchar(128),
-    Streetwise int,
-    StreetwiseSpecs varchar(128),
-    Surveillance int,
-    SurveillanceSpecs varchar(128),
-    Survival int,
-    SurvivalSpecs varchar(128),
-    Presence int,
-    Bluff int,
-    BluffSpecs varchar(128),
-    Charm int,
-    CharmSpecs varchar(128),
-    Intimidation int,
-    IntimidationSpecs varchar(128),
-    Persuasion int,
-    PersuasionSpecs varchar(128),
-    Willpower int,
-    WillpowerSpecs varchar(128),
-    -- Advantages and Disadvantages
+		Reflexes int not null, Acrobatics int not null, Dodge int not null, HandToHand int not null, MeleeWeapons int not null, Stealth int not null,
+		Coordination int not null, Catch int not null, Climb int not null, Drive int not null, Marksmanship int not null, Thievery int not null, ThrownWeapons int not null,
+		Physique int not null, Athletics int not null, Leap int not null, Lifting int not null, Resistance int not null, Running int not null, Swimming int not null,
+		Knowledge int not null, ArcaneLore int not null, Demolitions int not null, Languages int not null, Medicine int not null, Scholar int not null, Science int not null, Security int not null,
+		Perception int not null, Artist int not null, Engineering int not null, Search int not null, Streetwise int not null, Surveillance int not null, Survival int not null,
+		Presence int not null, Bluff int not null, Charm int not null, Intimidation int not null, Persuasion int not null, Willpower int not null,
+    -- Advantages and Disadvantages (need to convert into reads from tables)
     Advantages varchar(1028),
     Disadvantages varchar(1028),
-    -- Powers
-    Powers varchar(1028) -- we'll need to work on this one
+    -- Powers (I think this works, though it's limited to 4 powers... could maybe fix it by making Power Field a separate table?)
+    Power1Level int,
+    Power1ID int, -- FK to ID PK from Powers table
+    Power2Level int,
+    Power2ID int, -- FK to ID PK from Powers table
+    Power3Level int,
+    Power3ID int, -- FK to ID PK from Powers table
+    Power4Level int,
+    Power4ID int, -- FK to ID PK from Powers table
     -- Social Pool
 		-- Positive
 	Allies varchar(1028),
@@ -152,30 +89,56 @@ create table Characters (
     Pack15 varchar(64)
     )
     
+    create table SkillSpecs (
+    ID int not null auto_increment, primary key (ID),
+    CharacterID int, -- FK to Character this spec is for
+    Skill varchar(32), -- Skill this is a Spec for
+    Spec varchar(32), -- Name of the spec, ie. Piano, Double Kick, Biology
+    Level int -- level of the spec, max of 3
+    )
     -- Locations are places such as C Building
     create table Locations (
     ID int not null auto_increment, primary key (ID),
-    Name varchar(64),
-    Area varchar(64),
-    Leader int -- foreign key to Character
-    -- This line reserved for list of characters present
-    -- This line reserved for list of items present
+    Name varchar(64) not null,
+    AreaID int, -- FK to Area this Location is within
+    LeaderID int -- FK to Character who is leader of this Location
+    -- Characters present at location are referred to by LocationID FK in Character table
+    -- Items present at location are referred to by LocationID FK in Item table
     )
     
     -- Areas are places such as Colgate Heights
     create table Areas (
     ID int not null auto_increment, primary key (ID),
-    Name varchar(64),
-    Leader int, -- foreign key to Character
-    -- This line reserved for list of characters present
-    -- This line reserved for list of Locations present
+    Name varchar(64) not null,
+    HubID int, -- FK to Hub this Area is within
+    LeaderID int, -- FK to Character who is leader of this Area
+    -- Characters present at Area are referred to by LocationID FK joined to AreaID FK from Character to Location tables
+    -- Locations present at Area are referred to by AreaID FK from Location table
     )
     
     -- Hubs are places such as Archduchy
     create table Hubs (
     ID int not null auto_increment, primary key (ID),
-    Name varchar(64),
-    Leader int -- foreign key to Character
-    -- This line reserved for list of Areas present
+    Name varchar(64) not null,
+    LeaderID int -- FK to Character who is leader of this Area
+    -- Areas present in Hub are referred to by HubID FK from Area Table
+    -- Character present at Hub are referred to by LocationID FK joined to AreaID FK joined to HubID FK from Character to Location to Area tables
     )
+    
+    
+    create table Powers (
+    ID int not null auto_increment, primary key (ID),
+    Name varchar(16) not null,
+    Level1 varchar(256), 
+    Level2 varchar(256), 
+    Level3 varchar(256), 
+    Level4 varchar(256), 
+    Level5 varchar(256), 
+    Level6 varchar(256), 
+    Level7 varchar(256), 
+    Level8 varchar(256), 
+    Level9 varchar(256), 
+    Level10 varchar(256)
+    )
+    
     

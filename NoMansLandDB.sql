@@ -117,11 +117,12 @@ create table Characters (
 
 
 -- Powers and Packages
-	-- this is not finished
+	-- is this finished? just need to add correct string lengths I guess
 	create table Powers (
 		ID int not null auto_increment, primary key (ID),
 		Name varchar(32) not null,
         Cost int, -- cost of a level of power in terms of Power Points
+        Description varchar (2048),
 		Level1 varchar(256), 
 		Level2 varchar(256), 
 		Level3 varchar(256), 

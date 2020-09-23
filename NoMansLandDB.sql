@@ -15,7 +15,7 @@ create table CharacterSheet (
 		Picture varchar(128), -- filename
 		Occupation varchar(64), 
 		BaseOfOperations varchar(64),
-		PlaceID int, -- refers to Place Table, but is not a FK
+		LocationID int, -- refers to Location Table, but is not a FK
 		Gender varchar(16), 
 		Race varchar(16), 
 		Height varchar(16), 
@@ -213,7 +213,7 @@ create table CharacterSheet (
 		Name varchar(64) not null,
 		LeaderID int, foreign key (LeaderID) references CharacterSheet(ID)-- FK to CharacterSheet who is leader of this Hub
 		-- Locales present in Hub are referred to by Locale.HubID FK
-		-- Characters present at Hub are referred to by CharacterSheet.PlaceID joined to Place.LocaleID FK joined to Locale.HubID FK
+		-- Characters present at Hub are referred to by CharacterSheet.LocationID joined to Location.LocaleID FK joined to Locale.HubID FK
 	);
 	-- Locales are places such as Colgate Heights
 	create table Locale (
@@ -221,17 +221,17 @@ create table CharacterSheet (
 		Name varchar(64) not null,
 		HubID int, foreign key (HubID) references Hub(ID), -- FK to Hub this Locale is within
 		LeaderID int, foreign key (LeaderID) references CharacterSheet(ID)-- FK to CharacterSheet who is leader of this Locale
-		-- Characters present at Locale are referred to by CharacterSheet.PlaceID joined to Place.LocaleID FK
-		-- Places present at Locale are referred to by Place.LocaleID FK
+		-- Characters present at Locale are referred to by CharacterSheet.LocationID joined to Location.LocaleID FK
+		-- Locations present at Locale are referred to by Location.LocaleID FK
 	);
-	-- Places are places such as C Building
-	create table Place (
+	-- Locations are places such as C Building
+	create table Location (
 		ID int not null auto_increment, primary key (ID),
 		Name varchar(64) not null,
-		LocaleID int, foreign key (LocaleID) references Locale(ID), -- FK to Locale this Place is within
-		LeaderID int, foreign key (SocialID) references CharacterSheet(ID) -- FK to CharacterSheet who is leader of this Place
-		-- CharacterSheets present at Place are referred to by CharacterSheet.PlaceID
-		-- Items present at Place are referred to by Item.PlaceID FK
+		LocaleID int, foreign key (LocaleID) references Locale(ID), -- FK to Locale this Location is within
+		LeaderID int, foreign key (SocialID) references CharacterSheet(ID) -- FK to CharacterSheet who is leader of this Location
+		-- CharacterSheets present at Location are referred to by CharacterSheet.LocationID
+		-- Items present at Location are referred to by Item.LocationID FK
 	);
     
 -- Populate Database with Advantages

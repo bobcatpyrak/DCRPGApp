@@ -23,7 +23,7 @@ create table CharacterSheet (
 		EyeColor varchar(16), 
 		HairColor varchar(16),
 	-- Misc. Stats
-		UDODice varchar(16), -- the dice value for UDO, ie. 1d6
+		UDODice varchar(16) DEFAULT "1d6", -- the dice value for UDO, ie. 1d6
 		UDOBonus int, -- the bonus to damage added to the UDO, ie. +5
 		Speed int DEFAULT 3, 
 		HeroPoints int DEFAULT 0, VillainPoints int DEFAULT 0, AvailableRenown int DEFAULT 0, 
@@ -38,15 +38,8 @@ create table CharacterSheet (
 		Presence int not null DEFAULT 1, Bluff int not null DEFAULT 0, Charm int not null DEFAULT 0, Intimidation int not null DEFAULT 0, Persuasion int not null DEFAULT 0, Willpower int not null DEFAULT 0,
 	-- Advantages and Disadvantages
 		-- all referenced from CharacterSheetAdvantage and CharacterSheetDisadvantage tables, via CharacterSheetID FK
-	-- Powers (I think this works, though it's limited to 4 powers... could maybe fix it by making Power Field a separate table?)
-	Power1Level int,
-	Power1ID int, -- FK to ID PK from Power table
-	Power2Level int,
-	Power2ID int, -- FK to ID PK from Power table
-	Power3Level int,
-	Power3ID int, -- FK to ID PK from Power table
-	Power4Level int,
-	Power4ID int, -- FK to ID PK from Power table
+	-- Powers 
+		-- managed by CharacterSheetPower tableuser
 	-- Social Pool
 		-- All referenced from Social Pool tables, eg. via SocialID from Contact
 	-- Equipment
@@ -144,7 +137,7 @@ create table CharacterSheet (
 		PowerID int, foreign key (PowerID) references Power(ID), -- FK to Power Description for this Power Package
         Cost int, -- DEFAULT (select Cost from Power p where PowerID = p.ID) -- Cost in Power Points defaults to Cost from Power, can be overwritten, NEED TO FIGURE THIS OUT
 		Specializations varchar(256),
-		Weakness varchar(32)
+		Weakness varchar(256)
 	);
 		
 
@@ -233,6 +226,13 @@ create table CharacterSheet (
 		-- CharacterSheets present at Location are referred to by CharacterSheet.LocationID
 		-- Items present at Location are referred to by Item.LocationID FK
 	);
+    
+    create table Item (
+		ID int not null auto_increment, primary key (ID),
+        Name varchar(64) not null DEFAULT "Unnamed Item",
+		Picture varchar(128), -- filename
+		Description varchar(128),
+        // YO FIGURE THIS OUT
     
 -- Populate Database with Advantages
     insert Advantage (Name, Cost, Description) values

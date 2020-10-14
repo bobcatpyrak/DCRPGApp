@@ -39,15 +39,34 @@ public class CharacterSheetTextFile implements DAO<CharacterSheet>
 		{
 			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
 			{
+				
 				String line = in.readLine();
-				while (line != null)
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
 				{
-					String[] fields = line.split(FIELD_SEP);
-					CharacterSheet cs = new CharacterSheet(Integer.parseInt(fields[0]));
-					cs.setName(fields[1]);
-					cs.setAllStats(fields[2]);
-					sheets.add(cs);
-					line = in.readLine();
+					if (line.equals("$$CharacterSheetBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$CharacterSheetEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							CharacterSheet cs = new CharacterSheet(Integer.parseInt(fields[0]));
+							cs.setName(fields[1]);
+							cs.setPicture(fields[2]);
+							cs.setAllDemographics(fields[3]);
+							cs.setAllMiscStats(fields[4]);
+							cs.setAllStats(fields[5]);
+							sheets.add(cs);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+						line = in.readLine();
 				}
 				return sheets;
 			}
@@ -91,12 +110,14 @@ public class CharacterSheetTextFile implements DAO<CharacterSheet>
 	{
 		try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(sheetsFile))))
 		{
-			out.println("%%CharacterSheetBegin%%");
+			out.println("$$CharacterSheetBegin$$");
 			for (CharacterSheet cs : sheets)
 			{
-				out.println(cs.getId() + FIELD_SEP + cs.getName() + FIELD_SEP + cs.getAllStats());
+				out.println(cs.getId() + FIELD_SEP + cs.getName() + FIELD_SEP + cs.getPicture() 
+				+ FIELD_SEP + cs.getAllDemographics() + FIELD_SEP + cs.getAllMiscStats() 
+				+ FIELD_SEP + cs.getAllStats());
 			}
-			out.println("%%CharacterSheetEnd%%");
+			out.println("$$CharacterSheetEnd$$\n");
 			return true;
 		}
 		catch(IOException ioe)

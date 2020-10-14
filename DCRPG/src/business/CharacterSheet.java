@@ -137,6 +137,12 @@ public class CharacterSheet
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
+		if(running > 0)
+			speed++;
+		if(running >= 5)
+			speed++;
+		if(running >= 10)
+			speed++;
 	}
 	public int getHeroPoints() {
 		return heroPoints;
@@ -293,6 +299,7 @@ public class CharacterSheet
 	}
 	public void setRunning(int running) {
 		this.running = running;
+		setSpeed(3);
 	}
 	public int getSwimming() {
 		return swimming;

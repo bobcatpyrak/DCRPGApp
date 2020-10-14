@@ -1,61 +1,66 @@
 package business;
 
-public class SkillSpec 
+public class CharacterSheetAdvantage 
 {
-	private final String FIELD_SEP = "%";
-	
 	int id;
 	int characterSheetId;
-	String skill;
+	int advantageId;
 	String description;
-	int level;
 	
-	public SkillSpec()
+	public CharacterSheetAdvantage()
 	{
 		
 	}
-	public SkillSpec(int id)
+	
+	public CharacterSheetAdvantage(int id)
 	{
 		this.id = id;
 	}
-	public SkillSpec(int id, int characterSheetId, String skill, String description, int level)
+	
+	public CharacterSheetAdvantage(int id, int characterSheetId, int advantageId)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
-		this.skill = skill;
+		this.advantageId = advantageId;
+	}
+	public CharacterSheetAdvantage(int id, int characterSheetId, int advantageId, String description)
+	{
+		this.id = id;
+		this.characterSheetId = characterSheetId;
+		this.advantageId = advantageId;
 		this.description = description;
-		this.level = level;
 	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getCharacterSheetId() {
 		return characterSheetId;
 	}
+
 	public void setCharacterSheetId(int characterSheetId) {
 		this.characterSheetId = characterSheetId;
 	}
-	public String getSkill() {
-		return skill;
+
+	public int getAdvantageId() {
+		return advantageId;
 	}
-	public void setSkill(String skill) {
-		this.skill = skill;
+
+	public void setAdvantageId(int advantageId) {
+		this.advantageId = advantageId;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
 	}
 	
 	

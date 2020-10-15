@@ -1,10 +1,11 @@
 package business;
+import library.*;
 
 public class CharacterSheetAdvantage 
 {
 	int id;
 	int characterSheetId;
-	int advantageId;
+	Advantage adv;
 	String description;
 	
 	public CharacterSheetAdvantage()
@@ -17,17 +18,17 @@ public class CharacterSheetAdvantage
 		this.id = id;
 	}
 	
-	public CharacterSheetAdvantage(int id, int characterSheetId, int advantageId)
+	public CharacterSheetAdvantage(int id, int characterSheetId, Advantage adv)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
-		this.advantageId = advantageId;
+		this.adv = adv;
 	}
-	public CharacterSheetAdvantage(int id, int characterSheetId, int advantageId, String description)
+	public CharacterSheetAdvantage(int id, int characterSheetId, Advantage adv, String description)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
-		this.advantageId = advantageId;
+		this.adv = adv;
 		this.description = description;
 	}
 
@@ -47,12 +48,21 @@ public class CharacterSheetAdvantage
 		this.characterSheetId = characterSheetId;
 	}
 
-	public int getAdvantageId() {
-		return advantageId;
+	public Advantage getAdv() {
+		return adv;
+	}
+	
+	public String getAdvStr()
+	{
+		return adv.name();
 	}
 
-	public void setAdvantageId(int advantageId) {
-		this.advantageId = advantageId;
+	public void setAdv(Advantage adv) {
+		this.adv = adv;
+	}
+	
+	public void setAdv(String adv) {
+		this.adv = Advantage.valueOf(adv);
 	}
 
 	public String getDescription() {

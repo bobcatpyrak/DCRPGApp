@@ -25,15 +25,14 @@ public class TextFile implements DAO<CharacterSheet>
 		sheetsFile = sheetsPath.toFile();
 		sheets = getAllSheets();
 		specs = getAllSpecs();
-		
-		KEEP ADDING ADVANTAGES AND DISADVANTAGES STARTING HERE
+		advs = getAllCSA();
+		disadvs = getAllCSD();
 	}
 	@Override
 	public CharacterSheet get(int id) 
 	{
 		return sheets.get(id);
 	}
-	
 	public CharacterSheet getSheet(int id) 
 	{
 		return sheets.get(id);
@@ -41,6 +40,14 @@ public class TextFile implements DAO<CharacterSheet>
 	public SkillSpec getSpec(int id) 
 	{
 		return specs.get(id);
+	}
+	public CharacterSheetAdvantage getCSA(int id) 
+	{
+		return advs.get(id);
+	}
+	public CharacterSheetDisadvantage getCSD(int id) 
+	{
+		return disadvs.get(id);
 	}
 	
 	@Override
@@ -134,7 +141,11 @@ public class TextFile implements DAO<CharacterSheet>
 						reading = false;
 					}
 					else
+					{
 						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
 				}
 				return sheets;
 			}
@@ -150,7 +161,6 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}
-	
 	public List<SkillSpec> getAllSpecs() 
 	{	
 		if(specs != null)
@@ -187,7 +197,11 @@ public class TextFile implements DAO<CharacterSheet>
 						reading = false;
 					}
 					else
+					{
 						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
 				}
 				return specs;
 			}
@@ -203,13 +217,123 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}
+	public List<CharacterSheetAdvantage> getAllCSA() 
+	{	
+		if(advs != null)
+			return advs;
+		
+		advs = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
+				{
+					if (line.equals("$$CharacterSheetAdvantageBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$CharacterSheetAdvantageEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							CharacterSheetAdvantage csa = new CharacterSheetAdvantage(Integer.parseInt(fields[0]));
+							csa.setCharacterSheetId(Integer.parseInt(fields[1]));
+							csa.setAdv(fields[2]);
+							csa.setDescription(fields[3]);
+							advs.add(csa);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				return advs;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}
+	public List<CharacterSheetDisadvantage> getAllCSD() 
+	{	
+		if(disadvs != null)
+			return disadvs;
+		
+		disadvs = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
+				{
+					if (line.equals("$$CharacterSheetDisadvantageBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$CharacterSheetDisadvantageEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							CharacterSheetDisadvantage csd = new CharacterSheetDisadvantage(Integer.parseInt(fields[0]));
+							csd.setCharacterSheetId(Integer.parseInt(fields[1]));
+							csd.setDisadv(fields[2]);
+							csd.setDescription(fields[3]);
+							disadvs.add(csd);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				return disadvs;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}	
+	
 	@Override
 	public boolean add(CharacterSheet t) 
 	{
 		sheets.add(t);
 		return true;
 	}
-	
 	public boolean addSheet(CharacterSheet t) 
 	{
 		sheets.add(t);
@@ -218,6 +342,16 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean addSpec(SkillSpec t) 
 	{
 		specs.add(t);
+		return true;
+	}
+	public boolean addCSA(CharacterSheetAdvantage t) 
+	{
+		advs.add(t);
+		return true;
+	}
+	public boolean addCSD(CharacterSheetDisadvantage t) 
+	{
+		disadvs.add(t);
 		return true;
 	}
 
@@ -229,7 +363,6 @@ public class TextFile implements DAO<CharacterSheet>
 		sheets.add(index, t);
 		return true;
 	}
-	
 	public boolean updateSheet(CharacterSheet t) 
 	{
 		int index = t.getId();
@@ -244,6 +377,20 @@ public class TextFile implements DAO<CharacterSheet>
 		specs.add(index, t);
 		return true;
 	}
+	public boolean updateCSA(CharacterSheetAdvantage t) 
+	{
+		int index = t.getId();
+		advs.remove(index);
+		advs.add(index, t);
+		return true;
+	}
+	public boolean updateCSD(CharacterSheetDisadvantage t) 
+	{
+		int index = t.getId();
+		disadvs.remove(index);
+		disadvs.add(index, t);
+		return true;
+	}
 
 	@Override
 	public boolean delete(CharacterSheet t) 
@@ -251,7 +398,6 @@ public class TextFile implements DAO<CharacterSheet>
 		sheets.remove(t);
 		return true;
 	}
-	
 	public boolean deleteSheet(CharacterSheet t) 
 	{
 		sheets.remove(t);
@@ -262,11 +408,22 @@ public class TextFile implements DAO<CharacterSheet>
 		specs.remove(t);
 		return true;
 	}
+	public boolean deleteCSA(CharacterSheetAdvantage t) 
+	{
+		advs.remove(t);
+		return true;
+	}
+	public boolean deleteCSD(CharacterSheetDisadvantage t) 
+	{
+		disadvs.remove(t);
+		return true;
+	}
 
 	public boolean saveAll()
 	{
 		try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(sheetsFile))))
 		{
+			// CharacterSheet
 			out.println("$$CharacterSheetBegin$$");
 			for (CharacterSheet cs : sheets)
 			{
@@ -276,6 +433,7 @@ public class TextFile implements DAO<CharacterSheet>
 			}
 			out.println("$$CharacterSheetEnd$$");
 			out.println();
+			// SkillSpec
 			out.println("$$SkillSpecBegin$$");
 			for (SkillSpec ss : specs)
 			{
@@ -283,6 +441,24 @@ public class TextFile implements DAO<CharacterSheet>
 				+ FIELD_SEP + ss.getDescription() + FIELD_SEP + ss.getLevel());
 			}
 			out.println("$$SkillSpecEnd$$");
+			out.println();
+			// CSA
+			out.println("$$CharacterSheetAdvantageBegin$$");
+			for (CharacterSheetAdvantage csa : advs)
+			{
+				out.println(csa.getId() + FIELD_SEP + csa.getCharacterSheetId() + FIELD_SEP + csa.getAdvStr() 
+				+ FIELD_SEP + csa.getDescription());
+			}
+			out.println("$$CharacterSheetAdvantageEnd$$");
+			out.println();
+			// CSD
+			out.println("$$CharacterSheetDisadvantageBegin$$");
+			for (CharacterSheetDisadvantage csd : disadvs)
+			{
+				out.println(csd.getId() + FIELD_SEP + csd.getCharacterSheetId() + FIELD_SEP + csd.getDisadvStr() 
+				+ FIELD_SEP + csd.getDescription());
+			}
+			out.println("$$CharacterSheetDisadvantageEnd$$");
 			out.println();
 			return true;
 		}

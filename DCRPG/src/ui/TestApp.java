@@ -9,6 +9,7 @@ import java.util.List;
 
 import business.*;
 import db.*;
+import library.*;
 
 public class TestApp 
 {
@@ -20,14 +21,22 @@ public class TestApp
 		
 		List<CharacterSheet> sheets = dao.getAllSheets();
 		List<SkillSpec> specs = dao.getAllSpecs();
+		List<CharacterSheetAdvantage> advs = dao.getAllCSA();
+		List<CharacterSheetDisadvantage> disadvs = dao.getAllCSD();
 		
 		int nextSheetId = 0;
 		int nextSpecId = 0;
+		int nextCSAId = 0;
+		int nextCSDId = 0;
 		
 		if(sheets.size() > 0)
 			nextSheetId = sheets.get(sheets.size()-1).getId() + 1;
 		if(specs.size() > 0)
 			nextSpecId = specs.get(specs.size()-1).getId() + 1;
+		if(advs.size() > 0)
+			nextCSAId = advs.get(advs.size()-1).getId() + 1;
+		if(disadvs.size() > 0)
+			nextCSDId = disadvs.get(disadvs.size()-1).getId() + 1;
 
 		
 		CharacterSheet batman = new CharacterSheet(nextSheetId);
@@ -38,9 +47,13 @@ public class TestApp
 		batman.setAllStats("6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6");
 		
 		SkillSpec batarang = new SkillSpec(nextSpecId, nextSheetId, "Thrown Weapons", "Batarangs", 3);
-		
+		CharacterSheetAdvantage batmanWealth = new CharacterSheetAdvantage(nextCSAId, nextSheetId, Advantage.WEALTH);
+		CharacterSheetDisadvantage batmanSecretIdentity = new CharacterSheetDisadvantage(nextCSDId, nextSheetId, Disadvantage.SECRET_IDENTITY);
+
 		sheets.add(batman);
 		specs.add(batarang);
+		advs.add(batmanWealth);
+		disadvs.add(batmanSecretIdentity);
 		
 		dao.saveAll();
 	}

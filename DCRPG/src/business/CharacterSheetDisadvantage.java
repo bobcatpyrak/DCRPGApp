@@ -1,10 +1,11 @@
 package business;
+import library.*;
 
 public class CharacterSheetDisadvantage 
 {
 	int id;
 	int characterSheetId;
-	int disadvantageId;
+	Disadvantage disadv;
 	String description;
 	
 	public CharacterSheetDisadvantage()
@@ -17,17 +18,17 @@ public class CharacterSheetDisadvantage
 		this.id = id;
 	}
 	
-	public CharacterSheetDisadvantage(int id, int characterSheetId, int disadvantageId)
+	public CharacterSheetDisadvantage(int id, int characterSheetId, Disadvantage disadv)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
-		this.disadvantageId = disadvantageId;
+		this.disadv = disadv;
 	}
-	public CharacterSheetDisadvantage(int id, int characterSheetId, int disadvantageId, String description)
+	public CharacterSheetDisadvantage(int id, int characterSheetId, Disadvantage disadv, String description)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
-		this.disadvantageId = disadvantageId;
+		this.disadv = disadv;
 		this.description = description;
 	}
 
@@ -47,12 +48,18 @@ public class CharacterSheetDisadvantage
 		this.characterSheetId = characterSheetId;
 	}
 
-	public int getDisadvantageId() {
-		return disadvantageId;
+	public Disadvantage getDisadv() {
+		return disadv;
 	}
 
-	public void setDisadvantageId(int disadvantageId) {
-		this.disadvantageId = disadvantageId;
+	public String getDisadvStr() {
+		return disadv.name();
+	}
+	public void setDisadv(Disadvantage disadv) {
+		this.disadv = disadv;
+	}
+	public void setDisadv(String str) {
+		this.disadv = Disadvantage.valueOf(str);
 	}
 
 	public String getDescription() {

@@ -137,12 +137,6 @@ public class CharacterSheet
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
-		if(running > 0)
-			speed++;
-		if(running >= 5)
-			speed++;
-		if(running >= 10)
-			speed++;
 	}
 	public int getHeroPoints() {
 		return heroPoints;
@@ -487,7 +481,7 @@ public class CharacterSheet
 	// Methods for getting and setting all misc stats
 	public String getAllMiscStats()
 	{
-		return getUdoDice() + FIELD_SEP + getSpeed() 
+		return getUdoDice() + FIELD_SEP + getUdoBonus() + FIELD_SEP + getSpeed() 
 		+ FIELD_SEP + getHeroPoints() + FIELD_SEP + getVillainPoints()
 		+ FIELD_SEP + getAvailableRenown() + FIELD_SEP + getPowerPoints()
 		+ FIELD_SEP + getSkillPoints() + FIELD_SEP + getBodyPointsCurrent()
@@ -496,7 +490,7 @@ public class CharacterSheet
 	public void setAllMiscStats(String cs)
 	{
 		String[] fields = cs.split(FIELD_SEP);
-		
+
 		setUdoDice(fields[0]);
 		setUdoBonus(Integer.parseInt(fields[1]));
 		setSpeed(Integer.parseInt(fields[2]));
@@ -505,8 +499,8 @@ public class CharacterSheet
 		setAvailableRenown(Integer.parseInt(fields[5]));
 		setPowerPoints(Integer.parseInt(fields[6]));
 		setSkillPoints(Integer.parseInt(fields[7]));
-		setBodyPointsCurrent(Integer.parseInt(fields[7]));
-		setBodyPointsMax(Integer.parseInt(fields[8]));
+		setBodyPointsCurrent(Integer.parseInt(fields[8]));
+		setBodyPointsMax(Integer.parseInt(fields[9]));
 	}
 	
 	// Methods for getting and setting all stats

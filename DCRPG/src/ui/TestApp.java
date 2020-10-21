@@ -7,12 +7,28 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.*;
+
 import business.*;
 import db.*;
 import library.*;
 
-public class TestApp 
+public class TestApp extends JFrame
 {
+	public TestApp()
+	{
+		initComponents();
+	}
+	
+	private void initComponents()
+	{
+		setTitle("DCRPG Test App");
+		setSize(1400, 760);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationByPlatform(true);
+		
+		setVisible(true);
+	}
 	private static TextFile dao = new TextFile();
 
 	public static void main(String[] args) 
@@ -23,6 +39,18 @@ public class TestApp
 		List<SkillSpec> specs = dao.getAllSpecs();
 		List<CharacterSheetAdvantage> advs = dao.getAllCSA();
 		List<CharacterSheetDisadvantage> disadvs = dao.getAllCSD();
+		
+	/*	java.awt.EventQueue.invokeLater(() -> 
+		{
+			JFrame frame = new TestApp();
+			JPanel panel = new JPanel();
+			frame.add(panel);
+			JButton newSheetButton = new JButton("new");
+			panel.add(newSheetButton);
+			JList sheetsList = new JList(sheets);
+			
+			
+		});*/
 		
 		int nextSheetId = 0;
 		int nextSpecId = 0;
@@ -50,10 +78,10 @@ public class TestApp
 		CharacterSheetAdvantage batmanWealth = new CharacterSheetAdvantage(nextCSAId, nextSheetId, Advantage.WEALTH);
 		CharacterSheetDisadvantage batmanSecretIdentity = new CharacterSheetDisadvantage(nextCSDId, nextSheetId, Disadvantage.SECRET_IDENTITY);
 
-		sheets.add(batman);
+		/*sheets.add(batman);
 		specs.add(batarang);
 		advs.add(batmanWealth);
-		disadvs.add(batmanSecretIdentity);
+		disadvs.add(batmanSecretIdentity);*/
 		
 		dao.saveAll();
 	}

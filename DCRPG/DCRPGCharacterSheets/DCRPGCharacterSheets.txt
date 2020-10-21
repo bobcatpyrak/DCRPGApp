@@ -3,6 +3,10 @@ $$CharacterSheetBegin$$
 1	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
 2	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
 3	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+4	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+5	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+6	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+7	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
@@ -10,6 +14,10 @@ $$SkillSpecBegin$$
 1	1	Thrown Weapons	Batarangs	3
 2	2	Thrown Weapons	Batarangs	3
 3	3	Thrown Weapons	Batarangs	3
+4	4	Thrown Weapons	Batarangs	3
+5	5	Thrown Weapons	Batarangs	3
+6	6	Thrown Weapons	Batarangs	3
+7	7	Thrown Weapons	Batarangs	3
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$
@@ -17,6 +25,10 @@ $$CharacterSheetAdvantageBegin$$
 1	1	WEALTH	null
 2	2	WEALTH	null
 3	3	WEALTH	null
+4	4	WEALTH	null
+5	5	WEALTH	null
+6	6	WEALTH	null
+7	7	WEALTH	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
@@ -24,5 +36,9 @@ $$CharacterSheetDisadvantageBegin$$
 1	1	SECRET_IDENTITY	null
 2	2	SECRET_IDENTITY	null
 3	3	SECRET_IDENTITY	null
+4	4	SECRET_IDENTITY	null
+5	5	SECRET_IDENTITY	null
+6	6	SECRET_IDENTITY	null
+7	7	SECRET_IDENTITY	null
 $$CharacterSheetDisadvantageEnd$$
 

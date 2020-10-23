@@ -118,16 +118,16 @@ create table CharacterSheet (
 		Name varchar(32) not null,
         Cost int, -- cost of a level of power in terms of Power Points
         Description varchar (2048),
-		Level1 varchar(256), 
-		Level2 varchar(256), 
-		Level3 varchar(256), 
-		Level4 varchar(256), 
-		Level5 varchar(256), 
-		Level6 varchar(256), 
-		Level7 varchar(256), 
-		Level8 varchar(256), 
-		Level9 varchar(256), 
-		Level10 varchar(256)
+		Level1 varchar(1024), 
+		Level2 varchar(1024), 
+		Level3 varchar(1024), 
+		Level4 varchar(1024), 
+		Level5 varchar(1024), 
+		Level6 varchar(1024), 
+		Level7 varchar(1024), 
+		Level8 varchar(1024), 
+		Level9 varchar(1024), 
+		Level10 varchar(1024)
 	);
 	-- Power Package table - rows here are unique to CharacterSheets, combining level, power, specs, and weaknesses   
 	create table CharacterSheetPower (
@@ -136,13 +136,22 @@ create table CharacterSheet (
 		Level int check(Level >= 0),
 		PowerID int, foreign key (PowerID) references Power(ID), -- FK to Power Description for this Power Package
         Cost int, -- DEFAULT (select Cost from Power p where PowerID = p.ID) -- Cost in Power Points defaults to Cost from Power, can be overwritten, NEED TO FIGURE THIS OUT
-		Specializations varchar(256),
-		Weakness varchar(256)
+		Specializations varchar(512),
+		Weakness varchar(512)
 	);
 		
 
 -- SOCIAL TABLES. Each addition to a table is unique to the CharacterSheet via SocialID FK
-	create table Ally (
+	create table SocialLink (
+		ID int not null auto_increment, primary key (ID),
+        SocialID int not null, foreign key (SocialID) references CharacterSheet(ID),
+        Level int, -- Null is allowed, in case social level doesn't matter
+        Name varchar(64) not null,
+        Description varchar(256),
+        Category varchar(16)
+	);
+    
+    /*create table Ally (
 		ID int not null auto_increment, primary key (ID),
 		SocialID int not null, foreign key (SocialID) references CharacterSheet(ID),
 		Level int, -- Null is allowed, in case social level doesn't matter
@@ -197,11 +206,19 @@ create table CharacterSheet (
 		Level int, -- Null is allowed, in case social level doesn't matter
 		Name varchar(64) not null,
 		Description varchar(256)
-	);
+	);*/
     
 -- LOCATION TABLES
 	-- Hubs are places such as Archduchy
-	create table Hub (
+    
+    create table Location (
+		ID int not null auto_increment, primary key (ID),
+        Name varchar(64) not null,
+        LeaderID int, foreign key (LeaderID) references CharacterSheet(ID), -- FK to CharacterSheet who is leader of this location
+        LocaleID int, foreign key (LocaleID) references Location(ID) -- FK to Location this one is a subset of
+	);
+    
+	/*create table Hub (
 		ID int not null auto_increment, primary key (ID),
 		Name varchar(64) not null,
 		LeaderID int, foreign key (LeaderID) references CharacterSheet(ID)-- FK to CharacterSheet who is leader of this Hub
@@ -225,14 +242,52 @@ create table CharacterSheet (
 		LeaderID int, foreign key (SocialID) references CharacterSheet(ID) -- FK to CharacterSheet who is leader of this Location
 		-- CharacterSheets present at Location are referred to by CharacterSheet.LocationID
 		-- Items present at Location are referred to by Item.LocationID FK
-	);
+	);*/
     
     create table Item (
 		ID int not null auto_increment, primary key (ID),
         Name varchar(64) not null DEFAULT "Unnamed Item",
 		Picture varchar(128), -- filename
 		Description varchar(128),
-        // YO FIGURE THIS OUT
+        Slots int, -- value of 0 = key item
+        Stacking int DEFAULT 1,
+        Quantity int DEFAULT 1
+	);
+    
+    create table Equipment (
+		ID int not null, primary key (ID), foreign key (ID) references Item(ID), -- FK to Item table, for inheritence
+        EquipSlot varchar(128),
+        StatRequirement varchar(16), -- if requires a stat level, this is the stat
+        StatRequirementLevel int, -- level of stat required, if required
+        IsEquipped bool DEFAULT false
+        -- Equip bonuses related according to the EquipmentBonuses table
+	);
+    
+	create table Weapon (
+		ID int not null, primary key (ID), foreign key (ID) references Equipment(ID), -- FK to Equipment table, for inheritence
+        GoverningSkill varchar(16),
+        Damage varchar(16),
+        WeaponRange int,
+        FiringRate int
+	);
+    
+    -- many to one relation to Equipment
+    create table EquipBonus (
+		ID int not null auto_increment, primary key (ID),
+        EquipmentID int not null, foreign key (EquipmentID) references Equipment(ID), -- FK to equipment table that this affects
+        Stat varchar(16), -- stat that this bonus affects
+        StatBonus int -- bonus to stat this bonus affects
+	);
+    
+    create table Upgrade (
+		ID int not null auto_increment, primary key (ID),
+        ItemID int not null, foreign key (ItemID) references Item(ID), -- FK to item this is an upgrade for
+        Description varchar(64), -- many upgrades might only be a description
+        Stat varchar(16), -- stat this upgrade increases
+        StatBonus int -- bonus to stat this increases
+	);
+        
+	
     
 -- Populate Database with Advantages
     insert Advantage (Name, Cost, Description) values

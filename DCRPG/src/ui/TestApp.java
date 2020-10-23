@@ -40,7 +40,7 @@ public class TestApp extends JFrame
 		List<CharacterSheetAdvantage> advs = dao.getAllCSA();
 		List<CharacterSheetDisadvantage> disadvs = dao.getAllCSD();
 		
-	/*	java.awt.EventQueue.invokeLater(() -> 
+		/*java.awt.EventQueue.invokeLater(() -> 
 		{
 			JFrame frame = new TestApp();
 			JPanel panel = new JPanel();

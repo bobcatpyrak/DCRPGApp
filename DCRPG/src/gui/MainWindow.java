@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
@@ -280,6 +281,7 @@ public class MainWindow {
 		btnNew.setBounds(247, 11, 69, 23);
 		dcrpgFrame.getContentPane().add(btnNew);
 		
+		
 		Panel reflexesPanel = new Panel();
 		reflexesPanel.setBackground(new Color(255, 102, 102));
 		reflexesPanel.setBounds(44, 149, 354, 470);
@@ -309,11 +311,56 @@ public class MainWindow {
 		acroPanel.add(acroLabel);
 		acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		
-		TextField acroSpecs = new TextField();
+		/*TextField acroSpecs = new TextField();
 		acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 		acroSpecs.setBackground(new Color(255, 204, 204));
 		acroSpecs.setBounds(5, 33, 279, 22);
 		acroPanel.add(acroSpecs);
+		TextField acroSpecs1 = new TextField();
+		acroSpecs1.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs1.setBackground(new Color(255, 204, 204));
+		acroSpecs1.setBounds(5, 61, 279, 22);
+		acroPanel.add(acroSpecs1);
+		TextField acroSpecs2 = new TextField();
+		acroSpecs2.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs2.setBackground(new Color(255, 204, 204));
+		acroSpecs2.setBounds(5, 89, 279, 22);
+		acroPanel.add(acroSpecs2);
+		TextField acroSpecs3 = new TextField();
+		acroSpecs3.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs3.setBackground(new Color(255, 204, 204));
+		acroSpecs3.setBounds(5, 117, 279, 22);
+		acroPanel.add(acroSpecs3);
+		TextField acroSpecs4 = new TextField();
+		acroSpecs4.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs4.setBackground(new Color(255, 204, 204));
+		acroSpecs4.setBounds(5, 145, 279, 22);
+		acroPanel.add(acroSpecs4);
+		TextField acroSpecs5 = new TextField();
+		acroSpecs5.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs5.setBackground(new Color(255, 204, 204));
+		acroSpecs5.setBounds(5, 173, 279, 22);
+		acroPanel.add(acroSpecs5);
+		TextField acroSpecs6 = new TextField();
+		acroSpecs6.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs6.setBackground(new Color(255, 204, 204));
+		acroSpecs6.setBounds(5, 201, 279, 22);
+		acroPanel.add(acroSpecs6);
+		TextField acroSpecs7 = new TextField();
+		acroSpecs7.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs7.setBackground(new Color(255, 204, 204));
+		acroSpecs7.setBounds(5, 229, 279, 22);
+		acroPanel.add(acroSpecs7);
+		TextField acroSpecs8 = new TextField();
+		acroSpecs8.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs8.setBackground(new Color(255, 204, 204));
+		acroSpecs8.setBounds(5, 257, 279, 22);
+		acroPanel.add(acroSpecs8);
+		TextField acroSpecs9 = new TextField();
+		acroSpecs9.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs9.setBackground(new Color(255, 204, 204));
+		acroSpecs9.setBounds(5, 285, 279, 22);
+		acroPanel.add(acroSpecs9);*/
 				
 		JFormattedTextField acroTotal = new JFormattedTextField();
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -341,7 +388,6 @@ public class MainWindow {
 		acroLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		acroLevel.setBounds(5, 5, 24, 22);
 		acroPanel.add(acroLevel);
-
 		
 		Panel dodgePanel = new Panel();
 		dodgePanel.setLayout(null);
@@ -643,6 +689,67 @@ public class MainWindow {
 			}
 		});
 		
+		JCheckBox chckbxAcro = new JCheckBox("Show specs");
+		chckbxAcro.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(chckbxAcro.isSelected())
+				{
+					List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
+
+					int extra = (acroSpecsList.size()+1)*28;
+					
+					reflexesPanel.setBounds(44, 149, 354, (470+extra));
+					acroPanel.setBounds(0, 50, 354, (60+extra));
+					dodgePanel.setBounds(0, 110+extra, 354, 60);
+					handToHandPanel.setBounds(0, 170+extra, 354, 60);
+					meleeWeaponsPanel.setBounds(0, 230+extra, 354, 60);
+					stealthPanel.setBounds(0, 290+extra, 354, 60);
+					placePanel.setBounds(0, 350+extra, 354, 60);
+					place2Panel.setBounds(0, 410+extra, 354, 60);
+
+					
+					for(int i = 0; i < acroSpecsList.size(); i++)
+					{
+						int j = i;
+						TextField acroSpecsA = new TextField();
+						acroSpecsA.setFont(new Font("Verdana", Font.PLAIN, 13));
+						acroSpecsA.setBackground(new Color(255, 204, 204));
+						acroSpecsA.setBounds(5, 33+(i*28), 279, 22);
+						acroPanel.add(acroSpecsA);
+						acroSpecsA.setText(acroSpecsList.get(i).getDescription());
+
+						acroSpecsA.addKeyListener(new KeyAdapter() {
+							@Override
+							public void keyReleased(KeyEvent e) {
+									acroSpecsList.get(j).setDescription(acroSpecsA.getText());
+									for(SkillSpec ss : currentSheet.getSkillSpecs())
+									{
+										if(ss.getId() == acroSpecsList.get(j).getId())
+											ss.setDescription(acroSpecsA.getText());
+									}
+								
+							}
+						});
+						
+					}
+				}
+				else if(!chckbxAcro.isSelected())
+				{
+					reflexesPanel.setBounds(44, 149, 354, 470);
+					acroPanel.setBounds(0, 50, 354, 60);
+					dodgePanel.setBounds(0, 110, 354, 60);
+					handToHandPanel.setBounds(0, 170, 354, 60);
+					meleeWeaponsPanel.setBounds(0, 230, 354, 60);
+					stealthPanel.setBounds(0, 290, 354, 60);
+					placePanel.setBounds(0, 350, 354, 60);
+					place2Panel.setBounds(0, 410, 354, 60);
+				}
+			}
+		});
+		chckbxAcro.setBackground(new Color(255, 153, 153));
+		chckbxAcro.setBounds(187, 5, 97, 23);
+		acroPanel.add(chckbxAcro);
+		
 		
 		
 		JPanel demographicsPanel = new JPanel();
@@ -722,18 +829,18 @@ public class MainWindow {
 		hairColorField.setColumns(10);
 		hairColorField.setText(currentSheet.getHairColor());
 		
-		JCheckBox demographicsCheckBox = new JCheckBox("Show Demographics");
-		demographicsCheckBox.addItemListener(new ItemListener() {
+		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
+		chckbxDemographics.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				if(demographicsCheckBox.isSelected())
+				if(chckbxDemographics.isSelected())
 					demographicsPanel.setVisible(true);
-				else if(!demographicsCheckBox.isSelected())
+				else if(!chckbxDemographics.isSelected())
 					demographicsPanel.setVisible(false);
 			}
 		});
-		demographicsCheckBox.setSelected(true);
-		demographicsCheckBox.setBounds(38, 39, 136, 23);
-		dcrpgFrame.getContentPane().add(demographicsCheckBox);
+		chckbxDemographics.setSelected(true);
+		chckbxDemographics.setBounds(38, 39, 136, 23);
+		dcrpgFrame.getContentPane().add(chckbxDemographics);
 		
 		JLabel lblHeroPoints = new JLabel("Hero Points");
 		lblHeroPoints.setBounds(367, 59, 90, 20);

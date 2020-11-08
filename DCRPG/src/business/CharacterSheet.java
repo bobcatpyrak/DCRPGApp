@@ -39,7 +39,7 @@ public class CharacterSheet
 	int perception; 	int artist; 	int engineering; 	int search; 		int streetwise; 	int surveillance; 	int survival;
 	int presence; 		int bluff; 		int charm; 			int intimidation; 	int persuasion; 	int willpower;
 	// other stat arrays
-	List<SkillSpec> skillSpecs;
+	List<SkillSpec> skillSpecs = new ArrayList<SkillSpec>();
 	
 	public CharacterSheet(int id)
 	{

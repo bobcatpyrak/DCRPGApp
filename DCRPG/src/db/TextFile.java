@@ -23,10 +23,10 @@ public class TextFile implements DAO<CharacterSheet>
 		
 		sheetsPath = Paths.get("DCRPGCharacterSheets/DCRPGCharacterSheets.txt");
 		sheetsFile = sheetsPath.toFile();
-		sheets = getAllSheets();
 		specs = getAllSpecs();
 		advs = getAllCSA();
 		disadvs = getAllCSD();
+		sheets = getAllSheets();
 	}
 	@Override
 	public CharacterSheet get(int id) 
@@ -135,6 +135,7 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setAllDemographics(fields[3]);
 							cs.setAllMiscStats(fields[4]);
 							cs.setAllStats(fields[5]);
+							cs.setSkillSpecs(specs);
 							sheets.add(cs);
 							line = in.readLine();
 						}

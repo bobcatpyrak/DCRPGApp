@@ -69,6 +69,11 @@ public class MainWindow {
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static CharacterSheet currentSheet;
 	
+	private static int nextSheetId;
+	private static int nextSpecId;
+	private static int nextCSAId;
+	private static int nextCSDId;
+	
 	private JFrame dcrpgFrame;
 	private final Action action = new SwingAction();
 	private JTextField nameSearchField;
@@ -101,10 +106,10 @@ public class MainWindow {
 		advs = dao.getAllCSA();
 		disadvs = dao.getAllCSD();
 		
-		int nextSheetId = 0;
-		int nextSpecId = 0;
-		int nextCSAId = 0;
-		int nextCSDId = 0;
+		nextSheetId = 0;
+		nextSpecId = 0;
+		nextCSAId = 0;
+		nextCSDId = 0;
 		
 		if(sheets.size() > 0)
 			nextSheetId = sheets.get(sheets.size()-1).getId() + 1;
@@ -134,7 +139,7 @@ public class MainWindow {
 		batman.setAllMiscStats("2d6%6%5%68%3%250%0%17%45%46");
 		batman.setAllStats("6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6");
 		
-		SkillSpec batarang = new SkillSpec(nextSpecId, nextSheetId, "Thrown Weapons", "Batarangs", 3);
+		SkillSpec batarang = new SkillSpec(nextSpecId, nextSheetId, "Thrown Weapons", "Batarangs");
 		CharacterSheetAdvantage batmanWealth = new CharacterSheetAdvantage(nextCSAId, nextSheetId, Advantage.WEALTH);
 		CharacterSheetDisadvantage batmanSecretIdentity = new CharacterSheetDisadvantage(nextCSDId, nextSheetId, Disadvantage.SECRET_IDENTITY);
 		
@@ -226,6 +231,7 @@ public class MainWindow {
 		dcrpgFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		dcrpgFrame.getContentPane().setLayout(null);
 		
+		
 		NumberFormat nums = NumberFormat.getNumberInstance();
 		
 		JLabel nameLabel = new JLabel("Name");
@@ -284,7 +290,7 @@ public class MainWindow {
 		
 		Panel reflexesPanel = new Panel();
 		reflexesPanel.setBackground(new Color(255, 102, 102));
-		reflexesPanel.setBounds(44, 149, 354, 470);
+		reflexesPanel.setBounds(44, 149, 354, 274);
 		dcrpgFrame.getContentPane().add(reflexesPanel);
 		reflexesPanel.setLayout(null);
 		
@@ -302,7 +308,7 @@ public class MainWindow {
 		
 		Panel acroPanel = new Panel();
 		acroPanel.setBackground(new Color(255, 153, 153));
-		acroPanel.setBounds(0, 50, 354, 60);
+		acroPanel.setBounds(0, 50, 354, 32);
 		reflexesPanel.add(acroPanel);
 		acroPanel.setLayout(null);
 		
@@ -366,8 +372,8 @@ public class MainWindow {
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		acroTotal.setColumns(2);
 		acroTotal.setEditable(false);
-		acroTotal.setFont(new Font("Arial", Font.BOLD, 22));
-		acroTotal.setBounds(294, 13, 50, 34);
+		acroTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		acroTotal.setBounds(294, 5, 50, 22);
 		acroPanel.add(acroTotal);
 		
 		JFormattedTextField acroLevel = new JFormattedTextField(nums);
@@ -392,7 +398,7 @@ public class MainWindow {
 		Panel dodgePanel = new Panel();
 		dodgePanel.setLayout(null);
 		dodgePanel.setBackground(new Color(255, 102, 102));
-		dodgePanel.setBounds(0, 110, 354, 60);
+		dodgePanel.setBounds(0, 82, 354, 32);
 		reflexesPanel.add(dodgePanel);
 		
 		Label dodgeLabel = new Label("Dodge");
@@ -400,18 +406,18 @@ public class MainWindow {
 		dodgeLabel.setBounds(35, 5, 120, 22);
 		dodgePanel.add(dodgeLabel);
 		
-		TextField dodgeSpecs = new TextField();
+		/*TextField dodgeSpecs = new TextField();
 		dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 		dodgeSpecs.setBackground(new Color(255, 204, 204));
 		dodgeSpecs.setBounds(5, 33, 279, 22);
-		dodgePanel.add(dodgeSpecs);
+		dodgePanel.add(dodgeSpecs);*/
 		
 		JFormattedTextField dodgeTotal = new JFormattedTextField();
 		dodgeTotal.setColumns(2);
 		dodgeTotal.setEditable(false);
 		dodgeTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		dodgeTotal.setFont(new Font("Arial", Font.BOLD, 22));
-		dodgeTotal.setBounds(294, 13, 50, 34);
+		dodgeTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		dodgeTotal.setBounds(294, 5, 50, 22);
 		dodgePanel.add(dodgeTotal);
 		
 		JFormattedTextField dodgeLevel = new JFormattedTextField(nums);
@@ -438,7 +444,7 @@ public class MainWindow {
 		Panel handToHandPanel = new Panel();
 		handToHandPanel.setLayout(null);
 		handToHandPanel.setBackground(new Color(255, 153, 153));
-		handToHandPanel.setBounds(0, 170, 354, 60);
+		handToHandPanel.setBounds(0, 114, 354, 32);
 		reflexesPanel.add(handToHandPanel);
 		
 		Label handToHandLabel = new Label("Hand-to-Hand");
@@ -446,18 +452,18 @@ public class MainWindow {
 		handToHandLabel.setBounds(35, 5, 120, 22);
 		handToHandPanel.add(handToHandLabel);
 		
-		TextField handToHandSpecs = new TextField();
-		handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		handToHandSpecs.setBackground(new Color(255, 204, 204));
-		handToHandSpecs.setBounds(5, 33, 279, 22);
-		handToHandPanel.add(handToHandSpecs);
+//		TextField handToHandSpecs = new TextField();
+//		handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+//		handToHandSpecs.setBackground(new Color(255, 204, 204));
+//		handToHandSpecs.setBounds(5, 33, 279, 22);
+//		handToHandPanel.add(handToHandSpecs);
 		
 		JFormattedTextField handToHandTotal = new JFormattedTextField();
 		handToHandTotal.setColumns(2);
 		handToHandTotal.setEditable(false);
-		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		handToHandTotal.setBounds(294, 13, 50, 34);
+		handToHandTotal.setBounds(294, 5, 50, 22);
 		handToHandPanel.add(handToHandTotal);
 		
 		JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
@@ -484,7 +490,7 @@ public class MainWindow {
 		Panel meleeWeaponsPanel = new Panel();
 		meleeWeaponsPanel.setLayout(null);
 		meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
-		meleeWeaponsPanel.setBounds(0, 230, 354, 60);
+		meleeWeaponsPanel.setBounds(0, 146, 354, 32);
 		reflexesPanel.add(meleeWeaponsPanel);
 		
 		Label meleeWeaponsLabel = new Label("Melee Weapons");
@@ -492,18 +498,18 @@ public class MainWindow {
 		meleeWeaponsLabel.setBounds(35, 5, 120, 22);
 		meleeWeaponsPanel.add(meleeWeaponsLabel);
 		
-		TextField meleeWeaponsSpecs = new TextField();
-		meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
-		meleeWeaponsSpecs.setBounds(5, 33, 279, 22);
-		meleeWeaponsPanel.add(meleeWeaponsSpecs);
-		
+//		TextField meleeWeaponsSpecs = new TextField();
+//		meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+//		meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
+//		meleeWeaponsSpecs.setBounds(5, 33, 279, 22);
+//		meleeWeaponsPanel.add(meleeWeaponsSpecs);
+//		
 		JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
 		meleeWeaponsTotal.setColumns(2);
 		meleeWeaponsTotal.setEditable(false);
 		meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 22));
-		meleeWeaponsTotal.setBounds(294, 13, 50, 34);
+		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		meleeWeaponsTotal.setBounds(294, 5, 50, 22);
 		meleeWeaponsPanel.add(meleeWeaponsTotal);
 		
 		JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
@@ -530,7 +536,7 @@ public class MainWindow {
 		Panel stealthPanel = new Panel();
 		stealthPanel.setLayout(null);
 		stealthPanel.setBackground(new Color(255, 153, 153));
-		stealthPanel.setBounds(0, 290, 354, 60);
+		stealthPanel.setBounds(0, 178, 354, 32);
 		reflexesPanel.add(stealthPanel);
 		
 		Label stealthLabel = new Label("Stealth");
@@ -538,18 +544,18 @@ public class MainWindow {
 		stealthLabel.setBounds(35, 5, 120, 22);
 		stealthPanel.add(stealthLabel);
 		
-		TextField stealthSpecs = new TextField();
-		stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		stealthSpecs.setBackground(new Color(255, 204, 204));
-		stealthSpecs.setBounds(5, 33, 279, 22);
-		stealthPanel.add(stealthSpecs);
+//		TextField stealthSpecs = new TextField();
+//		stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+//		stealthSpecs.setBackground(new Color(255, 204, 204));
+//		stealthSpecs.setBounds(5, 33, 279, 22);
+//		stealthPanel.add(stealthSpecs);
 		
 		JFormattedTextField stealthTotal = new JFormattedTextField();
 		stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		stealthTotal.setColumns(2);
 		stealthTotal.setEditable(false);
-		stealthTotal.setFont(new Font("Arial", Font.BOLD, 22));
-		stealthTotal.setBounds(294, 13, 50, 34);
+		stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		stealthTotal.setBounds(294, 5, 50, 22);
 		stealthPanel.add(stealthTotal);
 		
 		JFormattedTextField stealthLevel = new JFormattedTextField(nums);
@@ -576,26 +582,26 @@ public class MainWindow {
 		Panel placePanel = new Panel();
 		placePanel.setLayout(null);
 		placePanel.setBackground(new Color(255, 102, 102));
-		placePanel.setBounds(0, 350, 354, 60);
+		placePanel.setBounds(0, 210, 354, 32);
 		reflexesPanel.add(placePanel);
 		
-		Label placeLabel = new Label("Thrown Weapons");
+		Label placeLabel = new Label("Placeholder");
 		placeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		placeLabel.setBounds(35, 5, 120, 22);
 		placePanel.add(placeLabel);
-		
-		TextField placeSpecs = new TextField();
-		placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		placeSpecs.setBackground(new Color(255, 204, 204));
-		placeSpecs.setBounds(5, 33, 279, 22);
-		placePanel.add(placeSpecs);
+//		
+//		TextField placeSpecs = new TextField();
+//		placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+//		placeSpecs.setBackground(new Color(255, 204, 204));
+//		placeSpecs.setBounds(5, 33, 279, 22);
+//		placePanel.add(placeSpecs);
 		
 		JFormattedTextField placeTotal = new JFormattedTextField();
 		placeTotal.setColumns(2);
 		placeTotal.setEditable(false);
 		placeTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		placeTotal.setFont(new Font("Arial", Font.BOLD, 22));
-		placeTotal.setBounds(294, 13, 50, 34);
+		placeTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		placeTotal.setBounds(294, 5, 50, 22);
 		placePanel.add(placeTotal);
 		
 		JFormattedTextField placeLevel = new JFormattedTextField(nums);
@@ -622,7 +628,7 @@ public class MainWindow {
 		Panel place2Panel = new Panel();
 		place2Panel.setLayout(null);
 		place2Panel.setBackground(new Color(255, 153, 153));
-		place2Panel.setBounds(0, 410, 354, 60);
+		place2Panel.setBounds(0, 242, 354, 32);
 		reflexesPanel.add(place2Panel);
 		
 		Label place2Label = new Label("Placeholder");
@@ -630,18 +636,18 @@ public class MainWindow {
 		place2Label.setBounds(35, 5, 120, 22);
 		place2Panel.add(place2Label);
 		
-		TextField place2Specs = new TextField();
-		place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		place2Specs.setBackground(new Color(255, 204, 204));
-		place2Specs.setBounds(5, 33, 279, 22);
-		place2Panel.add(place2Specs);
+//		TextField place2Specs = new TextField();
+//		place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
+//		place2Specs.setBackground(new Color(255, 204, 204));
+//		place2Specs.setBounds(5, 33, 279, 22);
+//		place2Panel.add(place2Specs);
 		
 		JFormattedTextField place2Total = new JFormattedTextField();
 		place2Total.setHorizontalAlignment(SwingConstants.CENTER);
 		place2Total.setColumns(2);
 		place2Total.setEditable(false);
-		place2Total.setFont(new Font("Arial", Font.BOLD, 22));
-		place2Total.setBounds(294, 13, 50, 34);
+		place2Total.setFont(new Font("Arial", Font.BOLD, 18));
+		place2Total.setBounds(294, 5, 50, 22);
 		place2Panel.add(place2Total);
 		
 		JFormattedTextField place2Level = new JFormattedTextField(nums);
@@ -689,43 +695,59 @@ public class MainWindow {
 			}
 		});
 		
+		List<TextField> acroSpecsFields = new ArrayList<TextField>();
 		JCheckBox chckbxAcro = new JCheckBox("Show specs");
 		chckbxAcro.addItemListener(new ItemListener() {
+			int blankId;
 			public void itemStateChanged(ItemEvent arg0) {
+				
+				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
+				
 				if(chckbxAcro.isSelected())
 				{
-					List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
+					acroSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
 
-					int extra = (acroSpecsList.size()+1)*28;
+					int extra = (acroSpecsList.size())*28;
 					
-					reflexesPanel.setBounds(44, 149, 354, (470+extra));
-					acroPanel.setBounds(0, 50, 354, (60+extra));
-					dodgePanel.setBounds(0, 110+extra, 354, 60);
-					handToHandPanel.setBounds(0, 170+extra, 354, 60);
-					meleeWeaponsPanel.setBounds(0, 230+extra, 354, 60);
-					stealthPanel.setBounds(0, 290+extra, 354, 60);
-					placePanel.setBounds(0, 350+extra, 354, 60);
-					place2Panel.setBounds(0, 410+extra, 354, 60);
+					reflexesPanel.setSize(354, (274+extra));
+					acroPanel.setSize(354, (32+extra));
+					dodgePanel.setLocation(0, 82+extra);
+					handToHandPanel.setLocation(0, 114+extra);
+					meleeWeaponsPanel.setLocation(0, 146+extra);
+					stealthPanel.setLocation(0, 178+extra);
+					placePanel.setLocation(0, 210+extra);
+					place2Panel.setLocation(0, 242+extra);
 
 					
 					for(int i = 0; i < acroSpecsList.size(); i++)
 					{
 						int j = i;
-						TextField acroSpecsA = new TextField();
-						acroSpecsA.setFont(new Font("Verdana", Font.PLAIN, 13));
-						acroSpecsA.setBackground(new Color(255, 204, 204));
-						acroSpecsA.setBounds(5, 33+(i*28), 279, 22);
-						acroPanel.add(acroSpecsA);
-						acroSpecsA.setText(acroSpecsList.get(i).getDescription());
+						acroSpecsFields.add(new TextField());
+						TextField acroSpecs = acroSpecsFields.get(i);
+						acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						acroSpecs.setBackground(new Color(255, 204, 204));
+						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
+						acroPanel.add(acroSpecs);
+						acroSpecs.setText(acroSpecsList.get(i).getId() + " " + acroSpecsList.get(i).getDescription());
 
-						acroSpecsA.addKeyListener(new KeyAdapter() {
+						acroSpecs.addKeyListener(new KeyAdapter() {
 							@Override
 							public void keyReleased(KeyEvent e) {
-									acroSpecsList.get(j).setDescription(acroSpecsA.getText());
-									for(SkillSpec ss : currentSheet.getSkillSpecs())
+								SkillSpec editing = acroSpecsList.get(j);
+									editing.setDescription(acroSpecs.getText());
+									for(SkillSpec ss : specs)
 									{
-										if(ss.getId() == acroSpecsList.get(j).getId())
-											ss.setDescription(acroSpecsA.getText());
+										System.out.println("attempting to save");
+										if(ss.getId() == editing.getId())
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
 									}
 								
 							}
@@ -735,14 +757,29 @@ public class MainWindow {
 				}
 				else if(!chckbxAcro.isSelected())
 				{
-					reflexesPanel.setBounds(44, 149, 354, 470);
-					acroPanel.setBounds(0, 50, 354, 60);
-					dodgePanel.setBounds(0, 110, 354, 60);
-					handToHandPanel.setBounds(0, 170, 354, 60);
-					meleeWeaponsPanel.setBounds(0, 230, 354, 60);
-					stealthPanel.setBounds(0, 290, 354, 60);
-					placePanel.setBounds(0, 350, 354, 60);
-					place2Panel.setBounds(0, 410, 354, 60);
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						System.out.println("removed");
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;
+					}
+					acroSpecsList.clear();
+					for(TextField t : acroSpecsFields)
+					{
+						System.out.println(t.getText());
+						t = null;
+					}
+					acroSpecsFields.clear();
+					reflexesPanel.setSize(354, (274));
+					acroPanel.setSize(354, 32);
+					dodgePanel.setLocation(0, 82);
+					handToHandPanel.setLocation(0, 114);
+					meleeWeaponsPanel.setLocation(0, 146);
+					stealthPanel.setLocation(0, 178);
+					placePanel.setLocation(0, 210);
+					place2Panel.setLocation(0, 242);
 				}
 			}
 		});

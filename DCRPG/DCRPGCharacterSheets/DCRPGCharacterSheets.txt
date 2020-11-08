@@ -1,10 +1,12 @@
 $$CharacterSheetBegin$$
 0	Character Name	blank.png	Occupation%Base%Location%Gender%Race%Height%Weight%EyeColor%HairColor	xd6%0%3%0%0%0%0%0%0%0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0
 1	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+2	Alfred	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
-0	1	Acrobatics	Gymnastics	2
+0	1	Acrobatics	Gymnastics 2
+1	2	Acrobatics	Yes, Quite 1
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$

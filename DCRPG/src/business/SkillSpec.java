@@ -8,7 +8,6 @@ public class SkillSpec
 	int characterSheetId;
 	String skill;
 	String description;
-	int level;
 	
 	public SkillSpec()
 	{
@@ -18,13 +17,12 @@ public class SkillSpec
 	{
 		this.id = id;
 	}
-	public SkillSpec(int id, int characterSheetId, String skill, String description, int level)
+	public SkillSpec(int id, int characterSheetId, String skill, String description)
 	{
 		this.id = id;
 		this.characterSheetId = characterSheetId;
 		this.skill = skill;
 		this.description = description;
-		this.level = level;
 	}
 
 	public int getId() {
@@ -50,12 +48,6 @@ public class SkillSpec
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
 	}
 	
 	

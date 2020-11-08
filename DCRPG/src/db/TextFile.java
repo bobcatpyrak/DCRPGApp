@@ -191,7 +191,6 @@ public class TextFile implements DAO<CharacterSheet>
 							ss.setCharacterSheetId(Integer.parseInt(fields[1]));
 							ss.setSkill(fields[2]);
 							ss.setDescription(fields[3]);
-							ss.setLevel(Integer.parseInt(fields[4]));
 							specs.add(ss);
 							line = in.readLine();
 						}
@@ -439,7 +438,7 @@ public class TextFile implements DAO<CharacterSheet>
 			for (SkillSpec ss : specs)
 			{
 				out.println(ss.getId() + FIELD_SEP + ss.getCharacterSheetId() + FIELD_SEP + ss.getSkill() 
-				+ FIELD_SEP + ss.getDescription() + FIELD_SEP + ss.getLevel());
+				+ FIELD_SEP + ss.getDescription());
 			}
 			out.println("$$SkillSpecEnd$$");
 			out.println();

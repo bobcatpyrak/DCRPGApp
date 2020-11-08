@@ -431,8 +431,10 @@ public class CharacterSheet
 	// methods for Skill Specializations
 	public void setSkillSpecs(List<SkillSpec> skillSpecDAO)
 	{
+		skillSpecs.clear();
 		for (SkillSpec spec : skillSpecDAO)
-		{
+		{	
+			System.out.println(spec.getId() + " " + spec.getDescription());
 			if(spec.getCharacterSheetId() == id)
 			{
 				skillSpecs.add(spec);

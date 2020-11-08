@@ -702,9 +702,9 @@ public class MainWindow {
 			public void itemStateChanged(ItemEvent arg0) {
 				
 				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
-				
 				if(chckbxAcro.isSelected())
 				{
+					
 					blankId = nextSpecId;
 					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
 					acroSpecsList.add(blank);
@@ -722,7 +722,6 @@ public class MainWindow {
 					placePanel.setLocation(0, 210+extra);
 					place2Panel.setLocation(0, 242+extra);
 
-					
 					for(int i = 0; i < acroSpecsList.size(); i++)
 					{
 						int j = i;
@@ -741,6 +740,7 @@ public class MainWindow {
 									editing.setDescription(acroSpecs.getText());
 									for(SkillSpec ss : specs)
 									{
+										// don't iterate, just save the exact id you need
 										System.out.println("attempting to save");
 										if(ss.getId() == editing.getId())
 										{

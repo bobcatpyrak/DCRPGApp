@@ -13,7 +13,7 @@ public class CharacterSheet
 	// demographics
 	String occupation;
 	String baseOfOperations;
-	int locationId;
+	String location;
 	String gender;
 	String race;
 	String height;
@@ -78,11 +78,11 @@ public class CharacterSheet
 	public void setBaseOfOperations(String baseOfOperations) {
 		this.baseOfOperations = baseOfOperations;
 	}
-	public int getLocationId() {
-		return locationId;
+	public String getLocation() {
+		return location;
 	}
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public String getGender() {
 		return gender;
@@ -458,7 +458,7 @@ public class CharacterSheet
 	public String getAllDemographics()
 	{
 		return getOccupation() + FIELD_SEP + getBaseOfOperations() 
-		+ FIELD_SEP + getLocationId() + FIELD_SEP + getGender() 
+		+ FIELD_SEP + getLocation() + FIELD_SEP + getGender() 
 		+ FIELD_SEP + getRace() + FIELD_SEP + getHeight() 
 		+ FIELD_SEP + getWeight() + FIELD_SEP + getEyeColor() 
 		+ FIELD_SEP + getHairColor();
@@ -469,7 +469,7 @@ public class CharacterSheet
 		
 		setOccupation(fields[0]);
 		setBaseOfOperations(fields[1]);
-		setLocationId(Integer.parseInt(fields[2]));
+		setLocation(fields[2]);
 		setGender(fields[3]);
 		setRace(fields[4]);
 		setHeight(fields[5]);

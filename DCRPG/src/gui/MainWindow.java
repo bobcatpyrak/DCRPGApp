@@ -10,11 +10,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.NumberFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
@@ -38,10 +41,22 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.GridLayout;
+import java.awt.KeyboardFocusManager;
 import java.awt.TextField;
+import javax.swing.JFormattedTextField;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.Format;
+import javax.swing.JCheckBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class MainWindow {
 
@@ -53,13 +68,25 @@ public class MainWindow {
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static CharacterSheet currentSheet;
 	
-	private JFrame frmDcrpgCharacterManager;
+	private JFrame dcrpgFrame;
 	private final Action action = new SwingAction();
-	private JTextField nameSearchText;
+	private JTextField nameSearchField;
 	private JTextField nameField;
 	private JTextField udoField;
 	private JTextField bodyPointsField;
-	private JTextField speedField;
+	private JFormattedTextField speedField;
+	private JTextField genderField;
+	private JTextField raceField;
+	private JTextField heightField;
+	private JTextField weightField;
+	private JTextField eyeColorField;
+	private JTextField hairColorField;
+	private JTextField heroPointsField;
+	private JTextField villainPointsField;
+	private JTextField powerPointsField;
+	private JTextField skillPointsField;
+	private JTextField occupationField;
+	private JTextField baseOfOperationsField;
 
 	/**
 	 * Launch the application.
@@ -95,6 +122,8 @@ public class MainWindow {
 			sheetNames[nameIndex] = s.getName();
 		}
 		
+		// initialize currentSheet
+		currentSheet = sheets.get(0);
 
 		
 		CharacterSheet batman = new CharacterSheet(nextSheetId);
@@ -114,7 +143,7 @@ public class MainWindow {
 			public void run() {
 				try {
 					MainWindow window = new MainWindow();
-					window.frmDcrpgCharacterManager.setVisible(true);
+					window.dcrpgFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -151,6 +180,8 @@ public class MainWindow {
 		
 	}
 	
+
+	
 	
 	/**
 	 * Create the application.
@@ -162,264 +193,686 @@ public class MainWindow {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frmDcrpgCharacterManager = new JFrame();
-		frmDcrpgCharacterManager.getContentPane().setBackground(UIManager.getColor("Panel.background"));
-		frmDcrpgCharacterManager.setTitle("DCRPG App");
-		frmDcrpgCharacterManager.setForeground(new Color(204, 0, 51));
-		frmDcrpgCharacterManager.setBackground(Color.RED);
-		frmDcrpgCharacterManager.setBounds(100, 100, 1920, 1080);
-		frmDcrpgCharacterManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmDcrpgCharacterManager.getContentPane().setLayout(null);
+	private void initialize() 
+	{
+		PropertyChangeListener pcl = new PropertyChangeListener()
+	    {
+	    public void propertyChange(final PropertyChangeEvent e)
+	    {
+	        if (e.getNewValue() instanceof JTextField)
+	        {
+	            SwingUtilities.invokeLater(new Runnable()
+	            {
+	                public void run()
+	                {
+	                    JTextField textField = (JTextField)e.getNewValue();
+	                    textField.selectAll();
+	                }
+	            });
+
+	        }
+	    }
+	};
 		
-		JButton loadButton = new JButton("Load");
-		loadButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				for(CharacterSheet s : sheets)
-				{
-					if(s.getName().equals(nameSearchText.getText()))
-							currentSheet = s;
-					System.out.println(currentSheet.getName());
-				}
-			}
-		});
-		loadButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		loadButton.setBounds(167, 11, 69, 23);
-		frmDcrpgCharacterManager.getContentPane().add(loadButton);
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addPropertyChangeListener("permanentFocusOwner", pcl);
 		
-		JLabel lblNewLabel = new JLabel("Name");
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
-		lblNewLabel.setBounds(484, 6, 99, 28);
-		frmDcrpgCharacterManager.getContentPane().add(lblNewLabel);
+		dcrpgFrame = new JFrame();
+		dcrpgFrame.getContentPane().setBackground(UIManager.getColor("Panel.background"));
+		dcrpgFrame.setTitle("DCRPG App");
+		dcrpgFrame.setForeground(new Color(204, 0, 51));
+		dcrpgFrame.setBackground(Color.RED);
+		dcrpgFrame.setBounds(100, 100, 1920, 1080);
+		dcrpgFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dcrpgFrame.getContentPane().setLayout(null);
 		
-		nameSearchText = new JTextField();
-		nameSearchText.setText("(type character name)");
-		nameSearchText.setBounds(10, 12, 148, 20);
-		frmDcrpgCharacterManager.getContentPane().add(nameSearchText);
-		nameSearchText.setColumns(10);
+		NumberFormat nums = NumberFormat.getNumberInstance();
+		
+		JLabel nameLabel = new JLabel("Name");
+		nameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+		nameLabel.setBounds(429, 6, 131, 42);
+		dcrpgFrame.getContentPane().add(nameLabel);
+		
+		nameSearchField = new JTextField();
+		nameSearchField.setHorizontalAlignment(SwingConstants.RIGHT);
+		nameSearchField.setText("(type character name)");
+		nameSearchField.setBounds(10, 12, 148, 20);
+		dcrpgFrame.getContentPane().add(nameSearchField);
+		nameSearchField.setColumns(10);
 		
 		nameField = new JTextField();
-		nameField.setBounds(570, 12, 112, 20);
-		frmDcrpgCharacterManager.getContentPane().add(nameField);
+		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setBounds(570, 6, 367, 42);
+		dcrpgFrame.getContentPane().add(nameField);
 		nameField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("UDO");
-		lblNewLabel_1.setBounds(10, 57, 62, 14);
-		frmDcrpgCharacterManager.getContentPane().add(lblNewLabel_1);
+		JLabel udoLabel = new JLabel("UDO");
+		udoLabel.setBounds(774, 59, 90, 20);
+		dcrpgFrame.getContentPane().add(udoLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Body Points");
-		lblNewLabel_2.setBounds(10, 82, 112, 14);
-		frmDcrpgCharacterManager.getContentPane().add(lblNewLabel_2);
+		JLabel bodyPointsLabel = new JLabel("Body Points");
+		bodyPointsLabel.setBounds(774, 84, 90, 20);
+		dcrpgFrame.getContentPane().add(bodyPointsLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Speed");
-		lblNewLabel_3.setBounds(10, 107, 46, 14);
-		frmDcrpgCharacterManager.getContentPane().add(lblNewLabel_3);
+		JLabel speedLabel = new JLabel("Speed");
+		speedLabel.setBounds(774, 109, 90, 20);
+		dcrpgFrame.getContentPane().add(speedLabel);
 		
 		udoField = new JTextField();
-		udoField.setBounds(83, 54, 86, 20);
-		frmDcrpgCharacterManager.getContentPane().add(udoField);
+		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
+		udoField.setBounds(867, 59, 86, 20);
+		dcrpgFrame.getContentPane().add(udoField);
 		udoField.setColumns(10);
 		
 		bodyPointsField = new JTextField();
-		bodyPointsField.setBounds(83, 82, 86, 20);
-		frmDcrpgCharacterManager.getContentPane().add(bodyPointsField);
+		bodyPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		bodyPointsField.setBounds(867, 84, 86, 20);
+		dcrpgFrame.getContentPane().add(bodyPointsField);
 		bodyPointsField.setColumns(10);
 		
-		speedField = new JTextField();
-		speedField.setBounds(83, 107, 86, 20);
-		frmDcrpgCharacterManager.getContentPane().add(speedField);
+		speedField = new JFormattedTextField(nums);
+		speedField.setHorizontalAlignment(SwingConstants.RIGHT);
+		speedField.setBounds(867, 109, 86, 20);
+		dcrpgFrame.getContentPane().add(speedField);
 		speedField.setColumns(10);
 		
-		JButton newButton = new JButton("New");
-		newButton.setBounds(247, 11, 69, 23);
-		frmDcrpgCharacterManager.getContentPane().add(newButton);
+		JButton btnNew = new JButton("New");
+		btnNew.setBounds(247, 11, 69, 23);
+		dcrpgFrame.getContentPane().add(btnNew);
 		
 		Panel reflexesPanel = new Panel();
 		reflexesPanel.setBackground(new Color(255, 102, 102));
 		reflexesPanel.setBounds(44, 149, 354, 470);
-		frmDcrpgCharacterManager.getContentPane().add(reflexesPanel);
+		dcrpgFrame.getContentPane().add(reflexesPanel);
 		reflexesPanel.setLayout(null);
 		
-		Label label = new Label("Reflexes");
-		label.setFont(new Font("Verdana", Font.BOLD, 22));
-		label.setBounds(132, 10, 90, 30);
-		reflexesPanel.add(label);
+		Label reflexesLabel = new Label("Reflexes");
+		reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+		reflexesLabel.setBounds(132, 10, 90, 30);
+		reflexesPanel.add(reflexesLabel);
 		
-		TextField textField = new TextField();
-		textField.setBounds(294, 10, 50, 35);
-		reflexesPanel.add(textField);
+		JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
+		reflexesLevel.setColumns(2);
+		reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
+		reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		reflexesLevel.setBounds(294, 10, 50, 35);
+		reflexesPanel.add(reflexesLevel);
 		
-		Panel panel = new Panel();
-		panel.setBackground(new Color(255, 153, 153));
-		panel.setBounds(0, 50, 354, 60);
-		reflexesPanel.add(panel);
-		panel.setLayout(null);
+		Panel acroPanel = new Panel();
+		acroPanel.setBackground(new Color(255, 153, 153));
+		acroPanel.setBounds(0, 50, 354, 60);
+		reflexesPanel.add(acroPanel);
+		acroPanel.setLayout(null);
 		
-		Label label_1 = new Label("Acrobatics");
-		label_1.setBounds(35, 5, 120, 22);
-		panel.add(label_1);
-		label_1.setFont(new Font("Verdana", Font.BOLD, 13));
+		Label acroLabel = new Label("Acrobatics");
+		acroLabel.setBounds(35, 5, 120, 22);
+		acroPanel.add(acroLabel);
+		acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		
-		TextField textField_1 = new TextField();
-		textField_1.setBounds(5, 5, 24, 22);
-		panel.add(textField_1);
+		TextField acroSpecs = new TextField();
+		acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		acroSpecs.setBackground(new Color(255, 204, 204));
+		acroSpecs.setBounds(5, 33, 279, 22);
+		acroPanel.add(acroSpecs);
+				
+		JFormattedTextField acroTotal = new JFormattedTextField();
+		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		acroTotal.setColumns(2);
+		acroTotal.setEditable(false);
+		acroTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		acroTotal.setBounds(294, 13, 50, 34);
+		acroPanel.add(acroTotal);
 		
-		TextField textField_2 = new TextField();
-		textField_2.setBackground(new Color(255, 204, 204));
-		textField_2.setBounds(5, 33, 279, 22);
-		panel.add(textField_2);
+		JFormattedTextField acroLevel = new JFormattedTextField(nums);
+		acroLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(acroLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(acroLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setAcrobatics(i);
+					acroTotal.setValue(i+j);	
+				}
+			}
+		});
+		acroLevel.setColumns(2);
+		acroLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		acroLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		acroLevel.setBounds(5, 5, 24, 22);
+		acroPanel.add(acroLevel);
+
 		
-		TextField textField_3 = new TextField();
-		textField_3.setBounds(294, 13, 50, 34);
-		panel.add(textField_3);
+		Panel dodgePanel = new Panel();
+		dodgePanel.setLayout(null);
+		dodgePanel.setBackground(new Color(255, 102, 102));
+		dodgePanel.setBounds(0, 110, 354, 60);
+		reflexesPanel.add(dodgePanel);
 		
-		Panel panel_6 = new Panel();
-		panel_6.setLayout(null);
-		panel_6.setBackground(new Color(255, 102, 102));
-		panel_6.setBounds(0, 110, 354, 60);
-		reflexesPanel.add(panel_6);
+		Label dodgeLabel = new Label("Dodge");
+		dodgeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		dodgeLabel.setBounds(35, 5, 120, 22);
+		dodgePanel.add(dodgeLabel);
 		
-		Label label_1_1 = new Label("Dodge");
-		label_1_1.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_1.setBounds(35, 5, 120, 22);
-		panel_6.add(label_1_1);
+		TextField dodgeSpecs = new TextField();
+		dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		dodgeSpecs.setBackground(new Color(255, 204, 204));
+		dodgeSpecs.setBounds(5, 33, 279, 22);
+		dodgePanel.add(dodgeSpecs);
 		
-		TextField textField_1_1 = new TextField();
-		textField_1_1.setBounds(5, 5, 24, 22);
-		panel_6.add(textField_1_1);
+		JFormattedTextField dodgeTotal = new JFormattedTextField();
+		dodgeTotal.setColumns(2);
+		dodgeTotal.setEditable(false);
+		dodgeTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		dodgeTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		dodgeTotal.setBounds(294, 13, 50, 34);
+		dodgePanel.add(dodgeTotal);
 		
-		TextField textField_2_1 = new TextField();
-		textField_2_1.setBackground(new Color(255, 204, 204));
-		textField_2_1.setBounds(5, 33, 279, 22);
-		panel_6.add(textField_2_1);
+		JFormattedTextField dodgeLevel = new JFormattedTextField(nums);
+		dodgeLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(dodgeLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(dodgeLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setDodge(i);
+					dodgeTotal.setValue(i+j);	
+				}
+			}
+		});
+		dodgeLevel.setColumns(2);
+		dodgeLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		dodgeLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		dodgeLevel.setBounds(5, 7, 24, 20);
+		dodgePanel.add(dodgeLevel);
 		
-		TextField textField_3_1 = new TextField();
-		textField_3_1.setBounds(294, 13, 50, 34);
-		panel_6.add(textField_3_1);
+
 		
-		Panel panel_7 = new Panel();
-		panel_7.setLayout(null);
-		panel_7.setBackground(new Color(255, 153, 153));
-		panel_7.setBounds(0, 170, 354, 60);
-		reflexesPanel.add(panel_7);
+		Panel handToHandPanel = new Panel();
+		handToHandPanel.setLayout(null);
+		handToHandPanel.setBackground(new Color(255, 153, 153));
+		handToHandPanel.setBounds(0, 170, 354, 60);
+		reflexesPanel.add(handToHandPanel);
 		
-		Label label_1_2 = new Label("Hand-to-Hand");
-		label_1_2.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_2.setBounds(35, 5, 120, 22);
-		panel_7.add(label_1_2);
+		Label handToHandLabel = new Label("Hand-to-Hand");
+		handToHandLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		handToHandLabel.setBounds(35, 5, 120, 22);
+		handToHandPanel.add(handToHandLabel);
 		
-		TextField textField_1_2 = new TextField();
-		textField_1_2.setBounds(5, 5, 24, 22);
-		panel_7.add(textField_1_2);
+		TextField handToHandSpecs = new TextField();
+		handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		handToHandSpecs.setBackground(new Color(255, 204, 204));
+		handToHandSpecs.setBounds(5, 33, 279, 22);
+		handToHandPanel.add(handToHandSpecs);
 		
-		TextField textField_2_2 = new TextField();
-		textField_2_2.setBackground(new Color(255, 204, 204));
-		textField_2_2.setBounds(5, 33, 279, 22);
-		panel_7.add(textField_2_2);
+		JFormattedTextField handToHandTotal = new JFormattedTextField();
+		handToHandTotal.setColumns(2);
+		handToHandTotal.setEditable(false);
+		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		handToHandTotal.setBounds(294, 13, 50, 34);
+		handToHandPanel.add(handToHandTotal);
 		
-		TextField textField_3_2 = new TextField();
-		textField_3_2.setBounds(294, 13, 50, 34);
-		panel_7.add(textField_3_2);
+		JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
+		handToHandLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(handToHandLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(handToHandLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setHandToHand(i);
+					handToHandTotal.setValue(i+j);	
+				}
+			}
+		});
+		handToHandLevel.setColumns(2);
+		handToHandLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		handToHandLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		handToHandLevel.setBounds(5, 5, 24, 22);
+		handToHandPanel.add(handToHandLevel);
 		
-		Panel panel_8 = new Panel();
-		panel_8.setLayout(null);
-		panel_8.setBackground(new Color(255, 102, 102));
-		panel_8.setBounds(0, 230, 354, 60);
-		reflexesPanel.add(panel_8);
 		
-		Label label_1_3 = new Label("Melee Weapons");
-		label_1_3.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_3.setBounds(35, 5, 120, 22);
-		panel_8.add(label_1_3);
 		
-		TextField textField_1_3 = new TextField();
-		textField_1_3.setBounds(5, 5, 24, 22);
-		panel_8.add(textField_1_3);
+		Panel meleeWeaponsPanel = new Panel();
+		meleeWeaponsPanel.setLayout(null);
+		meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
+		meleeWeaponsPanel.setBounds(0, 230, 354, 60);
+		reflexesPanel.add(meleeWeaponsPanel);
 		
-		TextField textField_2_3 = new TextField();
-		textField_2_3.setBackground(new Color(255, 204, 204));
-		textField_2_3.setBounds(5, 33, 279, 22);
-		panel_8.add(textField_2_3);
+		Label meleeWeaponsLabel = new Label("Melee Weapons");
+		meleeWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		meleeWeaponsLabel.setBounds(35, 5, 120, 22);
+		meleeWeaponsPanel.add(meleeWeaponsLabel);
 		
-		TextField textField_3_3 = new TextField();
-		textField_3_3.setBounds(294, 13, 50, 34);
-		panel_8.add(textField_3_3);
+		TextField meleeWeaponsSpecs = new TextField();
+		meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
+		meleeWeaponsSpecs.setBounds(5, 33, 279, 22);
+		meleeWeaponsPanel.add(meleeWeaponsSpecs);
 		
-		Panel panel_9 = new Panel();
-		panel_9.setLayout(null);
-		panel_9.setBackground(new Color(255, 153, 153));
-		panel_9.setBounds(0, 290, 354, 60);
-		reflexesPanel.add(panel_9);
+		JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
+		meleeWeaponsTotal.setColumns(2);
+		meleeWeaponsTotal.setEditable(false);
+		meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		meleeWeaponsTotal.setBounds(294, 13, 50, 34);
+		meleeWeaponsPanel.add(meleeWeaponsTotal);
 		
-		Label label_1_4 = new Label("Stealth");
-		label_1_4.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_4.setBounds(35, 5, 120, 22);
-		panel_9.add(label_1_4);
+		JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
+		meleeWeaponsLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(meleeWeaponsLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(meleeWeaponsLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setMeleeWeapons(i);
+					meleeWeaponsTotal.setValue(i+j);	
+				}
+			}
+		});
+		meleeWeaponsLevel.setColumns(2);
+		meleeWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		meleeWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		meleeWeaponsLevel.setBounds(5, 7, 24, 20);
+		meleeWeaponsPanel.add(meleeWeaponsLevel);
 		
-		TextField textField_1_4 = new TextField();
-		textField_1_4.setBounds(5, 5, 24, 22);
-		panel_9.add(textField_1_4);
 		
-		TextField textField_2_4 = new TextField();
-		textField_2_4.setBackground(new Color(255, 204, 204));
-		textField_2_4.setBounds(5, 33, 279, 22);
-		panel_9.add(textField_2_4);
 		
-		TextField textField_3_4 = new TextField();
-		textField_3_4.setBounds(294, 13, 50, 34);
-		panel_9.add(textField_3_4);
+		Panel stealthPanel = new Panel();
+		stealthPanel.setLayout(null);
+		stealthPanel.setBackground(new Color(255, 153, 153));
+		stealthPanel.setBounds(0, 290, 354, 60);
+		reflexesPanel.add(stealthPanel);
 		
-		Panel panel_10 = new Panel();
-		panel_10.setLayout(null);
-		panel_10.setBackground(new Color(255, 102, 102));
-		panel_10.setBounds(0, 350, 354, 60);
-		reflexesPanel.add(panel_10);
+		Label stealthLabel = new Label("Stealth");
+		stealthLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		stealthLabel.setBounds(35, 5, 120, 22);
+		stealthPanel.add(stealthLabel);
 		
-		Label label_1_5 = new Label("Thrown Weapons");
-		label_1_5.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_5.setBounds(35, 5, 120, 22);
-		panel_10.add(label_1_5);
+		TextField stealthSpecs = new TextField();
+		stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		stealthSpecs.setBackground(new Color(255, 204, 204));
+		stealthSpecs.setBounds(5, 33, 279, 22);
+		stealthPanel.add(stealthSpecs);
 		
-		TextField textField_1_5 = new TextField();
-		textField_1_5.setBounds(5, 5, 24, 22);
-		panel_10.add(textField_1_5);
+		JFormattedTextField stealthTotal = new JFormattedTextField();
+		stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		stealthTotal.setColumns(2);
+		stealthTotal.setEditable(false);
+		stealthTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		stealthTotal.setBounds(294, 13, 50, 34);
+		stealthPanel.add(stealthTotal);
 		
-		TextField textField_2_5 = new TextField();
-		textField_2_5.setBackground(new Color(255, 204, 204));
-		textField_2_5.setBounds(5, 33, 279, 22);
-		panel_10.add(textField_2_5);
+		JFormattedTextField stealthLevel = new JFormattedTextField(nums);
+		stealthLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(stealthLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(stealthLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setStealth(i);
+					stealthTotal.setValue(i+j);	
+				}
+			}
+		});
+		stealthLevel.setColumns(2);
+		stealthLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		stealthLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		stealthLevel.setBounds(5, 5, 24, 22);
+		stealthPanel.add(stealthLevel);
 		
-		TextField textField_3_5 = new TextField();
-		textField_3_5.setBounds(294, 13, 50, 34);
-		panel_10.add(textField_3_5);
 		
-		Panel panel_11 = new Panel();
-		panel_11.setLayout(null);
-		panel_11.setBackground(new Color(255, 153, 153));
-		panel_11.setBounds(0, 410, 354, 60);
-		reflexesPanel.add(panel_11);
 		
-		Label label_1_6 = new Label("Placeholder");
-		label_1_6.setFont(new Font("Verdana", Font.BOLD, 13));
-		label_1_6.setBounds(35, 5, 120, 22);
-		panel_11.add(label_1_6);
+		Panel placePanel = new Panel();
+		placePanel.setLayout(null);
+		placePanel.setBackground(new Color(255, 102, 102));
+		placePanel.setBounds(0, 350, 354, 60);
+		reflexesPanel.add(placePanel);
 		
-		TextField textField_1_6 = new TextField();
-		textField_1_6.setBounds(5, 5, 24, 22);
-		panel_11.add(textField_1_6);
+		Label placeLabel = new Label("Thrown Weapons");
+		placeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		placeLabel.setBounds(35, 5, 120, 22);
+		placePanel.add(placeLabel);
 		
-		TextField textField_2_6 = new TextField();
-		textField_2_6.setBackground(new Color(255, 204, 204));
-		textField_2_6.setBounds(5, 33, 279, 22);
-		panel_11.add(textField_2_6);
+		TextField placeSpecs = new TextField();
+		placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		placeSpecs.setBackground(new Color(255, 204, 204));
+		placeSpecs.setBounds(5, 33, 279, 22);
+		placePanel.add(placeSpecs);
 		
-		TextField textField_3_6 = new TextField();
-		textField_3_6.setBounds(294, 13, 50, 34);
-		panel_11.add(textField_3_6);
+		JFormattedTextField placeTotal = new JFormattedTextField();
+		placeTotal.setColumns(2);
+		placeTotal.setEditable(false);
+		placeTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		placeTotal.setFont(new Font("Arial", Font.BOLD, 22));
+		placeTotal.setBounds(294, 13, 50, 34);
+		placePanel.add(placeTotal);
+		
+		JFormattedTextField placeLevel = new JFormattedTextField(nums);
+		placeLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(placeLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(placeLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					placeTotal.setValue(i+j);	
+				}
+			}
+		});
+		placeLevel.setColumns(2);
+		placeLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		placeLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		placeLevel.setBounds(5, 7, 24, 20);
+		placeLevel.setValue(0); //DELET THIS
+		placePanel.add(placeLevel);
+		
+		
+		
+		Panel place2Panel = new Panel();
+		place2Panel.setLayout(null);
+		place2Panel.setBackground(new Color(255, 153, 153));
+		place2Panel.setBounds(0, 410, 354, 60);
+		reflexesPanel.add(place2Panel);
+		
+		Label place2Label = new Label("Placeholder");
+		place2Label.setFont(new Font("Verdana", Font.BOLD, 13));
+		place2Label.setBounds(35, 5, 120, 22);
+		place2Panel.add(place2Label);
+		
+		TextField place2Specs = new TextField();
+		place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
+		place2Specs.setBackground(new Color(255, 204, 204));
+		place2Specs.setBounds(5, 33, 279, 22);
+		place2Panel.add(place2Specs);
+		
+		JFormattedTextField place2Total = new JFormattedTextField();
+		place2Total.setHorizontalAlignment(SwingConstants.CENTER);
+		place2Total.setColumns(2);
+		place2Total.setEditable(false);
+		place2Total.setFont(new Font("Arial", Font.BOLD, 22));
+		place2Total.setBounds(294, 13, 50, 34);
+		place2Panel.add(place2Total);
+		
+		JFormattedTextField place2Level = new JFormattedTextField(nums);
+		place2Level.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(place2Level.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(place2Level.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					place2Total.setValue(i+j);	
+				}
+			}
+		});
+		place2Level.setColumns(2);
+		place2Level.setHorizontalAlignment(SwingConstants.CENTER);
+		place2Level.setFont(new Font("Arial", Font.BOLD, 14));
+		place2Level.setBounds(5, 7, 24, 20);
+		place2Level.setValue(0); //DELET THIS
+		place2Panel.add(place2Level);
+		
+		reflexesLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(reflexesLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(reflexesLevel.getText());
+					int j = Integer.parseInt(acroLevel.getText());
+					int k = Integer.parseInt(dodgeLevel.getText());
+					int l = Integer.parseInt(handToHandLevel.getText());
+					int m = Integer.parseInt(meleeWeaponsLevel.getText());
+					int n = Integer.parseInt(stealthLevel.getText());
+					int o = Integer.parseInt(placeLevel.getText());
+					int p = Integer.parseInt(place2Level.getText());
+
+					currentSheet.setReflexes(i);
+					acroTotal.setValue(i+j);
+					dodgeTotal.setValue(i+k);
+					handToHandTotal.setValue(i+l);	
+					meleeWeaponsTotal.setValue(i+m);
+					stealthTotal.setValue(i+n);
+					placeTotal.setValue(i+o);
+					place2Total.setValue(i+p);
+				}
+			}
+		});
+		
+		//load initial sheet
+		nameField.setText(currentSheet.getName());
+
+		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+		bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+		speedField.setValue(currentSheet.getSpeed());
+		
+		reflexesLevel.setValue(currentSheet.getReflexes());
+		acroLevel.setValue(currentSheet.getAcrobatics());
+		dodgeLevel.setValue(currentSheet.getDodge());
+		handToHandLevel.setValue(currentSheet.getHandToHand());
+		meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+		stealthLevel.setValue(currentSheet.getStealth());
+		acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+		dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+		handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+		meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+		
+		
+		JButton btnLoad = new JButton("Load");
+		btnLoad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for(CharacterSheet s : sheets)
+				{
+					if(s.getName().equals(nameSearchField.getText()))
+					{
+							currentSheet = s;
+							// load the entire dang sheet
+							nameField.setText(currentSheet.getName());
+							genderField.setText(currentSheet.getGender());
+							raceField.setText(currentSheet.getRace());
+							heightField.setText(currentSheet.getHeight());
+							weightField.setText(currentSheet.getWeight());
+							eyeColorField.setText(currentSheet.getEyeColor());
+							hairColorField.setText(currentSheet.getHairColor());
+							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+							speedField.setValue(currentSheet.getSpeed());
+							
+							reflexesLevel.setValue(currentSheet.getReflexes());
+							acroLevel.setValue(currentSheet.getAcrobatics());
+							dodgeLevel.setValue(currentSheet.getDodge());
+							handToHandLevel.setValue(currentSheet.getHandToHand());
+							meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+							stealthLevel.setValue(currentSheet.getStealth());
+							acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+							dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+							handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+							meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+							stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+														
+					}
+				}
+			}
+		});
+		btnLoad.setBounds(167, 11, 69, 23);
+		dcrpgFrame.getContentPane().add(btnLoad);
+		
+		JPanel demographicsPanel = new JPanel();
+		demographicsPanel.setBackground(new Color(204, 255, 255));
+		demographicsPanel.setBounds(44, 59, 298, 70);
+		dcrpgFrame.getContentPane().add(demographicsPanel);
+		demographicsPanel.setLayout(null);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(0, 0, 90, 20);
+		demographicsPanel.add(lblGender);
+		
+		JLabel lblRace = new JLabel("Race");
+		lblRace.setBounds(0, 25, 90, 20);
+		demographicsPanel.add(lblRace);
+		
+		JLabel lblEyeColor = new JLabel("Eye Color");
+		lblEyeColor.setBounds(0, 50, 90, 20);
+		demographicsPanel.add(lblEyeColor);
+		
+		JLabel lblHeight = new JLabel("Height");
+		lblHeight.setBounds(156, 0, 90, 20);
+		demographicsPanel.add(lblHeight);
+		
+		JLabel lblWeight = new JLabel("Weight");
+		lblWeight.setBounds(156, 25, 90, 20);
+		demographicsPanel.add(lblWeight);
+		
+		JLabel lblHairColor = new JLabel("Hair Color");
+		lblHairColor.setBounds(156, 50, 90, 20);
+		demographicsPanel.add(lblHairColor);
+		
+		genderField = new JTextField();
+		genderField.setBounds(53, 0, 86, 20);
+		demographicsPanel.add(genderField);
+		genderField.setText("<dynamic>+0");
+		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
+		genderField.setColumns(10);
+		
+		genderField.setText(currentSheet.getGender());
+		
+		raceField = new JTextField();
+		raceField.setBounds(53, 25, 86, 20);
+		demographicsPanel.add(raceField);
+		raceField.setText("0/0");
+		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
+		raceField.setColumns(10);
+		raceField.setText(currentSheet.getRace());
+		
+		JFormattedTextField eyeColorField_1 = new JFormattedTextField((Format) null);
+		eyeColorField_1.setBounds(53, 50, 86, 20);
+		demographicsPanel.add(eyeColorField_1);
+		eyeColorField_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		eyeColorField_1.setColumns(10);
+		eyeColorField_1.setText(currentSheet.getEyeColor());
+		
+		heightField = new JTextField();
+		heightField.setBounds(212, 0, 86, 20);
+		demographicsPanel.add(heightField);
+		heightField.setText("<dynamic>+0");
+		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
+		heightField.setColumns(10);
+		heightField.setText(currentSheet.getHeight());
+		
+		weightField = new JTextField();
+		weightField.setBounds(212, 25, 86, 20);
+		demographicsPanel.add(weightField);
+		weightField.setText("0/0");
+		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
+		weightField.setColumns(10);
+		weightField.setText(currentSheet.getWeight());
+		
+		JFormattedTextField hairColorField_1 = new JFormattedTextField((Format) null);
+		hairColorField_1.setBounds(212, 50, 86, 20);
+		demographicsPanel.add(hairColorField_1);
+		hairColorField_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		hairColorField_1.setColumns(10);
+		hairColorField_1.setText(currentSheet.getHairColor());
+		
+		JCheckBox demographicsCheckBox = new JCheckBox("Show Demographics");
+		demographicsCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(demographicsCheckBox.isSelected())
+					demographicsPanel.setVisible(true);
+				else if(!demographicsCheckBox.isSelected())
+					demographicsPanel.setVisible(false);
+			}
+		});
+		demographicsCheckBox.setSelected(true);
+		demographicsCheckBox.setBounds(38, 39, 136, 23);
+		dcrpgFrame.getContentPane().add(demographicsCheckBox);
+		
+		JLabel lblHeroPoints = new JLabel("Hero Points");
+		lblHeroPoints.setBounds(367, 59, 90, 20);
+		dcrpgFrame.getContentPane().add(lblHeroPoints);
+		
+		heroPointsField = new JTextField();
+		heroPointsField.setText("<dynamic>+0");
+		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		heroPointsField.setColumns(10);
+		heroPointsField.setBounds(460, 59, 86, 20);
+		dcrpgFrame.getContentPane().add(heroPointsField);
+		
+		JLabel lblVillainPoints = new JLabel("Villain Points");
+		lblVillainPoints.setBounds(367, 84, 90, 20);
+		dcrpgFrame.getContentPane().add(lblVillainPoints);
+		
+		villainPointsField = new JTextField();
+		villainPointsField.setText("0/0");
+		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		villainPointsField.setColumns(10);
+		villainPointsField.setBounds(460, 84, 86, 20);
+		dcrpgFrame.getContentPane().add(villainPointsField);
+		
+		JLabel lblAvailableRenown = new JLabel("Available Renown");
+		lblAvailableRenown.setBounds(367, 109, 90, 20);
+		dcrpgFrame.getContentPane().add(lblAvailableRenown);
+		
+		JFormattedTextField availableRenownField = new JFormattedTextField((Format) null);
+		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
+		availableRenownField.setColumns(10);
+		availableRenownField.setBounds(460, 109, 86, 20);
+		dcrpgFrame.getContentPane().add(availableRenownField);
+		
+		JLabel lblPowerPoints = new JLabel("Power Points");
+		lblPowerPoints.setBounds(570, 59, 90, 20);
+		dcrpgFrame.getContentPane().add(lblPowerPoints);
+		
+		powerPointsField = new JTextField();
+		powerPointsField.setText("<dynamic>+0");
+		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		powerPointsField.setColumns(10);
+		powerPointsField.setBounds(663, 59, 86, 20);
+		dcrpgFrame.getContentPane().add(powerPointsField);
+		
+		JLabel lblSkillPoints = new JLabel("Skill Points");
+		lblSkillPoints.setBounds(570, 84, 90, 20);
+		dcrpgFrame.getContentPane().add(lblSkillPoints);
+		
+		skillPointsField = new JTextField();
+		skillPointsField.setText("0/0");
+		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		skillPointsField.setColumns(10);
+		skillPointsField.setBounds(663, 84, 86, 20);
+		dcrpgFrame.getContentPane().add(skillPointsField);
+		
+		JLabel lblOccupation = new JLabel("Occupation");
+		lblOccupation.setBounds(947, 6, 90, 20);
+		dcrpgFrame.getContentPane().add(lblOccupation);
+		
+		occupationField = new JTextField();
+		occupationField.setText("<dynamic>+0");
+		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
+		occupationField.setColumns(10);
+		occupationField.setBounds(1040, 6, 86, 20);
+		dcrpgFrame.getContentPane().add(occupationField);
+		
+		JLabel lblHomeBase = new JLabel("Home Base");
+		lblHomeBase.setBounds(947, 31, 90, 20);
+		dcrpgFrame.getContentPane().add(lblHomeBase);
+		
+		baseOfOperationsField = new JTextField();
+		baseOfOperationsField.setText("0/0");
+		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		baseOfOperationsField.setColumns(10);
+		baseOfOperationsField.setBounds(1040, 31, 86, 20);
+		dcrpgFrame.getContentPane().add(baseOfOperationsField);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(329, 11, 69, 23);
+		dcrpgFrame.getContentPane().add(btnSave);
+
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

@@ -240,7 +240,7 @@ public class MainWindow {
 		nameSearchField.setColumns(10);
 		
 		nameField = new JTextField();
-		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setBounds(570, 6, 367, 42);
 		dcrpgFrame.getContentPane().add(nameField);
@@ -643,65 +643,7 @@ public class MainWindow {
 			}
 		});
 		
-		//load initial sheet
-		nameField.setText(currentSheet.getName());
-
-		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
-		bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
-		speedField.setValue(currentSheet.getSpeed());
 		
-		reflexesLevel.setValue(currentSheet.getReflexes());
-		acroLevel.setValue(currentSheet.getAcrobatics());
-		dodgeLevel.setValue(currentSheet.getDodge());
-		handToHandLevel.setValue(currentSheet.getHandToHand());
-		meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
-		stealthLevel.setValue(currentSheet.getStealth());
-		acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
-		dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
-		handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
-		meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
-		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
-		
-		
-		JButton btnLoad = new JButton("Load");
-		btnLoad.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				for(CharacterSheet s : sheets)
-				{
-					if(s.getName().equals(nameSearchField.getText()))
-					{
-							currentSheet = s;
-							// load the entire dang sheet
-							nameField.setText(currentSheet.getName());
-							genderField.setText(currentSheet.getGender());
-							raceField.setText(currentSheet.getRace());
-							heightField.setText(currentSheet.getHeight());
-							weightField.setText(currentSheet.getWeight());
-							eyeColorField.setText(currentSheet.getEyeColor());
-							hairColorField.setText(currentSheet.getHairColor());
-							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
-							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
-							speedField.setValue(currentSheet.getSpeed());
-							
-							reflexesLevel.setValue(currentSheet.getReflexes());
-							acroLevel.setValue(currentSheet.getAcrobatics());
-							dodgeLevel.setValue(currentSheet.getDodge());
-							handToHandLevel.setValue(currentSheet.getHandToHand());
-							meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
-							stealthLevel.setValue(currentSheet.getStealth());
-							acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
-							dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
-							handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
-							meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
-							stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
-														
-					}
-				}
-			}
-		});
-		btnLoad.setBounds(167, 11, 69, 23);
-		dcrpgFrame.getContentPane().add(btnLoad);
 		
 		JPanel demographicsPanel = new JPanel();
 		demographicsPanel.setBackground(new Color(204, 255, 255));
@@ -750,12 +692,12 @@ public class MainWindow {
 		raceField.setColumns(10);
 		raceField.setText(currentSheet.getRace());
 		
-		JFormattedTextField eyeColorField_1 = new JFormattedTextField((Format) null);
-		eyeColorField_1.setBounds(53, 50, 86, 20);
-		demographicsPanel.add(eyeColorField_1);
-		eyeColorField_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		eyeColorField_1.setColumns(10);
-		eyeColorField_1.setText(currentSheet.getEyeColor());
+		JFormattedTextField eyeColorField = new JFormattedTextField((Format) null);
+		eyeColorField.setBounds(53, 50, 86, 20);
+		demographicsPanel.add(eyeColorField);
+		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+		eyeColorField.setColumns(10);
+		eyeColorField.setText(currentSheet.getEyeColor());
 		
 		heightField = new JTextField();
 		heightField.setBounds(212, 0, 86, 20);
@@ -773,12 +715,12 @@ public class MainWindow {
 		weightField.setColumns(10);
 		weightField.setText(currentSheet.getWeight());
 		
-		JFormattedTextField hairColorField_1 = new JFormattedTextField((Format) null);
-		hairColorField_1.setBounds(212, 50, 86, 20);
-		demographicsPanel.add(hairColorField_1);
-		hairColorField_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		hairColorField_1.setColumns(10);
-		hairColorField_1.setText(currentSheet.getHairColor());
+		JFormattedTextField hairColorField = new JFormattedTextField((Format) null);
+		hairColorField.setBounds(212, 50, 86, 20);
+		demographicsPanel.add(hairColorField);
+		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+		hairColorField.setColumns(10);
+		hairColorField.setText(currentSheet.getHairColor());
 		
 		JCheckBox demographicsCheckBox = new JCheckBox("Show Demographics");
 		demographicsCheckBox.addItemListener(new ItemListener() {
@@ -872,6 +814,85 @@ public class MainWindow {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(329, 11, 69, 23);
 		dcrpgFrame.getContentPane().add(btnSave);
+		
+		//load initial sheet
+				nameField.setText(currentSheet.getName());
+				occupationField.setText(currentSheet.getOccupation());
+				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
+				genderField.setText(currentSheet.getGender());
+				raceField.setText(currentSheet.getRace());
+				heightField.setText(currentSheet.getHeight());
+				weightField.setText(currentSheet.getWeight());
+				eyeColorField.setText(currentSheet.getEyeColor());
+				hairColorField.setText(currentSheet.getHairColor());
+				heroPointsField.setText(Integer.toString(currentSheet.getHeroPoints()));
+				villainPointsField.setText(Integer.toString(currentSheet.getVillainPoints()));
+				availableRenownField.setText(Integer.toString(currentSheet.getAvailableRenown()));
+				powerPointsField.setText(Integer.toString(currentSheet.getPowerPoints()));
+				skillPointsField.setText(Integer.toString(currentSheet.getSkillPoints()));
+				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+				speedField.setValue(currentSheet.getSpeed());
+				
+				reflexesLevel.setValue(currentSheet.getReflexes());
+				acroLevel.setValue(currentSheet.getAcrobatics());
+				dodgeLevel.setValue(currentSheet.getDodge());
+				handToHandLevel.setValue(currentSheet.getHandToHand());
+				meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+				stealthLevel.setValue(currentSheet.getStealth());
+				acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+				dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+				handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+				meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+				stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+				
+				
+				JButton btnLoad = new JButton("Load");
+				btnLoad.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						for(CharacterSheet s : sheets)
+						{
+							if(s.getName().equals(nameSearchField.getText()))
+							{
+									currentSheet = s;
+									// load the entire dang sheet
+									nameField.setText(currentSheet.getName());
+									occupationField.setText(currentSheet.getOccupation());
+									baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
+									genderField.setText(currentSheet.getGender());
+									raceField.setText(currentSheet.getRace());
+									heightField.setText(currentSheet.getHeight());
+									weightField.setText(currentSheet.getWeight());
+									eyeColorField.setText(currentSheet.getEyeColor());
+									hairColorField.setText(currentSheet.getHairColor());
+									heroPointsField.setText(Integer.toString(currentSheet.getHeroPoints()));
+									villainPointsField.setText(Integer.toString(currentSheet.getVillainPoints()));
+									availableRenownField.setText(Integer.toString(currentSheet.getAvailableRenown()));
+									powerPointsField.setText(Integer.toString(currentSheet.getPowerPoints()));
+									skillPointsField.setText(Integer.toString(currentSheet.getSkillPoints()));
+									udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+									bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+									speedField.setValue(currentSheet.getSpeed());
+									
+									reflexesLevel.setValue(currentSheet.getReflexes());
+									acroLevel.setValue(currentSheet.getAcrobatics());
+									dodgeLevel.setValue(currentSheet.getDodge());
+									handToHandLevel.setValue(currentSheet.getHandToHand());
+									meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+									stealthLevel.setValue(currentSheet.getStealth());
+									acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+									dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+									handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+									meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+									stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+																
+							}
+						}
+					}
+				});
+				btnLoad.setBounds(167, 11, 69, 23);
+				dcrpgFrame.getContentPane().add(btnLoad);
 
 	}
 	private class SwingAction extends AbstractAction {

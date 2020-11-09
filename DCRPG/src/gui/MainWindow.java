@@ -289,7 +289,7 @@ public class MainWindow {
 		
 		
 		Panel reflexesPanel = new Panel();
-		reflexesPanel.setBackground(new Color(255, 102, 102));
+		reflexesPanel.setBackground(new Color(255, 51, 51));
 		reflexesPanel.setBounds(44, 149, 354, 274);
 		dcrpgFrame.getContentPane().add(reflexesPanel);
 		reflexesPanel.setLayout(null);
@@ -695,16 +695,17 @@ public class MainWindow {
 			}
 		});
 		
+		// AcroSpecs
 		List<TextField> acroSpecsFields = new ArrayList<TextField>();
 		JCheckBox chckbxAcro = new JCheckBox("Show specs");
-		chckbxAcro.addItemListener(new ItemListener() {
+		chckbxAcro.addItemListener(new ItemListener() 
+		{
 			int blankId;
-			public void itemStateChanged(ItemEvent arg0) {
-				
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
 				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
 				if(chckbxAcro.isSelected())
 				{
-					
 					blankId = nextSpecId;
 					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
 					acroSpecsList.add(blank);
@@ -713,14 +714,14 @@ public class MainWindow {
 
 					int extra = (acroSpecsList.size())*28;
 					
-					reflexesPanel.setSize(354, (274+extra));
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					acroPanel.setSize(354, (32+extra));
-					dodgePanel.setLocation(0, 82+extra);
-					handToHandPanel.setLocation(0, 114+extra);
-					meleeWeaponsPanel.setLocation(0, 146+extra);
-					stealthPanel.setLocation(0, 178+extra);
-					placePanel.setLocation(0, 210+extra);
-					place2Panel.setLocation(0, 242+extra);
+					dodgePanel.setLocation(0, dodgePanel.getY()+extra);
+					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					placePanel.setLocation(0, placePanel.getY()+extra);
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
 
 					for(int i = 0; i < acroSpecsList.size(); i++)
 					{
@@ -734,20 +735,21 @@ public class MainWindow {
 						acroSpecs.setText(acroSpecsList.get(i).getDescription());
 						acroSpecs.requestFocus();	
 
-						acroSpecs.addKeyListener(new KeyAdapter() {
+						acroSpecs.addKeyListener(new KeyAdapter() 
+						{
 							@Override
-							public void keyReleased(KeyEvent e) {
+							public void keyReleased(KeyEvent e) 
+							{
 								SkillSpec editing = acroSpecsList.get(j);
 									editing.setDescription(acroSpecs.getText());
 									for(SkillSpec ss : specs)
 									{
-										if(ss.getId() == editing.getId())
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
 										{
 											ss.setDescription(editing.getDescription());
 											currentSheet.setSkillSpecs(specs);
 											break;
 										}
-
 									}
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
@@ -756,21 +758,27 @@ public class MainWindow {
 									}
 							}
 						});
-						
 					}
 				}
 				else if(!chckbxAcro.isSelected())
 				{
-					
-					for(SkillSpec s : acroSpecsList)
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
 					{
-						if(s.getDescription().replace(" ", "").equals(""))
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
 						{
-							System.out.println("This empty: " + s.getId());
 							for(SkillSpec ss : specs)
 							{
-								if(ss.getId() == s.getId())
-								{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
 									System.out.println("destroyed");
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
@@ -778,21 +786,11 @@ public class MainWindow {
 								}
 							}
 						}
+						removingEmpty = false;
 					}
-					
-			
+						
 					if(specs.size() > 0)
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-					
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;
-						
-					}
-					currentSheet.setSkillSpecs(specs);
 
 					acroSpecsList.clear();
 					for(TextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
@@ -801,14 +799,14 @@ public class MainWindow {
 					}
 					acroSpecsFields.clear();
 					
-					reflexesPanel.setSize(354, (274));
-					acroPanel.setSize(354, 32);
-					dodgePanel.setLocation(0, 82);
-					handToHandPanel.setLocation(0, 114);
-					meleeWeaponsPanel.setLocation(0, 146);
-					stealthPanel.setLocation(0, 178);
-					placePanel.setLocation(0, 210);
-					place2Panel.setLocation(0, 242);
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(acroPanel.getHeight()-32)));
+					acroPanel.setSize(354, (32));
+					dodgePanel.setLocation(0, acroPanel.getY()+32);
+					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
 				}
 			}
 		});
@@ -816,6 +814,664 @@ public class MainWindow {
 		chckbxAcro.setBounds(187, 5, 97, 23);
 		acroPanel.add(chckbxAcro);
 		
+		// DodgeSpecs
+		List<TextField> dodgeSpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxDodge = new JCheckBox("Show specs");
+		chckbxDodge.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> dodgeSpecsList = currentSheet.assignSkillSpecs("Dodge");
+				if(chckbxDodge.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Dodge", "");
+					dodgeSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (dodgeSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					dodgePanel.setSize(354, (32+extra));
+					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					placePanel.setLocation(0, placePanel.getY()+extra);
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
+
+					for(int i = 0; i < dodgeSpecsList.size(); i++)
+					{
+						int j = i;
+						dodgeSpecsFields.add(new TextField());
+						TextField dodgeSpecs = dodgeSpecsFields.get(i);
+						dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						dodgeSpecs.setBackground(new Color(255, 204, 204));
+						dodgeSpecs.setBounds(5, 33+(i*28), 279, 22);
+						dodgePanel.add(dodgeSpecs);
+						dodgeSpecs.setText(dodgeSpecsList.get(i).getDescription());
+						dodgeSpecs.requestFocus();	
+
+						dodgeSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = dodgeSpecsList.get(j);
+									editing.setDescription(dodgeSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxDodge.setSelected(false);
+										chckbxDodge.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxDodge.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					dodgeSpecsList.clear();
+					for(TextField t : dodgeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						dodgePanel.remove(t);
+					}
+					dodgeSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(dodgePanel.getHeight()-32)));
+					dodgePanel.setSize(354, (32));
+					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+				}
+			}
+		});
+		chckbxDodge.setBackground(new Color(255, 102, 102));
+		chckbxDodge.setBounds(187, 5, 97, 23);
+		dodgePanel.add(chckbxDodge);
+		
+		// HandToHandSpecs
+		List<TextField> handToHandSpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
+		chckbxHandToHand.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> handToHandSpecsList = currentSheet.assignSkillSpecs("HandToHand");
+				if(chckbxHandToHand.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "HandToHand", "");
+					handToHandSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (handToHandSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					handToHandPanel.setSize(354, (32+extra));
+					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					placePanel.setLocation(0, placePanel.getY()+extra);
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
+
+					for(int i = 0; i < handToHandSpecsList.size(); i++)
+					{
+						int j = i;
+						handToHandSpecsFields.add(new TextField());
+						TextField handToHandSpecs = handToHandSpecsFields.get(i);
+						handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						handToHandSpecs.setBackground(new Color(255, 204, 204));
+						handToHandSpecs.setBounds(5, 33+(i*28), 279, 22);
+						handToHandPanel.add(handToHandSpecs);
+						handToHandSpecs.setText(handToHandSpecsList.get(i).getDescription());
+						handToHandSpecs.requestFocus();	
+
+						handToHandSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = handToHandSpecsList.get(j);
+									editing.setDescription(handToHandSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxHandToHand.setSelected(false);
+										chckbxHandToHand.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxHandToHand.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					handToHandSpecsList.clear();
+					for(TextField t : handToHandSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						handToHandPanel.remove(t);
+					}
+					handToHandSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(handToHandPanel.getHeight()-32)));
+					handToHandPanel.setSize(354, (32));
+					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+				}
+			}
+		});
+		chckbxHandToHand.setBackground(new Color(255, 153, 153));
+		chckbxHandToHand.setBounds(187, 5, 97, 23);
+		handToHandPanel.add(chckbxHandToHand);
+		
+		// MeleeWeaponsSpecs
+		List<TextField> meleeWeaponsSpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
+		chckbxMeleeWeapons.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> meleeWeaponsSpecsList = currentSheet.assignSkillSpecs("MeleeWeapons");
+				if(chckbxMeleeWeapons.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "MeleeWeapons", "");
+					meleeWeaponsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (meleeWeaponsSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					meleeWeaponsPanel.setSize(354, (32+extra));
+					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					placePanel.setLocation(0, placePanel.getY()+extra);
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
+
+					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
+					{
+						int j = i;
+						meleeWeaponsSpecsFields.add(new TextField());
+						TextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
+						meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
+						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						meleeWeaponsPanel.add(meleeWeaponsSpecs);
+						meleeWeaponsSpecs.setText(meleeWeaponsSpecsList.get(i).getDescription());
+						meleeWeaponsSpecs.requestFocus();	
+
+						meleeWeaponsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = meleeWeaponsSpecsList.get(j);
+									editing.setDescription(meleeWeaponsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxMeleeWeapons.setSelected(false);
+										chckbxMeleeWeapons.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxMeleeWeapons.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					meleeWeaponsSpecsList.clear();
+					for(TextField t : meleeWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						meleeWeaponsPanel.remove(t);
+					}
+					meleeWeaponsSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
+					meleeWeaponsPanel.setSize(354, (32));
+					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+				}
+			}
+		});
+		chckbxMeleeWeapons.setBackground(new Color(255, 102, 102));
+		chckbxMeleeWeapons.setBounds(187, 5, 97, 23);
+		meleeWeaponsPanel.add(chckbxMeleeWeapons);
+		
+		// StealthSpecs
+		List<TextField> stealthSpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxStealth = new JCheckBox("Show specs");
+		chckbxStealth.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> stealthSpecsList = currentSheet.assignSkillSpecs("Stealth");
+				if(chckbxStealth.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Stealth", "");
+					stealthSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (stealthSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					stealthPanel.setSize(354, (32+extra));
+					placePanel.setLocation(0, placePanel.getY()+extra);
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					
+					for(int i = 0; i < stealthSpecsList.size(); i++)
+					{
+						int j = i;
+						stealthSpecsFields.add(new TextField());
+						TextField stealthSpecs = stealthSpecsFields.get(i);
+						stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						stealthSpecs.setBackground(new Color(255, 204, 204));
+						stealthSpecs.setBounds(5, 33+(i*28), 279, 22);
+						stealthPanel.add(stealthSpecs);
+						stealthSpecs.setText(stealthSpecsList.get(i).getDescription());
+						stealthSpecs.requestFocus();	
+						stealthSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = stealthSpecsList.get(j);
+									editing.setDescription(stealthSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxStealth.setSelected(false);
+										chckbxStealth.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxStealth.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+						stealthSpecsList.clear();
+					for(TextField t : stealthSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						stealthPanel.remove(t);
+					}
+					stealthSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
+					stealthPanel.setSize(354, (32));
+					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+				}
+			}
+		});
+		chckbxStealth.setBackground(new Color(255, 153, 153));
+		chckbxStealth.setBounds(187, 5, 97, 23);
+		stealthPanel.add(chckbxStealth);
+		
+		// PlaceSpecs
+		List<TextField> placeSpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxPlace = new JCheckBox("Show specs");
+		chckbxPlace.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> placeSpecsList = currentSheet.assignSkillSpecs("Place");
+				if(chckbxPlace.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Place", "");
+					placeSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (placeSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					placePanel.setSize(354, (32+extra));
+					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					
+					for(int i = 0; i < placeSpecsList.size(); i++)
+					{
+						int j = i;
+						placeSpecsFields.add(new TextField());
+						TextField placeSpecs = placeSpecsFields.get(i);
+						placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						placeSpecs.setBackground(new Color(255, 204, 204));
+						placeSpecs.setBounds(5, 33+(i*28), 279, 22);
+						placePanel.add(placeSpecs);
+						placeSpecs.setText(placeSpecsList.get(i).getDescription());
+						placeSpecs.requestFocus();	
+						placeSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = placeSpecsList.get(j);
+									editing.setDescription(placeSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxPlace.setSelected(false);
+										chckbxPlace.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxPlace.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+						placeSpecsList.clear();
+					for(TextField t : placeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						placePanel.remove(t);
+					}
+					placeSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(placePanel.getHeight()-32)));
+					placePanel.setSize(354, (32));
+					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+				}
+			}
+		});
+		chckbxPlace.setBackground(new Color(255, 102, 102));
+		chckbxPlace.setBounds(187, 5, 97, 23);
+		placePanel.add(chckbxPlace);
+		
+		// Place2Specs
+		List<TextField> place2SpecsFields = new ArrayList<TextField>();
+		JCheckBox chckbxPlace2 = new JCheckBox("Show specs");
+		chckbxPlace2.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> place2SpecsList = currentSheet.assignSkillSpecs("Place2");
+				if(chckbxPlace2.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Place2", "");
+					place2SpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (place2SpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					place2Panel.setSize(354, (32+extra));
+	
+					
+					for(int i = 0; i < place2SpecsList.size(); i++)
+					{
+						int j = i;
+						place2SpecsFields.add(new TextField());
+						TextField place2Specs = place2SpecsFields.get(i);
+						place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						place2Specs.setBackground(new Color(255, 204, 204));
+						place2Specs.setBounds(5, 33+(i*28), 279, 22);
+						place2Panel.add(place2Specs);
+						place2Specs.setText(place2SpecsList.get(i).getDescription());
+						place2Specs.requestFocus();	
+						place2Specs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = place2SpecsList.get(j);
+									editing.setDescription(place2Specs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxPlace2.setSelected(false);
+										chckbxPlace2.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxPlace2.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+						place2SpecsList.clear();
+					for(TextField t : place2SpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						place2Panel.remove(t);
+					}
+					place2SpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(place2Panel.getHeight()-32)));
+					place2Panel.setSize(354, (32));				
+				}
+			}
+		});
+		chckbxPlace2.setBackground(new Color(255, 153, 153));
+		chckbxPlace2.setBounds(187, 5, 97, 23);
+		place2Panel.add(chckbxPlace2);
+			
 		
 		
 		JPanel demographicsPanel = new JPanel();
@@ -905,7 +1561,7 @@ public class MainWindow {
 			}
 		});
 		chckbxDemographics.setSelected(true);
-		chckbxDemographics.setBounds(38, 39, 136, 23);
+		chckbxDemographics.setBounds(38, 39, 164, 23);
 		dcrpgFrame.getContentPane().add(chckbxDemographics);
 		
 		JLabel lblHeroPoints = new JLabel("Hero Points");
@@ -970,7 +1626,7 @@ public class MainWindow {
 		occupationField.setText("<dynamic>+0");
 		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
 		occupationField.setColumns(10);
-		occupationField.setBounds(1040, 6, 86, 20);
+		occupationField.setBounds(1016, 6, 176, 20);
 		dcrpgFrame.getContentPane().add(occupationField);
 		
 		JLabel lblHomeBase = new JLabel("Home Base");
@@ -981,7 +1637,7 @@ public class MainWindow {
 		baseOfOperationsField.setText("0/0");
 		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.setBounds(1040, 31, 86, 20);
+		baseOfOperationsField.setBounds(1016, 30, 176, 20);
 		dcrpgFrame.getContentPane().add(baseOfOperationsField);
 		
 		JButton btnSave = new JButton("Save");
@@ -1021,9 +1677,10 @@ public class MainWindow {
 				
 				
 				JButton btnLoad = new JButton("Load");
-				btnLoad.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
+				btnLoad.addActionListener(new ActionListener() 
+				{
+					public void actionPerformed(ActionEvent arg0) 
+					{
 						for(CharacterSheet s : sheets)
 						{
 							if(s.getName().equals(nameSearchField.getText()))
@@ -1067,8 +1724,20 @@ public class MainWindow {
 						}
 					}
 				});
+				
 				btnLoad.setBounds(167, 11, 69, 23);
 				dcrpgFrame.getContentPane().add(btnLoad);
+				
+				nameSearchField.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						if(e.getKeyCode() == KeyEvent.VK_ENTER)
+						{
+							btnLoad.doClick();
+						}
+					}
+				});
 
 	}
 	private class SwingAction extends AbstractAction {

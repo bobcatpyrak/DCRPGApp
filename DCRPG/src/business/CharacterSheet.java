@@ -435,9 +435,7 @@ public class CharacterSheet
 		for (SkillSpec spec : skillSpecDAO)
 		{	
 			if(spec.getCharacterSheetId() == id)
-			{
 				skillSpecs.add(spec);
-			}
 		}
 	}
 	public List<SkillSpec> getSkillSpecs ()
@@ -449,12 +447,8 @@ public class CharacterSheet
 		List<SkillSpec> specs = new ArrayList<SkillSpec>();
 		for (SkillSpec spec : skillSpecs)
 		{
-			System.out.println("Checking Spec # " + spec.getId()+spec.getDescription());
-			if(spec.getSkill().equals(skill))
-			{
-				System.out.println("Adding Spec # " + spec.getId()+spec.getDescription());
+			if(spec.getSkill().equals(skill) && !spec.getDescription().replace(" ", "").equals(""))
 				specs.add(spec);
-			}
 		}
 		return specs;
 	}

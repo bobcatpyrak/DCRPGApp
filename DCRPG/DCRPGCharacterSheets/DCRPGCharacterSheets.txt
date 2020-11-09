@@ -2,11 +2,27 @@ $$CharacterSheetBegin$$
 0	Character Name	blank.png	Occupation%Base%Location%Gender%Race%Height%Weight%EyeColor%HairColor	xd6%0%3%0%0%0%0%0%0%0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0
 1	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
 2	Alfred	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+3	Fields	fields.png	Transdimentional Traveler%The Clocktower, sometimes%???%Male%Human%5'10%163%Gray-Blue%Dark Brown	2d6%0%4%75%0%0%0%0%30%30	7%1%3%8%1%1%2%1%1%0%1%0%1%4%0%1%1%1%1%1%2%0%0%0%1%0%0%1%5%2%1%1%1%1%0%5%1%1%0%6%5
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
 0	1	Acrobatics	Gymnastics 2
 1	2	Acrobatics	Yes, Quite 1
+2	3	Climbing	Rock Climbing 1
+3	3	Dodge	Melee Weapons 2
+4	3	Dodge	Hand-to-Hand 2
+5	3	HandToHand	Double Kick 3
+6	3	HandToHand	Flying Kick 1
+7	3	Stealth	Urban 1
+8	3	Marksmanship	Earth Manipulation 1
+9	3	Languages	French 1
+10	3	Language	Italian 1
+11	3	Science	Geology 1
+12	3	Artist	Piano 3
+13	3	Artist	Guitar 1
+14	3	Streetwise	Penguin 1
+15	3	Surveillance	Listening 2
+16	3	Willpower	Earth Manipulation 1
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$

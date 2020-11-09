@@ -1,9 +1,7 @@
 package business;
 
 public class SkillSpec 
-{
-	private final String FIELD_SEP = "%";
-	
+{	
 	int id;
 	int characterSheetId;
 	String skill;

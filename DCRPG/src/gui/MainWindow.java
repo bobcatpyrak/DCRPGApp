@@ -1,63 +1,23 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.text.*;
 
-import javax.swing.JFrame;
-import java.awt.Color;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.event.ActionEvent;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JList;
-import javax.swing.border.BevelBorder;
 
-import business.CharacterSheet;
-import business.CharacterSheetAdvantage;
-import business.CharacterSheetDisadvantage;
-import business.SkillSpec;
-import db.TextFile;
-import library.Advantage;
-import library.Disadvantage;
-import javax.swing.UIManager;
-import javax.swing.AbstractListModel;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.JTextField;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import business.*;
+import db.*;
+import library.*;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.awt.Label;
-import java.awt.Panel;
-import java.awt.GridLayout;
-import java.awt.KeyboardFocusManager;
-import java.awt.TextField;
-import javax.swing.JFormattedTextField;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.text.Format;
-import javax.swing.JCheckBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 
 public class MainWindow {
 
@@ -75,24 +35,21 @@ public class MainWindow {
 	private static int nextCSDId;
 	
 	private JFrame dcrpgFrame;
-	private final Action action = new SwingAction();
-	private JTextField nameSearchField;
-	private JTextField nameField;
-	private JTextField udoField;
-	private JTextField bodyPointsField;
+	private JFormattedTextField nameSearchField;
+	private JFormattedTextField nameField;
+	private JFormattedTextField udoField;
+	private JFormattedTextField bodyPointsField;
 	private JFormattedTextField speedField;
-	private JTextField genderField;
-	private JTextField raceField;
-	private JTextField heightField;
-	private JTextField weightField;
-	private JTextField eyeColorField;
-	private JTextField hairColorField;
-	private JTextField heroPointsField;
-	private JTextField villainPointsField;
-	private JTextField powerPointsField;
-	private JTextField skillPointsField;
-	private JTextField occupationField;
-	private JTextField baseOfOperationsField;
+	private JFormattedTextField genderField;
+	private JFormattedTextField raceField;
+	private JFormattedTextField heightField;
+	private JFormattedTextField weightField;
+	private JFormattedTextField heroPointsField;
+	private JFormattedTextField villainPointsField;
+	private JFormattedTextField powerPointsField;
+	private JFormattedTextField skillPointsField;
+	private JFormattedTextField occupationField;
+	private JFormattedTextField baseOfOperationsField;
 
 	/**
 	 * Launch the application.
@@ -180,7 +137,6 @@ public class MainWindow {
 			try {
 				Files.createFile(filePath);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
@@ -205,13 +161,13 @@ public class MainWindow {
 	    {
 	    public void propertyChange(final PropertyChangeEvent e)
 	    {
-	        if (e.getNewValue() instanceof JTextField)
+	        if (e.getNewValue() instanceof JFormattedTextField)
 	        {
 	            SwingUtilities.invokeLater(new Runnable()
 	            {
 	                public void run()
 	                {
-	                    JTextField textField = (JTextField)e.getNewValue();
+	                    JFormattedTextField textField = (JFormattedTextField)e.getNewValue();
 	                    textField.selectAll();
 	                }
 	            });
@@ -239,19 +195,27 @@ public class MainWindow {
 		nameLabel.setBounds(429, 6, 131, 42);
 		dcrpgFrame.getContentPane().add(nameLabel);
 		
-		nameSearchField = new JTextField();
+		nameSearchField = new JFormattedTextField();
 		nameSearchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		nameSearchField.setText("(type character name)");
 		nameSearchField.setBounds(10, 12, 148, 20);
 		dcrpgFrame.getContentPane().add(nameSearchField);
 		nameSearchField.setColumns(10);
 		
-		nameField = new JTextField();
+		nameField = new JFormattedTextField();
 		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setBounds(570, 6, 367, 42);
 		dcrpgFrame.getContentPane().add(nameField);
 		nameField.setColumns(10);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setName(nameField.getText());
+			}
+		});
 		
 		JLabel udoLabel = new JLabel("UDO");
 		udoLabel.setBounds(774, 59, 90, 20);
@@ -265,23 +229,316 @@ public class MainWindow {
 		speedLabel.setBounds(774, 109, 90, 20);
 		dcrpgFrame.getContentPane().add(speedLabel);
 		
-		udoField = new JTextField();
+		JPanel demographicsPanel = new JPanel();
+		demographicsPanel.setBackground(new Color(204, 255, 255));
+		demographicsPanel.setBounds(44, 59, 298, 70);
+		dcrpgFrame.getContentPane().add(demographicsPanel);
+		demographicsPanel.setLayout(null);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(0, 0, 90, 20);
+		demographicsPanel.add(lblGender);
+		
+		JLabel lblRace = new JLabel("Race");
+		lblRace.setBounds(0, 25, 90, 20);
+		demographicsPanel.add(lblRace);
+		
+		JLabel lblEyeColor = new JLabel("Eye Color");
+		lblEyeColor.setBounds(0, 50, 90, 20);
+		demographicsPanel.add(lblEyeColor);
+		
+		JLabel lblHeight = new JLabel("Height");
+		lblHeight.setBounds(156, 0, 90, 20);
+		demographicsPanel.add(lblHeight);
+		
+		JLabel lblWeight = new JLabel("Weight");
+		lblWeight.setBounds(156, 25, 90, 20);
+		demographicsPanel.add(lblWeight);
+		
+		JLabel lblHairColor = new JLabel("Hair Color");
+		lblHairColor.setBounds(156, 50, 90, 20);
+		demographicsPanel.add(lblHairColor);
+		
+		genderField = new JFormattedTextField();
+		genderField.setBounds(53, 0, 86, 20);
+		demographicsPanel.add(genderField);
+		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
+		genderField.setColumns(10);
+		genderField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setGender(genderField.getText());
+			}
+		});
+		
+		raceField = new JFormattedTextField();
+		raceField.setBounds(53, 25, 86, 20);
+		demographicsPanel.add(raceField);
+		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
+		raceField.setColumns(10);
+		raceField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setRace(raceField.getText());
+			}
+		});
+		
+		JFormattedTextField eyeColorField = new JFormattedTextField();
+		eyeColorField.setBounds(53, 50, 86, 20);
+		demographicsPanel.add(eyeColorField);
+		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+		eyeColorField.setColumns(10);
+		eyeColorField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setEyeColor(eyeColorField.getText());
+			}
+		});
+		
+		heightField = new JFormattedTextField();
+		heightField.setBounds(212, 0, 86, 20);
+		demographicsPanel.add(heightField);
+		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
+		heightField.setColumns(10);
+		heightField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setHeight(heightField.getText());
+			}
+		});
+		
+		weightField = new JFormattedTextField();
+		weightField.setBounds(212, 25, 86, 20);
+		demographicsPanel.add(weightField);
+		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
+		weightField.setColumns(10);
+		weightField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setWeight(weightField.getText());
+			}
+		});
+		
+		JFormattedTextField hairColorField = new JFormattedTextField((Format) null);
+		hairColorField.setBounds(212, 50, 86, 20);
+		demographicsPanel.add(hairColorField);
+		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+		hairColorField.setColumns(10);
+		hairColorField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setHairColor(hairColorField.getText());
+			}
+		});
+		
+		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
+		chckbxDemographics.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(chckbxDemographics.isSelected())
+					demographicsPanel.setVisible(true);
+				else if(!chckbxDemographics.isSelected())
+					demographicsPanel.setVisible(false);
+			}
+		});
+		chckbxDemographics.setSelected(true);
+		chckbxDemographics.setBounds(38, 39, 164, 23);
+		dcrpgFrame.getContentPane().add(chckbxDemographics);
+		
+		JLabel lblHeroPoints = new JLabel("Hero Points");
+		lblHeroPoints.setBounds(367, 59, 90, 20);
+		dcrpgFrame.getContentPane().add(lblHeroPoints);
+		
+		heroPointsField = new JFormattedTextField(nums);
+		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		heroPointsField.setColumns(10);
+		heroPointsField.setBounds(460, 59, 86, 20);
+		dcrpgFrame.getContentPane().add(heroPointsField);
+		heroPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
+			}
+		});
+
+		
+		JLabel lblVillainPoints = new JLabel("Villain Points");
+		lblVillainPoints.setBounds(367, 84, 90, 20);
+		dcrpgFrame.getContentPane().add(lblVillainPoints);
+		
+		villainPointsField = new JFormattedTextField(nums);
+		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		villainPointsField.setColumns(10);
+		villainPointsField.setBounds(460, 84, 86, 20);
+		dcrpgFrame.getContentPane().add(villainPointsField);
+		villainPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
+			}
+		});
+
+		
+		JLabel lblAvailableRenown = new JLabel("Available Renown");
+		lblAvailableRenown.setBounds(367, 109, 90, 20);
+		dcrpgFrame.getContentPane().add(lblAvailableRenown);
+		
+		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
+		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
+		availableRenownField.setColumns(10);
+		availableRenownField.setBounds(460, 109, 86, 20);
+		dcrpgFrame.getContentPane().add(availableRenownField);
+		availableRenownField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
+			}
+		});
+
+		
+		JLabel lblPowerPoints = new JLabel("Power Points");
+		lblPowerPoints.setBounds(570, 59, 90, 20);
+		dcrpgFrame.getContentPane().add(lblPowerPoints);
+		
+		powerPointsField = new JFormattedTextField(nums);
+		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		powerPointsField.setColumns(10);
+		powerPointsField.setBounds(663, 59, 86, 20);
+		dcrpgFrame.getContentPane().add(powerPointsField);
+		powerPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
+			}
+		});
+
+		
+		JLabel lblSkillPoints = new JLabel("Skill Points");
+		lblSkillPoints.setBounds(570, 84, 90, 20);
+		dcrpgFrame.getContentPane().add(lblSkillPoints);
+				
+		JLabel lblOccupation = new JLabel("Occupation");
+		lblOccupation.setBounds(947, 6, 90, 20);
+		dcrpgFrame.getContentPane().add(lblOccupation);
+		
+		occupationField = new JFormattedTextField();
+		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
+		occupationField.setColumns(10);
+		occupationField.setBounds(1016, 6, 176, 20);
+		dcrpgFrame.getContentPane().add(occupationField);
+		occupationField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setOccupation(occupationField.getText());
+			}
+		});
+
+		
+		JLabel lblHomeBase = new JLabel("Home Base");
+		lblHomeBase.setBounds(947, 31, 90, 20);
+		dcrpgFrame.getContentPane().add(lblHomeBase);
+		
+		baseOfOperationsField = new JFormattedTextField();
+		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		baseOfOperationsField.setColumns(10);
+		baseOfOperationsField.setBounds(1016, 30, 176, 20);
+		dcrpgFrame.getContentPane().add(baseOfOperationsField);
+		baseOfOperationsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
+			}
+		});
+	
+		udoField = new JFormattedTextField();
 		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
 		udoField.setBounds(867, 59, 86, 20);
 		dcrpgFrame.getContentPane().add(udoField);
 		udoField.setColumns(10);
+		udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				String[] udos = udoField.getText().split("[+]");
+				if(udos.length > 0)
+					currentSheet.setUdoDice(udos[0]);
+				if(udos.length > 1)
+					currentSheet.setUdoBonus(Integer.parseInt(udos[1]));
+			}
+		});
 		
-		bodyPointsField = new JTextField();
+		bodyPointsField = new JFormattedTextField();
 		bodyPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		bodyPointsField.setBounds(867, 84, 86, 20);
 		dcrpgFrame.getContentPane().add(bodyPointsField);
 		bodyPointsField.setColumns(10);
+		bodyPointsField.addKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				String[] bps = bodyPointsField.getText().split("/");
+				if(bps.length > 0)
+					currentSheet.setBodyPointsCurrent(Integer.parseInt(bps[0]));
+				if(bps.length > 1)
+					currentSheet.setBodyPointsMax(Integer.parseInt(bps[1]));
+			}
+		});
+
+		
+		skillPointsField = new JFormattedTextField(nums);
+		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		skillPointsField.setColumns(10);
+		skillPointsField.setBounds(663, 84, 86, 20);
+		dcrpgFrame.getContentPane().add(skillPointsField);
+		skillPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
+			}
+		});
+
 		
 		speedField = new JFormattedTextField(nums);
 		speedField.setHorizontalAlignment(SwingConstants.RIGHT);
 		speedField.setBounds(867, 109, 86, 20);
 		dcrpgFrame.getContentPane().add(speedField);
 		speedField.setColumns(10);
+		speedField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setSpeed(Integer.parseInt(speedField.getText()));
+			}
+		});
+
 		
 		JButton btnNew = new JButton("New");
 		btnNew.setBounds(247, 11, 69, 23);
@@ -316,57 +573,6 @@ public class MainWindow {
 		acroLabel.setBounds(35, 5, 120, 22);
 		acroPanel.add(acroLabel);
 		acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-		
-		/*TextField acroSpecs = new TextField();
-		acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs.setBackground(new Color(255, 204, 204));
-		acroSpecs.setBounds(5, 33, 279, 22);
-		acroPanel.add(acroSpecs);
-		TextField acroSpecs1 = new TextField();
-		acroSpecs1.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs1.setBackground(new Color(255, 204, 204));
-		acroSpecs1.setBounds(5, 61, 279, 22);
-		acroPanel.add(acroSpecs1);
-		TextField acroSpecs2 = new TextField();
-		acroSpecs2.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs2.setBackground(new Color(255, 204, 204));
-		acroSpecs2.setBounds(5, 89, 279, 22);
-		acroPanel.add(acroSpecs2);
-		TextField acroSpecs3 = new TextField();
-		acroSpecs3.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs3.setBackground(new Color(255, 204, 204));
-		acroSpecs3.setBounds(5, 117, 279, 22);
-		acroPanel.add(acroSpecs3);
-		TextField acroSpecs4 = new TextField();
-		acroSpecs4.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs4.setBackground(new Color(255, 204, 204));
-		acroSpecs4.setBounds(5, 145, 279, 22);
-		acroPanel.add(acroSpecs4);
-		TextField acroSpecs5 = new TextField();
-		acroSpecs5.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs5.setBackground(new Color(255, 204, 204));
-		acroSpecs5.setBounds(5, 173, 279, 22);
-		acroPanel.add(acroSpecs5);
-		TextField acroSpecs6 = new TextField();
-		acroSpecs6.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs6.setBackground(new Color(255, 204, 204));
-		acroSpecs6.setBounds(5, 201, 279, 22);
-		acroPanel.add(acroSpecs6);
-		TextField acroSpecs7 = new TextField();
-		acroSpecs7.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs7.setBackground(new Color(255, 204, 204));
-		acroSpecs7.setBounds(5, 229, 279, 22);
-		acroPanel.add(acroSpecs7);
-		TextField acroSpecs8 = new TextField();
-		acroSpecs8.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs8.setBackground(new Color(255, 204, 204));
-		acroSpecs8.setBounds(5, 257, 279, 22);
-		acroPanel.add(acroSpecs8);
-		TextField acroSpecs9 = new TextField();
-		acroSpecs9.setFont(new Font("Verdana", Font.PLAIN, 13));
-		acroSpecs9.setBackground(new Color(255, 204, 204));
-		acroSpecs9.setBounds(5, 285, 279, 22);
-		acroPanel.add(acroSpecs9);*/
 				
 		JFormattedTextField acroTotal = new JFormattedTextField();
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -389,6 +595,7 @@ public class MainWindow {
 				}
 			}
 		});
+		
 		acroLevel.setColumns(2);
 		acroLevel.setFont(new Font("Arial", Font.BOLD, 14));
 		acroLevel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -405,12 +612,6 @@ public class MainWindow {
 		dodgeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		dodgeLabel.setBounds(35, 5, 120, 22);
 		dodgePanel.add(dodgeLabel);
-		
-		/*TextField dodgeSpecs = new TextField();
-		dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-		dodgeSpecs.setBackground(new Color(255, 204, 204));
-		dodgeSpecs.setBounds(5, 33, 279, 22);
-		dodgePanel.add(dodgeSpecs);*/
 		
 		JFormattedTextField dodgeTotal = new JFormattedTextField();
 		dodgeTotal.setColumns(2);
@@ -451,13 +652,7 @@ public class MainWindow {
 		handToHandLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		handToHandLabel.setBounds(35, 5, 120, 22);
 		handToHandPanel.add(handToHandLabel);
-		
-//		TextField handToHandSpecs = new TextField();
-//		handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-//		handToHandSpecs.setBackground(new Color(255, 204, 204));
-//		handToHandSpecs.setBounds(5, 33, 279, 22);
-//		handToHandPanel.add(handToHandSpecs);
-		
+
 		JFormattedTextField handToHandTotal = new JFormattedTextField();
 		handToHandTotal.setColumns(2);
 		handToHandTotal.setEditable(false);
@@ -498,12 +693,6 @@ public class MainWindow {
 		meleeWeaponsLabel.setBounds(35, 5, 120, 22);
 		meleeWeaponsPanel.add(meleeWeaponsLabel);
 		
-//		TextField meleeWeaponsSpecs = new TextField();
-//		meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-//		meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
-//		meleeWeaponsSpecs.setBounds(5, 33, 279, 22);
-//		meleeWeaponsPanel.add(meleeWeaponsSpecs);
-//		
 		JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
 		meleeWeaponsTotal.setColumns(2);
 		meleeWeaponsTotal.setEditable(false);
@@ -544,12 +733,6 @@ public class MainWindow {
 		stealthLabel.setBounds(35, 5, 120, 22);
 		stealthPanel.add(stealthLabel);
 		
-//		TextField stealthSpecs = new TextField();
-//		stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-//		stealthSpecs.setBackground(new Color(255, 204, 204));
-//		stealthSpecs.setBounds(5, 33, 279, 22);
-//		stealthPanel.add(stealthSpecs);
-		
 		JFormattedTextField stealthTotal = new JFormattedTextField();
 		stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		stealthTotal.setColumns(2);
@@ -589,12 +772,6 @@ public class MainWindow {
 		placeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		placeLabel.setBounds(35, 5, 120, 22);
 		placePanel.add(placeLabel);
-//		
-//		TextField placeSpecs = new TextField();
-//		placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-//		placeSpecs.setBackground(new Color(255, 204, 204));
-//		placeSpecs.setBounds(5, 33, 279, 22);
-//		placePanel.add(placeSpecs);
 		
 		JFormattedTextField placeTotal = new JFormattedTextField();
 		placeTotal.setColumns(2);
@@ -635,12 +812,6 @@ public class MainWindow {
 		place2Label.setFont(new Font("Verdana", Font.BOLD, 13));
 		place2Label.setBounds(35, 5, 120, 22);
 		place2Panel.add(place2Label);
-		
-//		TextField place2Specs = new TextField();
-//		place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
-//		place2Specs.setBackground(new Color(255, 204, 204));
-//		place2Specs.setBounds(5, 33, 279, 22);
-//		place2Panel.add(place2Specs);
 		
 		JFormattedTextField place2Total = new JFormattedTextField();
 		place2Total.setHorizontalAlignment(SwingConstants.CENTER);
@@ -696,7 +867,7 @@ public class MainWindow {
 		});
 		
 		// AcroSpecs
-		List<TextField> acroSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> acroSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxAcro = new JCheckBox("Show specs");
 		chckbxAcro.addItemListener(new ItemListener() 
 		{
@@ -726,8 +897,8 @@ public class MainWindow {
 					for(int i = 0; i < acroSpecsList.size(); i++)
 					{
 						int j = i;
-						acroSpecsFields.add(new TextField());
-						TextField acroSpecs = acroSpecsFields.get(i);
+						acroSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField acroSpecs = acroSpecsFields.get(i);
 						acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						acroSpecs.setBackground(new Color(255, 204, 204));
 						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -793,9 +964,10 @@ public class MainWindow {
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 
 					acroSpecsList.clear();
-					for(TextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						acroPanel.remove(t);
+						t = null;
 					}
 					acroSpecsFields.clear();
 					
@@ -815,7 +987,7 @@ public class MainWindow {
 		acroPanel.add(chckbxAcro);
 		
 		// DodgeSpecs
-		List<TextField> dodgeSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> dodgeSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxDodge = new JCheckBox("Show specs");
 		chckbxDodge.addItemListener(new ItemListener() 
 		{
@@ -844,8 +1016,8 @@ public class MainWindow {
 					for(int i = 0; i < dodgeSpecsList.size(); i++)
 					{
 						int j = i;
-						dodgeSpecsFields.add(new TextField());
-						TextField dodgeSpecs = dodgeSpecsFields.get(i);
+						dodgeSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField dodgeSpecs = dodgeSpecsFields.get(i);
 						dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						dodgeSpecs.setBackground(new Color(255, 204, 204));
 						dodgeSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -910,9 +1082,10 @@ public class MainWindow {
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 
 					dodgeSpecsList.clear();
-					for(TextField t : dodgeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : dodgeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						dodgePanel.remove(t);
+						t = null;
 					}
 					dodgeSpecsFields.clear();
 					
@@ -931,7 +1104,7 @@ public class MainWindow {
 		dodgePanel.add(chckbxDodge);
 		
 		// HandToHandSpecs
-		List<TextField> handToHandSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> handToHandSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
 		chckbxHandToHand.addItemListener(new ItemListener() 
 		{
@@ -959,8 +1132,8 @@ public class MainWindow {
 					for(int i = 0; i < handToHandSpecsList.size(); i++)
 					{
 						int j = i;
-						handToHandSpecsFields.add(new TextField());
-						TextField handToHandSpecs = handToHandSpecsFields.get(i);
+						handToHandSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField handToHandSpecs = handToHandSpecsFields.get(i);
 						handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						handToHandSpecs.setBackground(new Color(255, 204, 204));
 						handToHandSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -1025,9 +1198,10 @@ public class MainWindow {
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 
 					handToHandSpecsList.clear();
-					for(TextField t : handToHandSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : handToHandSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						handToHandPanel.remove(t);
+						t = null;
 					}
 					handToHandSpecsFields.clear();
 					
@@ -1045,7 +1219,7 @@ public class MainWindow {
 		handToHandPanel.add(chckbxHandToHand);
 		
 		// MeleeWeaponsSpecs
-		List<TextField> meleeWeaponsSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> meleeWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
 		chckbxMeleeWeapons.addItemListener(new ItemListener() 
 		{
@@ -1072,8 +1246,8 @@ public class MainWindow {
 					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
 					{
 						int j = i;
-						meleeWeaponsSpecsFields.add(new TextField());
-						TextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
+						meleeWeaponsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
 						meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
 						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -1138,9 +1312,10 @@ public class MainWindow {
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 
 					meleeWeaponsSpecsList.clear();
-					for(TextField t : meleeWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : meleeWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						meleeWeaponsPanel.remove(t);
+						t = null;
 					}
 					meleeWeaponsSpecsFields.clear();
 					
@@ -1157,7 +1332,7 @@ public class MainWindow {
 		meleeWeaponsPanel.add(chckbxMeleeWeapons);
 		
 		// StealthSpecs
-		List<TextField> stealthSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> stealthSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxStealth = new JCheckBox("Show specs");
 		chckbxStealth.addItemListener(new ItemListener() 
 		{
@@ -1182,8 +1357,8 @@ public class MainWindow {
 					for(int i = 0; i < stealthSpecsList.size(); i++)
 					{
 						int j = i;
-						stealthSpecsFields.add(new TextField());
-						TextField stealthSpecs = stealthSpecsFields.get(i);
+						stealthSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField stealthSpecs = stealthSpecsFields.get(i);
 						stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						stealthSpecs.setBackground(new Color(255, 204, 204));
 						stealthSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -1246,9 +1421,10 @@ public class MainWindow {
 					if(specs.size() > 0)
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 						stealthSpecsList.clear();
-					for(TextField t : stealthSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : stealthSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						stealthPanel.remove(t);
+						t = null;
 					}
 					stealthSpecsFields.clear();
 					
@@ -1264,7 +1440,7 @@ public class MainWindow {
 		stealthPanel.add(chckbxStealth);
 		
 		// PlaceSpecs
-		List<TextField> placeSpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> placeSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxPlace = new JCheckBox("Show specs");
 		chckbxPlace.addItemListener(new ItemListener() 
 		{
@@ -1288,8 +1464,8 @@ public class MainWindow {
 					for(int i = 0; i < placeSpecsList.size(); i++)
 					{
 						int j = i;
-						placeSpecsFields.add(new TextField());
-						TextField placeSpecs = placeSpecsFields.get(i);
+						placeSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField placeSpecs = placeSpecsFields.get(i);
 						placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						placeSpecs.setBackground(new Color(255, 204, 204));
 						placeSpecs.setBounds(5, 33+(i*28), 279, 22);
@@ -1352,9 +1528,10 @@ public class MainWindow {
 					if(specs.size() > 0)
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 						placeSpecsList.clear();
-					for(TextField t : placeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : placeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						placePanel.remove(t);
+						t = null;
 					}
 					placeSpecsFields.clear();
 					
@@ -1369,7 +1546,7 @@ public class MainWindow {
 		placePanel.add(chckbxPlace);
 		
 		// Place2Specs
-		List<TextField> place2SpecsFields = new ArrayList<TextField>();
+		List<JFormattedTextField> place2SpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxPlace2 = new JCheckBox("Show specs");
 		chckbxPlace2.addItemListener(new ItemListener() 
 		{
@@ -1393,8 +1570,8 @@ public class MainWindow {
 					for(int i = 0; i < place2SpecsList.size(); i++)
 					{
 						int j = i;
-						place2SpecsFields.add(new TextField());
-						TextField place2Specs = place2SpecsFields.get(i);
+						place2SpecsFields.add(new JFormattedTextField());
+						JFormattedTextField place2Specs = place2SpecsFields.get(i);
 						place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						place2Specs.setBackground(new Color(255, 204, 204));
 						place2Specs.setBounds(5, 33+(i*28), 279, 22);
@@ -1457,9 +1634,10 @@ public class MainWindow {
 					if(specs.size() > 0)
 						nextSpecId = specs.get(specs.size()-1).getId() + 1;
 						place2SpecsList.clear();
-					for(TextField t : place2SpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					for(JFormattedTextField t : place2SpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
 						place2Panel.remove(t);
+						t = null;
 					}
 					place2SpecsFields.clear();
 					
@@ -1471,178 +1649,31 @@ public class MainWindow {
 		chckbxPlace2.setBackground(new Color(255, 153, 153));
 		chckbxPlace2.setBounds(187, 5, 97, 23);
 		place2Panel.add(chckbxPlace2);
-			
-		
-		
-		JPanel demographicsPanel = new JPanel();
-		demographicsPanel.setBackground(new Color(204, 255, 255));
-		demographicsPanel.setBounds(44, 59, 298, 70);
-		dcrpgFrame.getContentPane().add(demographicsPanel);
-		demographicsPanel.setLayout(null);
-		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(0, 0, 90, 20);
-		demographicsPanel.add(lblGender);
-		
-		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(0, 25, 90, 20);
-		demographicsPanel.add(lblRace);
-		
-		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(0, 50, 90, 20);
-		demographicsPanel.add(lblEyeColor);
-		
-		JLabel lblHeight = new JLabel("Height");
-		lblHeight.setBounds(156, 0, 90, 20);
-		demographicsPanel.add(lblHeight);
-		
-		JLabel lblWeight = new JLabel("Weight");
-		lblWeight.setBounds(156, 25, 90, 20);
-		demographicsPanel.add(lblWeight);
-		
-		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(156, 50, 90, 20);
-		demographicsPanel.add(lblHairColor);
-		
-		genderField = new JTextField();
-		genderField.setBounds(53, 0, 86, 20);
-		demographicsPanel.add(genderField);
-		genderField.setText("<dynamic>+0");
-		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
-		genderField.setColumns(10);
-		
-		genderField.setText(currentSheet.getGender());
-		
-		raceField = new JTextField();
-		raceField.setBounds(53, 25, 86, 20);
-		demographicsPanel.add(raceField);
-		raceField.setText("0/0");
-		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
-		raceField.setColumns(10);
-		raceField.setText(currentSheet.getRace());
-		
-		JFormattedTextField eyeColorField = new JFormattedTextField((Format) null);
-		eyeColorField.setBounds(53, 50, 86, 20);
-		demographicsPanel.add(eyeColorField);
-		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		eyeColorField.setColumns(10);
-		eyeColorField.setText(currentSheet.getEyeColor());
-		
-		heightField = new JTextField();
-		heightField.setBounds(212, 0, 86, 20);
-		demographicsPanel.add(heightField);
-		heightField.setText("<dynamic>+0");
-		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heightField.setColumns(10);
-		heightField.setText(currentSheet.getHeight());
-		
-		weightField = new JTextField();
-		weightField.setBounds(212, 25, 86, 20);
-		demographicsPanel.add(weightField);
-		weightField.setText("0/0");
-		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
-		weightField.setColumns(10);
-		weightField.setText(currentSheet.getWeight());
-		
-		JFormattedTextField hairColorField = new JFormattedTextField((Format) null);
-		hairColorField.setBounds(212, 50, 86, 20);
-		demographicsPanel.add(hairColorField);
-		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		hairColorField.setColumns(10);
-		hairColorField.setText(currentSheet.getHairColor());
-		
-		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
-		chckbxDemographics.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				if(chckbxDemographics.isSelected())
-					demographicsPanel.setVisible(true);
-				else if(!chckbxDemographics.isSelected())
-					demographicsPanel.setVisible(false);
-			}
-		});
-		chckbxDemographics.setSelected(true);
-		chckbxDemographics.setBounds(38, 39, 164, 23);
-		dcrpgFrame.getContentPane().add(chckbxDemographics);
-		
-		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(367, 59, 90, 20);
-		dcrpgFrame.getContentPane().add(lblHeroPoints);
-		
-		heroPointsField = new JTextField();
-		heroPointsField.setText("<dynamic>+0");
-		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heroPointsField.setColumns(10);
-		heroPointsField.setBounds(460, 59, 86, 20);
-		dcrpgFrame.getContentPane().add(heroPointsField);
-		
-		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(367, 84, 90, 20);
-		dcrpgFrame.getContentPane().add(lblVillainPoints);
-		
-		villainPointsField = new JTextField();
-		villainPointsField.setText("0/0");
-		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		villainPointsField.setColumns(10);
-		villainPointsField.setBounds(460, 84, 86, 20);
-		dcrpgFrame.getContentPane().add(villainPointsField);
-		
-		JLabel lblAvailableRenown = new JLabel("Available Renown");
-		lblAvailableRenown.setBounds(367, 109, 90, 20);
-		dcrpgFrame.getContentPane().add(lblAvailableRenown);
-		
-		JFormattedTextField availableRenownField = new JFormattedTextField((Format) null);
-		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
-		availableRenownField.setColumns(10);
-		availableRenownField.setBounds(460, 109, 86, 20);
-		dcrpgFrame.getContentPane().add(availableRenownField);
-		
-		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(570, 59, 90, 20);
-		dcrpgFrame.getContentPane().add(lblPowerPoints);
-		
-		powerPointsField = new JTextField();
-		powerPointsField.setText("<dynamic>+0");
-		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		powerPointsField.setColumns(10);
-		powerPointsField.setBounds(663, 59, 86, 20);
-		dcrpgFrame.getContentPane().add(powerPointsField);
-		
-		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(570, 84, 90, 20);
-		dcrpgFrame.getContentPane().add(lblSkillPoints);
-		
-		skillPointsField = new JTextField();
-		skillPointsField.setText("0/0");
-		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		skillPointsField.setColumns(10);
-		skillPointsField.setBounds(663, 84, 86, 20);
-		dcrpgFrame.getContentPane().add(skillPointsField);
-		
-		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(947, 6, 90, 20);
-		dcrpgFrame.getContentPane().add(lblOccupation);
-		
-		occupationField = new JTextField();
-		occupationField.setText("<dynamic>+0");
-		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
-		occupationField.setColumns(10);
-		occupationField.setBounds(1016, 6, 176, 20);
-		dcrpgFrame.getContentPane().add(occupationField);
-		
-		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(947, 31, 90, 20);
-		dcrpgFrame.getContentPane().add(lblHomeBase);
-		
-		baseOfOperationsField = new JTextField();
-		baseOfOperationsField.setText("0/0");
-		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.setBounds(1016, 30, 176, 20);
-		dcrpgFrame.getContentPane().add(baseOfOperationsField);
 		
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(329, 11, 69, 23);
 		dcrpgFrame.getContentPane().add(btnSave);
+		btnSave.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				chckbxAcro.setSelected(false);
+				chckbxDodge.setSelected(false);
+				chckbxHandToHand.setSelected(false);
+				chckbxMeleeWeapons.setSelected(false);
+				chckbxStealth.setSelected(false);
+				chckbxPlace.setSelected(false);
+				chckbxPlace2.setSelected(false);
+				
+				// Write save code here - should be easy
+				dao.update(currentSheet);
+				for(SkillSpec ss : currentSheet.getSkillSpecs())
+				{
+					dao.updateSpec(ss);
+				}
+				dao.saveAll();
+			}
+		});
 		
 		//load initial sheet
 				nameField.setText(currentSheet.getName());
@@ -1654,11 +1685,11 @@ public class MainWindow {
 				weightField.setText(currentSheet.getWeight());
 				eyeColorField.setText(currentSheet.getEyeColor());
 				hairColorField.setText(currentSheet.getHairColor());
-				heroPointsField.setText(Integer.toString(currentSheet.getHeroPoints()));
-				villainPointsField.setText(Integer.toString(currentSheet.getVillainPoints()));
-				availableRenownField.setText(Integer.toString(currentSheet.getAvailableRenown()));
-				powerPointsField.setText(Integer.toString(currentSheet.getPowerPoints()));
-				skillPointsField.setText(Integer.toString(currentSheet.getSkillPoints()));
+				heroPointsField.setValue(currentSheet.getHeroPoints());
+				villainPointsField.setValue(currentSheet.getVillainPoints());
+				powerPointsField.setValue(currentSheet.getPowerPoints());
+				skillPointsField.setValue(currentSheet.getSkillPoints());
+				availableRenownField.setValue(currentSheet.getAvailableRenown());
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -1686,6 +1717,12 @@ public class MainWindow {
 							if(s.getName().equals(nameSearchField.getText()))
 							{
 									chckbxAcro.setSelected(false);
+									chckbxDodge.setSelected(false);
+									chckbxHandToHand.setSelected(false);
+									chckbxMeleeWeapons.setSelected(false);
+									chckbxStealth.setSelected(false);
+									chckbxPlace.setSelected(false);
+									chckbxPlace2.setSelected(false);
 
 								
 									currentSheet = s;
@@ -1738,14 +1775,6 @@ public class MainWindow {
 						}
 					}
 				});
-
-	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
+				
 	}
 }

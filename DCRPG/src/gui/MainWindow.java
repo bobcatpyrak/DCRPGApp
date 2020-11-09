@@ -731,7 +731,8 @@ public class MainWindow {
 						acroSpecs.setBackground(new Color(255, 204, 204));
 						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
 						acroPanel.add(acroSpecs);
-						acroSpecs.setText(acroSpecsList.get(i).getId() + " " + acroSpecsList.get(i).getDescription());
+						acroSpecs.setText(acroSpecsList.get(i).getDescription());
+						acroSpecs.requestFocus();	
 
 						acroSpecs.addKeyListener(new KeyAdapter() {
 							@Override
@@ -740,16 +741,19 @@ public class MainWindow {
 									editing.setDescription(acroSpecs.getText());
 									for(SkillSpec ss : specs)
 									{
-										// don't iterate, just save the exact id you need
-										System.out.println("attempting to save");
 										if(ss.getId() == editing.getId())
 										{
 											ss.setDescription(editing.getDescription());
 											currentSheet.setSkillSpecs(specs);
 											break;
 										}
+
 									}
-								
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxAcro.setSelected(false);
+										chckbxAcro.setSelected(true);
+									}
 							}
 						});
 						
@@ -757,21 +761,46 @@ public class MainWindow {
 				}
 				else if(!chckbxAcro.isSelected())
 				{
+					
+					for(SkillSpec s : acroSpecsList)
+					{
+						if(s.getDescription().replace(" ", "").equals(""))
+						{
+							System.out.println("This empty: " + s.getId());
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getId() == s.getId())
+								{
+									System.out.println("destroyed");
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+					}
+					
+			
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+					
 					// WHY DUPLICATING A BLANK SPACE
-					if(specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
 					{
 						specs.remove(blankId);
-						System.out.println("removed");
 						if(blankId == (nextSpecId-1))
 							nextSpecId--;
+						
 					}
+					currentSheet.setSkillSpecs(specs);
+
 					acroSpecsList.clear();
-					for(TextField t : acroSpecsFields)
+					for(TextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
 					{
-						System.out.println(t.getText());
-						t = null;
+						acroPanel.remove(t);
 					}
 					acroSpecsFields.clear();
+					
 					reflexesPanel.setSize(354, (274));
 					acroPanel.setSize(354, 32);
 					dodgePanel.setLocation(0, 82);
@@ -999,6 +1028,9 @@ public class MainWindow {
 						{
 							if(s.getName().equals(nameSearchField.getText()))
 							{
+									chckbxAcro.setSelected(false);
+
+								
 									currentSheet = s;
 									// load the entire dang sheet
 									nameField.setText(currentSheet.getName());

@@ -11,6 +11,7 @@ public class CharacterSheet
 	String name;
 	String picture;
 	// demographics
+	String fullName;
 	String occupation;
 	String baseOfOperations;
 	String location;
@@ -65,6 +66,12 @@ public class CharacterSheet
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	public String getOccupation() {
 		return occupation;
@@ -460,7 +467,7 @@ public class CharacterSheet
 		+ FIELD_SEP + getLocation() + FIELD_SEP + getGender() 
 		+ FIELD_SEP + getRace() + FIELD_SEP + getHeight() 
 		+ FIELD_SEP + getWeight() + FIELD_SEP + getEyeColor() 
-		+ FIELD_SEP + getHairColor();
+		+ FIELD_SEP + getHairColor() + FIELD_SEP + getFullName();
 	}
 	public void setAllDemographics(String cs)
 	{
@@ -474,7 +481,8 @@ public class CharacterSheet
 		setHeight(fields[5]);
 		setWeight(fields[6]);
 		setEyeColor(fields[7]);
-		setHairColor(fields[7]);
+		setHairColor(fields[8]);
+		setFullName(fields[9]);
 	}
 	
 	// Methods for getting and setting all misc stats

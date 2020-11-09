@@ -92,7 +92,7 @@ public class MainWindow {
 		CharacterSheet batman = new CharacterSheet(nextSheetId);
 		batman.setName("Batman2");
 		batman.setPicture("batman.png");
-		batman.setAllDemographics("CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark");
+		batman.setAllDemographics("CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark%Bruce Wayne");
 		batman.setAllMiscStats("2d6%6%5%68%3%250%0%17%45%46");
 		batman.setAllStats("6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6");
 		
@@ -217,16 +217,35 @@ public class MainWindow {
 			}
 		});
 		
+		JLabel lblFullName = new JLabel("Full Name");
+		lblFullName.setBounds(354, 60, 90, 20);
+		dcrpgFrame.getContentPane().add(lblFullName);
+		
+		JFormattedTextField fullNameField = new JFormattedTextField();
+		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
+		fullNameField.setColumns(10);
+		fullNameField.setBounds(423, 60, 201, 20);
+		dcrpgFrame.getContentPane().add(fullNameField);
+		fullNameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setFullName(fullNameField.getText());
+			}
+		});
+		
 		JLabel udoLabel = new JLabel("UDO");
-		udoLabel.setBounds(774, 59, 90, 20);
+		udoLabel.setBounds(1063, 6, 90, 20);
 		dcrpgFrame.getContentPane().add(udoLabel);
 		
-		JLabel bodyPointsLabel = new JLabel("Body Points");
-		bodyPointsLabel.setBounds(774, 84, 90, 20);
+		JLabel bodyPointsLabel = new JLabel("<html><body>  Body<br>Points</body></html>");
+		bodyPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		bodyPointsLabel.setBounds(933, 6, 60, 42);
 		dcrpgFrame.getContentPane().add(bodyPointsLabel);
 		
 		JLabel speedLabel = new JLabel("Speed");
-		speedLabel.setBounds(774, 109, 90, 20);
+		speedLabel.setBounds(1063, 29, 90, 20);
 		dcrpgFrame.getContentPane().add(speedLabel);
 		
 		JPanel demographicsPanel = new JPanel();
@@ -239,24 +258,16 @@ public class MainWindow {
 		lblGender.setBounds(0, 0, 90, 20);
 		demographicsPanel.add(lblGender);
 		
-		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(0, 25, 90, 20);
-		demographicsPanel.add(lblRace);
-		
-		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(0, 50, 90, 20);
-		demographicsPanel.add(lblEyeColor);
-		
 		JLabel lblHeight = new JLabel("Height");
-		lblHeight.setBounds(156, 0, 90, 20);
+		lblHeight.setBounds(0, 25, 90, 20);
 		demographicsPanel.add(lblHeight);
 		
 		JLabel lblWeight = new JLabel("Weight");
-		lblWeight.setBounds(156, 25, 90, 20);
+		lblWeight.setBounds(0, 50, 90, 20);
 		demographicsPanel.add(lblWeight);
 		
 		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(156, 50, 90, 20);
+		lblHairColor.setBounds(145, 50, 90, 20);
 		demographicsPanel.add(lblHairColor);
 		
 		genderField = new JFormattedTextField();
@@ -273,36 +284,8 @@ public class MainWindow {
 			}
 		});
 		
-		raceField = new JFormattedTextField();
-		raceField.setBounds(53, 25, 86, 20);
-		demographicsPanel.add(raceField);
-		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
-		raceField.setColumns(10);
-		raceField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setRace(raceField.getText());
-			}
-		});
-		
-		JFormattedTextField eyeColorField = new JFormattedTextField();
-		eyeColorField.setBounds(53, 50, 86, 20);
-		demographicsPanel.add(eyeColorField);
-		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		eyeColorField.setColumns(10);
-		eyeColorField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setEyeColor(eyeColorField.getText());
-			}
-		});
-		
 		heightField = new JFormattedTextField();
-		heightField.setBounds(212, 0, 86, 20);
+		heightField.setBounds(53, 25, 86, 20);
 		demographicsPanel.add(heightField);
 		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heightField.setColumns(10);
@@ -316,7 +299,7 @@ public class MainWindow {
 		});
 		
 		weightField = new JFormattedTextField();
-		weightField.setBounds(212, 25, 86, 20);
+		weightField.setBounds(52, 50, 86, 20);
 		demographicsPanel.add(weightField);
 		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		weightField.setColumns(10);
@@ -357,13 +340,13 @@ public class MainWindow {
 		dcrpgFrame.getContentPane().add(chckbxDemographics);
 		
 		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(367, 59, 90, 20);
+		lblHeroPoints.setBounds(628, 59, 90, 20);
 		dcrpgFrame.getContentPane().add(lblHeroPoints);
 		
 		heroPointsField = new JFormattedTextField(nums);
 		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heroPointsField.setColumns(10);
-		heroPointsField.setBounds(460, 59, 86, 20);
+		heroPointsField.setBounds(721, 59, 86, 20);
 		dcrpgFrame.getContentPane().add(heroPointsField);
 		heroPointsField.addKeyListener(new KeyAdapter() 
 		{
@@ -376,13 +359,13 @@ public class MainWindow {
 
 		
 		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(367, 84, 90, 20);
+		lblVillainPoints.setBounds(628, 84, 90, 20);
 		dcrpgFrame.getContentPane().add(lblVillainPoints);
 		
 		villainPointsField = new JFormattedTextField(nums);
 		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		villainPointsField.setColumns(10);
-		villainPointsField.setBounds(460, 84, 86, 20);
+		villainPointsField.setBounds(721, 84, 86, 20);
 		dcrpgFrame.getContentPane().add(villainPointsField);
 		villainPointsField.addKeyListener(new KeyAdapter() 
 		{
@@ -394,14 +377,14 @@ public class MainWindow {
 		});
 
 		
-		JLabel lblAvailableRenown = new JLabel("Available Renown");
-		lblAvailableRenown.setBounds(367, 109, 90, 20);
+		JLabel lblAvailableRenown = new JLabel("Renown");
+		lblAvailableRenown.setBounds(628, 109, 90, 20);
 		dcrpgFrame.getContentPane().add(lblAvailableRenown);
 		
 		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
 		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
 		availableRenownField.setColumns(10);
-		availableRenownField.setBounds(460, 109, 86, 20);
+		availableRenownField.setBounds(721, 109, 86, 20);
 		dcrpgFrame.getContentPane().add(availableRenownField);
 		availableRenownField.addKeyListener(new KeyAdapter() 
 		{
@@ -414,13 +397,13 @@ public class MainWindow {
 
 		
 		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(570, 59, 90, 20);
+		lblPowerPoints.setBounds(831, 59, 90, 20);
 		dcrpgFrame.getContentPane().add(lblPowerPoints);
 		
 		powerPointsField = new JFormattedTextField(nums);
 		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		powerPointsField.setColumns(10);
-		powerPointsField.setBounds(663, 59, 86, 20);
+		powerPointsField.setBounds(924, 59, 86, 20);
 		dcrpgFrame.getContentPane().add(powerPointsField);
 		powerPointsField.addKeyListener(new KeyAdapter() 
 		{
@@ -433,17 +416,17 @@ public class MainWindow {
 
 		
 		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(570, 84, 90, 20);
+		lblSkillPoints.setBounds(831, 84, 90, 20);
 		dcrpgFrame.getContentPane().add(lblSkillPoints);
 				
 		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(947, 6, 90, 20);
+		lblOccupation.setBounds(354, 84, 90, 20);
 		dcrpgFrame.getContentPane().add(lblOccupation);
 		
 		occupationField = new JFormattedTextField();
 		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
 		occupationField.setColumns(10);
-		occupationField.setBounds(1016, 6, 176, 20);
+		occupationField.setBounds(423, 84, 201, 20);
 		dcrpgFrame.getContentPane().add(occupationField);
 		occupationField.addKeyListener(new KeyAdapter() 
 		{
@@ -456,13 +439,13 @@ public class MainWindow {
 
 		
 		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(947, 31, 90, 20);
+		lblHomeBase.setBounds(354, 108, 90, 20);
 		dcrpgFrame.getContentPane().add(lblHomeBase);
 		
 		baseOfOperationsField = new JFormattedTextField();
 		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.setBounds(1016, 30, 176, 20);
+		baseOfOperationsField.setBounds(423, 108, 201, 20);
 		dcrpgFrame.getContentPane().add(baseOfOperationsField);
 		baseOfOperationsField.addKeyListener(new KeyAdapter() 
 		{
@@ -475,7 +458,7 @@ public class MainWindow {
 	
 		udoField = new JFormattedTextField();
 		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
-		udoField.setBounds(867, 59, 86, 20);
+		udoField.setBounds(1110, 6, 60, 20);
 		dcrpgFrame.getContentPane().add(udoField);
 		udoField.setColumns(10);
 		udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
@@ -492,8 +475,9 @@ public class MainWindow {
 		});
 		
 		bodyPointsField = new JFormattedTextField();
-		bodyPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		bodyPointsField.setBounds(867, 84, 86, 20);
+		bodyPointsField.setFont(new Font("Arial", Font.BOLD, 20));
+		bodyPointsField.setHorizontalAlignment(SwingConstants.CENTER);
+		bodyPointsField.setBounds(992, 6, 60, 43);
 		dcrpgFrame.getContentPane().add(bodyPointsField);
 		bodyPointsField.setColumns(10);
 		bodyPointsField.addKeyListener(new KeyAdapter()
@@ -513,7 +497,7 @@ public class MainWindow {
 		skillPointsField = new JFormattedTextField(nums);
 		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		skillPointsField.setColumns(10);
-		skillPointsField.setBounds(663, 84, 86, 20);
+		skillPointsField.setBounds(924, 84, 86, 20);
 		dcrpgFrame.getContentPane().add(skillPointsField);
 		skillPointsField.addKeyListener(new KeyAdapter() 
 		{
@@ -527,7 +511,7 @@ public class MainWindow {
 		
 		speedField = new JFormattedTextField(nums);
 		speedField.setHorizontalAlignment(SwingConstants.RIGHT);
-		speedField.setBounds(867, 109, 86, 20);
+		speedField.setBounds(1110, 29, 60, 20);
 		dcrpgFrame.getContentPane().add(speedField);
 		speedField.setColumns(10);
 		speedField.addKeyListener(new KeyAdapter() 
@@ -1677,14 +1661,51 @@ public class MainWindow {
 		
 		//load initial sheet
 				nameField.setText(currentSheet.getName());
+				fullNameField.setText(currentSheet.getFullName());
 				occupationField.setText(currentSheet.getOccupation());
 				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
 				genderField.setText(currentSheet.getGender());
-				raceField.setText(currentSheet.getRace());
 				heightField.setText(currentSheet.getHeight());
 				weightField.setText(currentSheet.getWeight());
-				eyeColorField.setText(currentSheet.getEyeColor());
 				hairColorField.setText(currentSheet.getHairColor());
+				
+				JLabel lblRace = new JLabel("Race");
+				lblRace.setBounds(145, 0, 90, 20);
+				demographicsPanel.add(lblRace);
+				
+				raceField = new JFormattedTextField();
+				raceField.setBounds(212, 0, 86, 20);
+				demographicsPanel.add(raceField);
+				raceField.setHorizontalAlignment(SwingConstants.RIGHT);
+				raceField.setColumns(10);
+				raceField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setRace(raceField.getText());
+					}
+				});
+				raceField.setText(currentSheet.getRace());
+				
+				JLabel lblEyeColor = new JLabel("Eye Color");
+				lblEyeColor.setBounds(145, 25, 90, 20);
+				demographicsPanel.add(lblEyeColor);
+				
+				JFormattedTextField eyeColorField = new JFormattedTextField();
+				eyeColorField.setBounds(212, 25, 86, 20);
+				demographicsPanel.add(eyeColorField);
+				eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+				eyeColorField.setColumns(10);
+				eyeColorField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setEyeColor(eyeColorField.getText());
+					}
+				});
+				eyeColorField.setText(currentSheet.getEyeColor());
 				heroPointsField.setValue(currentSheet.getHeroPoints());
 				villainPointsField.setValue(currentSheet.getVillainPoints());
 				powerPointsField.setValue(currentSheet.getPowerPoints());
@@ -1728,6 +1749,7 @@ public class MainWindow {
 									currentSheet = s;
 									// load the entire dang sheet
 									nameField.setText(currentSheet.getName());
+									fullNameField.setText(currentSheet.getFullName());
 									occupationField.setText(currentSheet.getOccupation());
 									baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
 									genderField.setText(currentSheet.getGender());
@@ -1764,6 +1786,8 @@ public class MainWindow {
 				
 				btnLoad.setBounds(167, 11, 69, 23);
 				dcrpgFrame.getContentPane().add(btnLoad);
+				
+				
 				
 				nameSearchField.addKeyListener(new KeyAdapter() {
 					@Override

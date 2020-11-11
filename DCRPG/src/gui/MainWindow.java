@@ -217,24 +217,6 @@ public class MainWindow {
 			}
 		});
 		
-		JLabel lblFullName = new JLabel("Full Name");
-		lblFullName.setBounds(354, 60, 90, 20);
-		dcrpgFrame.getContentPane().add(lblFullName);
-		
-		JFormattedTextField fullNameField = new JFormattedTextField();
-		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
-		fullNameField.setColumns(10);
-		fullNameField.setBounds(423, 60, 201, 20);
-		dcrpgFrame.getContentPane().add(fullNameField);
-		fullNameField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setFullName(fullNameField.getText());
-			}
-		});
-		
 		JLabel udoLabel = new JLabel("UDO");
 		udoLabel.setBounds(1063, 6, 90, 20);
 		dcrpgFrame.getContentPane().add(udoLabel);
@@ -250,28 +232,28 @@ public class MainWindow {
 		
 		JPanel demographicsPanel = new JPanel();
 		demographicsPanel.setBackground(new Color(204, 255, 255));
-		demographicsPanel.setBounds(44, 59, 298, 70);
+		demographicsPanel.setBounds(48, 59, 1008, 70);
 		dcrpgFrame.getContentPane().add(demographicsPanel);
 		demographicsPanel.setLayout(null);
 		
 		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(0, 0, 90, 20);
+		lblGender.setBounds(1, 1, 35, 20);
 		demographicsPanel.add(lblGender);
 		
 		JLabel lblHeight = new JLabel("Height");
-		lblHeight.setBounds(0, 25, 90, 20);
+		lblHeight.setBounds(1, 25, 90, 20);
 		demographicsPanel.add(lblHeight);
 		
 		JLabel lblWeight = new JLabel("Weight");
-		lblWeight.setBounds(0, 50, 90, 20);
+		lblWeight.setBounds(1, 49, 90, 20);
 		demographicsPanel.add(lblWeight);
 		
 		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(145, 50, 90, 20);
+		lblHairColor.setBounds(157, 49, 47, 20);
 		demographicsPanel.add(lblHairColor);
 		
 		genderField = new JFormattedTextField();
-		genderField.setBounds(53, 0, 86, 20);
+		genderField.setBounds(51, 1, 86, 20);
 		demographicsPanel.add(genderField);
 		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
 		genderField.setColumns(10);
@@ -285,7 +267,7 @@ public class MainWindow {
 		});
 		
 		heightField = new JFormattedTextField();
-		heightField.setBounds(53, 25, 86, 20);
+		heightField.setBounds(51, 25, 86, 20);
 		demographicsPanel.add(heightField);
 		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heightField.setColumns(10);
@@ -299,7 +281,7 @@ public class MainWindow {
 		});
 		
 		weightField = new JFormattedTextField();
-		weightField.setBounds(52, 50, 86, 20);
+		weightField.setBounds(51, 49, 86, 20);
 		demographicsPanel.add(weightField);
 		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		weightField.setColumns(10);
@@ -313,7 +295,7 @@ public class MainWindow {
 		});
 		
 		JFormattedTextField hairColorField = new JFormattedTextField((Format) null);
-		hairColorField.setBounds(212, 50, 86, 20);
+		hairColorField.setBounds(219, 49, 86, 20);
 		demographicsPanel.add(hairColorField);
 		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 		hairColorField.setColumns(10);
@@ -338,123 +320,6 @@ public class MainWindow {
 		chckbxDemographics.setSelected(true);
 		chckbxDemographics.setBounds(38, 39, 164, 23);
 		dcrpgFrame.getContentPane().add(chckbxDemographics);
-		
-		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(628, 59, 90, 20);
-		dcrpgFrame.getContentPane().add(lblHeroPoints);
-		
-		heroPointsField = new JFormattedTextField(nums);
-		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heroPointsField.setColumns(10);
-		heroPointsField.setBounds(721, 59, 86, 20);
-		dcrpgFrame.getContentPane().add(heroPointsField);
-		heroPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
-			}
-		});
-
-		
-		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(628, 84, 90, 20);
-		dcrpgFrame.getContentPane().add(lblVillainPoints);
-		
-		villainPointsField = new JFormattedTextField(nums);
-		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		villainPointsField.setColumns(10);
-		villainPointsField.setBounds(721, 84, 86, 20);
-		dcrpgFrame.getContentPane().add(villainPointsField);
-		villainPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
-			}
-		});
-
-		
-		JLabel lblAvailableRenown = new JLabel("Renown");
-		lblAvailableRenown.setBounds(628, 109, 90, 20);
-		dcrpgFrame.getContentPane().add(lblAvailableRenown);
-		
-		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
-		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
-		availableRenownField.setColumns(10);
-		availableRenownField.setBounds(721, 109, 86, 20);
-		dcrpgFrame.getContentPane().add(availableRenownField);
-		availableRenownField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
-			}
-		});
-
-		
-		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(831, 59, 90, 20);
-		dcrpgFrame.getContentPane().add(lblPowerPoints);
-		
-		powerPointsField = new JFormattedTextField(nums);
-		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		powerPointsField.setColumns(10);
-		powerPointsField.setBounds(924, 59, 86, 20);
-		dcrpgFrame.getContentPane().add(powerPointsField);
-		powerPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
-			}
-		});
-
-		
-		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(831, 84, 90, 20);
-		dcrpgFrame.getContentPane().add(lblSkillPoints);
-				
-		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(354, 84, 90, 20);
-		dcrpgFrame.getContentPane().add(lblOccupation);
-		
-		occupationField = new JFormattedTextField();
-		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
-		occupationField.setColumns(10);
-		occupationField.setBounds(423, 84, 201, 20);
-		dcrpgFrame.getContentPane().add(occupationField);
-		occupationField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setOccupation(occupationField.getText());
-			}
-		});
-
-		
-		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(354, 108, 90, 20);
-		dcrpgFrame.getContentPane().add(lblHomeBase);
-		
-		baseOfOperationsField = new JFormattedTextField();
-		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.setBounds(423, 108, 201, 20);
-		dcrpgFrame.getContentPane().add(baseOfOperationsField);
-		baseOfOperationsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
-			}
-		});
 	
 		udoField = new JFormattedTextField();
 		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -490,21 +355,6 @@ public class MainWindow {
 					currentSheet.setBodyPointsCurrent(Integer.parseInt(bps[0]));
 				if(bps.length > 1)
 					currentSheet.setBodyPointsMax(Integer.parseInt(bps[1]));
-			}
-		});
-
-		
-		skillPointsField = new JFormattedTextField(nums);
-		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		skillPointsField.setColumns(10);
-		skillPointsField.setBounds(924, 84, 86, 20);
-		dcrpgFrame.getContentPane().add(skillPointsField);
-		skillPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
 			}
 		});
 
@@ -850,6 +700,546 @@ public class MainWindow {
 			}
 		});
 		
+		Panel coordinationPanel = new Panel();
+		coordinationPanel.setLayout(null);
+		coordinationPanel.setBackground(new Color(255, 133, 0));
+		coordinationPanel.setBounds(429, 149, 354, 274);
+		dcrpgFrame.getContentPane().add(coordinationPanel);
+		
+		Label coordinationLabel = new Label("Coordination");
+		coordinationLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+		coordinationLabel.setBounds(110, 10, 135, 30);
+		coordinationPanel.add(coordinationLabel);
+		
+		JFormattedTextField coordinationLevel = new JFormattedTextField((Format) null);
+		coordinationLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		coordinationLevel.setFont(new Font("Arial", Font.BOLD, 22));
+		coordinationLevel.setColumns(2);
+		coordinationLevel.setBounds(294, 10, 50, 35);
+		coordinationPanel.add(coordinationLevel);
+		
+		Panel catchPanel = new Panel();
+		catchPanel.setLayout(null);
+		catchPanel.setBackground(new Color(255, 201, 131));
+		catchPanel.setBounds(0, 50, 354, 32);
+		coordinationPanel.add(catchPanel);
+		
+		Label catchLabel = new Label("Catch");
+		catchLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		catchLabel.setBounds(35, 5, 120, 22);
+		catchPanel.add(catchLabel);
+		
+		JFormattedTextField catchTotal = new JFormattedTextField();
+		catchTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		catchTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		catchTotal.setEditable(false);
+		catchTotal.setColumns(2);
+		catchTotal.setBounds(294, 5, 50, 22);
+		catchPanel.add(catchTotal);
+		
+		JFormattedTextField catchLevel = new JFormattedTextField(nums);
+		catchLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(catchLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(catchLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setCatching(i);
+					catchTotal.setValue(i+j);	
+				}
+			}
+		});
+		catchLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		catchLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		catchLevel.setColumns(2);
+		catchLevel.setBounds(5, 5, 24, 22);
+		catchPanel.add(catchLevel);
+		
+		Panel climbingPanel = new Panel();
+		climbingPanel.setLayout(null);
+		climbingPanel.setBackground(new Color(255, 173, 84));
+		climbingPanel.setBounds(0, 82, 354, 32);
+		coordinationPanel.add(climbingPanel);
+		
+		Label climbingLabel = new Label("Climbing");
+		climbingLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		climbingLabel.setBounds(35, 5, 120, 22);
+		climbingPanel.add(climbingLabel);
+		
+		JFormattedTextField climbingTotal = new JFormattedTextField();
+		climbingTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		climbingTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		climbingTotal.setEditable(false);
+		climbingTotal.setColumns(2);
+		climbingTotal.setBounds(294, 5, 50, 22);
+		climbingPanel.add(climbingTotal);
+		
+		JFormattedTextField climbingLevel = new JFormattedTextField(nums);
+		climbingLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(climbingLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(climbingLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setClimb(i);
+					climbingTotal.setValue(i+j);	
+				}
+			}
+		});
+		climbingLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		climbingLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		climbingLevel.setColumns(2);
+		climbingLevel.setBounds(5, 7, 24, 20);
+		climbingPanel.add(climbingLevel);
+		
+		Panel drivingPanel = new Panel();
+		drivingPanel.setLayout(null);
+		drivingPanel.setBackground(new Color(255, 201, 131));
+		drivingPanel.setBounds(0, 114, 354, 32);
+		coordinationPanel.add(drivingPanel);
+		
+		Label drivingLabel = new Label("Driving");
+		drivingLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		drivingLabel.setBounds(35, 5, 120, 22);
+		drivingPanel.add(drivingLabel);
+		
+		JFormattedTextField drivingTotal = new JFormattedTextField();
+		drivingTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		drivingTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		drivingTotal.setEditable(false);
+		drivingTotal.setColumns(2);
+		drivingTotal.setBounds(294, 5, 50, 22);
+		drivingPanel.add(drivingTotal);
+		
+		JFormattedTextField drivingLevel = new JFormattedTextField(nums);
+		drivingLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(drivingLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(drivingLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setDrive(i);
+					drivingTotal.setValue(i+j);	
+				}
+			}
+		});
+		drivingLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		drivingLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		drivingLevel.setColumns(2);
+		drivingLevel.setBounds(5, 5, 24, 22);
+		drivingPanel.add(drivingLevel);
+		
+		Panel marksmanshipPanel = new Panel();
+		marksmanshipPanel.setLayout(null);
+		marksmanshipPanel.setBackground(new Color(255, 173, 84));
+		marksmanshipPanel.setBounds(0, 146, 354, 32);
+		coordinationPanel.add(marksmanshipPanel);
+		
+		Label marksmanshipLabel = new Label("Marksmanship");
+		marksmanshipLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		marksmanshipLabel.setBounds(35, 5, 120, 22);
+		marksmanshipPanel.add(marksmanshipLabel);
+		
+		JFormattedTextField marksmanshipTotal = new JFormattedTextField();
+		marksmanshipTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		marksmanshipTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		marksmanshipTotal.setEditable(false);
+		marksmanshipTotal.setColumns(2);
+		marksmanshipTotal.setBounds(294, 5, 50, 22);
+		marksmanshipPanel.add(marksmanshipTotal);
+		
+		JFormattedTextField marksmanshipLevel = new JFormattedTextField(nums);
+		marksmanshipLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(marksmanshipLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(marksmanshipLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setMarksmanship(i);
+					marksmanshipTotal.setValue(i+j);	
+				}
+			}
+		});
+		marksmanshipLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		marksmanshipLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		marksmanshipLevel.setColumns(2);
+		marksmanshipLevel.setBounds(5, 7, 24, 20);
+		marksmanshipPanel.add(marksmanshipLevel);
+		
+		Panel thieveryPanel = new Panel();
+		thieveryPanel.setLayout(null);
+		thieveryPanel.setBackground(new Color(255, 201, 131));
+		thieveryPanel.setBounds(0, 178, 354, 32);
+		coordinationPanel.add(thieveryPanel);
+		
+		Label thieveryLabel = new Label("Thievery");
+		thieveryLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		thieveryLabel.setBounds(35, 5, 120, 22);
+		thieveryPanel.add(thieveryLabel);
+		
+		JFormattedTextField thieveryTotal = new JFormattedTextField();
+		thieveryTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		thieveryTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		thieveryTotal.setEditable(false);
+		thieveryTotal.setColumns(2);
+		thieveryTotal.setBounds(294, 5, 50, 22);
+		thieveryPanel.add(thieveryTotal);
+		
+		JFormattedTextField thieveryLevel = new JFormattedTextField(nums);
+		thieveryLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(thieveryLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(thieveryLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setThievery(i);
+					thieveryTotal.setValue(i+j);	
+				}
+			}
+		});
+		thieveryLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		thieveryLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		thieveryLevel.setColumns(2);
+		thieveryLevel.setBounds(5, 5, 24, 22);
+		thieveryPanel.add(thieveryLevel);
+		
+		Panel thrownWeaponsPanel = new Panel();
+		thrownWeaponsPanel.setLayout(null);
+		thrownWeaponsPanel.setBackground(new Color(255, 173, 84));
+		thrownWeaponsPanel.setBounds(0, 210, 354, 32);
+		coordinationPanel.add(thrownWeaponsPanel);
+		
+		Label thrownWeaponsLabel = new Label("Thrown Weapons");
+		thrownWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		thrownWeaponsLabel.setBounds(35, 5, 120, 22);
+		thrownWeaponsPanel.add(thrownWeaponsLabel);
+		
+		JFormattedTextField thrownWeaponsTotal = new JFormattedTextField();
+		thrownWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		thrownWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		thrownWeaponsTotal.setEditable(false);
+		thrownWeaponsTotal.setColumns(2);
+		thrownWeaponsTotal.setBounds(294, 5, 50, 22);
+		thrownWeaponsPanel.add(thrownWeaponsTotal);
+		
+		JFormattedTextField thrownWeaponsLevel = new JFormattedTextField(nums);
+		thrownWeaponsLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(thrownWeaponsLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(thrownWeaponsLevel.getText());
+					int j = Integer.parseInt(coordinationLevel.getText());
+					currentSheet.setThrownWeapons(i);
+					thrownWeaponsTotal.setValue(i+j);	
+				}
+			}
+		});
+		thrownWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		thrownWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		thrownWeaponsLevel.setColumns(2);
+		thrownWeaponsLevel.setBounds(5, 7, 24, 20);
+		thrownWeaponsPanel.add(thrownWeaponsLevel);
+		
+		coordinationLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(coordinationLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(coordinationLevel.getText());
+					int j = Integer.parseInt(catchLevel.getText());
+					int k = Integer.parseInt(climbingLevel.getText());
+					int l = Integer.parseInt(drivingLevel.getText());
+					int m = Integer.parseInt(marksmanshipLevel.getText());
+					int n = Integer.parseInt(thieveryLevel.getText());
+					int o = Integer.parseInt(thrownWeaponsLevel.getText());
+
+					currentSheet.setCoordination(i);
+					catchTotal.setValue(i+j);
+					climbingTotal.setValue(i+k);
+					drivingTotal.setValue(i+l);	
+					marksmanshipTotal.setValue(i+m);
+					thieveryTotal.setValue(i+n);
+					thrownWeaponsTotal.setValue(i+o);
+				}
+			}
+		});
+		
+		Panel physiquePanel = new Panel();
+		physiquePanel.setLayout(null);
+		physiquePanel.setBackground(new Color(255, 255, 0));
+		physiquePanel.setBounds(816, 149, 354, 274);
+		dcrpgFrame.getContentPane().add(physiquePanel);
+		
+		Label physiqueLabel = new Label("Physique");
+		physiqueLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+		physiqueLabel.setBounds(110, 10, 135, 30);
+		physiquePanel.add(physiqueLabel);
+		
+		JFormattedTextField physiqueLevel = new JFormattedTextField((Format) null);
+		physiqueLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		physiqueLevel.setFont(new Font("Arial", Font.BOLD, 22));
+		physiqueLevel.setColumns(2);
+		physiqueLevel.setBounds(294, 10, 50, 35);
+		physiquePanel.add(physiqueLevel);
+		
+		Panel athleticsPanel = new Panel();
+		athleticsPanel.setLayout(null);
+		athleticsPanel.setBackground(new Color(240, 230, 140));
+		athleticsPanel.setBounds(0, 50, 354, 32);
+		physiquePanel.add(athleticsPanel);
+		
+		Label athleticsLabel = new Label("Athletics");
+		athleticsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		athleticsLabel.setBounds(35, 5, 120, 22);
+		athleticsPanel.add(athleticsLabel);
+		
+		JFormattedTextField athleticsTotal = new JFormattedTextField();
+		athleticsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		athleticsTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		athleticsTotal.setEditable(false);
+		athleticsTotal.setColumns(2);
+		athleticsTotal.setBounds(294, 5, 50, 22);
+		athleticsPanel.add(athleticsTotal);
+		
+		JFormattedTextField athleticsLevel = new JFormattedTextField(nums);
+		athleticsLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		athleticsLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		athleticsLevel.setColumns(2);
+		athleticsLevel.setBounds(5, 5, 24, 22);
+		athleticsPanel.add(athleticsLevel);
+		athleticsLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(athleticsLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(athleticsLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setAthletics(i);
+					athleticsTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel leapPanel = new Panel();
+		leapPanel.setLayout(null);
+		leapPanel.setBackground(new Color(255, 255, 153));
+		leapPanel.setBounds(0, 82, 354, 32);
+		physiquePanel.add(leapPanel);
+		
+		Label leapLabel = new Label("Leap");
+		leapLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		leapLabel.setBounds(35, 5, 120, 22);
+		leapPanel.add(leapLabel);
+		
+		JFormattedTextField leapTotal = new JFormattedTextField();
+		leapTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		leapTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		leapTotal.setEditable(false);
+		leapTotal.setColumns(2);
+		leapTotal.setBounds(294, 5, 50, 22);
+		leapPanel.add(leapTotal);
+		
+		JFormattedTextField leapLevel = new JFormattedTextField(nums);
+		leapLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		leapLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		leapLevel.setColumns(2);
+		leapLevel.setBounds(5, 7, 24, 20);
+		leapPanel.add(leapLevel);
+		leapLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(leapLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(leapLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setLeap(i);
+					leapTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel liftingPanel = new Panel();
+		liftingPanel.setLayout(null);
+		liftingPanel.setBackground(new Color(240, 230, 140));
+		liftingPanel.setBounds(0, 114, 354, 32);
+		physiquePanel.add(liftingPanel);
+		
+		Label liftingLabel = new Label("Lifting");
+		liftingLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		liftingLabel.setBounds(35, 5, 120, 22);
+		liftingPanel.add(liftingLabel);
+		
+		JFormattedTextField liftingTotal = new JFormattedTextField();
+		liftingTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		liftingTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		liftingTotal.setEditable(false);
+		liftingTotal.setColumns(2);
+		liftingTotal.setBounds(294, 5, 50, 22);
+		liftingPanel.add(liftingTotal);
+		
+		JFormattedTextField liftingLevel = new JFormattedTextField((Format) null);
+		liftingLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		liftingLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		liftingLevel.setColumns(2);
+		liftingLevel.setBounds(5, 5, 24, 22);
+		liftingPanel.add(liftingLevel);
+		liftingLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(liftingLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(liftingLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setLifting(i);
+					liftingTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel resistancePanel = new Panel();
+		resistancePanel.setLayout(null);
+		resistancePanel.setBackground(new Color(255, 255, 153));
+		resistancePanel.setBounds(0, 146, 354, 32);
+		physiquePanel.add(resistancePanel);
+		
+		Label resistanceLabel = new Label("Resistance");
+		resistanceLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		resistanceLabel.setBounds(35, 5, 120, 22);
+		resistancePanel.add(resistanceLabel);
+		
+		JFormattedTextField resistanceTotal = new JFormattedTextField();
+		resistanceTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		resistanceTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		resistanceTotal.setEditable(false);
+		resistanceTotal.setColumns(2);
+		resistanceTotal.setBounds(294, 5, 50, 22);
+		resistancePanel.add(resistanceTotal);
+		
+		JFormattedTextField resistanceLevel = new JFormattedTextField((Format) null);
+		resistanceLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		resistanceLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		resistanceLevel.setColumns(2);
+		resistanceLevel.setBounds(5, 7, 24, 20);
+		resistancePanel.add(resistanceLevel);
+		resistanceLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(resistanceLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(resistanceLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setResistance(i);
+					resistanceTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel runningPanel = new Panel();
+		runningPanel.setLayout(null);
+		runningPanel.setBackground(new Color(240, 230, 140));
+		runningPanel.setBounds(0, 178, 354, 32);
+		physiquePanel.add(runningPanel);
+		
+		Label runningLabel = new Label("Running");
+		runningLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		runningLabel.setBounds(35, 5, 120, 22);
+		runningPanel.add(runningLabel);
+		
+		JFormattedTextField runningTotal = new JFormattedTextField();
+		runningTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		runningTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		runningTotal.setEditable(false);
+		runningTotal.setColumns(2);
+		runningTotal.setBounds(294, 5, 50, 22);
+		runningPanel.add(runningTotal);
+		
+		JFormattedTextField runningLevel = new JFormattedTextField((Format) null);
+		runningLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		runningLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		runningLevel.setColumns(2);
+		runningLevel.setBounds(5, 5, 24, 22);
+		runningPanel.add(runningLevel);
+		runningLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(runningLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(runningLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setRunning(i);
+					runningTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel swimmingPanel = new Panel();
+		swimmingPanel.setLayout(null);
+		swimmingPanel.setBackground(new Color(255, 255, 153));
+		swimmingPanel.setBounds(0, 210, 354, 32);
+		physiquePanel.add(swimmingPanel);
+		
+		Label swimmingLabel = new Label("Swimming");
+		swimmingLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		swimmingLabel.setBounds(35, 5, 120, 22);
+		swimmingPanel.add(swimmingLabel);
+		
+		JFormattedTextField swimmingTotal = new JFormattedTextField();
+		swimmingTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		swimmingTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		swimmingTotal.setEditable(false);
+		swimmingTotal.setColumns(2);
+		swimmingTotal.setBounds(294, 5, 50, 22);
+		swimmingPanel.add(swimmingTotal);
+		
+		JFormattedTextField swimmingLevel = new JFormattedTextField((Format) null);
+		swimmingLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		swimmingLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		swimmingLevel.setColumns(2);
+		swimmingLevel.setBounds(5, 7, 24, 20);
+		swimmingPanel.add(swimmingLevel);	
+		swimmingLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(swimmingLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(swimmingLevel.getText());
+					int j = Integer.parseInt(physiqueLevel.getText());
+					currentSheet.setSwimming(i);
+					swimmingTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		physiqueLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(physiqueLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(physiqueLevel.getText());
+					int j = Integer.parseInt(athleticsLevel.getText());
+					int k = Integer.parseInt(leapLevel.getText());
+					int l = Integer.parseInt(liftingLevel.getText());
+					int m = Integer.parseInt(resistanceLevel.getText());
+					int n = Integer.parseInt(runningLevel.getText());
+					int o = Integer.parseInt(swimmingLevel.getText());
+
+					currentSheet.setPhysique(i);
+					athleticsTotal.setValue(i+j);
+					leapTotal.setValue(i+k);
+					liftingTotal.setValue(i+l);	
+					resistanceTotal.setValue(i+m);
+					runningTotal.setValue(i+n);
+					swimmingTotal.setValue(i+o);
+				}
+			}
+		});
+		
 		// AcroSpecs
 		List<JFormattedTextField> acroSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxAcro = new JCheckBox("Show specs");
@@ -934,7 +1324,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1052,7 +1442,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1168,7 +1558,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1282,7 +1672,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1392,7 +1782,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1499,7 +1889,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1605,7 +1995,7 @@ public class MainWindow {
 							{
 								if(ss.getDescription().replace(" ", "").equals(""))
 								{		
-									System.out.println("destroyed");
+
 									specs.remove(ss);
 									currentSheet.setSkillSpecs(specs);
 									break;
@@ -1634,6 +2024,1338 @@ public class MainWindow {
 		chckbxPlace2.setBounds(187, 5, 97, 23);
 		place2Panel.add(chckbxPlace2);
 		
+		// CatchSpecs
+		List<JFormattedTextField> catchSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxCatch = new JCheckBox("Show specs");
+		chckbxCatch.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> catchSpecsList = currentSheet.assignSkillSpecs("Catch");
+				if(chckbxCatch.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Catch", "");
+					catchSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (catchSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					catchPanel.setSize(354, (32+extra));
+					climbingPanel.setLocation(0, climbingPanel.getY()+extra);
+					drivingPanel.setLocation(0, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					for(int i = 0; i < catchSpecsList.size(); i++)
+					{
+						int j = i;
+						catchSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField catchSpecs = catchSpecsFields.get(i);
+						catchSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						catchSpecs.setBackground(new Color(255, 235, 209));
+						catchSpecs.setBounds(5, 33+(i*28), 279, 22);
+						catchPanel.add(catchSpecs);
+						catchSpecs.setText(catchSpecsList.get(i).getDescription());
+						catchSpecs.requestFocus();	
+
+						catchSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = catchSpecsList.get(j);
+									editing.setDescription(catchSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxCatch.setSelected(false);
+										chckbxCatch.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxCatch.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					catchSpecsList.clear();
+					for(JFormattedTextField t : catchSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						catchPanel.remove(t);
+						t = null;
+					}
+					catchSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(catchPanel.getHeight()-32)));
+					catchPanel.setSize(354, (32));
+					climbingPanel.setLocation(0, catchPanel.getY()+32);
+					drivingPanel.setLocation(0, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+				}
+			}
+		});
+		chckbxCatch.setBackground(new Color(255, 201, 131));
+		chckbxCatch.setBounds(187, 5, 97, 23);
+		catchPanel.add(chckbxCatch);
+		
+		// ClimbingSpecs
+		List<JFormattedTextField> climbingSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxClimbing = new JCheckBox("Show specs");
+		chckbxClimbing.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> climbingSpecsList = currentSheet.assignSkillSpecs("Climbing");
+				if(chckbxClimbing.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Climbing", "");
+					climbingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (climbingSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					climbingPanel.setSize(354, (32+extra));
+					drivingPanel.setLocation(0, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					for(int i = 0; i < climbingSpecsList.size(); i++)
+					{
+						int j = i;
+						climbingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField climbingSpecs = climbingSpecsFields.get(i);
+						climbingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						climbingSpecs.setBackground(new Color(255, 235, 209));
+						climbingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						climbingPanel.add(climbingSpecs);
+						climbingSpecs.setText(climbingSpecsList.get(i).getDescription());
+						climbingSpecs.requestFocus();	
+
+						climbingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = climbingSpecsList.get(j);
+									editing.setDescription(climbingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxClimbing.setSelected(false);
+										chckbxClimbing.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxClimbing.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					climbingSpecsList.clear();
+					for(JFormattedTextField t : climbingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						climbingPanel.remove(t);
+						t = null;
+					}
+					climbingSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(climbingPanel.getHeight()-32)));
+					climbingPanel.setSize(354, (32));
+					drivingPanel.setLocation(0, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+				}
+			}
+		});
+		chckbxClimbing.setBackground(new Color(255, 173, 84));
+		chckbxClimbing.setBounds(187, 5, 97, 23);
+		climbingPanel.add(chckbxClimbing);		
+		
+		// DrivingSpecs
+		List<JFormattedTextField> drivingSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxDriving = new JCheckBox("Show specs");
+		chckbxDriving.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> drivingSpecsList = currentSheet.assignSkillSpecs("Driving");
+				if(chckbxDriving.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Driving", "");
+					drivingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (drivingSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					drivingPanel.setSize(354, (32+extra));
+					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					for(int i = 0; i < drivingSpecsList.size(); i++)
+					{
+						int j = i;
+						drivingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField drivingSpecs = drivingSpecsFields.get(i);
+						drivingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						drivingSpecs.setBackground(new Color(255, 235, 209));
+						drivingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						drivingPanel.add(drivingSpecs);
+						drivingSpecs.setText(drivingSpecsList.get(i).getDescription());
+						drivingSpecs.requestFocus();	
+
+						drivingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = drivingSpecsList.get(j);
+									editing.setDescription(drivingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxDriving.setSelected(false);
+										chckbxDriving.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxDriving.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					drivingSpecsList.clear();
+					for(JFormattedTextField t : drivingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						drivingPanel.remove(t);
+						t = null;
+					}
+					drivingSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(drivingPanel.getHeight()-32)));
+					drivingPanel.setSize(354, (32));
+					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+				}
+			}
+		});
+		chckbxDriving.setBackground(new Color(255, 201, 131));
+		chckbxDriving.setBounds(187, 5, 97, 23);
+		drivingPanel.add(chckbxDriving);		
+		
+		// MarksmanshipSpecs
+		List<JFormattedTextField> marksmanshipSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxMarksmanship = new JCheckBox("Show specs");
+		chckbxMarksmanship.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> marksmanshipSpecsList = currentSheet.assignSkillSpecs("Marksmanship");
+				if(chckbxMarksmanship.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Marksmanship", "");
+					marksmanshipSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (marksmanshipSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					marksmanshipPanel.setSize(354, (32+extra));
+					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					for(int i = 0; i < marksmanshipSpecsList.size(); i++)
+					{
+						int j = i;
+						marksmanshipSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField marksmanshipSpecs = marksmanshipSpecsFields.get(i);
+						marksmanshipSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						marksmanshipSpecs.setBackground(new Color(255, 235, 209));
+						marksmanshipSpecs.setBounds(5, 33+(i*28), 279, 22);
+						marksmanshipPanel.add(marksmanshipSpecs);
+						marksmanshipSpecs.setText(marksmanshipSpecsList.get(i).getDescription());
+						marksmanshipSpecs.requestFocus();	
+
+						marksmanshipSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = marksmanshipSpecsList.get(j);
+									editing.setDescription(marksmanshipSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxMarksmanship.setSelected(false);
+										chckbxMarksmanship.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxMarksmanship.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					marksmanshipSpecsList.clear();
+					for(JFormattedTextField t : marksmanshipSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						marksmanshipPanel.remove(t);
+						t = null;
+					}
+					marksmanshipSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(marksmanshipPanel.getHeight()-32)));
+					marksmanshipPanel.setSize(354, (32));
+					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+				}
+			}
+		});
+		chckbxMarksmanship.setBackground(new Color(255, 173, 84));
+		chckbxMarksmanship.setBounds(187, 5, 97, 23);
+		marksmanshipPanel.add(chckbxMarksmanship);
+		
+		// ThieverySpecs
+		List<JFormattedTextField> thieverySpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxThievery = new JCheckBox("Show specs");
+		chckbxThievery.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> thieverySpecsList = currentSheet.assignSkillSpecs("Thievery");
+				if(chckbxThievery.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Thievery", "");
+					thieverySpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (thieverySpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					thieveryPanel.setSize(354, (32+extra));
+					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					for(int i = 0; i < thieverySpecsList.size(); i++)
+					{
+						int j = i;
+						thieverySpecsFields.add(new JFormattedTextField());
+						JFormattedTextField thieverySpecs = thieverySpecsFields.get(i);
+						thieverySpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						thieverySpecs.setBackground(new Color(255, 235, 209));
+						thieverySpecs.setBounds(5, 33+(i*28), 279, 22);
+						thieveryPanel.add(thieverySpecs);
+						thieverySpecs.setText(thieverySpecsList.get(i).getDescription());
+						thieverySpecs.requestFocus();	
+
+						thieverySpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = thieverySpecsList.get(j);
+									editing.setDescription(thieverySpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxThievery.setSelected(false);
+										chckbxThievery.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxThievery.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					thieverySpecsList.clear();
+					for(JFormattedTextField t : thieverySpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						thieveryPanel.remove(t);
+						t = null;
+					}
+					thieverySpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
+					thieveryPanel.setSize(354, (32));
+					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+				}
+			}
+		});
+		chckbxThievery.setBackground(new Color(255, 201, 131));
+		chckbxThievery.setBounds(187, 5, 97, 23);
+		thieveryPanel.add(chckbxThievery);
+		
+		// ThrownWeaponsSpecs
+		List<JFormattedTextField> thrownWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxThrownWeapons = new JCheckBox("Show specs");
+		chckbxThrownWeapons.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> thrownWeaponsSpecsList = currentSheet.assignSkillSpecs("ThrownWeapons");
+				if(chckbxThrownWeapons.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "ThrownWeapons", "");
+					thrownWeaponsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (thrownWeaponsSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					thrownWeaponsPanel.setSize(354, (32+extra));
+					for(int i = 0; i < thrownWeaponsSpecsList.size(); i++)
+					{
+						int j = i;
+						thrownWeaponsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField thrownWeaponsSpecs = thrownWeaponsSpecsFields.get(i);
+						thrownWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						thrownWeaponsSpecs.setBackground(new Color(255, 235, 209));
+						thrownWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						thrownWeaponsPanel.add(thrownWeaponsSpecs);
+						thrownWeaponsSpecs.setText(thrownWeaponsSpecsList.get(i).getDescription());
+						thrownWeaponsSpecs.requestFocus();	
+
+						thrownWeaponsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = thrownWeaponsSpecsList.get(j);
+									editing.setDescription(thrownWeaponsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxThrownWeapons.setSelected(false);
+										chckbxThrownWeapons.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxThrownWeapons.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					thrownWeaponsSpecsList.clear();
+					for(JFormattedTextField t : thrownWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						thrownWeaponsPanel.remove(t);
+						t = null;
+					}
+					thrownWeaponsSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
+					thrownWeaponsPanel.setSize(354, (32));
+				}
+			}
+		});
+		chckbxThrownWeapons.setBackground(new Color(255, 173, 84));
+		chckbxThrownWeapons.setBounds(187, 5, 97, 23);
+		thrownWeaponsPanel.add(chckbxThrownWeapons);	
+		
+		// AthleticsSpecs
+		List<JFormattedTextField> athleticsSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
+		chckbxAthletics.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> athleticsSpecsList = currentSheet.assignSkillSpecs("Athletics");
+				if(chckbxAthletics.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Athletics", "");
+					athleticsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (athleticsSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					athleticsPanel.setSize(354, (32+extra));
+					leapPanel.setLocation(0, leapPanel.getY()+extra);
+					liftingPanel.setLocation(0, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
+					runningPanel.setLocation(0, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					for(int i = 0; i < athleticsSpecsList.size(); i++)
+					{
+						int j = i;
+						athleticsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField athleticsSpecs = athleticsSpecsFields.get(i);
+						athleticsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						athleticsSpecs.setBackground(new Color(255, 255, 204));
+						athleticsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						athleticsPanel.add(athleticsSpecs);
+						athleticsSpecs.setText(athleticsSpecsList.get(i).getDescription());
+						athleticsSpecs.requestFocus();	
+
+						athleticsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = athleticsSpecsList.get(j);
+									editing.setDescription(athleticsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxAthletics.setSelected(false);
+										chckbxAthletics.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxAthletics.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					athleticsSpecsList.clear();
+					for(JFormattedTextField t : athleticsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						athleticsPanel.remove(t);
+						t = null;
+					}
+					athleticsSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(athleticsPanel.getHeight()-32)));
+					athleticsPanel.setSize(354, (32));
+					leapPanel.setLocation(0, athleticsPanel.getY()+32);
+					liftingPanel.setLocation(0, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+				}
+			}
+		});
+		chckbxAthletics.setBackground(new Color(240, 230, 140));
+		chckbxAthletics.setBounds(187, 5, 97, 23);
+		athleticsPanel.add(chckbxAthletics);		
+		
+		// LeapSpecs
+		List<JFormattedTextField> leapSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxLeap = new JCheckBox("Show specs");
+		chckbxLeap.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> leapSpecsList = currentSheet.assignSkillSpecs("Leap");
+				if(chckbxLeap.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Leap", "");
+					leapSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (leapSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					leapPanel.setSize(354, (32+extra));
+					liftingPanel.setLocation(0, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
+					runningPanel.setLocation(0, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					for(int i = 0; i < leapSpecsList.size(); i++)
+					{
+						int j = i;
+						leapSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField leapSpecs = leapSpecsFields.get(i);
+						leapSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						leapSpecs.setBackground(new Color(255, 255, 204));
+						leapSpecs.setBounds(5, 33+(i*28), 279, 22);
+						leapPanel.add(leapSpecs);
+						leapSpecs.setText(leapSpecsList.get(i).getDescription());
+						leapSpecs.requestFocus();	
+
+						leapSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = leapSpecsList.get(j);
+									editing.setDescription(leapSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxLeap.setSelected(false);
+										chckbxLeap.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxLeap.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					leapSpecsList.clear();
+					for(JFormattedTextField t : leapSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						leapPanel.remove(t);
+						t = null;
+					}
+					leapSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(leapPanel.getHeight()-32)));
+					leapPanel.setSize(354, (32));
+					liftingPanel.setLocation(0, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+				}
+			}
+		});
+		chckbxLeap.setBackground(new Color(255, 255, 153));
+		chckbxLeap.setBounds(187, 5, 97, 23);
+		leapPanel.add(chckbxLeap);		
+		
+		// LiftingSpecs
+		List<JFormattedTextField> liftingSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxLifting = new JCheckBox("Show specs");
+		chckbxLifting.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> liftingSpecsList = currentSheet.assignSkillSpecs("Lifting");
+				if(chckbxLifting.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Lifting", "");
+					liftingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (liftingSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					liftingPanel.setSize(354, (32+extra));
+					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
+					runningPanel.setLocation(0, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					for(int i = 0; i < liftingSpecsList.size(); i++)
+					{
+						int j = i;
+						liftingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField liftingSpecs = liftingSpecsFields.get(i);
+						liftingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						liftingSpecs.setBackground(new Color(255, 255, 204));
+						liftingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						liftingPanel.add(liftingSpecs);
+						liftingSpecs.setText(liftingSpecsList.get(i).getDescription());
+						liftingSpecs.requestFocus();	
+
+						liftingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = liftingSpecsList.get(j);
+									editing.setDescription(liftingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxLifting.setSelected(false);
+										chckbxLifting.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxLifting.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					liftingSpecsList.clear();
+					for(JFormattedTextField t : liftingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						liftingPanel.remove(t);
+						t = null;
+					}
+					liftingSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(liftingPanel.getHeight()-32)));
+					liftingPanel.setSize(354, (32));
+					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+				}
+			}
+		});
+		chckbxLifting.setBackground(new Color(240, 230, 140));
+		chckbxLifting.setBounds(187, 5, 97, 23);
+		liftingPanel.add(chckbxLifting);	
+		
+		// ResistanceSpecs
+		List<JFormattedTextField> resistanceSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxResistance = new JCheckBox("Show specs");
+		chckbxResistance.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> resistanceSpecsList = currentSheet.assignSkillSpecs("Resistance");
+				if(chckbxResistance.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Resistance", "");
+					resistanceSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (resistanceSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					resistancePanel.setSize(354, (32+extra));
+					runningPanel.setLocation(0, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					for(int i = 0; i < resistanceSpecsList.size(); i++)
+					{
+						int j = i;
+						resistanceSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField resistanceSpecs = resistanceSpecsFields.get(i);
+						resistanceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						resistanceSpecs.setBackground(new Color(255, 255, 204));
+						resistanceSpecs.setBounds(5, 33+(i*28), 279, 22);
+						resistancePanel.add(resistanceSpecs);
+						resistanceSpecs.setText(resistanceSpecsList.get(i).getDescription());
+						resistanceSpecs.requestFocus();	
+
+						resistanceSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = resistanceSpecsList.get(j);
+									editing.setDescription(resistanceSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxResistance.setSelected(false);
+										chckbxResistance.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxResistance.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					resistanceSpecsList.clear();
+					for(JFormattedTextField t : resistanceSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						resistancePanel.remove(t);
+						t = null;
+					}
+					resistanceSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(resistancePanel.getHeight()-32)));
+					resistancePanel.setSize(354, (32));
+					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+				}
+			}
+		});
+		chckbxResistance.setBackground(new Color(255, 255, 153));
+		chckbxResistance.setBounds(187, 5, 97, 23);
+		resistancePanel.add(chckbxResistance);		
+		
+		// RunningSpecs
+		List<JFormattedTextField> runningSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxRunning = new JCheckBox("Show specs");
+		chckbxRunning.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> runningSpecsList = currentSheet.assignSkillSpecs("Running");
+				if(chckbxRunning.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Running", "");
+					runningSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (runningSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					runningPanel.setSize(354, (32+extra));
+					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					for(int i = 0; i < runningSpecsList.size(); i++)
+					{
+						int j = i;
+						runningSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField runningSpecs = runningSpecsFields.get(i);
+						runningSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						runningSpecs.setBackground(new Color(255, 255, 204));
+						runningSpecs.setBounds(5, 33+(i*28), 279, 22);
+						runningPanel.add(runningSpecs);
+						runningSpecs.setText(runningSpecsList.get(i).getDescription());
+						runningSpecs.requestFocus();	
+
+						runningSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = runningSpecsList.get(j);
+									editing.setDescription(runningSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxRunning.setSelected(false);
+										chckbxRunning.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxRunning.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					runningSpecsList.clear();
+					for(JFormattedTextField t : runningSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						runningPanel.remove(t);
+						t = null;
+					}
+					runningSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
+					runningPanel.setSize(354, (32));
+					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+				}
+			}
+		});
+		chckbxRunning.setBackground(new Color(240, 230, 140));
+		chckbxRunning.setBounds(187, 5, 97, 23);
+		runningPanel.add(chckbxRunning);	
+		
+		// SwimmingSpecs
+		List<JFormattedTextField> swimmingSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxSwimming = new JCheckBox("Show specs");
+		chckbxSwimming.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> swimmingSpecsList = currentSheet.assignSkillSpecs("Swimming");
+				if(chckbxSwimming.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Swimming", "");
+					swimmingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (swimmingSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					swimmingPanel.setSize(354, (32+extra));
+					for(int i = 0; i < swimmingSpecsList.size(); i++)
+					{
+						int j = i;
+						swimmingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField swimmingSpecs = swimmingSpecsFields.get(i);
+						swimmingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						swimmingSpecs.setBackground(new Color(255, 255, 204));
+						swimmingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						swimmingPanel.add(swimmingSpecs);
+						swimmingSpecs.setText(swimmingSpecsList.get(i).getDescription());
+						swimmingSpecs.requestFocus();	
+
+						swimmingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = swimmingSpecsList.get(j);
+									editing.setDescription(swimmingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxSwimming.setSelected(false);
+										chckbxSwimming.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxSwimming.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					swimmingSpecsList.clear();
+					for(JFormattedTextField t : swimmingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						swimmingPanel.remove(t);
+						t = null;
+					}
+					swimmingSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
+					swimmingPanel.setSize(354, (32));
+				}
+			}
+		});
+		chckbxSwimming.setBackground(new Color(255, 255, 153));
+		chckbxSwimming.setBounds(187, 5, 97, 23);
+		swimmingPanel.add(chckbxSwimming);		
+		
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(329, 11, 69, 23);
 		dcrpgFrame.getContentPane().add(btnSave);
@@ -1661,20 +3383,17 @@ public class MainWindow {
 		
 		//load initial sheet
 				nameField.setText(currentSheet.getName());
-				fullNameField.setText(currentSheet.getFullName());
-				occupationField.setText(currentSheet.getOccupation());
-				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
 				genderField.setText(currentSheet.getGender());
 				heightField.setText(currentSheet.getHeight());
 				weightField.setText(currentSheet.getWeight());
 				hairColorField.setText(currentSheet.getHairColor());
 				
 				JLabel lblRace = new JLabel("Race");
-				lblRace.setBounds(145, 0, 90, 20);
+				lblRace.setBounds(157, 1, 90, 20);
 				demographicsPanel.add(lblRace);
 				
 				raceField = new JFormattedTextField();
-				raceField.setBounds(212, 0, 86, 20);
+				raceField.setBounds(219, 1, 86, 20);
 				demographicsPanel.add(raceField);
 				raceField.setHorizontalAlignment(SwingConstants.RIGHT);
 				raceField.setColumns(10);
@@ -1689,11 +3408,11 @@ public class MainWindow {
 				raceField.setText(currentSheet.getRace());
 				
 				JLabel lblEyeColor = new JLabel("Eye Color");
-				lblEyeColor.setBounds(145, 25, 90, 20);
+				lblEyeColor.setBounds(157, 25, 90, 20);
 				demographicsPanel.add(lblEyeColor);
 				
 				JFormattedTextField eyeColorField = new JFormattedTextField();
-				eyeColorField.setBounds(212, 25, 86, 20);
+				eyeColorField.setBounds(219, 25, 86, 20);
 				demographicsPanel.add(eyeColorField);
 				eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 				eyeColorField.setColumns(10);
@@ -1706,11 +3425,164 @@ public class MainWindow {
 					}
 				});
 				eyeColorField.setText(currentSheet.getEyeColor());
+				
+				JLabel lblFullName = new JLabel("Full Name");
+				lblFullName.setBounds(315, 1, 90, 20);
+				demographicsPanel.add(lblFullName);
+				
+				JFormattedTextField fullNameField = new JFormattedTextField();
+				fullNameField.setBounds(384, 1, 201, 20);
+				demographicsPanel.add(fullNameField);
+				fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
+				fullNameField.setColumns(10);
+				fullNameField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setFullName(fullNameField.getText());
+					}
+				});
+				fullNameField.setText(currentSheet.getFullName());
+				
+		JLabel lblOccupation = new JLabel("Occupation");
+		lblOccupation.setBounds(315, 25, 54, 20);
+		demographicsPanel.add(lblOccupation);
+		
+		occupationField = new JFormattedTextField();
+		occupationField.setBounds(384, 25, 201, 20);
+		demographicsPanel.add(occupationField);
+		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
+		occupationField.setColumns(10);
+		occupationField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setOccupation(occupationField.getText());
+			}
+		});
+		occupationField.setText(currentSheet.getOccupation());
+		
+				
+				JLabel lblHomeBase = new JLabel("Home Base");
+				lblHomeBase.setBounds(315, 49, 90, 20);
+				demographicsPanel.add(lblHomeBase);
+				
+				baseOfOperationsField = new JFormattedTextField();
+				baseOfOperationsField.setBounds(384, 49, 201, 20);
+				demographicsPanel.add(baseOfOperationsField);
+				baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
+				baseOfOperationsField.setColumns(10);
+				baseOfOperationsField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
+					}
+				});
+				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
+				
+				JLabel lblHeroPoints = new JLabel("Hero Points");
+				lblHeroPoints.setBounds(605, 1, 90, 20);
+				demographicsPanel.add(lblHeroPoints);
+				
+						
+						JLabel lblVillainPoints = new JLabel("Villain Points");
+						lblVillainPoints.setBounds(605, 25, 58, 20);
+						demographicsPanel.add(lblVillainPoints);
+						
+								
+								JLabel lblAvailableRenown = new JLabel("Renown");
+								lblAvailableRenown.setBounds(605, 49, 90, 20);
+								demographicsPanel.add(lblAvailableRenown);
+								
+								heroPointsField = new JFormattedTextField(nums);
+								heroPointsField.setBounds(678, 1, 86, 20);
+								demographicsPanel.add(heroPointsField);
+								heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+								heroPointsField.setColumns(10);
+								heroPointsField.addKeyListener(new KeyAdapter() 
+								{
+									@Override
+									public void keyReleased(KeyEvent e) 
+									{
+										currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
+									}
+								});
 				heroPointsField.setValue(currentSheet.getHeroPoints());
+				
+				villainPointsField = new JFormattedTextField(nums);
+				villainPointsField.setBounds(678, 25, 86, 20);
+				demographicsPanel.add(villainPointsField);
+				villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+				villainPointsField.setColumns(10);
+				villainPointsField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
+					}
+				});
 				villainPointsField.setValue(currentSheet.getVillainPoints());
-				powerPointsField.setValue(currentSheet.getPowerPoints());
-				skillPointsField.setValue(currentSheet.getSkillPoints());
+				
+				JFormattedTextField availableRenownField = new JFormattedTextField(nums);
+				availableRenownField.setBounds(678, 49, 86, 20);
+				demographicsPanel.add(availableRenownField);
+				availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
+				availableRenownField.setColumns(10);
+				availableRenownField.addKeyListener(new KeyAdapter() 
+				{
+					@Override
+					public void keyReleased(KeyEvent e) 
+					{
+						currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
+					}
+				});
 				availableRenownField.setValue(currentSheet.getAvailableRenown());
+				
+						
+						JLabel lblPowerPoints = new JLabel("Power Points");
+						lblPowerPoints.setBounds(784, 1, 62, 20);
+						demographicsPanel.add(lblPowerPoints);
+						
+								
+								JLabel lblSkillPoints = new JLabel("Skill Points");
+								lblSkillPoints.setBounds(784, 25, 90, 20);
+								demographicsPanel.add(lblSkillPoints);
+								
+								powerPointsField = new JFormattedTextField(nums);
+								powerPointsField.setBounds(866, 1, 86, 20);
+								demographicsPanel.add(powerPointsField);
+								powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+								powerPointsField.setColumns(10);
+								powerPointsField.addKeyListener(new KeyAdapter() 
+								{
+									@Override
+									public void keyReleased(KeyEvent e) 
+									{
+										currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
+									}
+								});
+				powerPointsField.setValue(currentSheet.getPowerPoints());
+				
+						
+						skillPointsField = new JFormattedTextField(nums);
+						skillPointsField.setBounds(866, 25, 86, 20);
+						demographicsPanel.add(skillPointsField);
+						skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+						skillPointsField.setColumns(10);
+						skillPointsField.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
+							}
+						});
+				skillPointsField.setValue(currentSheet.getSkillPoints());
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -1726,6 +3598,34 @@ public class MainWindow {
 				handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
 				meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
 				stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+				
+				coordinationLevel.setValue(currentSheet.getCoordination());
+				catchLevel.setValue(currentSheet.getCatching());
+				climbingLevel.setValue(currentSheet.getClimb());
+				drivingLevel.setValue(currentSheet.getDrive());
+				marksmanshipLevel.setValue(currentSheet.getMarksmanship());
+				thieveryLevel.setValue(currentSheet.getThievery());
+				thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
+				catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
+				climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
+				drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
+				marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
+				thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
+				thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
+				
+				physiqueLevel.setValue(currentSheet.getPhysique());
+				athleticsLevel.setValue(currentSheet.getAthletics());
+				leapLevel.setValue(currentSheet.getLeap());
+				liftingLevel.setValue(currentSheet.getLifting());
+				resistanceLevel.setValue(currentSheet.getResistance());
+				runningLevel.setValue(currentSheet.getRunning());
+				swimmingLevel.setValue(currentSheet.getSwimming());
+				athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
+				leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
+				liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
+				resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
+				runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
+				swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
 				
 				
 				JButton btnLoad = new JButton("Load");
@@ -1744,6 +3644,20 @@ public class MainWindow {
 									chckbxStealth.setSelected(false);
 									chckbxPlace.setSelected(false);
 									chckbxPlace2.setSelected(false);
+									
+									chckbxCatch.setSelected(false);
+									chckbxClimbing.setSelected(false);
+									chckbxDriving.setSelected(false);
+									chckbxMarksmanship.setSelected(false);
+									chckbxThievery.setSelected(false);
+									chckbxThrownWeapons.setSelected(false);
+									
+									chckbxAthletics.setSelected(false);
+									chckbxLeap.setSelected(false);
+									chckbxLifting.setSelected(false);
+									chckbxResistance.setSelected(false);
+									chckbxRunning.setSelected(false);
+									chckbxSwimming.setSelected(false);
 
 								
 									currentSheet = s;
@@ -1778,6 +3692,32 @@ public class MainWindow {
 									handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
 									meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
 									stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+									coordinationLevel.setValue(currentSheet.getCoordination());
+									catchLevel.setValue(currentSheet.getCatching());
+									climbingLevel.setValue(currentSheet.getClimb());
+									drivingLevel.setValue(currentSheet.getDrive());
+									marksmanshipLevel.setValue(currentSheet.getMarksmanship());
+									thieveryLevel.setValue(currentSheet.getThievery());
+									thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
+									catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
+									climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
+									drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
+									marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
+									thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
+									thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
+									physiqueLevel.setValue(currentSheet.getPhysique());
+									athleticsLevel.setValue(currentSheet.getAthletics());
+									leapLevel.setValue(currentSheet.getLeap());
+									liftingLevel.setValue(currentSheet.getLifting());
+									resistanceLevel.setValue(currentSheet.getResistance());
+									runningLevel.setValue(currentSheet.getRunning());
+									swimmingLevel.setValue(currentSheet.getSwimming());
+									athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
+									leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
+									liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
+									resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
+									runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
+									swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
 																
 							}
 						}
@@ -1786,8 +3726,6 @@ public class MainWindow {
 				
 				btnLoad.setBounds(167, 11, 69, 23);
 				dcrpgFrame.getContentPane().add(btnLoad);
-				
-				
 				
 				nameSearchField.addKeyListener(new KeyAdapter() {
 					@Override
@@ -1799,6 +3737,5 @@ public class MainWindow {
 						}
 					}
 				});
-				
 	}
 }

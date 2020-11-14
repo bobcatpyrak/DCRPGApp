@@ -379,34 +379,246 @@ public class MainWindow {
 		dcrpgFrame.getContentPane().add(btnNew);
 		
 		
-		Panel reflexesPanel = new Panel();
-		reflexesPanel.setBackground(new Color(255, 51, 51));
-		reflexesPanel.setBounds(44, 149, 354, 274);
-		dcrpgFrame.getContentPane().add(reflexesPanel);
-		reflexesPanel.setLayout(null);
+		//load initial sheet
+		nameField.setText(currentSheet.getName());
+		genderField.setText(currentSheet.getGender());
+		heightField.setText(currentSheet.getHeight());
+		weightField.setText(currentSheet.getWeight());
+		hairColorField.setText(currentSheet.getHairColor());
+				
+		JLabel lblRace = new JLabel("Race");
+		lblRace.setBounds(157, 1, 90, 20);
+		demographicsPanel.add(lblRace);
+				
+		raceField = new JFormattedTextField();
+		raceField.setBounds(219, 1, 86, 20);
+		demographicsPanel.add(raceField);
+		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
+		raceField.setColumns(10);
+		raceField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setRace(raceField.getText());
+			}
+		});
+		raceField.setText(currentSheet.getRace());
+			
+		JLabel lblEyeColor = new JLabel("Eye Color");
+		lblEyeColor.setBounds(157, 25, 90, 20);
+		demographicsPanel.add(lblEyeColor);
+				
+		JFormattedTextField eyeColorField = new JFormattedTextField();
+		eyeColorField.setBounds(219, 25, 86, 20);
+		demographicsPanel.add(eyeColorField);
+		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
+		eyeColorField.setColumns(10);
+		eyeColorField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setEyeColor(eyeColorField.getText());
+			}
+		});
+		eyeColorField.setText(currentSheet.getEyeColor());
+				
+		JLabel lblFullName = new JLabel("Full Name");
+		lblFullName.setBounds(315, 1, 90, 20);
+		demographicsPanel.add(lblFullName);
+				
+		JFormattedTextField fullNameField = new JFormattedTextField();
+		fullNameField.setBounds(384, 1, 201, 20);
+		demographicsPanel.add(fullNameField);
+		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
+		fullNameField.setColumns(10);
+		fullNameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setFullName(fullNameField.getText());
+			}
+		});
+		fullNameField.setText(currentSheet.getFullName());
+				
+		JLabel lblOccupation = new JLabel("Occupation");
+		lblOccupation.setBounds(315, 25, 54, 20);
+		demographicsPanel.add(lblOccupation);
 		
-		Label reflexesLabel = new Label("Reflexes");
-		reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		reflexesLabel.setBounds(132, 10, 90, 30);
-		reflexesPanel.add(reflexesLabel);
+		occupationField = new JFormattedTextField();
+		occupationField.setBounds(384, 25, 201, 20);
+		demographicsPanel.add(occupationField);
+		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
+		occupationField.setColumns(10);
+		occupationField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setOccupation(occupationField.getText());
+			}
+		});
+		occupationField.setText(currentSheet.getOccupation());
 		
-		JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
-		reflexesLevel.setColumns(2);
-		reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
-		reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		reflexesLevel.setBounds(294, 10, 50, 35);
-		reflexesPanel.add(reflexesLevel);
+				
+		JLabel lblHomeBase = new JLabel("Home Base");
+		lblHomeBase.setBounds(315, 49, 90, 20);
+		demographicsPanel.add(lblHomeBase);
+				
+		baseOfOperationsField = new JFormattedTextField();
+		baseOfOperationsField.setBounds(384, 49, 201, 20);
+		demographicsPanel.add(baseOfOperationsField);
+		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		baseOfOperationsField.setColumns(10);
+		baseOfOperationsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
+			}
+		});
+		baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
 		
-		Panel acroPanel = new Panel();
-		acroPanel.setBackground(new Color(255, 153, 153));
-		acroPanel.setBounds(0, 50, 354, 32);
-		reflexesPanel.add(acroPanel);
-		acroPanel.setLayout(null);
+		JLabel lblHeroPoints = new JLabel("Hero Points");
+		lblHeroPoints.setBounds(605, 1, 90, 20);
+		demographicsPanel.add(lblHeroPoints);
 		
-		Label acroLabel = new Label("Acrobatics");
-		acroLabel.setBounds(35, 5, 120, 22);
-		acroPanel.add(acroLabel);
-		acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+				
+		JLabel lblVillainPoints = new JLabel("Villain Points");
+		lblVillainPoints.setBounds(605, 25, 58, 20);
+		demographicsPanel.add(lblVillainPoints);
+												
+		JLabel lblAvailableRenown = new JLabel("Renown");
+		lblAvailableRenown.setBounds(605, 49, 90, 20);
+		demographicsPanel.add(lblAvailableRenown);
+				
+		heroPointsField = new JFormattedTextField(nums);
+		heroPointsField.setBounds(678, 1, 86, 20);
+		demographicsPanel.add(heroPointsField);
+		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		heroPointsField.setColumns(10);
+		heroPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
+			}
+		});
+		heroPointsField.setValue(currentSheet.getHeroPoints());
+		
+		villainPointsField = new JFormattedTextField(nums);
+		villainPointsField.setBounds(678, 25, 86, 20);
+		demographicsPanel.add(villainPointsField);
+		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		villainPointsField.setColumns(10);
+		villainPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
+			}
+		});
+		villainPointsField.setValue(currentSheet.getVillainPoints());
+		
+		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
+		availableRenownField.setBounds(678, 49, 86, 20);
+		demographicsPanel.add(availableRenownField);
+		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
+		availableRenownField.setColumns(10);
+		availableRenownField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
+			}
+		});
+		availableRenownField.setValue(currentSheet.getAvailableRenown());
+				
+						
+		JLabel lblPowerPoints = new JLabel("Power Points");
+		lblPowerPoints.setBounds(784, 1, 62, 20);
+		demographicsPanel.add(lblPowerPoints);
+				
+						
+		JLabel lblSkillPoints = new JLabel("Skill Points");
+		lblSkillPoints.setBounds(784, 25, 90, 20);
+		demographicsPanel.add(lblSkillPoints);
+						
+		powerPointsField = new JFormattedTextField(nums);
+		powerPointsField.setBounds(866, 1, 86, 20);
+		demographicsPanel.add(powerPointsField);
+		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		powerPointsField.setColumns(10);
+		powerPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
+			}
+		});
+		powerPointsField.setValue(currentSheet.getPowerPoints());
+				
+						
+		skillPointsField = new JFormattedTextField(nums);
+		skillPointsField.setBounds(866, 25, 86, 20);
+		demographicsPanel.add(skillPointsField);
+		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
+		skillPointsField.setColumns(10);
+		skillPointsField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
+			}
+		});
+		skillPointsField.setValue(currentSheet.getSkillPoints());
+		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+		bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+		speedField.setValue(currentSheet.getSpeed());			
+				
+				JPanel physStatsPanel = new JPanel();
+				physStatsPanel.setBackground(new Color(192, 192, 192));
+				physStatsPanel.setBounds(45, 150, 1112, 242);
+				dcrpgFrame.getContentPane().add(physStatsPanel);
+				physStatsPanel.setLayout(null);
+				
+				
+				Panel reflexesPanel = new Panel();
+				reflexesPanel.setBounds(0, 0, 354, 242);
+				physStatsPanel.add(reflexesPanel);
+				reflexesPanel.setBackground(new Color(255, 51, 51));
+				reflexesPanel.setLayout(null);
+				
+				Label reflexesLabel = new Label("Reflexes");
+				reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+				reflexesLabel.setBounds(132, 10, 90, 30);
+				reflexesPanel.add(reflexesLabel);
+				
+				JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
+				reflexesLevel.setColumns(2);
+				reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
+				reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
+				reflexesLevel.setBounds(294, 10, 50, 35);
+				reflexesPanel.add(reflexesLevel);
+				
+				Panel acroPanel = new Panel();
+				acroPanel.setBackground(new Color(255, 153, 153));
+				acroPanel.setBounds(0, 50, 354, 32);
+				reflexesPanel.add(acroPanel);
+				acroPanel.setLayout(null);
+				
+				Label acroLabel = new Label("Acrobatics");
+				acroLabel.setBounds(35, 5, 120, 22);
+				acroPanel.add(acroLabel);
+				acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 				
 		JFormattedTextField acroTotal = new JFormattedTextField();
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -486,225 +698,154 @@ public class MainWindow {
 		handToHandLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		handToHandLabel.setBounds(35, 5, 120, 22);
 		handToHandPanel.add(handToHandLabel);
+		
+				JFormattedTextField handToHandTotal = new JFormattedTextField();
+				handToHandTotal.setColumns(2);
+				handToHandTotal.setEditable(false);
+				handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
+				handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
+				handToHandTotal.setBounds(294, 5, 50, 22);
+				handToHandPanel.add(handToHandTotal);
+				
+				JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
+				handToHandLevel.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if(handToHandLevel.getText().matches("[0-9]+"))
+						{
+							int i = Integer.parseInt(handToHandLevel.getText());
+							int j = Integer.parseInt(reflexesLevel.getText());
+							currentSheet.setHandToHand(i);
+							handToHandTotal.setValue(i+j);	
+						}
+					}
+				});
+				handToHandLevel.setColumns(2);
+				handToHandLevel.setFont(new Font("Arial", Font.BOLD, 14));
+				handToHandLevel.setHorizontalAlignment(SwingConstants.CENTER);
+				handToHandLevel.setBounds(5, 5, 24, 22);
+				handToHandPanel.add(handToHandLevel);
+				
+				
+				
+				Panel meleeWeaponsPanel = new Panel();
+				meleeWeaponsPanel.setLayout(null);
+				meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
+				meleeWeaponsPanel.setBounds(0, 146, 354, 32);
+				reflexesPanel.add(meleeWeaponsPanel);
+				
+				Label meleeWeaponsLabel = new Label("Melee Weapons");
+				meleeWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+				meleeWeaponsLabel.setBounds(35, 5, 120, 22);
+				meleeWeaponsPanel.add(meleeWeaponsLabel);
+				
+				JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
+				meleeWeaponsTotal.setColumns(2);
+				meleeWeaponsTotal.setEditable(false);
+				meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+				meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
+				meleeWeaponsTotal.setBounds(294, 5, 50, 22);
+				meleeWeaponsPanel.add(meleeWeaponsTotal);
+				
+				JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
+				meleeWeaponsLevel.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if(meleeWeaponsLevel.getText().matches("[0-9]+"))
+						{
+							int i = Integer.parseInt(meleeWeaponsLevel.getText());
+							int j = Integer.parseInt(reflexesLevel.getText());
+							currentSheet.setMeleeWeapons(i);
+							meleeWeaponsTotal.setValue(i+j);	
+						}
+					}
+				});
+				meleeWeaponsLevel.setColumns(2);
+				meleeWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
+				meleeWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
+				meleeWeaponsLevel.setBounds(5, 7, 24, 20);
+				meleeWeaponsPanel.add(meleeWeaponsLevel);
+				
+				
+				
+				Panel stealthPanel = new Panel();
+				stealthPanel.setLayout(null);
+				stealthPanel.setBackground(new Color(255, 153, 153));
+				stealthPanel.setBounds(0, 178, 354, 32);
+				reflexesPanel.add(stealthPanel);
+				
+				Label stealthLabel = new Label("Stealth");
+				stealthLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+				stealthLabel.setBounds(35, 5, 120, 22);
+				stealthPanel.add(stealthLabel);
+				
+				JFormattedTextField stealthTotal = new JFormattedTextField();
+				stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
+				stealthTotal.setColumns(2);
+				stealthTotal.setEditable(false);
+				stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
+				stealthTotal.setBounds(294, 5, 50, 22);
+				stealthPanel.add(stealthTotal);
+				
+				JFormattedTextField stealthLevel = new JFormattedTextField(nums);
+				stealthLevel.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if(stealthLevel.getText().matches("[0-9]+"))
+						{
+							int i = Integer.parseInt(stealthLevel.getText());
+							int j = Integer.parseInt(reflexesLevel.getText());
+							currentSheet.setStealth(i);
+							stealthTotal.setValue(i+j);	
+						}
+					}
+				});
+				stealthLevel.setColumns(2);
+				stealthLevel.setHorizontalAlignment(SwingConstants.CENTER);
+				stealthLevel.setFont(new Font("Arial", Font.BOLD, 14));
+				stealthLevel.setBounds(5, 5, 24, 22);
+				stealthPanel.add(stealthLevel);
+				
+				reflexesLevel.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyReleased(KeyEvent e) {
+						if(reflexesLevel.getText().matches("[0-9]+"))
+						{
+							int i = Integer.parseInt(reflexesLevel.getText());
+							int j = Integer.parseInt(acroLevel.getText());
+							int k = Integer.parseInt(dodgeLevel.getText());
+							int l = Integer.parseInt(handToHandLevel.getText());
+							int m = Integer.parseInt(meleeWeaponsLevel.getText());
+							int n = Integer.parseInt(stealthLevel.getText());
 
-		JFormattedTextField handToHandTotal = new JFormattedTextField();
-		handToHandTotal.setColumns(2);
-		handToHandTotal.setEditable(false);
-		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		handToHandTotal.setBounds(294, 5, 50, 22);
-		handToHandPanel.add(handToHandTotal);
-		
-		JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
-		handToHandLevel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(handToHandLevel.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(handToHandLevel.getText());
-					int j = Integer.parseInt(reflexesLevel.getText());
-					currentSheet.setHandToHand(i);
-					handToHandTotal.setValue(i+j);	
-				}
-			}
-		});
-		handToHandLevel.setColumns(2);
-		handToHandLevel.setFont(new Font("Arial", Font.BOLD, 14));
-		handToHandLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		handToHandLevel.setBounds(5, 5, 24, 22);
-		handToHandPanel.add(handToHandLevel);
-		
-		
-		
-		Panel meleeWeaponsPanel = new Panel();
-		meleeWeaponsPanel.setLayout(null);
-		meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
-		meleeWeaponsPanel.setBounds(0, 146, 354, 32);
-		reflexesPanel.add(meleeWeaponsPanel);
-		
-		Label meleeWeaponsLabel = new Label("Melee Weapons");
-		meleeWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-		meleeWeaponsLabel.setBounds(35, 5, 120, 22);
-		meleeWeaponsPanel.add(meleeWeaponsLabel);
-		
-		JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
-		meleeWeaponsTotal.setColumns(2);
-		meleeWeaponsTotal.setEditable(false);
-		meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		meleeWeaponsTotal.setBounds(294, 5, 50, 22);
-		meleeWeaponsPanel.add(meleeWeaponsTotal);
-		
-		JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
-		meleeWeaponsLevel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(meleeWeaponsLevel.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(meleeWeaponsLevel.getText());
-					int j = Integer.parseInt(reflexesLevel.getText());
-					currentSheet.setMeleeWeapons(i);
-					meleeWeaponsTotal.setValue(i+j);	
-				}
-			}
-		});
-		meleeWeaponsLevel.setColumns(2);
-		meleeWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
-		meleeWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		meleeWeaponsLevel.setBounds(5, 7, 24, 20);
-		meleeWeaponsPanel.add(meleeWeaponsLevel);
-		
-		
-		
-		Panel stealthPanel = new Panel();
-		stealthPanel.setLayout(null);
-		stealthPanel.setBackground(new Color(255, 153, 153));
-		stealthPanel.setBounds(0, 178, 354, 32);
-		reflexesPanel.add(stealthPanel);
-		
-		Label stealthLabel = new Label("Stealth");
-		stealthLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-		stealthLabel.setBounds(35, 5, 120, 22);
-		stealthPanel.add(stealthLabel);
-		
-		JFormattedTextField stealthTotal = new JFormattedTextField();
-		stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		stealthTotal.setColumns(2);
-		stealthTotal.setEditable(false);
-		stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		stealthTotal.setBounds(294, 5, 50, 22);
-		stealthPanel.add(stealthTotal);
-		
-		JFormattedTextField stealthLevel = new JFormattedTextField(nums);
-		stealthLevel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(stealthLevel.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(stealthLevel.getText());
-					int j = Integer.parseInt(reflexesLevel.getText());
-					currentSheet.setStealth(i);
-					stealthTotal.setValue(i+j);	
-				}
-			}
-		});
-		stealthLevel.setColumns(2);
-		stealthLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		stealthLevel.setFont(new Font("Arial", Font.BOLD, 14));
-		stealthLevel.setBounds(5, 5, 24, 22);
-		stealthPanel.add(stealthLevel);
-		
-		
-		
-		Panel placePanel = new Panel();
-		placePanel.setLayout(null);
-		placePanel.setBackground(new Color(255, 102, 102));
-		placePanel.setBounds(0, 210, 354, 32);
-		reflexesPanel.add(placePanel);
-		
-		Label placeLabel = new Label("Placeholder");
-		placeLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-		placeLabel.setBounds(35, 5, 120, 22);
-		placePanel.add(placeLabel);
-		
-		JFormattedTextField placeTotal = new JFormattedTextField();
-		placeTotal.setColumns(2);
-		placeTotal.setEditable(false);
-		placeTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		placeTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		placeTotal.setBounds(294, 5, 50, 22);
-		placePanel.add(placeTotal);
-		
-		JFormattedTextField placeLevel = new JFormattedTextField(nums);
-		placeLevel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(placeLevel.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(placeLevel.getText());
-					int j = Integer.parseInt(reflexesLevel.getText());
-					placeTotal.setValue(i+j);	
-				}
-			}
-		});
-		placeLevel.setColumns(2);
-		placeLevel.setFont(new Font("Arial", Font.BOLD, 14));
-		placeLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		placeLevel.setBounds(5, 7, 24, 20);
-		placeLevel.setValue(0); //DELET THIS
-		placePanel.add(placeLevel);
-		
-		
-		
-		Panel place2Panel = new Panel();
-		place2Panel.setLayout(null);
-		place2Panel.setBackground(new Color(255, 153, 153));
-		place2Panel.setBounds(0, 242, 354, 32);
-		reflexesPanel.add(place2Panel);
-		
-		Label place2Label = new Label("Placeholder");
-		place2Label.setFont(new Font("Verdana", Font.BOLD, 13));
-		place2Label.setBounds(35, 5, 120, 22);
-		place2Panel.add(place2Label);
-		
-		JFormattedTextField place2Total = new JFormattedTextField();
-		place2Total.setHorizontalAlignment(SwingConstants.CENTER);
-		place2Total.setColumns(2);
-		place2Total.setEditable(false);
-		place2Total.setFont(new Font("Arial", Font.BOLD, 18));
-		place2Total.setBounds(294, 5, 50, 22);
-		place2Panel.add(place2Total);
-		
-		JFormattedTextField place2Level = new JFormattedTextField(nums);
-		place2Level.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(place2Level.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(place2Level.getText());
-					int j = Integer.parseInt(reflexesLevel.getText());
-					place2Total.setValue(i+j);	
-				}
-			}
-		});
-		place2Level.setColumns(2);
-		place2Level.setHorizontalAlignment(SwingConstants.CENTER);
-		place2Level.setFont(new Font("Arial", Font.BOLD, 14));
-		place2Level.setBounds(5, 7, 24, 20);
-		place2Level.setValue(0); //DELET THIS
-		place2Panel.add(place2Level);
-		
-		reflexesLevel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if(reflexesLevel.getText().matches("[0-9]+"))
-				{
-					int i = Integer.parseInt(reflexesLevel.getText());
-					int j = Integer.parseInt(acroLevel.getText());
-					int k = Integer.parseInt(dodgeLevel.getText());
-					int l = Integer.parseInt(handToHandLevel.getText());
-					int m = Integer.parseInt(meleeWeaponsLevel.getText());
-					int n = Integer.parseInt(stealthLevel.getText());
-					int o = Integer.parseInt(placeLevel.getText());
-					int p = Integer.parseInt(place2Level.getText());
-
-					currentSheet.setReflexes(i);
-					acroTotal.setValue(i+j);
-					dodgeTotal.setValue(i+k);
-					handToHandTotal.setValue(i+l);	
-					meleeWeaponsTotal.setValue(i+m);
-					stealthTotal.setValue(i+n);
-					placeTotal.setValue(i+o);
-					place2Total.setValue(i+p);
-				}
-			}
-		});
+							currentSheet.setReflexes(i);
+							acroTotal.setValue(i+j);
+							dodgeTotal.setValue(i+k);
+							handToHandTotal.setValue(i+l);	
+							meleeWeaponsTotal.setValue(i+m);
+							stealthTotal.setValue(i+n);
+						}
+					}
+				});
+				
+				
+		reflexesLevel.setValue(currentSheet.getReflexes());
+		acroLevel.setValue(currentSheet.getAcrobatics());
+		dodgeLevel.setValue(currentSheet.getDodge());
+		handToHandLevel.setValue(currentSheet.getHandToHand());
+		meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+		stealthLevel.setValue(currentSheet.getStealth());
+		acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+		dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+		handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+		meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
 		
 		Panel coordinationPanel = new Panel();
+		coordinationPanel.setBounds(384, 0, 354, 242);
+		physStatsPanel.add(coordinationPanel);
 		coordinationPanel.setLayout(null);
 		coordinationPanel.setBackground(new Color(255, 133, 0));
-		coordinationPanel.setBounds(429, 149, 354, 274);
-		dcrpgFrame.getContentPane().add(coordinationPanel);
 		
 		Label coordinationLabel = new Label("Coordination");
 		coordinationLabel.setFont(new Font("Verdana", Font.BOLD, 22));
@@ -971,11 +1112,25 @@ public class MainWindow {
 			}
 		});
 		
+		coordinationLevel.setValue(currentSheet.getCoordination());
+		catchLevel.setValue(currentSheet.getCatching());
+		climbingLevel.setValue(currentSheet.getClimb());
+		drivingLevel.setValue(currentSheet.getDrive());
+		marksmanshipLevel.setValue(currentSheet.getMarksmanship());
+		thieveryLevel.setValue(currentSheet.getThievery());
+		thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
+		catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
+		climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
+		drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
+		marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
+		thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
+		thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
+		
 		Panel physiquePanel = new Panel();
+		physiquePanel.setBounds(768, 0, 354, 242);
+		physStatsPanel.add(physiquePanel);
 		physiquePanel.setLayout(null);
 		physiquePanel.setBackground(new Color(255, 255, 0));
-		physiquePanel.setBounds(816, 149, 354, 274);
-		dcrpgFrame.getContentPane().add(physiquePanel);
 		
 		Label physiqueLabel = new Label("Physique");
 		physiqueLabel.setFont(new Font("Verdana", Font.BOLD, 22));
@@ -1241,11 +1396,31 @@ public class MainWindow {
 			}
 		});
 		
+		physiqueLevel.setValue(currentSheet.getPhysique());
+		athleticsLevel.setValue(currentSheet.getAthletics());
+		leapLevel.setValue(currentSheet.getLeap());
+		liftingLevel.setValue(currentSheet.getLifting());
+		resistanceLevel.setValue(currentSheet.getResistance());
+		runningLevel.setValue(currentSheet.getRunning());
+		swimmingLevel.setValue(currentSheet.getSwimming());
+		athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
+		leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
+		liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
+		resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
+		runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
+		swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
+		
+		JPanel mentalStatsPanel = new JPanel();
+		mentalStatsPanel.setBackground(new Color(192, 192, 192));
+		mentalStatsPanel.setBounds(45, 422, 1112, 274);
+		dcrpgFrame.getContentPane().add(mentalStatsPanel);
+		mentalStatsPanel.setLayout(null);
+		
 		Panel knowledgePanel = new Panel();
+		knowledgePanel.setBounds(0, 0, 354, 274);
+		mentalStatsPanel.add(knowledgePanel);
 		knowledgePanel.setLayout(null);
 		knowledgePanel.setBackground(new Color(34, 139, 34));
-		knowledgePanel.setBounds(44, 454, 354, 274);
-		dcrpgFrame.getContentPane().add(knowledgePanel);
 		
 		Label knowledgeLabel = new Label("Knowledge");
 		knowledgeLabel.setFont(new Font("Verdana", Font.BOLD, 22));
@@ -1551,13 +1726,29 @@ public class MainWindow {
 
 				}
 			}
-		});
+		});	
+		
+		knowledgeLevel.setValue(currentSheet.getKnowledge());
+		arcaneLoreLevel.setValue(currentSheet.getArcaneLore());
+		demolitionsLevel.setValue(currentSheet.getDemolitions());
+		languagesLevel.setValue(currentSheet.getLanguages());
+		medicineLevel.setValue(currentSheet.getMedicine());
+		scholarLevel.setValue(currentSheet.getScholar());
+		scienceLevel.setValue(currentSheet.getScience());
+		securityLevel.setValue(currentSheet.getSecurity());
+		arcaneLoreTotal.setValue(currentSheet.getArcaneLore() + currentSheet.getKnowledge());
+		demolitionsTotal.setValue(currentSheet.getDemolitions() + currentSheet.getKnowledge());
+		languagesTotal.setValue(currentSheet.getLanguages() + currentSheet.getKnowledge());
+		medicineTotal.setValue(currentSheet.getMedicine() + currentSheet.getKnowledge());
+		scholarTotal.setValue(currentSheet.getScholar() + currentSheet.getKnowledge());
+		scienceTotal.setValue(currentSheet.getScience() + currentSheet.getKnowledge());
+		securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
 		
 		Panel perceptionPanel = new Panel();
+		perceptionPanel.setBounds(384, 0, 354, 274);
+		mentalStatsPanel.add(perceptionPanel);
 		perceptionPanel.setLayout(null);
 		perceptionPanel.setBackground(new Color(25, 128, 255));
-		perceptionPanel.setBounds(429, 454, 354, 274);
-		dcrpgFrame.getContentPane().add(perceptionPanel);
 		
 		Label perceptionLabel = new Label("Perception");
 		perceptionLabel.setFont(new Font("Verdana", Font.BOLD, 22));
@@ -1823,8 +2014,251 @@ public class MainWindow {
 
 				}
 			}
+		});	
+		
+		perceptionLevel.setValue(currentSheet.getPerception());
+		artistLevel.setValue(currentSheet.getArtist());
+		engineeringLevel.setValue(currentSheet.getEngineering());
+		searchLevel.setValue(currentSheet.getSearch());
+		streetwiseLevel.setValue(currentSheet.getStreetwise());
+		surveillanceLevel.setValue(currentSheet.getSurveillance());
+		survivalLevel.setValue(currentSheet.getSurvival());
+		artistTotal.setValue(currentSheet.getArtist() + currentSheet.getPerception());
+		engineeringTotal.setValue(currentSheet.getEngineering() + currentSheet.getPerception());
+		searchTotal.setValue(currentSheet.getSearch() + currentSheet.getPerception());
+		streetwiseTotal.setValue(currentSheet.getStreetwise() + currentSheet.getPerception());
+		surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
+		survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());		
+		
+		Panel presencePanel = new Panel();
+		presencePanel.setBounds(768, 0, 354, 274);
+		mentalStatsPanel.add(presencePanel);
+		presencePanel.setLayout(null);
+		presencePanel.setBackground(new Color(186, 85, 211));
+		
+		Label presenceLabel = new Label("Presence");
+		presenceLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+		presenceLabel.setBounds(110, 10, 135, 30);
+		presencePanel.add(presenceLabel);
+		
+		JFormattedTextField presenceLevel = new JFormattedTextField(nums);
+		presenceLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		presenceLevel.setFont(new Font("Arial", Font.BOLD, 22));
+		presenceLevel.setColumns(2);
+		presenceLevel.setBounds(294, 10, 50, 35);
+		presencePanel.add(presenceLevel);
+		
+		Panel bluffPanel = new Panel();
+		bluffPanel.setLayout(null);
+		bluffPanel.setBackground(new Color(221, 160, 221));
+		bluffPanel.setBounds(0, 50, 354, 32);
+		presencePanel.add(bluffPanel);
+		
+		Label bluffLabel = new Label("Bluff");
+		bluffLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		bluffLabel.setBounds(35, 5, 120, 22);
+		bluffPanel.add(bluffLabel);
+		
+		JFormattedTextField bluffTotal = new JFormattedTextField();
+		bluffTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		bluffTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		bluffTotal.setEditable(false);
+		bluffTotal.setColumns(2);
+		bluffTotal.setBounds(294, 5, 50, 22);
+		bluffPanel.add(bluffTotal);
+		
+		JFormattedTextField bluffLevel = new JFormattedTextField(nums);
+		bluffLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		bluffLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		bluffLevel.setColumns(2);
+		bluffLevel.setBounds(5, 5, 24, 22);
+		bluffPanel.add(bluffLevel);
+		bluffLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(bluffLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(bluffLevel.getText());
+					int j = Integer.parseInt(presenceLevel.getText());
+					currentSheet.setBluff(i);
+					bluffTotal.setValue(i+j);	
+				}
+			}
 		});
 		
+		Panel charmPanel = new Panel();
+		charmPanel.setLayout(null);
+		charmPanel.setBackground(new Color(218, 112, 214));
+		charmPanel.setBounds(0, 82, 354, 32);
+		presencePanel.add(charmPanel);
+		
+		Label charmLabel = new Label("Charm");
+		charmLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		charmLabel.setBounds(35, 5, 120, 22);
+		charmPanel.add(charmLabel);
+		
+		JFormattedTextField charmTotal = new JFormattedTextField();
+		charmTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		charmTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		charmTotal.setEditable(false);
+		charmTotal.setColumns(2);
+		charmTotal.setBounds(294, 5, 50, 22);
+		charmPanel.add(charmTotal);
+		
+		JFormattedTextField charmLevel = new JFormattedTextField(nums);
+		charmLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		charmLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		charmLevel.setColumns(2);
+		charmLevel.setBounds(5, 7, 24, 20);
+		charmPanel.add(charmLevel);
+		charmLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(charmLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(charmLevel.getText());
+					int j = Integer.parseInt(presenceLevel.getText());
+					currentSheet.setCharm(i);
+					charmTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel intimidationPanel = new Panel();
+		intimidationPanel.setLayout(null);
+		intimidationPanel.setBackground(new Color(221, 160, 221));
+		intimidationPanel.setBounds(0, 114, 354, 32);
+		presencePanel.add(intimidationPanel);
+		
+		Label intimidationLabel = new Label("Intimidation");
+		intimidationLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		intimidationLabel.setBounds(35, 5, 120, 22);
+		intimidationPanel.add(intimidationLabel);
+		
+		JFormattedTextField intimidationTotal = new JFormattedTextField();
+		intimidationTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		intimidationTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		intimidationTotal.setEditable(false);
+		intimidationTotal.setColumns(2);
+		intimidationTotal.setBounds(294, 5, 50, 22);
+		intimidationPanel.add(intimidationTotal);
+		
+		JFormattedTextField intimidationLevel = new JFormattedTextField(nums);
+		intimidationLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		intimidationLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		intimidationLevel.setColumns(2);
+		intimidationLevel.setBounds(5, 5, 24, 22);
+		intimidationPanel.add(intimidationLevel);
+		intimidationLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(intimidationLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(intimidationLevel.getText());
+					int j = Integer.parseInt(presenceLevel.getText());
+					currentSheet.setIntimidation(i);
+					intimidationTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel persuasionPanel = new Panel();
+		persuasionPanel.setLayout(null);
+		persuasionPanel.setBackground(new Color(218, 112, 214));
+		persuasionPanel.setBounds(0, 146, 354, 32);
+		presencePanel.add(persuasionPanel);
+		
+		Label persuasionLabel = new Label("Persuasion");
+		persuasionLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		persuasionLabel.setBounds(35, 5, 120, 22);
+		persuasionPanel.add(persuasionLabel);
+		
+		JFormattedTextField persuasionTotal = new JFormattedTextField();
+		persuasionTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		persuasionTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		persuasionTotal.setEditable(false);
+		persuasionTotal.setColumns(2);
+		persuasionTotal.setBounds(294, 5, 50, 22);
+		persuasionPanel.add(persuasionTotal);
+		
+		JFormattedTextField persuasionLevel = new JFormattedTextField(nums);
+		persuasionLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		persuasionLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		persuasionLevel.setColumns(2);
+		persuasionLevel.setBounds(5, 7, 24, 20);
+		persuasionPanel.add(persuasionLevel);
+		persuasionLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(persuasionLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(persuasionLevel.getText());
+					int j = Integer.parseInt(presenceLevel.getText());
+					currentSheet.setPersuasion(i);
+					persuasionTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		Panel willpowerPanel = new Panel();
+		willpowerPanel.setLayout(null);
+		willpowerPanel.setBackground(new Color(221, 160, 221));
+		willpowerPanel.setBounds(0, 178, 354, 32);
+		presencePanel.add(willpowerPanel);
+		
+		Label willpowerLabel = new Label("Willpower");
+		willpowerLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		willpowerLabel.setBounds(35, 5, 120, 22);
+		willpowerPanel.add(willpowerLabel);
+		
+		JFormattedTextField willpowerTotal = new JFormattedTextField();
+		willpowerTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		willpowerTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		willpowerTotal.setEditable(false);
+		willpowerTotal.setColumns(2);
+		willpowerTotal.setBounds(294, 5, 50, 22);
+		willpowerPanel.add(willpowerTotal);
+		
+		JFormattedTextField willpowerLevel = new JFormattedTextField(nums);
+		willpowerLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		willpowerLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		willpowerLevel.setColumns(2);
+		willpowerLevel.setBounds(5, 5, 24, 22);
+		willpowerPanel.add(willpowerLevel);
+		willpowerLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(willpowerLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(willpowerLevel.getText());
+					int j = Integer.parseInt(presenceLevel.getText());
+					currentSheet.setWillpower(i);
+					willpowerTotal.setValue(i+j);	
+				}
+			}
+		});
+		
+		presenceLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(perceptionLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(presenceLevel.getText());
+					int j = Integer.parseInt(bluffLevel.getText());
+					int k = Integer.parseInt(charmLevel.getText());
+					int l = Integer.parseInt(intimidationLevel.getText());
+					int m = Integer.parseInt(persuasionLevel.getText());
+					int n = Integer.parseInt(willpowerLevel.getText());
+
+					currentSheet.setPresence(i);
+					bluffTotal.setValue(i+j);
+					charmTotal.setValue(i+k);
+					intimidationTotal.setValue(i+l);	
+					persuasionTotal.setValue(i+m);
+					willpowerTotal.setValue(i+n);
+				}
+			}
+		});
 		
 		// AcroSpecs
 		List<JFormattedTextField> acroSpecsFields = new ArrayList<JFormattedTextField>();
@@ -1851,8 +2285,9 @@ public class MainWindow {
 					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
 					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
-					placePanel.setLocation(0, placePanel.getY()+extra);
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 
 					for(int i = 0; i < acroSpecsList.size(); i++)
 					{
@@ -1937,17 +2372,18 @@ public class MainWindow {
 					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
 					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
-		chckbxAcro.setBackground(new Color(255, 153, 153));
-		chckbxAcro.setBounds(187, 5, 97, 23);
-		acroPanel.add(chckbxAcro);
+		
 		
 		// DodgeSpecs
 		List<JFormattedTextField> dodgeSpecsFields = new ArrayList<JFormattedTextField>();
+		chckbxAcro.setBackground(new Color(255, 153, 153));
+		chckbxAcro.setBounds(187, 5, 97, 23);
+		acroPanel.add(chckbxAcro);
 		JCheckBox chckbxDodge = new JCheckBox("Show specs");
 		chckbxDodge.addItemListener(new ItemListener() 
 		{
@@ -1970,8 +2406,9 @@ public class MainWindow {
 					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
 					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
-					placePanel.setLocation(0, placePanel.getY()+extra);
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 
 					for(int i = 0; i < dodgeSpecsList.size(); i++)
 					{
@@ -2054,14 +2491,16 @@ public class MainWindow {
 					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
 					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 				}
 			}
 		});
 		chckbxDodge.setBackground(new Color(255, 102, 102));
 		chckbxDodge.setBounds(187, 5, 97, 23);
 		dodgePanel.add(chckbxDodge);
+		
 		
 		// HandToHandSpecs
 		List<JFormattedTextField> handToHandSpecsFields = new ArrayList<JFormattedTextField>();
@@ -2086,8 +2525,9 @@ public class MainWindow {
 					handToHandPanel.setSize(354, (32+extra));
 					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
-					placePanel.setLocation(0, placePanel.getY()+extra);
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 
 					for(int i = 0; i < handToHandSpecsList.size(); i++)
 					{
@@ -2169,14 +2609,16 @@ public class MainWindow {
 					handToHandPanel.setSize(354, (32));
 					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 				}
 			}
 		});
 		chckbxHandToHand.setBackground(new Color(255, 153, 153));
 		chckbxHandToHand.setBounds(187, 5, 97, 23);
 		handToHandPanel.add(chckbxHandToHand);
+		
 		
 		// MeleeWeaponsSpecs
 		List<JFormattedTextField> meleeWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
@@ -2200,8 +2642,9 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					meleeWeaponsPanel.setSize(354, (32+extra));
 					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
-					placePanel.setLocation(0, placePanel.getY()+extra);
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 
 					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
 					{
@@ -2282,14 +2725,16 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
 					meleeWeaponsPanel.setSize(354, (32));
 					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 				}
 			}
 		});
 		chckbxMeleeWeapons.setBackground(new Color(255, 102, 102));
 		chckbxMeleeWeapons.setBounds(187, 5, 97, 23);
 		meleeWeaponsPanel.add(chckbxMeleeWeapons);
+		
 		
 		// StealthSpecs
 		List<JFormattedTextField> stealthSpecsFields = new ArrayList<JFormattedTextField>();
@@ -2311,8 +2756,9 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					stealthPanel.setSize(354, (32+extra));
-					placePanel.setLocation(0, placePanel.getY()+extra);
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 					
 					for(int i = 0; i < stealthSpecsList.size(); i++)
 					{
@@ -2390,226 +2836,15 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
 					stealthPanel.setSize(354, (32));
-					placePanel.setLocation(0, stealthPanel.getY()+stealthPanel.getHeight());
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+
 				}
 			}
 		});
 		chckbxStealth.setBackground(new Color(255, 153, 153));
 		chckbxStealth.setBounds(187, 5, 97, 23);
 		stealthPanel.add(chckbxStealth);
-		
-		// PlaceSpecs
-		List<JFormattedTextField> placeSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxPlace = new JCheckBox("Show specs");
-		chckbxPlace.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> placeSpecsList = currentSheet.assignSkillSpecs("Place");
-				if(chckbxPlace.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Place", "");
-					placeSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (placeSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					placePanel.setSize(354, (32+extra));
-					place2Panel.setLocation(0, place2Panel.getY()+extra);
-					
-					for(int i = 0; i < placeSpecsList.size(); i++)
-					{
-						int j = i;
-						placeSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField placeSpecs = placeSpecsFields.get(i);
-						placeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						placeSpecs.setBackground(new Color(255, 204, 204));
-						placeSpecs.setBounds(5, 33+(i*28), 279, 22);
-						placePanel.add(placeSpecs);
-						placeSpecs.setText(placeSpecsList.get(i).getDescription());
-						placeSpecs.requestFocus();	
-						placeSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = placeSpecsList.get(j);
-									editing.setDescription(placeSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxPlace.setSelected(false);
-										chckbxPlace.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxPlace.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-						placeSpecsList.clear();
-					for(JFormattedTextField t : placeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						placePanel.remove(t);
-						t = null;
-					}
-					placeSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(placePanel.getHeight()-32)));
-					placePanel.setSize(354, (32));
-					place2Panel.setLocation(0, placePanel.getY()+placePanel.getHeight());
-				}
-			}
-		});
-		chckbxPlace.setBackground(new Color(255, 102, 102));
-		chckbxPlace.setBounds(187, 5, 97, 23);
-		placePanel.add(chckbxPlace);
-		
-		// Place2Specs
-		List<JFormattedTextField> place2SpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxPlace2 = new JCheckBox("Show specs");
-		chckbxPlace2.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> place2SpecsList = currentSheet.assignSkillSpecs("Place2");
-				if(chckbxPlace2.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Place2", "");
-					place2SpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (place2SpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					place2Panel.setSize(354, (32+extra));
-	
-					
-					for(int i = 0; i < place2SpecsList.size(); i++)
-					{
-						int j = i;
-						place2SpecsFields.add(new JFormattedTextField());
-						JFormattedTextField place2Specs = place2SpecsFields.get(i);
-						place2Specs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						place2Specs.setBackground(new Color(255, 204, 204));
-						place2Specs.setBounds(5, 33+(i*28), 279, 22);
-						place2Panel.add(place2Specs);
-						place2Specs.setText(place2SpecsList.get(i).getDescription());
-						place2Specs.requestFocus();	
-						place2Specs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = place2SpecsList.get(j);
-									editing.setDescription(place2Specs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxPlace2.setSelected(false);
-										chckbxPlace2.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxPlace2.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-						place2SpecsList.clear();
-					for(JFormattedTextField t : place2SpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						place2Panel.remove(t);
-						t = null;
-					}
-					place2SpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(place2Panel.getHeight()-32)));
-					place2Panel.setSize(354, (32));				
-				}
-			}
-		});
-		chckbxPlace2.setBackground(new Color(255, 153, 153));
-		chckbxPlace2.setBounds(187, 5, 97, 23);
-		place2Panel.add(chckbxPlace2);
-		
 		// CatchSpecs
 		List<JFormattedTextField> catchSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxCatch = new JCheckBox("Show specs");
@@ -2635,6 +2870,9 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
 					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < catchSpecsList.size(); i++)
 					{
 						int j = i;
@@ -2719,12 +2957,15 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
 					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
 		chckbxCatch.setBackground(new Color(255, 201, 131));
 		chckbxCatch.setBounds(187, 5, 97, 23);
 		catchPanel.add(chckbxCatch);
+		
 		
 		// ClimbingSpecs
 		List<JFormattedTextField> climbingSpecsFields = new ArrayList<JFormattedTextField>();
@@ -2750,6 +2991,9 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
 					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < climbingSpecsList.size(); i++)
 					{
 						int j = i;
@@ -2833,6 +3077,8 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
 					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -2863,6 +3109,9 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
 					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < drivingSpecsList.size(); i++)
 					{
 						int j = i;
@@ -2945,6 +3194,8 @@ public class MainWindow {
 					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
 					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -2974,6 +3225,9 @@ public class MainWindow {
 					marksmanshipPanel.setSize(354, (32+extra));
 					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < marksmanshipSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3055,6 +3309,8 @@ public class MainWindow {
 					marksmanshipPanel.setSize(354, (32));
 					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3083,6 +3339,9 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					thieveryPanel.setSize(354, (32+extra));
 					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < thieverySpecsList.size(); i++)
 					{
 						int j = i;
@@ -3163,6 +3422,8 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
 					thieveryPanel.setSize(354, (32));
 					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3190,6 +3451,9 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					thrownWeaponsPanel.setSize(354, (32+extra));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < thrownWeaponsSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3269,13 +3533,14 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
 					thrownWeaponsPanel.setSize(354, (32));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
 		chckbxThrownWeapons.setBackground(new Color(255, 173, 84));
 		chckbxThrownWeapons.setBounds(187, 5, 97, 23);
 		thrownWeaponsPanel.add(chckbxThrownWeapons);	
-		
 		// AthleticsSpecs
 		List<JFormattedTextField> athleticsSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
@@ -3301,6 +3566,9 @@ public class MainWindow {
 					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
 					runningPanel.setLocation(0, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < athleticsSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3385,6 +3653,8 @@ public class MainWindow {
 					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
 					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3416,6 +3686,9 @@ public class MainWindow {
 					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
 					runningPanel.setLocation(0, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < leapSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3499,6 +3772,8 @@ public class MainWindow {
 					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
 					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3529,6 +3804,9 @@ public class MainWindow {
 					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
 					runningPanel.setLocation(0, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < liftingSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3611,6 +3889,8 @@ public class MainWindow {
 					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
 					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3640,6 +3920,9 @@ public class MainWindow {
 					resistancePanel.setSize(354, (32+extra));
 					runningPanel.setLocation(0, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < resistanceSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3721,6 +4004,8 @@ public class MainWindow {
 					resistancePanel.setSize(354, (32));
 					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3749,6 +4034,9 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					runningPanel.setSize(354, (32+extra));
 					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < runningSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3829,6 +4117,8 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
 					runningPanel.setSize(354, (32));
 					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
@@ -3856,6 +4146,9 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					swimmingPanel.setSize(354, (32+extra));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					
 					for(int i = 0; i < swimmingSpecsList.size(); i++)
 					{
 						int j = i;
@@ -3935,13 +4228,14 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
 					swimmingPanel.setSize(354, (32));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
 			}
 		});
 		chckbxSwimming.setBackground(new Color(255, 255, 153));
 		chckbxSwimming.setBounds(187, 5, 97, 23);
 		swimmingPanel.add(chckbxSwimming);		
-		
 		// ArcaneLoreSpecs
 		List<JFormattedTextField> arcaneLoreSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxArcaneLore = new JCheckBox("Show specs");
@@ -3969,6 +4263,8 @@ public class MainWindow {
 					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 
 					for(int i = 0; i < arcaneLoreSpecsList.size(); i++)
 					{
@@ -4055,6 +4351,8 @@ public class MainWindow {
 					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 				}
 			}
 		});
@@ -4088,6 +4386,8 @@ public class MainWindow {
 					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 
 					for(int i = 0; i < demolitionsSpecsList.size(); i++)
 					{
@@ -4173,12 +4473,14 @@ public class MainWindow {
 					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 				}
 			}
 		});
 		chckbxDemolitions.setBackground(new Color(50, 205, 50));
 		chckbxDemolitions.setBounds(187, 5, 97, 23);
-		demolitionsPanel.add(chckbxDemolitions);		
+		demolitionsPanel.add(chckbxDemolitions);	
 		
 		// LanguagesSpecs
 		List<JFormattedTextField> languagesSpecsFields = new ArrayList<JFormattedTextField>();
@@ -4205,6 +4507,8 @@ public class MainWindow {
 					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 
 					for(int i = 0; i < languagesSpecsList.size(); i++)
 					{
@@ -4289,6 +4593,8 @@ public class MainWindow {
 					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 				}
 			}
 		});
@@ -4320,6 +4626,7 @@ public class MainWindow {
 					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < medicineSpecsList.size(); i++)
 					{
@@ -4403,6 +4710,7 @@ public class MainWindow {
 					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -4433,6 +4741,7 @@ public class MainWindow {
 					scholarPanel.setSize(354, (32+extra));
 					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < scholarSpecsList.size(); i++)
 					{
@@ -4515,6 +4824,7 @@ public class MainWindow {
 					scholarPanel.setSize(354, (32));
 					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -4544,6 +4854,7 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					sciencePanel.setSize(354, (32+extra));
 					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < scienceSpecsList.size(); i++)
 					{
@@ -4625,6 +4936,7 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(sciencePanel.getHeight()-32)));
 					sciencePanel.setSize(354, (32));
 					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -4653,6 +4965,7 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					securityPanel.setSize(354, (32+extra));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < securitySpecsList.size(); i++)
 					{
@@ -4733,13 +5046,13 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(securityPanel.getHeight()-32)));
 					securityPanel.setSize(354, (32));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
 		chckbxSecurity.setBackground(new Color(144, 238, 144));
 		chckbxSecurity.setBounds(187, 5, 97, 23);
-		securityPanel.add(chckbxSecurity);			
-		
+		securityPanel.add(chckbxSecurity);
 		// ArtistSpecs
 		List<JFormattedTextField> artistSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxArtist = new JCheckBox("Show specs");
@@ -4765,6 +5078,8 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
 					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < artistSpecsList.size(); i++)
 					{
 						int j = i;
@@ -4849,6 +5164,7 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
 					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -4880,6 +5196,8 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
 					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < engineeringSpecsList.size(); i++)
 					{
 						int j = i;
@@ -4963,12 +5281,13 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
 					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
 		chckbxEngineering.setBackground(new Color(0, 191, 255));
 		chckbxEngineering.setBounds(187, 5, 97, 23);
-		engineeringPanel.add(chckbxEngineering);		
+		engineeringPanel.add(chckbxEngineering);	
 		
 		// SearchSpecs
 		List<JFormattedTextField> searchSpecsFields = new ArrayList<JFormattedTextField>();
@@ -4993,6 +5312,8 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
 					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < searchSpecsList.size(); i++)
 					{
 						int j = i;
@@ -5075,12 +5396,13 @@ public class MainWindow {
 					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
 					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
 		chckbxSearch.setBackground(new Color(135, 206, 235));
 		chckbxSearch.setBounds(187, 5, 97, 23);
-		searchPanel.add(chckbxSearch);			
+		searchPanel.add(chckbxSearch);		
 		
 		// StreetwiseSpecs
 		List<JFormattedTextField> streetwiseSpecsFields = new ArrayList<JFormattedTextField>();
@@ -5104,6 +5426,8 @@ public class MainWindow {
 					streetwisePanel.setSize(354, (32+extra));
 					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < streetwiseSpecsList.size(); i++)
 					{
 						int j = i;
@@ -5185,6 +5509,7 @@ public class MainWindow {
 					streetwisePanel.setSize(354, (32));
 					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -5213,6 +5538,8 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					surveillancePanel.setSize(354, (32+extra));
 					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < surveillanceSpecsList.size(); i++)
 					{
 						int j = i;
@@ -5293,6 +5620,7 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(surveillancePanel.getHeight()-32)));
 					surveillancePanel.setSize(354, (32));
 					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
@@ -5320,6 +5648,8 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					survivalPanel.setSize(354, (32+extra));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 					for(int i = 0; i < survivalSpecsList.size(); i++)
 					{
 						int j = i;
@@ -5399,312 +5729,602 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(survivalPanel.getHeight()-32)));
 					survivalPanel.setSize(354, (32));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
 				}
 			}
 		});
 		chckbxSurvival.setBackground(new Color(0, 191, 255));
 		chckbxSurvival.setBounds(187, 5, 97, 23);
-		survivalPanel.add(chckbxSurvival);			
-		
-		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(329, 11, 69, 23);
-		dcrpgFrame.getContentPane().add(btnSave);
-		btnSave.addActionListener(new ActionListener() 
+		survivalPanel.add(chckbxSurvival);		
+
+		// BluffSpecs
+		List<JFormattedTextField> bluffSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxBluff = new JCheckBox("Show specs");
+		chckbxBluff.addItemListener(new ItemListener() 
 		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				chckbxAcro.setSelected(false);
-				chckbxDodge.setSelected(false);
-				chckbxHandToHand.setSelected(false);
-				chckbxMeleeWeapons.setSelected(false);
-				chckbxStealth.setSelected(false);
-				chckbxPlace.setSelected(false);
-				chckbxPlace2.setSelected(false);
-				
-				// Write save code here - should be easy
-				dao.update(currentSheet);
-				for(SkillSpec ss : currentSheet.getSkillSpecs())
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> bluffSpecsList = currentSheet.assignSkillSpecs("Bluff");
+				if(chckbxBluff.isSelected())
 				{
-					dao.updateSpec(ss);
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Bluff", "");
+					bluffSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (bluffSpecsList.size())*28;
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
+					bluffPanel.setSize(354, (32+extra));
+					charmPanel.setLocation(0, charmPanel.getY()+extra);
+					intimidationPanel.setLocation(0, intimidationPanel.getY()+extra);
+					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+
+					for(int i = 0; i < bluffSpecsList.size(); i++)
+					{
+						int j = i;
+						bluffSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField bluffSpecs = bluffSpecsFields.get(i);
+						bluffSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						bluffSpecs.setBackground(new Color(230, 230, 250));
+						bluffSpecs.setBounds(5, 33+(i*28), 279, 22);
+						bluffPanel.add(bluffSpecs);
+						bluffSpecs.setText(bluffSpecsList.get(i).getDescription());
+						bluffSpecs.requestFocus();	
+
+						bluffSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = bluffSpecsList.get(j);
+									editing.setDescription(bluffSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxBluff.setSelected(false);
+										chckbxBluff.setSelected(true);
+									}
+							}
+						});
+					}
 				}
-				dao.saveAll();
-			}
-		});
-		
-		//load initial sheet
-		nameField.setText(currentSheet.getName());
-		genderField.setText(currentSheet.getGender());
-		heightField.setText(currentSheet.getHeight());
-		weightField.setText(currentSheet.getWeight());
-		hairColorField.setText(currentSheet.getHairColor());
-				
-		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(157, 1, 90, 20);
-		demographicsPanel.add(lblRace);
-				
-		raceField = new JFormattedTextField();
-		raceField.setBounds(219, 1, 86, 20);
-		demographicsPanel.add(raceField);
-		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
-		raceField.setColumns(10);
-		raceField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setRace(raceField.getText());
-			}
-		});
-		raceField.setText(currentSheet.getRace());
-			
-		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(157, 25, 90, 20);
-		demographicsPanel.add(lblEyeColor);
-				
-		JFormattedTextField eyeColorField = new JFormattedTextField();
-		eyeColorField.setBounds(219, 25, 86, 20);
-		demographicsPanel.add(eyeColorField);
-		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		eyeColorField.setColumns(10);
-		eyeColorField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setEyeColor(eyeColorField.getText());
-			}
-		});
-		eyeColorField.setText(currentSheet.getEyeColor());
-				
-		JLabel lblFullName = new JLabel("Full Name");
-		lblFullName.setBounds(315, 1, 90, 20);
-		demographicsPanel.add(lblFullName);
-				
-		JFormattedTextField fullNameField = new JFormattedTextField();
-		fullNameField.setBounds(384, 1, 201, 20);
-		demographicsPanel.add(fullNameField);
-		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
-		fullNameField.setColumns(10);
-		fullNameField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setFullName(fullNameField.getText());
-			}
-		});
-		fullNameField.setText(currentSheet.getFullName());
-				
-		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(315, 25, 54, 20);
-		demographicsPanel.add(lblOccupation);
-		
-		occupationField = new JFormattedTextField();
-		occupationField.setBounds(384, 25, 201, 20);
-		demographicsPanel.add(occupationField);
-		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
-		occupationField.setColumns(10);
-		occupationField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setOccupation(occupationField.getText());
-			}
-		});
-		occupationField.setText(currentSheet.getOccupation());
-		
-				
-		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(315, 49, 90, 20);
-		demographicsPanel.add(lblHomeBase);
-				
-		baseOfOperationsField = new JFormattedTextField();
-		baseOfOperationsField.setBounds(384, 49, 201, 20);
-		demographicsPanel.add(baseOfOperationsField);
-		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
-			}
-		});
-		baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
-		
-		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(605, 1, 90, 20);
-		demographicsPanel.add(lblHeroPoints);
-		
-				
-		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(605, 25, 58, 20);
-		demographicsPanel.add(lblVillainPoints);
-												
-		JLabel lblAvailableRenown = new JLabel("Renown");
-		lblAvailableRenown.setBounds(605, 49, 90, 20);
-		demographicsPanel.add(lblAvailableRenown);
-				
-		heroPointsField = new JFormattedTextField(nums);
-		heroPointsField.setBounds(678, 1, 86, 20);
-		demographicsPanel.add(heroPointsField);
-		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heroPointsField.setColumns(10);
-		heroPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
-			}
-		});
-		heroPointsField.setValue(currentSheet.getHeroPoints());
-		
-		villainPointsField = new JFormattedTextField(nums);
-		villainPointsField.setBounds(678, 25, 86, 20);
-		demographicsPanel.add(villainPointsField);
-		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		villainPointsField.setColumns(10);
-		villainPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
-			}
-		});
-		villainPointsField.setValue(currentSheet.getVillainPoints());
-		
-		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
-		availableRenownField.setBounds(678, 49, 86, 20);
-		demographicsPanel.add(availableRenownField);
-		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
-		availableRenownField.setColumns(10);
-		availableRenownField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
-			}
-		});
-		availableRenownField.setValue(currentSheet.getAvailableRenown());
-				
+				else if(!chckbxBluff.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
 						
-		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(784, 1, 62, 20);
-		demographicsPanel.add(lblPowerPoints);
-				
-						
-		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(784, 25, 90, 20);
-		demographicsPanel.add(lblSkillPoints);
-						
-		powerPointsField = new JFormattedTextField(nums);
-		powerPointsField.setBounds(866, 1, 86, 20);
-		demographicsPanel.add(powerPointsField);
-		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		powerPointsField.setColumns(10);
-		powerPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					bluffSpecsList.clear();
+					for(JFormattedTextField t : bluffSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						bluffPanel.remove(t);
+						t = null;
+					}
+					bluffSpecsFields.clear();
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(bluffPanel.getHeight()-32)));
+					bluffPanel.setSize(354, (32));
+					charmPanel.setLocation(0, bluffPanel.getY()+32);
+					intimidationPanel.setLocation(0, charmPanel.getY()+charmPanel.getHeight());
+					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+				}
 			}
 		});
-		powerPointsField.setValue(currentSheet.getPowerPoints());
-				
-						
-		skillPointsField = new JFormattedTextField(nums);
-		skillPointsField.setBounds(866, 25, 86, 20);
-		demographicsPanel.add(skillPointsField);
-		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		skillPointsField.setColumns(10);
-		skillPointsField.addKeyListener(new KeyAdapter() 
+		chckbxBluff.setBackground(new Color(221, 160, 221));
+		chckbxBluff.setBounds(187, 5, 97, 23);
+		bluffPanel.add(chckbxBluff);	
+		
+		// CharmSpecs
+		List<JFormattedTextField> charmSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxCharm = new JCheckBox("Show specs");
+		chckbxCharm.addItemListener(new ItemListener() 
 		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> charmSpecsList = currentSheet.assignSkillSpecs("Charm");
+				if(chckbxCharm.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Charm", "");
+					charmSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (charmSpecsList.size())*28;
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
+					charmPanel.setSize(354, (32+extra));
+					intimidationPanel.setLocation(0, intimidationPanel.getY()+extra);
+					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+					for(int i = 0; i < charmSpecsList.size(); i++)
+					{
+						int j = i;
+						charmSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField charmSpecs = charmSpecsFields.get(i);
+						charmSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						charmSpecs.setBackground(new Color(230, 230, 250));
+						charmSpecs.setBounds(5, 33+(i*28), 279, 22);
+						charmPanel.add(charmSpecs);
+						charmSpecs.setText(charmSpecsList.get(i).getDescription());
+						charmSpecs.requestFocus();	
+
+						charmSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = charmSpecsList.get(j);
+									editing.setDescription(charmSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxCharm.setSelected(false);
+										chckbxCharm.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxCharm.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					charmSpecsList.clear();
+					for(JFormattedTextField t : charmSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						charmPanel.remove(t);
+						t = null;
+					}
+					charmSpecsFields.clear();
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(charmPanel.getHeight()-32)));
+					charmPanel.setSize(354, (32));
+					intimidationPanel.setLocation(0, charmPanel.getY()+charmPanel.getHeight());
+					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+				}
 			}
 		});
-		skillPointsField.setValue(currentSheet.getSkillPoints());
-		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
-		bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
-		speedField.setValue(currentSheet.getSpeed());
-				
-		reflexesLevel.setValue(currentSheet.getReflexes());
-		acroLevel.setValue(currentSheet.getAcrobatics());
-		dodgeLevel.setValue(currentSheet.getDodge());
-		handToHandLevel.setValue(currentSheet.getHandToHand());
-		meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
-		stealthLevel.setValue(currentSheet.getStealth());
-		acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
-		dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
-		handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
-		meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
-		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
-				
-		coordinationLevel.setValue(currentSheet.getCoordination());
-		catchLevel.setValue(currentSheet.getCatching());
-		climbingLevel.setValue(currentSheet.getClimb());
-		drivingLevel.setValue(currentSheet.getDrive());
-		marksmanshipLevel.setValue(currentSheet.getMarksmanship());
-		thieveryLevel.setValue(currentSheet.getThievery());
-		thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
-		catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
-		climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
-		drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
-		marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
-		thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
-		thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
-				
-		physiqueLevel.setValue(currentSheet.getPhysique());
-		athleticsLevel.setValue(currentSheet.getAthletics());
-		leapLevel.setValue(currentSheet.getLeap());
-		liftingLevel.setValue(currentSheet.getLifting());
-		resistanceLevel.setValue(currentSheet.getResistance());
-		runningLevel.setValue(currentSheet.getRunning());
-		swimmingLevel.setValue(currentSheet.getSwimming());
-		athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
-		leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
-		liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
-		resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
-		runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
-		swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
-				
-		knowledgeLevel.setValue(currentSheet.getKnowledge());
-		arcaneLoreLevel.setValue(currentSheet.getArcaneLore());
-		demolitionsLevel.setValue(currentSheet.getDemolitions());
-		languagesLevel.setValue(currentSheet.getLanguages());
-		medicineLevel.setValue(currentSheet.getMedicine());
-		scholarLevel.setValue(currentSheet.getScholar());
-		scienceLevel.setValue(currentSheet.getScience());
-		securityLevel.setValue(currentSheet.getSecurity());
-		arcaneLoreTotal.setValue(currentSheet.getArcaneLore() + currentSheet.getKnowledge());
-		demolitionsTotal.setValue(currentSheet.getDemolitions() + currentSheet.getKnowledge());
-		languagesTotal.setValue(currentSheet.getLanguages() + currentSheet.getKnowledge());
-		medicineTotal.setValue(currentSheet.getMedicine() + currentSheet.getKnowledge());
-		scholarTotal.setValue(currentSheet.getScholar() + currentSheet.getKnowledge());
-		scienceTotal.setValue(currentSheet.getScience() + currentSheet.getKnowledge());
-		securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
-				
-		perceptionLevel.setValue(currentSheet.getPerception());
-		artistLevel.setValue(currentSheet.getArtist());
-		engineeringLevel.setValue(currentSheet.getEngineering());
-		searchLevel.setValue(currentSheet.getSearch());
-		streetwiseLevel.setValue(currentSheet.getStreetwise());
-		surveillanceLevel.setValue(currentSheet.getSurveillance());
-		survivalLevel.setValue(currentSheet.getSurvival());
-		artistTotal.setValue(currentSheet.getArtist() + currentSheet.getPerception());
-		engineeringTotal.setValue(currentSheet.getEngineering() + currentSheet.getPerception());
-		searchTotal.setValue(currentSheet.getSearch() + currentSheet.getPerception());
-		streetwiseTotal.setValue(currentSheet.getStreetwise() + currentSheet.getPerception());
-		surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
-		survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());		
+		chckbxCharm.setBackground(new Color(218, 112, 214));
+		chckbxCharm.setBounds(187, 5, 97, 23);
+		charmPanel.add(chckbxCharm);		
+		
+		// IntimidationSpecs
+		List<JFormattedTextField> intimidationSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxIntimidation = new JCheckBox("Show specs");
+		chckbxIntimidation.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> intimidationSpecsList = currentSheet.assignSkillSpecs("Intimidation");
+				if(chckbxIntimidation.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Intimidation", "");
+					intimidationSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (intimidationSpecsList.size())*28;
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
+					intimidationPanel.setSize(354, (32+extra));
+					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+					for(int i = 0; i < intimidationSpecsList.size(); i++)
+					{
+						int j = i;
+						intimidationSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField intimidationSpecs = intimidationSpecsFields.get(i);
+						intimidationSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						intimidationSpecs.setBackground(new Color(230, 230, 250));
+						intimidationSpecs.setBounds(5, 33+(i*28), 279, 22);
+						intimidationPanel.add(intimidationSpecs);
+						intimidationSpecs.setText(intimidationSpecsList.get(i).getDescription());
+						intimidationSpecs.requestFocus();	
+
+						intimidationSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = intimidationSpecsList.get(j);
+									editing.setDescription(intimidationSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxIntimidation.setSelected(false);
+										chckbxIntimidation.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxIntimidation.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					intimidationSpecsList.clear();
+					for(JFormattedTextField t : intimidationSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						intimidationPanel.remove(t);
+						t = null;
+					}
+					intimidationSpecsFields.clear();
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(intimidationPanel.getHeight()-32)));
+					intimidationPanel.setSize(354, (32));
+					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+				}
+			}
+		});
+		chckbxIntimidation.setBackground(new Color(221, 160, 221));
+		chckbxIntimidation.setBounds(187, 5, 97, 23);
+		intimidationPanel.add(chckbxIntimidation);	
+		
+		// PersuasionSpecs
+		List<JFormattedTextField> persuasionSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxPersuasion = new JCheckBox("Show specs");
+		chckbxPersuasion.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> persuasionSpecsList = currentSheet.assignSkillSpecs("Persuasion");
+				if(chckbxPersuasion.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Persuasion", "");
+					persuasionSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (persuasionSpecsList.size())*28;
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
+					persuasionPanel.setSize(354, (32+extra));
+					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+					for(int i = 0; i < persuasionSpecsList.size(); i++)
+					{
+						int j = i;
+						persuasionSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField persuasionSpecs = persuasionSpecsFields.get(i);
+						persuasionSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						persuasionSpecs.setBackground(new Color(230, 230, 250));
+						persuasionSpecs.setBounds(5, 33+(i*28), 279, 22);
+						persuasionPanel.add(persuasionSpecs);
+						persuasionSpecs.setText(persuasionSpecsList.get(i).getDescription());
+						persuasionSpecs.requestFocus();	
+
+						persuasionSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = persuasionSpecsList.get(j);
+									editing.setDescription(persuasionSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxPersuasion.setSelected(false);
+										chckbxPersuasion.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxPersuasion.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					persuasionSpecsList.clear();
+					for(JFormattedTextField t : persuasionSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						persuasionPanel.remove(t);
+						t = null;
+					}
+					persuasionSpecsFields.clear();
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(persuasionPanel.getHeight()-32)));
+					persuasionPanel.setSize(354, (32));
+					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+				}
+			}
+		});
+		chckbxPersuasion.setBackground(new Color(218, 112, 214));
+		chckbxPersuasion.setBounds(187, 5, 97, 23);
+		persuasionPanel.add(chckbxPersuasion);		
+		
+		// WillpowerSpecs
+		List<JFormattedTextField> willpowerSpecsFields = new ArrayList<JFormattedTextField>();
+		JCheckBox chckbxWillpower = new JCheckBox("Show specs");
+		chckbxWillpower.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> willpowerSpecsList = currentSheet.assignSkillSpecs("Willpower");
+				if(chckbxWillpower.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Willpower", "");
+					willpowerSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (willpowerSpecsList.size())*28;
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
+					willpowerPanel.setSize(354, (32+extra));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+					for(int i = 0; i < willpowerSpecsList.size(); i++)
+					{
+						int j = i;
+						willpowerSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField willpowerSpecs = willpowerSpecsFields.get(i);
+						willpowerSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						willpowerSpecs.setBackground(new Color(230, 230, 250));
+						willpowerSpecs.setBounds(5, 33+(i*28), 279, 22);
+						willpowerPanel.add(willpowerSpecs);
+						willpowerSpecs.setText(willpowerSpecsList.get(i).getDescription());
+						willpowerSpecs.requestFocus();	
+
+						willpowerSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = willpowerSpecsList.get(j);
+									editing.setDescription(willpowerSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxWillpower.setSelected(false);
+										chckbxWillpower.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxWillpower.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					willpowerSpecsList.clear();
+					for(JFormattedTextField t : willpowerSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						willpowerPanel.remove(t);
+						t = null;
+					}
+					willpowerSpecsFields.clear();
+					
+					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(willpowerPanel.getHeight()-32)));
+					willpowerPanel.setSize(354, (32));
+					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+
+				}
+			}
+		});
+		chckbxWillpower.setBackground(new Color(221, 160, 221));
+		chckbxWillpower.setBounds(187, 5, 97, 23);
+		willpowerPanel.add(chckbxWillpower);
+		
+		presenceLevel.setValue(currentSheet.getPresence());
+		bluffLevel.setValue(currentSheet.getBluff());
+		charmLevel.setValue(currentSheet.getCharm());
+		intimidationLevel.setValue(currentSheet.getIntimidation());
+		persuasionLevel.setValue(currentSheet.getPersuasion());
+		willpowerLevel.setValue(currentSheet.getWillpower());
+		bluffTotal.setValue(currentSheet.getBluff() + currentSheet.getPresence());
+		charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
+		intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
+		persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
+		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
 		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() 
@@ -5720,8 +6340,6 @@ public class MainWindow {
 							chckbxHandToHand.setSelected(false);
 							chckbxMeleeWeapons.setSelected(false);
 							chckbxStealth.setSelected(false);
-							chckbxPlace.setSelected(false);
-							chckbxPlace2.setSelected(false);
 									
 							chckbxCatch.setSelected(false);
 							chckbxClimbing.setSelected(false);
@@ -5751,7 +6369,12 @@ public class MainWindow {
 							chckbxStreetwise.setSelected(false);
 							chckbxSurveillance.setSelected(false);
 							chckbxSurvival.setSelected(false);
-
+							
+							chckbxBluff.setSelected(false);
+							chckbxCharm.setSelected(false);
+							chckbxIntimidation.setSelected(false);
+							chckbxPersuasion.setSelected(false);
+							chckbxWillpower.setSelected(false);
 								
 							currentSheet = s;
 							// load the entire dang sheet
@@ -5839,7 +6462,17 @@ public class MainWindow {
 							streetwiseTotal.setValue(currentSheet.getStreetwise() + currentSheet.getPerception());
 							surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
 							survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());	
-														
+							presenceLevel.setValue(currentSheet.getPresence());
+							bluffLevel.setValue(currentSheet.getBluff());
+							charmLevel.setValue(currentSheet.getCharm());
+							intimidationLevel.setValue(currentSheet.getIntimidation());
+							persuasionLevel.setValue(currentSheet.getPersuasion());
+							willpowerLevel.setValue(currentSheet.getWillpower());
+							bluffTotal.setValue(currentSheet.getBluff() + currentSheet.getPresence());
+							charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
+							intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
+							persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
+							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());							
 							}
 						}
 					}
@@ -5847,6 +6480,64 @@ public class MainWindow {
 				
 				btnLoad.setBounds(167, 11, 69, 23);
 				dcrpgFrame.getContentPane().add(btnLoad);
+				
+				JButton btnSave = new JButton("Save");
+				btnSave.setBounds(329, 11, 69, 23);
+				dcrpgFrame.getContentPane().add(btnSave);	
+				btnSave.addActionListener(new ActionListener() 
+				{
+					public void actionPerformed(ActionEvent arg0) 
+					{
+						chckbxAcro.setSelected(false);
+						chckbxDodge.setSelected(false);
+						chckbxHandToHand.setSelected(false);
+						chckbxMeleeWeapons.setSelected(false);
+						chckbxStealth.setSelected(false);
+						
+						chckbxCatch.setSelected(false);
+						chckbxClimbing.setSelected(false);
+						chckbxDriving.setSelected(false);
+						chckbxMarksmanship.setSelected(false);
+						chckbxThievery.setSelected(false);
+						chckbxThrownWeapons.setSelected(false);
+								
+						chckbxAthletics.setSelected(false);
+						chckbxLeap.setSelected(false);
+						chckbxLifting.setSelected(false);
+						chckbxResistance.setSelected(false);
+						chckbxRunning.setSelected(false);
+						chckbxSwimming.setSelected(false);
+								
+						chckbxArcaneLore.setSelected(false);
+						chckbxDemolitions.setSelected(false);
+						chckbxLanguages.setSelected(false);
+						chckbxMedicine.setSelected(false);
+						chckbxScholar.setSelected(false);
+						chckbxScience.setSelected(false);
+						chckbxSecurity.setSelected(false);
+						
+						chckbxArtist.setSelected(false);
+						chckbxEngineering.setSelected(false);
+						chckbxSearch.setSelected(false);
+						chckbxStreetwise.setSelected(false);
+						chckbxSurveillance.setSelected(false);
+						chckbxSurvival.setSelected(false);
+						
+						chckbxBluff.setSelected(false);
+						chckbxCharm.setSelected(false);
+						chckbxIntimidation.setSelected(false);
+						chckbxPersuasion.setSelected(false);
+						chckbxWillpower.setSelected(false);
+						
+						// Write save code here - should be easy
+						dao.update(currentSheet);
+						for(SkillSpec ss : currentSheet.getSkillSpecs())
+						{
+							dao.updateSpec(ss);
+						}
+						dao.saveAll();
+					}
+				});
 				
 
 				
@@ -5861,4 +6552,15 @@ public class MainWindow {
 					}
 				});
 	}
+	
+	public int setPanelSize(int h1, int h2, int h3)
+	{
+		if(h1 >= h2 && h1 >= h3)
+			return h1;
+		else if(h2 >= h3)
+			return h2;
+		else
+			return h3;
+	}
+	
 }

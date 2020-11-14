@@ -186,8 +186,7 @@ public class MainWindow {
 		dcrpgFrame.setBounds(100, 100, 1920, 1080);
 		dcrpgFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		dcrpgFrame.getContentPane().setLayout(null);
-		
-		
+	
 		NumberFormat nums = NumberFormat.getNumberInstance();
 		
 		JLabel nameLabel = new JLabel("Name");
@@ -218,26 +217,26 @@ public class MainWindow {
 		});
 		
 		JLabel udoLabel = new JLabel("UDO");
-		udoLabel.setBounds(1063, 6, 90, 20);
+		udoLabel.setBounds(1075, 6, 90, 20);
 		dcrpgFrame.getContentPane().add(udoLabel);
 		
 		JLabel bodyPointsLabel = new JLabel("<html><body>  Body<br>Points</body></html>");
 		bodyPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		bodyPointsLabel.setBounds(933, 6, 60, 42);
+		bodyPointsLabel.setBounds(935, 6, 60, 42);
 		dcrpgFrame.getContentPane().add(bodyPointsLabel);
 		
 		JLabel speedLabel = new JLabel("Speed");
-		speedLabel.setBounds(1063, 29, 90, 20);
+		speedLabel.setBounds(1075, 29, 90, 20);
 		dcrpgFrame.getContentPane().add(speedLabel);
 		
 		JPanel demographicsPanel = new JPanel();
 		demographicsPanel.setBackground(new Color(204, 255, 255));
-		demographicsPanel.setBounds(48, 59, 1008, 70);
+		demographicsPanel.setBounds(45, 60, 1152, 70);
 		dcrpgFrame.getContentPane().add(demographicsPanel);
 		demographicsPanel.setLayout(null);
 		
 		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(1, 1, 35, 20);
+		lblGender.setBounds(1, 1, 54, 20);
 		demographicsPanel.add(lblGender);
 		
 		JLabel lblHeight = new JLabel("Height");
@@ -249,11 +248,11 @@ public class MainWindow {
 		demographicsPanel.add(lblWeight);
 		
 		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(157, 49, 47, 20);
+		lblHairColor.setBounds(171, 49, 74, 20);
 		demographicsPanel.add(lblHairColor);
 		
 		genderField = new JFormattedTextField();
-		genderField.setBounds(51, 1, 86, 20);
+		genderField.setBounds(51, 1, 100, 20);
 		demographicsPanel.add(genderField);
 		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
 		genderField.setColumns(10);
@@ -267,7 +266,7 @@ public class MainWindow {
 		});
 		
 		heightField = new JFormattedTextField();
-		heightField.setBounds(51, 25, 86, 20);
+		heightField.setBounds(51, 25, 100, 20);
 		demographicsPanel.add(heightField);
 		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heightField.setColumns(10);
@@ -281,7 +280,7 @@ public class MainWindow {
 		});
 		
 		weightField = new JFormattedTextField();
-		weightField.setBounds(51, 49, 86, 20);
+		weightField.setBounds(51, 49, 100, 20);
 		demographicsPanel.add(weightField);
 		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		weightField.setColumns(10);
@@ -295,7 +294,7 @@ public class MainWindow {
 		});
 		
 		JFormattedTextField hairColorField = new JFormattedTextField();
-		hairColorField.setBounds(219, 49, 86, 20);
+		hairColorField.setBounds(238, 49, 100, 20);
 		demographicsPanel.add(hairColorField);
 		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 		hairColorField.setColumns(10);
@@ -307,23 +306,10 @@ public class MainWindow {
 				currentSheet.setHairColor(hairColorField.getText());
 			}
 		});
-		
-		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
-		chckbxDemographics.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				if(chckbxDemographics.isSelected())
-					demographicsPanel.setVisible(true);
-				else if(!chckbxDemographics.isSelected())
-					demographicsPanel.setVisible(false);
-			}
-		});
-		chckbxDemographics.setSelected(true);
-		chckbxDemographics.setBounds(38, 39, 164, 23);
-		dcrpgFrame.getContentPane().add(chckbxDemographics);
 	
 		udoField = new JFormattedTextField();
 		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
-		udoField.setBounds(1110, 6, 60, 20);
+		udoField.setBounds(1122, 6, 75, 20);
 		dcrpgFrame.getContentPane().add(udoField);
 		udoField.setColumns(10);
 		udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
@@ -342,7 +328,7 @@ public class MainWindow {
 		bodyPointsField = new JFormattedTextField();
 		bodyPointsField.setFont(new Font("Arial", Font.BOLD, 20));
 		bodyPointsField.setHorizontalAlignment(SwingConstants.CENTER);
-		bodyPointsField.setBounds(992, 6, 60, 43);
+		bodyPointsField.setBounds(989, 6, 75, 43);
 		dcrpgFrame.getContentPane().add(bodyPointsField);
 		bodyPointsField.setColumns(10);
 		bodyPointsField.addKeyListener(new KeyAdapter()
@@ -359,9 +345,9 @@ public class MainWindow {
 		});
 
 		
-		speedField = new JFormattedTextField(nums);
+		speedField = new JFormattedTextField();
 		speedField.setHorizontalAlignment(SwingConstants.RIGHT);
-		speedField.setBounds(1110, 29, 60, 20);
+		speedField.setBounds(1122, 29, 75, 20);
 		dcrpgFrame.getContentPane().add(speedField);
 		speedField.setColumns(10);
 		speedField.addKeyListener(new KeyAdapter() 
@@ -369,7 +355,7 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setSpeed(Integer.parseInt(speedField.getText()));
+				currentSheet.setSpeed(speedField.getText());
 			}
 		});
 
@@ -387,11 +373,11 @@ public class MainWindow {
 		hairColorField.setText(currentSheet.getHairColor());
 				
 		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(157, 1, 90, 20);
+		lblRace.setBounds(171, 1, 90, 20);
 		demographicsPanel.add(lblRace);
 				
 		raceField = new JFormattedTextField();
-		raceField.setBounds(219, 1, 86, 20);
+		raceField.setBounds(238, 1, 100, 20);
 		demographicsPanel.add(raceField);
 		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
 		raceField.setColumns(10);
@@ -406,11 +392,11 @@ public class MainWindow {
 		raceField.setText(currentSheet.getRace());
 			
 		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(157, 25, 90, 20);
+		lblEyeColor.setBounds(171, 25, 90, 20);
 		demographicsPanel.add(lblEyeColor);
 				
 		JFormattedTextField eyeColorField = new JFormattedTextField();
-		eyeColorField.setBounds(219, 25, 86, 20);
+		eyeColorField.setBounds(238, 25, 100, 20);
 		demographicsPanel.add(eyeColorField);
 		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 		eyeColorField.setColumns(10);
@@ -425,11 +411,11 @@ public class MainWindow {
 		eyeColorField.setText(currentSheet.getEyeColor());
 				
 		JLabel lblFullName = new JLabel("Full Name");
-		lblFullName.setBounds(315, 1, 90, 20);
+		lblFullName.setBounds(395, 1, 90, 20);
 		demographicsPanel.add(lblFullName);
 				
 		JFormattedTextField fullNameField = new JFormattedTextField();
-		fullNameField.setBounds(384, 1, 201, 20);
+		fullNameField.setBounds(473, 1, 245, 20);
 		demographicsPanel.add(fullNameField);
 		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
 		fullNameField.setColumns(10);
@@ -444,11 +430,11 @@ public class MainWindow {
 		fullNameField.setText(currentSheet.getFullName());
 				
 		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(315, 25, 54, 20);
+		lblOccupation.setBounds(395, 25, 74, 20);
 		demographicsPanel.add(lblOccupation);
 		
 		occupationField = new JFormattedTextField();
-		occupationField.setBounds(384, 25, 201, 20);
+		occupationField.setBounds(473, 25, 245, 20);
 		demographicsPanel.add(occupationField);
 		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
 		occupationField.setColumns(10);
@@ -464,11 +450,11 @@ public class MainWindow {
 		
 				
 		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(315, 49, 90, 20);
+		lblHomeBase.setBounds(395, 49, 90, 20);
 		demographicsPanel.add(lblHomeBase);
 				
 		baseOfOperationsField = new JFormattedTextField();
-		baseOfOperationsField.setBounds(384, 49, 201, 20);
+		baseOfOperationsField.setBounds(473, 49, 245, 20);
 		demographicsPanel.add(baseOfOperationsField);
 		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		baseOfOperationsField.setColumns(10);
@@ -483,20 +469,20 @@ public class MainWindow {
 		baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
 		
 		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(605, 1, 90, 20);
+		lblHeroPoints.setBounds(788, 1, 90, 20);
 		demographicsPanel.add(lblHeroPoints);
 		
 				
 		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(605, 25, 58, 20);
+		lblVillainPoints.setBounds(788, 25, 74, 20);
 		demographicsPanel.add(lblVillainPoints);
 												
 		JLabel lblAvailableRenown = new JLabel("Renown");
-		lblAvailableRenown.setBounds(605, 49, 90, 20);
+		lblAvailableRenown.setBounds(788, 49, 90, 20);
 		demographicsPanel.add(lblAvailableRenown);
 				
-		heroPointsField = new JFormattedTextField(nums);
-		heroPointsField.setBounds(678, 1, 86, 20);
+		heroPointsField = new JFormattedTextField();
+		heroPointsField.setBounds(871, 1, 86, 20);
 		demographicsPanel.add(heroPointsField);
 		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heroPointsField.setColumns(10);
@@ -505,13 +491,13 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setHeroPoints(Integer.parseInt(heroPointsField.getText()));
+				currentSheet.setHeroPoints(heroPointsField.getText());
 			}
 		});
 		heroPointsField.setValue(currentSheet.getHeroPoints());
 		
-		villainPointsField = new JFormattedTextField(nums);
-		villainPointsField.setBounds(678, 25, 86, 20);
+		villainPointsField = new JFormattedTextField();
+		villainPointsField.setBounds(871, 25, 86, 20);
 		demographicsPanel.add(villainPointsField);
 		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		villainPointsField.setColumns(10);
@@ -520,13 +506,13 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setVillainPoints(Integer.parseInt(villainPointsField.getText()));
+				currentSheet.setVillainPoints(villainPointsField.getText());
 			}
 		});
 		villainPointsField.setValue(currentSheet.getVillainPoints());
 		
-		JFormattedTextField availableRenownField = new JFormattedTextField(nums);
-		availableRenownField.setBounds(678, 49, 86, 20);
+		JFormattedTextField availableRenownField = new JFormattedTextField();
+		availableRenownField.setBounds(871, 49, 86, 20);
 		demographicsPanel.add(availableRenownField);
 		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
 		availableRenownField.setColumns(10);
@@ -535,23 +521,23 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setAvailableRenown(Integer.parseInt(availableRenownField.getText()));
+				currentSheet.setAvailableRenown(availableRenownField.getText());
 			}
 		});
 		availableRenownField.setValue(currentSheet.getAvailableRenown());
 				
 						
 		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(784, 1, 62, 20);
+		lblPowerPoints.setBounds(973, 1, 90, 20);
 		demographicsPanel.add(lblPowerPoints);
 				
 						
 		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(784, 25, 90, 20);
+		lblSkillPoints.setBounds(973, 25, 90, 20);
 		demographicsPanel.add(lblSkillPoints);
 						
-		powerPointsField = new JFormattedTextField(nums);
-		powerPointsField.setBounds(866, 1, 86, 20);
+		powerPointsField = new JFormattedTextField();
+		powerPointsField.setBounds(1056, 1, 86, 20);
 		demographicsPanel.add(powerPointsField);
 		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		powerPointsField.setColumns(10);
@@ -560,14 +546,14 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setPowerPoints(Integer.parseInt(powerPointsField.getText()));
+				currentSheet.setPowerPoints(powerPointsField.getText());
 			}
 		});
 		powerPointsField.setValue(currentSheet.getPowerPoints());
 				
 						
-		skillPointsField = new JFormattedTextField(nums);
-		skillPointsField.setBounds(866, 25, 86, 20);
+		skillPointsField = new JFormattedTextField();
+		skillPointsField.setBounds(1056, 25, 86, 20);
 		demographicsPanel.add(skillPointsField);
 		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		skillPointsField.setColumns(10);
@@ -576,7 +562,7 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setSkillPoints(Integer.parseInt(skillPointsField.getText()));
+				currentSheet.setSkillPoints(skillPointsField.getText());
 			}
 		});
 		skillPointsField.setValue(currentSheet.getSkillPoints());
@@ -586,13 +572,13 @@ public class MainWindow {
 				
 				JPanel physStatsPanel = new JPanel();
 				physStatsPanel.setBackground(new Color(192, 192, 192));
-				physStatsPanel.setBounds(45, 150, 1112, 242);
+				physStatsPanel.setBounds(45, 160, 1152, 247);
 				dcrpgFrame.getContentPane().add(physStatsPanel);
 				physStatsPanel.setLayout(null);
 				
 				
 				Panel reflexesPanel = new Panel();
-				reflexesPanel.setBounds(0, 0, 354, 242);
+				reflexesPanel.setBounds(0, 0, 364, 247);
 				physStatsPanel.add(reflexesPanel);
 				reflexesPanel.setBackground(new Color(255, 51, 51));
 				reflexesPanel.setLayout(null);
@@ -606,12 +592,12 @@ public class MainWindow {
 				reflexesLevel.setColumns(2);
 				reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
 				reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
-				reflexesLevel.setBounds(294, 10, 50, 35);
+				reflexesLevel.setBounds(299, 10, 50, 35);
 				reflexesPanel.add(reflexesLevel);
 				
 				Panel acroPanel = new Panel();
 				acroPanel.setBackground(new Color(255, 153, 153));
-				acroPanel.setBounds(0, 50, 354, 32);
+				acroPanel.setBounds(5, 50, 354, 32);
 				reflexesPanel.add(acroPanel);
 				acroPanel.setLayout(null);
 				
@@ -651,7 +637,7 @@ public class MainWindow {
 		Panel dodgePanel = new Panel();
 		dodgePanel.setLayout(null);
 		dodgePanel.setBackground(new Color(255, 102, 102));
-		dodgePanel.setBounds(0, 82, 354, 32);
+		dodgePanel.setBounds(5, 82, 354, 32);
 		reflexesPanel.add(dodgePanel);
 		
 		Label dodgeLabel = new Label("Dodge");
@@ -691,7 +677,7 @@ public class MainWindow {
 		Panel handToHandPanel = new Panel();
 		handToHandPanel.setLayout(null);
 		handToHandPanel.setBackground(new Color(255, 153, 153));
-		handToHandPanel.setBounds(0, 114, 354, 32);
+		handToHandPanel.setBounds(5, 114, 354, 32);
 		reflexesPanel.add(handToHandPanel);
 		
 		Label handToHandLabel = new Label("Hand-to-Hand");
@@ -731,7 +717,7 @@ public class MainWindow {
 				Panel meleeWeaponsPanel = new Panel();
 				meleeWeaponsPanel.setLayout(null);
 				meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
-				meleeWeaponsPanel.setBounds(0, 146, 354, 32);
+				meleeWeaponsPanel.setBounds(5, 146, 354, 32);
 				reflexesPanel.add(meleeWeaponsPanel);
 				
 				Label meleeWeaponsLabel = new Label("Melee Weapons");
@@ -771,7 +757,7 @@ public class MainWindow {
 				Panel stealthPanel = new Panel();
 				stealthPanel.setLayout(null);
 				stealthPanel.setBackground(new Color(255, 153, 153));
-				stealthPanel.setBounds(0, 178, 354, 32);
+				stealthPanel.setBounds(5, 178, 354, 32);
 				reflexesPanel.add(stealthPanel);
 				
 				Label stealthLabel = new Label("Stealth");
@@ -842,7 +828,7 @@ public class MainWindow {
 		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
 		
 		Panel coordinationPanel = new Panel();
-		coordinationPanel.setBounds(384, 0, 354, 242);
+		coordinationPanel.setBounds(394, 0, 364, 247);
 		physStatsPanel.add(coordinationPanel);
 		coordinationPanel.setLayout(null);
 		coordinationPanel.setBackground(new Color(255, 133, 0));
@@ -856,13 +842,13 @@ public class MainWindow {
 		coordinationLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		coordinationLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		coordinationLevel.setColumns(2);
-		coordinationLevel.setBounds(294, 10, 50, 35);
+		coordinationLevel.setBounds(299, 10, 50, 35);
 		coordinationPanel.add(coordinationLevel);
 		
 		Panel catchPanel = new Panel();
 		catchPanel.setLayout(null);
 		catchPanel.setBackground(new Color(255, 201, 131));
-		catchPanel.setBounds(0, 50, 354, 32);
+		catchPanel.setBounds(5, 50, 354, 32);
 		coordinationPanel.add(catchPanel);
 		
 		Label catchLabel = new Label("Catch");
@@ -900,7 +886,7 @@ public class MainWindow {
 		Panel climbingPanel = new Panel();
 		climbingPanel.setLayout(null);
 		climbingPanel.setBackground(new Color(255, 173, 84));
-		climbingPanel.setBounds(0, 82, 354, 32);
+		climbingPanel.setBounds(5, 82, 354, 32);
 		coordinationPanel.add(climbingPanel);
 		
 		Label climbingLabel = new Label("Climbing");
@@ -938,7 +924,7 @@ public class MainWindow {
 		Panel drivingPanel = new Panel();
 		drivingPanel.setLayout(null);
 		drivingPanel.setBackground(new Color(255, 201, 131));
-		drivingPanel.setBounds(0, 114, 354, 32);
+		drivingPanel.setBounds(5, 114, 354, 32);
 		coordinationPanel.add(drivingPanel);
 		
 		Label drivingLabel = new Label("Driving");
@@ -976,7 +962,7 @@ public class MainWindow {
 		Panel marksmanshipPanel = new Panel();
 		marksmanshipPanel.setLayout(null);
 		marksmanshipPanel.setBackground(new Color(255, 173, 84));
-		marksmanshipPanel.setBounds(0, 146, 354, 32);
+		marksmanshipPanel.setBounds(5, 146, 354, 32);
 		coordinationPanel.add(marksmanshipPanel);
 		
 		Label marksmanshipLabel = new Label("Marksmanship");
@@ -1014,7 +1000,7 @@ public class MainWindow {
 		Panel thieveryPanel = new Panel();
 		thieveryPanel.setLayout(null);
 		thieveryPanel.setBackground(new Color(255, 201, 131));
-		thieveryPanel.setBounds(0, 178, 354, 32);
+		thieveryPanel.setBounds(5, 178, 354, 32);
 		coordinationPanel.add(thieveryPanel);
 		
 		Label thieveryLabel = new Label("Thievery");
@@ -1052,7 +1038,7 @@ public class MainWindow {
 		Panel thrownWeaponsPanel = new Panel();
 		thrownWeaponsPanel.setLayout(null);
 		thrownWeaponsPanel.setBackground(new Color(255, 173, 84));
-		thrownWeaponsPanel.setBounds(0, 210, 354, 32);
+		thrownWeaponsPanel.setBounds(5, 210, 354, 32);
 		coordinationPanel.add(thrownWeaponsPanel);
 		
 		Label thrownWeaponsLabel = new Label("Thrown Weapons");
@@ -1127,10 +1113,10 @@ public class MainWindow {
 		thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
 		
 		Panel physiquePanel = new Panel();
-		physiquePanel.setBounds(768, 0, 354, 242);
+		physiquePanel.setBounds(788, 0, 364, 247);
 		physStatsPanel.add(physiquePanel);
 		physiquePanel.setLayout(null);
-		physiquePanel.setBackground(new Color(255, 255, 0));
+		physiquePanel.setBackground(new Color(247, 247, 0));
 		
 		Label physiqueLabel = new Label("Physique");
 		physiqueLabel.setFont(new Font("Verdana", Font.BOLD, 22));
@@ -1141,13 +1127,13 @@ public class MainWindow {
 		physiqueLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		physiqueLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		physiqueLevel.setColumns(2);
-		physiqueLevel.setBounds(294, 10, 50, 35);
+		physiqueLevel.setBounds(299, 10, 50, 35);
 		physiquePanel.add(physiqueLevel);
 		
 		Panel athleticsPanel = new Panel();
 		athleticsPanel.setLayout(null);
 		athleticsPanel.setBackground(new Color(240, 230, 140));
-		athleticsPanel.setBounds(0, 50, 354, 32);
+		athleticsPanel.setBounds(5, 50, 354, 32);
 		physiquePanel.add(athleticsPanel);
 		
 		Label athleticsLabel = new Label("Athletics");
@@ -1185,7 +1171,7 @@ public class MainWindow {
 		Panel leapPanel = new Panel();
 		leapPanel.setLayout(null);
 		leapPanel.setBackground(new Color(255, 255, 153));
-		leapPanel.setBounds(0, 82, 354, 32);
+		leapPanel.setBounds(5, 82, 354, 32);
 		physiquePanel.add(leapPanel);
 		
 		Label leapLabel = new Label("Leap");
@@ -1223,7 +1209,7 @@ public class MainWindow {
 		Panel liftingPanel = new Panel();
 		liftingPanel.setLayout(null);
 		liftingPanel.setBackground(new Color(240, 230, 140));
-		liftingPanel.setBounds(0, 114, 354, 32);
+		liftingPanel.setBounds(5, 114, 354, 32);
 		physiquePanel.add(liftingPanel);
 		
 		Label liftingLabel = new Label("Lifting");
@@ -1261,7 +1247,7 @@ public class MainWindow {
 		Panel resistancePanel = new Panel();
 		resistancePanel.setLayout(null);
 		resistancePanel.setBackground(new Color(255, 255, 153));
-		resistancePanel.setBounds(0, 146, 354, 32);
+		resistancePanel.setBounds(5, 146, 354, 32);
 		physiquePanel.add(resistancePanel);
 		
 		Label resistanceLabel = new Label("Resistance");
@@ -1299,7 +1285,7 @@ public class MainWindow {
 		Panel runningPanel = new Panel();
 		runningPanel.setLayout(null);
 		runningPanel.setBackground(new Color(240, 230, 140));
-		runningPanel.setBounds(0, 178, 354, 32);
+		runningPanel.setBounds(5, 178, 354, 32);
 		physiquePanel.add(runningPanel);
 		
 		Label runningLabel = new Label("Running");
@@ -1337,7 +1323,7 @@ public class MainWindow {
 		Panel swimmingPanel = new Panel();
 		swimmingPanel.setLayout(null);
 		swimmingPanel.setBackground(new Color(255, 255, 153));
-		swimmingPanel.setBounds(0, 210, 354, 32);
+		swimmingPanel.setBounds(5, 210, 354, 32);
 		physiquePanel.add(swimmingPanel);
 		
 		Label swimmingLabel = new Label("Swimming");
@@ -1412,12 +1398,12 @@ public class MainWindow {
 		
 		JPanel mentalStatsPanel = new JPanel();
 		mentalStatsPanel.setBackground(new Color(192, 192, 192));
-		mentalStatsPanel.setBounds(45, 422, 1112, 274);
+		mentalStatsPanel.setBounds(45, 437, 1152, 279);
 		dcrpgFrame.getContentPane().add(mentalStatsPanel);
 		mentalStatsPanel.setLayout(null);
 		
 		Panel knowledgePanel = new Panel();
-		knowledgePanel.setBounds(0, 0, 354, 274);
+		knowledgePanel.setBounds(0, 0, 364, 279);
 		mentalStatsPanel.add(knowledgePanel);
 		knowledgePanel.setLayout(null);
 		knowledgePanel.setBackground(new Color(34, 139, 34));
@@ -1431,13 +1417,13 @@ public class MainWindow {
 		knowledgeLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		knowledgeLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		knowledgeLevel.setColumns(2);
-		knowledgeLevel.setBounds(294, 10, 50, 35);
+		knowledgeLevel.setBounds(299, 10, 50, 35);
 		knowledgePanel.add(knowledgeLevel);
 		
 		Panel arcaneLorePanel = new Panel();
 		arcaneLorePanel.setLayout(null);
 		arcaneLorePanel.setBackground(new Color(144, 238, 144));
-		arcaneLorePanel.setBounds(0, 50, 354, 32);
+		arcaneLorePanel.setBounds(5, 50, 354, 32);
 		knowledgePanel.add(arcaneLorePanel);
 		
 		Label arcaneLoreLabel = new Label("Arcane Lore");
@@ -1475,7 +1461,7 @@ public class MainWindow {
 		Panel demolitionsPanel = new Panel();
 		demolitionsPanel.setLayout(null);
 		demolitionsPanel.setBackground(new Color(50, 205, 50));
-		demolitionsPanel.setBounds(0, 82, 354, 32);
+		demolitionsPanel.setBounds(5, 82, 354, 32);
 		knowledgePanel.add(demolitionsPanel);
 		
 		Label demolitionsLabel = new Label("Demolitions");
@@ -1513,7 +1499,7 @@ public class MainWindow {
 		Panel languagesPanel = new Panel();
 		languagesPanel.setLayout(null);
 		languagesPanel.setBackground(new Color(144, 238, 144));
-		languagesPanel.setBounds(0, 114, 354, 32);
+		languagesPanel.setBounds(5, 114, 354, 32);
 		knowledgePanel.add(languagesPanel);
 		
 		Label languagesLabel = new Label("Languages");
@@ -1551,7 +1537,7 @@ public class MainWindow {
 		Panel medicinePanel = new Panel();
 		medicinePanel.setLayout(null);
 		medicinePanel.setBackground(new Color(50, 205, 50));
-		medicinePanel.setBounds(0, 146, 354, 32);
+		medicinePanel.setBounds(5, 146, 354, 32);
 		knowledgePanel.add(medicinePanel);
 		
 		Label medicineLabel = new Label("Medicine");
@@ -1589,7 +1575,7 @@ public class MainWindow {
 		Panel scholarPanel = new Panel();
 		scholarPanel.setLayout(null);
 		scholarPanel.setBackground(new Color(144, 238, 144));
-		scholarPanel.setBounds(0, 178, 354, 32);
+		scholarPanel.setBounds(5, 178, 354, 32);
 		knowledgePanel.add(scholarPanel);
 		
 		Label scholarLabel = new Label("Scholar");
@@ -1627,7 +1613,7 @@ public class MainWindow {
 		Panel sciencePanel = new Panel();
 		sciencePanel.setLayout(null);
 		sciencePanel.setBackground(new Color(50, 205, 50));
-		sciencePanel.setBounds(0, 210, 354, 32);
+		sciencePanel.setBounds(5, 210, 354, 32);
 		knowledgePanel.add(sciencePanel);
 		
 		Label scienceLabel = new Label("Science");
@@ -1665,7 +1651,7 @@ public class MainWindow {
 		Panel securityPanel = new Panel();
 		securityPanel.setLayout(null);
 		securityPanel.setBackground(new Color(144, 238, 144));
-		securityPanel.setBounds(0, 242, 354, 32);
+		securityPanel.setBounds(5, 242, 354, 32);
 		knowledgePanel.add(securityPanel);
 		
 		Label securityLabel = new Label("Security");
@@ -1745,7 +1731,7 @@ public class MainWindow {
 		securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
 		
 		Panel perceptionPanel = new Panel();
-		perceptionPanel.setBounds(384, 0, 354, 274);
+		perceptionPanel.setBounds(394, 0, 364, 279);
 		mentalStatsPanel.add(perceptionPanel);
 		perceptionPanel.setLayout(null);
 		perceptionPanel.setBackground(new Color(25, 128, 255));
@@ -1759,13 +1745,13 @@ public class MainWindow {
 		perceptionLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		perceptionLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		perceptionLevel.setColumns(2);
-		perceptionLevel.setBounds(294, 10, 50, 35);
+		perceptionLevel.setBounds(299, 10, 50, 35);
 		perceptionPanel.add(perceptionLevel);
 		
 		Panel artistPanel = new Panel();
 		artistPanel.setLayout(null);
 		artistPanel.setBackground(new Color(135, 206, 250));
-		artistPanel.setBounds(0, 50, 354, 32);
+		artistPanel.setBounds(5, 50, 354, 32);
 		perceptionPanel.add(artistPanel);
 		
 		Label artistLabel = new Label("Artist");
@@ -1803,7 +1789,7 @@ public class MainWindow {
 		Panel engineeringPanel = new Panel();
 		engineeringPanel.setLayout(null);
 		engineeringPanel.setBackground(new Color(0, 191, 255));
-		engineeringPanel.setBounds(0, 82, 354, 32);
+		engineeringPanel.setBounds(5, 82, 354, 32);
 		perceptionPanel.add(engineeringPanel);
 		
 		Label engineeringLabel = new Label("Engineering");
@@ -1841,7 +1827,7 @@ public class MainWindow {
 		Panel searchPanel = new Panel();
 		searchPanel.setLayout(null);
 		searchPanel.setBackground(new Color(135, 206, 235));
-		searchPanel.setBounds(0, 114, 354, 32);
+		searchPanel.setBounds(5, 114, 354, 32);
 		perceptionPanel.add(searchPanel);
 		
 		Label searchLabel = new Label("Search");
@@ -1879,7 +1865,7 @@ public class MainWindow {
 		Panel streetwisePanel = new Panel();
 		streetwisePanel.setLayout(null);
 		streetwisePanel.setBackground(new Color(0, 191, 255));
-		streetwisePanel.setBounds(0, 146, 354, 32);
+		streetwisePanel.setBounds(5, 146, 354, 32);
 		perceptionPanel.add(streetwisePanel);
 		
 		Label streetwiseLabel = new Label("Streetwise");
@@ -1917,7 +1903,7 @@ public class MainWindow {
 		Panel surveillancePanel = new Panel();
 		surveillancePanel.setLayout(null);
 		surveillancePanel.setBackground(new Color(135, 206, 235));
-		surveillancePanel.setBounds(0, 178, 354, 32);
+		surveillancePanel.setBounds(5, 178, 354, 32);
 		perceptionPanel.add(surveillancePanel);
 		
 		Label surveillanceLabel = new Label("Surveillance");
@@ -1955,7 +1941,7 @@ public class MainWindow {
 		Panel survivalPanel = new Panel();
 		survivalPanel.setLayout(null);
 		survivalPanel.setBackground(new Color(0, 191, 255));
-		survivalPanel.setBounds(0, 210, 354, 32);
+		survivalPanel.setBounds(5, 210, 354, 32);
 		perceptionPanel.add(survivalPanel);
 		
 		Label survivalLabel = new Label("Survival");
@@ -2031,7 +2017,7 @@ public class MainWindow {
 		survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());		
 		
 		Panel presencePanel = new Panel();
-		presencePanel.setBounds(768, 0, 354, 274);
+		presencePanel.setBounds(788, 0, 364, 279);
 		mentalStatsPanel.add(presencePanel);
 		presencePanel.setLayout(null);
 		presencePanel.setBackground(new Color(186, 85, 211));
@@ -2045,13 +2031,13 @@ public class MainWindow {
 		presenceLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		presenceLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		presenceLevel.setColumns(2);
-		presenceLevel.setBounds(294, 10, 50, 35);
+		presenceLevel.setBounds(299, 10, 50, 35);
 		presencePanel.add(presenceLevel);
 		
 		Panel bluffPanel = new Panel();
 		bluffPanel.setLayout(null);
 		bluffPanel.setBackground(new Color(221, 160, 221));
-		bluffPanel.setBounds(0, 50, 354, 32);
+		bluffPanel.setBounds(5, 50, 354, 32);
 		presencePanel.add(bluffPanel);
 		
 		Label bluffLabel = new Label("Bluff");
@@ -2089,7 +2075,7 @@ public class MainWindow {
 		Panel charmPanel = new Panel();
 		charmPanel.setLayout(null);
 		charmPanel.setBackground(new Color(218, 112, 214));
-		charmPanel.setBounds(0, 82, 354, 32);
+		charmPanel.setBounds(5, 82, 354, 32);
 		presencePanel.add(charmPanel);
 		
 		Label charmLabel = new Label("Charm");
@@ -2127,7 +2113,7 @@ public class MainWindow {
 		Panel intimidationPanel = new Panel();
 		intimidationPanel.setLayout(null);
 		intimidationPanel.setBackground(new Color(221, 160, 221));
-		intimidationPanel.setBounds(0, 114, 354, 32);
+		intimidationPanel.setBounds(5, 114, 354, 32);
 		presencePanel.add(intimidationPanel);
 		
 		Label intimidationLabel = new Label("Intimidation");
@@ -2165,7 +2151,7 @@ public class MainWindow {
 		Panel persuasionPanel = new Panel();
 		persuasionPanel.setLayout(null);
 		persuasionPanel.setBackground(new Color(218, 112, 214));
-		persuasionPanel.setBounds(0, 146, 354, 32);
+		persuasionPanel.setBounds(5, 146, 354, 32);
 		presencePanel.add(persuasionPanel);
 		
 		Label persuasionLabel = new Label("Persuasion");
@@ -2203,7 +2189,7 @@ public class MainWindow {
 		Panel willpowerPanel = new Panel();
 		willpowerPanel.setLayout(null);
 		willpowerPanel.setBackground(new Color(221, 160, 221));
-		willpowerPanel.setBounds(0, 178, 354, 32);
+		willpowerPanel.setBounds(5, 178, 354, 32);
 		presencePanel.add(willpowerPanel);
 		
 		Label willpowerLabel = new Label("Willpower");
@@ -2281,10 +2267,10 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					acroPanel.setSize(354, (32+extra));
-					dodgePanel.setLocation(0, dodgePanel.getY()+extra);
-					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
-					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					dodgePanel.setLocation(5, dodgePanel.getY()+extra);
+					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -2368,10 +2354,10 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(acroPanel.getHeight()-32)));
 					acroPanel.setSize(354, (32));
-					dodgePanel.setLocation(0, acroPanel.getY()+32);
-					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
-					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					dodgePanel.setLocation(5, acroPanel.getY()+32);
+					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -2403,9 +2389,9 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					dodgePanel.setSize(354, (32+extra));
-					handToHandPanel.setLocation(0, handToHandPanel.getY()+extra);
-					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2488,9 +2474,9 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(dodgePanel.getHeight()-32)));
 					dodgePanel.setSize(354, (32));
-					handToHandPanel.setLocation(0, dodgePanel.getY()+dodgePanel.getHeight());
-					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2523,8 +2509,8 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					handToHandPanel.setSize(354, (32+extra));
-					meleeWeaponsPanel.setLocation(0, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2607,8 +2593,8 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(handToHandPanel.getHeight()-32)));
 					handToHandPanel.setSize(354, (32));
-					meleeWeaponsPanel.setLocation(0, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2641,7 +2627,7 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					meleeWeaponsPanel.setSize(354, (32+extra));
-					stealthPanel.setLocation(0, stealthPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2724,7 +2710,7 @@ public class MainWindow {
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
 					meleeWeaponsPanel.setSize(354, (32));
-					stealthPanel.setLocation(0, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 
@@ -2865,11 +2851,11 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					catchPanel.setSize(354, (32+extra));
-					climbingPanel.setLocation(0, climbingPanel.getY()+extra);
-					drivingPanel.setLocation(0, drivingPanel.getY()+extra);
-					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					climbingPanel.setLocation(5, climbingPanel.getY()+extra);
+					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -2952,11 +2938,11 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(catchPanel.getHeight()-32)));
 					catchPanel.setSize(354, (32));
-					climbingPanel.setLocation(0, catchPanel.getY()+32);
-					drivingPanel.setLocation(0, climbingPanel.getY()+climbingPanel.getHeight());
-					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					climbingPanel.setLocation(5, catchPanel.getY()+32);
+					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -2987,10 +2973,10 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					climbingPanel.setSize(354, (32+extra));
-					drivingPanel.setLocation(0, drivingPanel.getY()+extra);
-					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3073,10 +3059,10 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(climbingPanel.getHeight()-32)));
 					climbingPanel.setSize(354, (32));
-					drivingPanel.setLocation(0, climbingPanel.getY()+climbingPanel.getHeight());
-					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3106,9 +3092,9 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					drivingPanel.setSize(354, (32+extra));
-					marksmanshipPanel.setLocation(0, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3191,9 +3177,9 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(drivingPanel.getHeight()-32)));
 					drivingPanel.setSize(354, (32));
-					marksmanshipPanel.setLocation(0, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3223,8 +3209,8 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					marksmanshipPanel.setSize(354, (32+extra));
-					thieveryPanel.setLocation(0, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3307,8 +3293,8 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(marksmanshipPanel.getHeight()-32)));
 					marksmanshipPanel.setSize(354, (32));
-					thieveryPanel.setLocation(0, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3338,7 +3324,7 @@ public class MainWindow {
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					thieveryPanel.setSize(354, (32+extra));
-					thrownWeaponsPanel.setLocation(0, thrownWeaponsPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3421,7 +3407,7 @@ public class MainWindow {
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
 					thieveryPanel.setSize(354, (32));
-					thrownWeaponsPanel.setLocation(0, thieveryPanel.getY()+thieveryPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3561,11 +3547,11 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					athleticsPanel.setSize(354, (32+extra));
-					leapPanel.setLocation(0, leapPanel.getY()+extra);
-					liftingPanel.setLocation(0, liftingPanel.getY()+extra);
-					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
-					runningPanel.setLocation(0, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					leapPanel.setLocation(5, leapPanel.getY()+extra);
+					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3648,11 +3634,11 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(athleticsPanel.getHeight()-32)));
 					athleticsPanel.setSize(354, (32));
-					leapPanel.setLocation(0, athleticsPanel.getY()+32);
-					liftingPanel.setLocation(0, leapPanel.getY()+leapPanel.getHeight());
-					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					leapPanel.setLocation(5, athleticsPanel.getY()+32);
+					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3682,10 +3668,10 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					leapPanel.setSize(354, (32+extra));
-					liftingPanel.setLocation(0, liftingPanel.getY()+extra);
-					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
-					runningPanel.setLocation(0, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3768,10 +3754,10 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(leapPanel.getHeight()-32)));
 					leapPanel.setSize(354, (32));
-					liftingPanel.setLocation(0, leapPanel.getY()+leapPanel.getHeight());
-					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3801,9 +3787,9 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					liftingPanel.setSize(354, (32+extra));
-					resistancePanel.setLocation(0, resistancePanel.getY()+extra);
-					runningPanel.setLocation(0, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -3886,9 +3872,9 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(liftingPanel.getHeight()-32)));
 					liftingPanel.setSize(354, (32));
-					resistancePanel.setLocation(0, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -3918,8 +3904,8 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					resistancePanel.setSize(354, (32+extra));
-					runningPanel.setLocation(0, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -4002,8 +3988,8 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(resistancePanel.getHeight()-32)));
 					resistancePanel.setSize(354, (32));
-					runningPanel.setLocation(0, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -4033,7 +4019,7 @@ public class MainWindow {
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					runningPanel.setSize(354, (32+extra));
-					swimmingPanel.setLocation(0, swimmingPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 					
@@ -4116,7 +4102,7 @@ public class MainWindow {
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
 					runningPanel.setSize(354, (32));
-					swimmingPanel.setLocation(0, runningPanel.getY()+runningPanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
 				}
@@ -4257,12 +4243,12 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					arcaneLorePanel.setSize(354, (32+extra));
-					demolitionsPanel.setLocation(0, demolitionsPanel.getY()+extra);
-					languagesPanel.setLocation(0, languagesPanel.getY()+extra);
-					medicinePanel.setLocation(0, medicinePanel.getY()+extra);
-					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
-					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					demolitionsPanel.setLocation(5, demolitionsPanel.getY()+extra);
+					languagesPanel.setLocation(5, languagesPanel.getY()+extra);
+					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
+					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
+					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 
@@ -4345,12 +4331,12 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(arcaneLorePanel.getHeight()-32)));
 					arcaneLorePanel.setSize(354, (32));
-					demolitionsPanel.setLocation(0, arcaneLorePanel.getY()+32);
-					languagesPanel.setLocation(0, demolitionsPanel.getY()+demolitionsPanel.getHeight());
-					medicinePanel.setLocation(0, languagesPanel.getY()+languagesPanel.getHeight());
-					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
-					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					demolitionsPanel.setLocation(5, arcaneLorePanel.getY()+32);
+					languagesPanel.setLocation(5, demolitionsPanel.getY()+demolitionsPanel.getHeight());
+					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
+					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
+					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -4381,11 +4367,11 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					demolitionsPanel.setSize(354, (32+extra));
-					languagesPanel.setLocation(0, languagesPanel.getY()+extra);
-					medicinePanel.setLocation(0, medicinePanel.getY()+extra);
-					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
-					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					languagesPanel.setLocation(5, languagesPanel.getY()+extra);
+					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
+					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
+					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 
@@ -4468,11 +4454,11 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(demolitionsPanel.getHeight()-32)));
 					demolitionsPanel.setSize(354, (32));
-					languagesPanel.setLocation(0, demolitionsPanel.getY()+demolitionsPanel.getHeight());
-					medicinePanel.setLocation(0, languagesPanel.getY()+languagesPanel.getHeight());
-					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
-					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					languagesPanel.setLocation(5, demolitionsPanel.getY()+demolitionsPanel.getHeight());
+					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
+					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
+					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -4503,10 +4489,10 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					languagesPanel.setSize(354, (32+extra));
-					medicinePanel.setLocation(0, medicinePanel.getY()+extra);
-					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
-					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
+					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
+					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 
@@ -4589,10 +4575,10 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(languagesPanel.getHeight()-32)));
 					languagesPanel.setSize(354, (32));
-					medicinePanel.setLocation(0, languagesPanel.getY()+languagesPanel.getHeight());
-					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
-					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
+					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
+					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -4623,9 +4609,9 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					medicinePanel.setSize(354, (32+extra));
-					scholarPanel.setLocation(0, scholarPanel.getY()+extra);
-					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
+					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < medicineSpecsList.size(); i++)
@@ -4707,9 +4693,9 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(medicinePanel.getHeight()-32)));
 					medicinePanel.setSize(354, (32));
-					scholarPanel.setLocation(0, medicinePanel.getY()+medicinePanel.getHeight());
-					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
+					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -4739,8 +4725,8 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					scholarPanel.setSize(354, (32+extra));
-					sciencePanel.setLocation(0, sciencePanel.getY()+extra);
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < scholarSpecsList.size(); i++)
@@ -4822,8 +4808,8 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(scholarPanel.getHeight()-32)));
 					scholarPanel.setSize(354, (32));
-					sciencePanel.setLocation(0, scholarPanel.getY()+scholarPanel.getHeight());
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -4853,7 +4839,7 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					sciencePanel.setSize(354, (32+extra));
-					securityPanel.setLocation(0, securityPanel.getY()+extra);
+					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < scienceSpecsList.size(); i++)
@@ -4935,7 +4921,7 @@ public class MainWindow {
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(sciencePanel.getHeight()-32)));
 					sciencePanel.setSize(354, (32));
-					securityPanel.setLocation(0, sciencePanel.getY()+sciencePanel.getHeight());
+					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -5073,11 +5059,11 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					artistPanel.setSize(354, (32+extra));
-					engineeringPanel.setLocation(0, engineeringPanel.getY()+extra);
-					searchPanel.setLocation(0, searchPanel.getY()+extra);
-					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
-					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
-					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					engineeringPanel.setLocation(5, engineeringPanel.getY()+extra);
+					searchPanel.setLocation(5, searchPanel.getY()+extra);
+					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
+					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
+					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < artistSpecsList.size(); i++)
@@ -5159,11 +5145,11 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(artistPanel.getHeight()-32)));
 					artistPanel.setSize(354, (32));
-					engineeringPanel.setLocation(0, artistPanel.getY()+32);
-					searchPanel.setLocation(0, engineeringPanel.getY()+engineeringPanel.getHeight());
-					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
-					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
-					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					engineeringPanel.setLocation(5, artistPanel.getY()+32);
+					searchPanel.setLocation(5, engineeringPanel.getY()+engineeringPanel.getHeight());
+					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
+					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
+					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -5192,10 +5178,10 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					engineeringPanel.setSize(354, (32+extra));
-					searchPanel.setLocation(0, searchPanel.getY()+extra);
-					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
-					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
-					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					searchPanel.setLocation(5, searchPanel.getY()+extra);
+					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
+					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
+					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < engineeringSpecsList.size(); i++)
@@ -5277,15 +5263,15 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(engineeringPanel.getHeight()-32)));
 					engineeringPanel.setSize(354, (32));
-					searchPanel.setLocation(0, engineeringPanel.getY()+engineeringPanel.getHeight());
-					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
-					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
-					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					searchPanel.setLocation(5, engineeringPanel.getY()+engineeringPanel.getHeight());
+					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
+					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
+					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
-		chckbxEngineering.setBackground(new Color(0, 191, 255));
+		chckbxEngineering.setBackground(new Color(5, 191, 255));
 		chckbxEngineering.setBounds(187, 5, 97, 23);
 		engineeringPanel.add(chckbxEngineering);	
 		
@@ -5309,9 +5295,9 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					searchPanel.setSize(354, (32+extra));
-					streetwisePanel.setLocation(0, streetwisePanel.getY()+extra);
-					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
-					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
+					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
+					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < searchSpecsList.size(); i++)
@@ -5393,9 +5379,9 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(searchPanel.getHeight()-32)));
 					searchPanel.setSize(354, (32));
-					streetwisePanel.setLocation(0, searchPanel.getY()+searchPanel.getHeight());
-					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
-					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
+					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
+					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -5424,8 +5410,8 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					streetwisePanel.setSize(354, (32+extra));
-					surveillancePanel.setLocation(0, surveillancePanel.getY()+extra);
-					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
+					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < streetwiseSpecsList.size(); i++)
@@ -5507,13 +5493,13 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(streetwisePanel.getHeight()-32)));
 					streetwisePanel.setSize(354, (32));
-					surveillancePanel.setLocation(0, streetwisePanel.getY()+streetwisePanel.getHeight());
-					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
+					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
 		});
-		chckbxStreetwise.setBackground(new Color(0, 191, 255));
+		chckbxStreetwise.setBackground(new Color(5, 191, 255));
 		chckbxStreetwise.setBounds(187, 5, 97, 23);
 		streetwisePanel.add(chckbxStreetwise);		
 		
@@ -5537,7 +5523,7 @@ public class MainWindow {
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					surveillancePanel.setSize(354, (32+extra));
-					survivalPanel.setLocation(0, survivalPanel.getY()+extra);
+					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < surveillanceSpecsList.size(); i++)
@@ -5619,7 +5605,7 @@ public class MainWindow {
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(surveillancePanel.getHeight()-32)));
 					surveillancePanel.setSize(354, (32));
-					survivalPanel.setLocation(0, surveillancePanel.getY()+surveillancePanel.getHeight());
+					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 				}
 			}
@@ -5734,7 +5720,7 @@ public class MainWindow {
 				}
 			}
 		});
-		chckbxSurvival.setBackground(new Color(0, 191, 255));
+		chckbxSurvival.setBackground(new Color(5, 191, 255));
 		chckbxSurvival.setBounds(187, 5, 97, 23);
 		survivalPanel.add(chckbxSurvival);		
 
@@ -5759,10 +5745,10 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					bluffPanel.setSize(354, (32+extra));
-					charmPanel.setLocation(0, charmPanel.getY()+extra);
-					intimidationPanel.setLocation(0, intimidationPanel.getY()+extra);
-					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
-					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					charmPanel.setLocation(5, charmPanel.getY()+extra);
+					intimidationPanel.setLocation(5, intimidationPanel.getY()+extra);
+					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 
@@ -5845,10 +5831,10 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(bluffPanel.getHeight()-32)));
 					bluffPanel.setSize(354, (32));
-					charmPanel.setLocation(0, bluffPanel.getY()+32);
-					intimidationPanel.setLocation(0, charmPanel.getY()+charmPanel.getHeight());
-					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
-					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					charmPanel.setLocation(5, bluffPanel.getY()+32);
+					intimidationPanel.setLocation(5, charmPanel.getY()+charmPanel.getHeight());
+					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -5879,9 +5865,9 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					charmPanel.setSize(354, (32+extra));
-					intimidationPanel.setLocation(0, intimidationPanel.getY()+extra);
-					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
-					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					intimidationPanel.setLocation(5, intimidationPanel.getY()+extra);
+					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < charmSpecsList.size(); i++)
@@ -5963,9 +5949,9 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(charmPanel.getHeight()-32)));
 					charmPanel.setSize(354, (32));
-					intimidationPanel.setLocation(0, charmPanel.getY()+charmPanel.getHeight());
-					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
-					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					intimidationPanel.setLocation(5, charmPanel.getY()+charmPanel.getHeight());
+					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -5996,8 +5982,8 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					intimidationPanel.setSize(354, (32+extra));
-					persuasionPanel.setLocation(0, persuasionPanel.getY()+extra);
-					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
+					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < intimidationSpecsList.size(); i++)
@@ -6079,8 +6065,8 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(intimidationPanel.getHeight()-32)));
 					intimidationPanel.setSize(354, (32));
-					persuasionPanel.setLocation(0, intimidationPanel.getY()+intimidationPanel.getHeight());
-					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
+					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -6111,7 +6097,7 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					persuasionPanel.setSize(354, (32+extra));
-					willpowerPanel.setLocation(0, willpowerPanel.getY()+extra);
+					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 					for(int i = 0; i < persuasionSpecsList.size(); i++)
@@ -6193,7 +6179,7 @@ public class MainWindow {
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(persuasionPanel.getHeight()-32)));
 					persuasionPanel.setSize(354, (32));
-					willpowerPanel.setLocation(0, persuasionPanel.getY()+persuasionPanel.getHeight());
+					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 
 				}
@@ -6326,6 +6312,27 @@ public class MainWindow {
 		persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
 		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
+		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
+		chckbxDemographics.setSelected(true);
+		chckbxDemographics.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(chckbxDemographics.isSelected())
+				{
+					demographicsPanel.setVisible(true);
+					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()+demographicsPanel.getHeight());
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()+demographicsPanel.getHeight());
+				}
+				else if(!chckbxDemographics.isSelected())
+				{
+					demographicsPanel.setVisible(false);
+					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()-demographicsPanel.getHeight());
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()-demographicsPanel.getHeight());
+				}
+			}
+		});
+		chckbxDemographics.setBounds(45, 39, 164, 23);
+		dcrpgFrame.getContentPane().add(chckbxDemographics);
+		
 		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() 
 		{
@@ -6388,11 +6395,11 @@ public class MainWindow {
 							weightField.setText(currentSheet.getWeight());
 							eyeColorField.setText(currentSheet.getEyeColor());
 							hairColorField.setText(currentSheet.getHairColor());
-							heroPointsField.setText(Integer.toString(currentSheet.getHeroPoints()));
-							villainPointsField.setText(Integer.toString(currentSheet.getVillainPoints()));
-							availableRenownField.setText(Integer.toString(currentSheet.getAvailableRenown()));
-							powerPointsField.setText(Integer.toString(currentSheet.getPowerPoints()));
-							skillPointsField.setText(Integer.toString(currentSheet.getSkillPoints()));
+							heroPointsField.setText(currentSheet.getHeroPoints());
+							villainPointsField.setText(currentSheet.getVillainPoints());
+							availableRenownField.setText(currentSheet.getAvailableRenown());
+							powerPointsField.setText(currentSheet.getPowerPoints());
+							skillPointsField.setText(currentSheet.getSkillPoints());
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
@@ -6483,7 +6490,7 @@ public class MainWindow {
 				
 				JButton btnSave = new JButton("Save");
 				btnSave.setBounds(329, 11, 69, 23);
-				dcrpgFrame.getContentPane().add(btnSave);	
+				dcrpgFrame.getContentPane().add(btnSave);
 				btnSave.addActionListener(new ActionListener() 
 				{
 					public void actionPerformed(ActionEvent arg0) 
@@ -6562,5 +6569,4 @@ public class MainWindow {
 		else
 			return h3;
 	}
-	
 }

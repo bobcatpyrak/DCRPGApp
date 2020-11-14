@@ -24,12 +24,12 @@ public class CharacterSheet
 	// misc stats
 	String udoDice;
 	int udoBonus;
-	int speed;
-	int heroPoints;
-	int villainPoints;
-	int availableRenown;
-	int powerPoints;
-	int skillPoints;
+	String speed;
+	String heroPoints;
+	String villainPoints;
+	String availableRenown;
+	String powerPoints;
+	String skillPoints;
 	int bodyPointsCurrent;
 	int bodyPointsMax;
 	// stats
@@ -45,7 +45,7 @@ public class CharacterSheet
 	public CharacterSheet(int id)
 	{
 		this.id = id;
-		speed = 3;
+		speed = "3";
 	}
 	
 	
@@ -139,40 +139,40 @@ public class CharacterSheet
 	public void setUdoBonus(int udoBonus) {
 		this.udoBonus = udoBonus;
 	}
-	public int getSpeed() {
+	public String getSpeed() {
 		return speed;
 	}
-	public void setSpeed(int speed) {
+	public void setSpeed(String speed) {
 		this.speed = speed;
 	}
-	public int getHeroPoints() {
+	public String getHeroPoints() {
 		return heroPoints;
 	}
-	public void setHeroPoints(int heroPoints) {
+	public void setHeroPoints(String heroPoints) {
 		this.heroPoints = heroPoints;
 	}
-	public int getVillainPoints() {
+	public String getVillainPoints() {
 		return villainPoints;
 	}
-	public void setVillainPoints(int villainPoints) {
+	public void setVillainPoints(String villainPoints) {
 		this.villainPoints = villainPoints;
 	}
-	public int getAvailableRenown() {
+	public String getAvailableRenown() {
 		return availableRenown;
 	}
-	public void setAvailableRenown(int availableRenown) {
+	public void setAvailableRenown(String availableRenown) {
 		this.availableRenown = availableRenown;
 	}
-	public int getPowerPoints() {
+	public String getPowerPoints() {
 		return powerPoints;
 	}
-	public void setPowerPoints(int powerPoints) {
+	public void setPowerPoints(String powerPoints) {
 		this.powerPoints = powerPoints;
 	}
-	public int getSkillPoints() {
+	public String getSkillPoints() {
 		return skillPoints;
 	}
-	public void setSkillPoints(int skillPoints) {
+	public void setSkillPoints(String skillPoints) {
 		this.skillPoints = skillPoints;
 	}
 	public int getBodyPointsCurrent() {
@@ -300,7 +300,6 @@ public class CharacterSheet
 	}
 	public void setRunning(int running) {
 		this.running = running;
-		setSpeed(3);
 	}
 	public int getSwimming() {
 		return swimming;
@@ -500,12 +499,12 @@ public class CharacterSheet
 
 		setUdoDice(fields[0]);
 		setUdoBonus(Integer.parseInt(fields[1]));
-		setSpeed(Integer.parseInt(fields[2]));
-		setHeroPoints(Integer.parseInt(fields[3]));
-		setVillainPoints(Integer.parseInt(fields[4]));
-		setAvailableRenown(Integer.parseInt(fields[5]));
-		setPowerPoints(Integer.parseInt(fields[6]));
-		setSkillPoints(Integer.parseInt(fields[7]));
+		setSpeed(fields[2]);
+		setHeroPoints(fields[3]);
+		setVillainPoints(fields[4]);
+		setAvailableRenown(fields[5]);
+		setPowerPoints(fields[6]);
+		setSkillPoints(fields[7]);
 		setBodyPointsCurrent(Integer.parseInt(fields[8]));
 		setBodyPointsMax(Integer.parseInt(fields[9]));
 	}

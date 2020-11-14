@@ -16,7 +16,7 @@ $$SkillSpecBegin$$
 7	3	Stealth	Urban 1
 8	3	Marksmanship	Earth Manipulation 1
 9	3	Languages	French 1
-10	3	Language	Italian 1
+10	3	Languages	Italian 1
 11	3	Science	Geology 1
 12	3	Artist	Piano 3
 13	3	Artist	Guitar 1

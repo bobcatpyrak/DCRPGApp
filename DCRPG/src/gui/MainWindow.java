@@ -18,6 +18,7 @@ import library.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import net.miginfocom.swing.MigLayout;
 
 public class MainWindow {
 
@@ -50,6 +51,10 @@ public class MainWindow {
 	private JFormattedTextField skillPointsField;
 	private JFormattedTextField occupationField;
 	private JFormattedTextField baseOfOperationsField;
+	private JPanel demographicsPanel;
+	private JPanel mentalStatsPanel;
+	private JPanel physStatsPanel;
+	
 
 	/**
 	 * Launch the application.
@@ -183,29 +188,112 @@ public class MainWindow {
 		dcrpgFrame.setTitle("DCRPG App");
 		dcrpgFrame.setForeground(new Color(204, 0, 51));
 		dcrpgFrame.setBackground(Color.RED);
-		dcrpgFrame.setBounds(100, 100, 1920, 1080);
+		dcrpgFrame.setBounds(0, 0, 1920, 1080);
 		dcrpgFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		dcrpgFrame.getContentPane().setLayout(null);
 	
 		NumberFormat nums = NumberFormat.getNumberInstance();
 		
+		// AcroSpecs
+		List<JFormattedTextField> acroSpecsFields = new ArrayList<JFormattedTextField>();
+		// DodgeSpecs
+		List<JFormattedTextField> dodgeSpecsFields = new ArrayList<JFormattedTextField>();
+		// HandToHandSpecs
+		List<JFormattedTextField> handToHandSpecsFields = new ArrayList<JFormattedTextField>();
+		// MeleeWeaponsSpecs
+		List<JFormattedTextField> meleeWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
+		// StealthSpecs
+		List<JFormattedTextField> stealthSpecsFields = new ArrayList<JFormattedTextField>();
+		// CatchSpecs
+		List<JFormattedTextField> catchSpecsFields = new ArrayList<JFormattedTextField>();		
+		// ClimbingSpecs
+		List<JFormattedTextField> climbingSpecsFields = new ArrayList<JFormattedTextField>();		
+		// DrivingSpecs
+		List<JFormattedTextField> drivingSpecsFields = new ArrayList<JFormattedTextField>();		
+		// MarksmanshipSpecs
+		List<JFormattedTextField> marksmanshipSpecsFields = new ArrayList<JFormattedTextField>();		
+		// ThieverySpecs
+		List<JFormattedTextField> thieverySpecsFields = new ArrayList<JFormattedTextField>();		
+		// ThrownWeaponsSpecs
+		List<JFormattedTextField> thrownWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
+		// AthleticsSpecs
+		List<JFormattedTextField> athleticsSpecsFields = new ArrayList<JFormattedTextField>();		
+		// LeapSpecs
+		List<JFormattedTextField> leapSpecsFields = new ArrayList<JFormattedTextField>();		
+		// LiftingSpecs
+		List<JFormattedTextField> liftingSpecsFields = new ArrayList<JFormattedTextField>();		
+		// ResistanceSpecs
+		List<JFormattedTextField> resistanceSpecsFields = new ArrayList<JFormattedTextField>();		
+		// RunningSpecs
+		List<JFormattedTextField> runningSpecsFields = new ArrayList<JFormattedTextField>();		
+		// SwimmingSpecs
+		List<JFormattedTextField> swimmingSpecsFields = new ArrayList<JFormattedTextField>();
+		// ArcaneLoreSpecs
+		List<JFormattedTextField> arcaneLoreSpecsFields = new ArrayList<JFormattedTextField>();		
+		// DemolitionsSpecs
+		List<JFormattedTextField> demolitionsSpecsFields = new ArrayList<JFormattedTextField>();		
+		// LanguagesSpecs
+		List<JFormattedTextField> languagesSpecsFields = new ArrayList<JFormattedTextField>();		
+		// MedicineSpecs
+		List<JFormattedTextField> medicineSpecsFields = new ArrayList<JFormattedTextField>();		
+		// ScholarSpecs
+		List<JFormattedTextField> scholarSpecsFields = new ArrayList<JFormattedTextField>();		
+		// ScienceSpecs
+		List<JFormattedTextField> scienceSpecsFields = new ArrayList<JFormattedTextField>();		
+		// SecuritySpecs
+		List<JFormattedTextField> securitySpecsFields = new ArrayList<JFormattedTextField>();
+		// ArtistSpecs
+		List<JFormattedTextField> artistSpecsFields = new ArrayList<JFormattedTextField>();		
+		// EngineeringSpecs
+		List<JFormattedTextField> engineeringSpecsFields = new ArrayList<JFormattedTextField>();		
+		// SearchSpecs
+		List<JFormattedTextField> searchSpecsFields = new ArrayList<JFormattedTextField>();		
+		// StreetwiseSpecs
+		List<JFormattedTextField> streetwiseSpecsFields = new ArrayList<JFormattedTextField>();		
+		// SurveillanceSpecs
+		List<JFormattedTextField> surveillanceSpecsFields = new ArrayList<JFormattedTextField>();		
+		// SurvivalSpecs
+		List<JFormattedTextField> survivalSpecsFields = new ArrayList<JFormattedTextField>();
+		// BluffSpecs
+		List<JFormattedTextField> bluffSpecsFields = new ArrayList<JFormattedTextField>();		
+		// CharmSpecs
+		List<JFormattedTextField> charmSpecsFields = new ArrayList<JFormattedTextField>();		
+		// IntimidationSpecs
+		List<JFormattedTextField> intimidationSpecsFields = new ArrayList<JFormattedTextField>();		
+		// PersuasionSpecs
+		List<JFormattedTextField> persuasionSpecsFields = new ArrayList<JFormattedTextField>();		
+		// WillpowerSpecs
+		List<JFormattedTextField> willpowerSpecsFields = new ArrayList<JFormattedTextField>();
+		
+		
+		dcrpgFrame.getContentPane().setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setSize(1902, 1039);
+		scrollPane.setPreferredSize(new Dimension(1902, 1039));
+		dcrpgFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
+		panel.setPreferredSize(new Dimension(1887, 1035));
+		
 		JLabel nameLabel = new JLabel("Name");
+		nameLabel.setBounds(419, 0, 131, 42);
+		panel.add(nameLabel);
 		nameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
-		nameLabel.setBounds(429, 6, 131, 42);
-		dcrpgFrame.getContentPane().add(nameLabel);
 		
 		nameSearchField = new JFormattedTextField();
+		nameSearchField.setBounds(10, 10, 148, 20);
+		panel.add(nameSearchField);
 		nameSearchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		nameSearchField.setText("(type character name)");
-		nameSearchField.setBounds(10, 12, 148, 20);
-		dcrpgFrame.getContentPane().add(nameSearchField);
 		nameSearchField.setColumns(10);
 		
 		nameField = new JFormattedTextField();
+		nameField.setBounds(560, 0, 367, 42);
+		panel.add(nameField);
 		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
-		nameField.setBounds(570, 6, 367, 42);
-		dcrpgFrame.getContentPane().add(nameField);
 		nameField.setColumns(10);
 		nameField.addKeyListener(new KeyAdapter() 
 		{
@@ -216,23 +304,27 @@ public class MainWindow {
 			}
 		});
 		
+		
+		//load initial sheet
+		nameField.setText(currentSheet.getName());
+		
 		JLabel udoLabel = new JLabel("UDO");
-		udoLabel.setBounds(1075, 6, 90, 20);
-		dcrpgFrame.getContentPane().add(udoLabel);
+		udoLabel.setBounds(1065, 0, 90, 20);
+		panel.add(udoLabel);
 		
 		JLabel bodyPointsLabel = new JLabel("<html><body>  Body<br>Points</body></html>");
+		bodyPointsLabel.setBounds(925, 0, 60, 42);
+		panel.add(bodyPointsLabel);
 		bodyPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		bodyPointsLabel.setBounds(935, 6, 60, 42);
-		dcrpgFrame.getContentPane().add(bodyPointsLabel);
 		
 		JLabel speedLabel = new JLabel("Speed");
-		speedLabel.setBounds(1075, 29, 90, 20);
-		dcrpgFrame.getContentPane().add(speedLabel);
+		speedLabel.setBounds(1065, 23, 90, 20);
+		panel.add(speedLabel);
 		
-		JPanel demographicsPanel = new JPanel();
+		demographicsPanel = new JPanel();
+		demographicsPanel.setBounds(35, 54, 1152, 70);
+		panel.add(demographicsPanel);
 		demographicsPanel.setBackground(new Color(204, 255, 255));
-		demographicsPanel.setBounds(45, 60, 1152, 70);
-		dcrpgFrame.getContentPane().add(demographicsPanel);
 		demographicsPanel.setLayout(null);
 		
 		JLabel lblGender = new JLabel("Gender");
@@ -306,76 +398,15 @@ public class MainWindow {
 				currentSheet.setHairColor(hairColorField.getText());
 			}
 		});
-	
-		udoField = new JFormattedTextField();
-		udoField.setHorizontalAlignment(SwingConstants.RIGHT);
-		udoField.setBounds(1122, 6, 75, 20);
-		dcrpgFrame.getContentPane().add(udoField);
-		udoField.setColumns(10);
-		udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				String[] udos = udoField.getText().split("[+]");
-				if(udos.length > 0)
-					currentSheet.setUdoDice(udos[0]);
-				if(udos.length > 1)
-					currentSheet.setUdoBonus(Integer.parseInt(udos[1]));
-			}
-		});
-		
-		bodyPointsField = new JFormattedTextField();
-		bodyPointsField.setFont(new Font("Arial", Font.BOLD, 20));
-		bodyPointsField.setHorizontalAlignment(SwingConstants.CENTER);
-		bodyPointsField.setBounds(989, 6, 75, 43);
-		dcrpgFrame.getContentPane().add(bodyPointsField);
-		bodyPointsField.setColumns(10);
-		bodyPointsField.addKeyListener(new KeyAdapter()
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				String[] bps = bodyPointsField.getText().split("/");
-				if(bps.length > 0)
-					currentSheet.setBodyPointsCurrent(Integer.parseInt(bps[0]));
-				if(bps.length > 1)
-					currentSheet.setBodyPointsMax(Integer.parseInt(bps[1]));
-			}
-		});
-
-		
-		speedField = new JFormattedTextField();
-		speedField.setHorizontalAlignment(SwingConstants.RIGHT);
-		speedField.setBounds(1122, 29, 75, 20);
-		dcrpgFrame.getContentPane().add(speedField);
-		speedField.setColumns(10);
-		speedField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setSpeed(speedField.getText());
-			}
-		});
-
-		
-		JButton btnNew = new JButton("New");
-		btnNew.setBounds(247, 11, 69, 23);
-		dcrpgFrame.getContentPane().add(btnNew);
-		
-		
-		//load initial sheet
-		nameField.setText(currentSheet.getName());
 		genderField.setText(currentSheet.getGender());
 		heightField.setText(currentSheet.getHeight());
 		weightField.setText(currentSheet.getWeight());
 		hairColorField.setText(currentSheet.getHairColor());
-				
+		
 		JLabel lblRace = new JLabel("Race");
 		lblRace.setBounds(171, 1, 90, 20);
 		demographicsPanel.add(lblRace);
-				
+		
 		raceField = new JFormattedTextField();
 		raceField.setBounds(238, 1, 100, 20);
 		demographicsPanel.add(raceField);
@@ -390,11 +421,11 @@ public class MainWindow {
 			}
 		});
 		raceField.setText(currentSheet.getRace());
-			
+		
 		JLabel lblEyeColor = new JLabel("Eye Color");
 		lblEyeColor.setBounds(171, 25, 90, 20);
 		demographicsPanel.add(lblEyeColor);
-				
+		
 		JFormattedTextField eyeColorField = new JFormattedTextField();
 		eyeColorField.setBounds(238, 25, 100, 20);
 		demographicsPanel.add(eyeColorField);
@@ -409,11 +440,11 @@ public class MainWindow {
 			}
 		});
 		eyeColorField.setText(currentSheet.getEyeColor());
-				
+		
 		JLabel lblFullName = new JLabel("Full Name");
 		lblFullName.setBounds(395, 1, 90, 20);
 		demographicsPanel.add(lblFullName);
-				
+		
 		JFormattedTextField fullNameField = new JFormattedTextField();
 		fullNameField.setBounds(473, 1, 245, 20);
 		demographicsPanel.add(fullNameField);
@@ -428,7 +459,7 @@ public class MainWindow {
 			}
 		});
 		fullNameField.setText(currentSheet.getFullName());
-				
+		
 		JLabel lblOccupation = new JLabel("Occupation");
 		lblOccupation.setBounds(395, 25, 74, 20);
 		demographicsPanel.add(lblOccupation);
@@ -452,7 +483,7 @@ public class MainWindow {
 		JLabel lblHomeBase = new JLabel("Home Base");
 		lblHomeBase.setBounds(395, 49, 90, 20);
 		demographicsPanel.add(lblHomeBase);
-				
+		
 		baseOfOperationsField = new JFormattedTextField();
 		baseOfOperationsField.setBounds(473, 49, 245, 20);
 		demographicsPanel.add(baseOfOperationsField);
@@ -476,11 +507,11 @@ public class MainWindow {
 		JLabel lblVillainPoints = new JLabel("Villain Points");
 		lblVillainPoints.setBounds(788, 25, 74, 20);
 		demographicsPanel.add(lblVillainPoints);
-												
+		
 		JLabel lblAvailableRenown = new JLabel("Renown");
 		lblAvailableRenown.setBounds(788, 49, 90, 20);
 		demographicsPanel.add(lblAvailableRenown);
-				
+		
 		heroPointsField = new JFormattedTextField();
 		heroPointsField.setBounds(871, 1, 86, 20);
 		demographicsPanel.add(heroPointsField);
@@ -525,17 +556,17 @@ public class MainWindow {
 			}
 		});
 		availableRenownField.setValue(currentSheet.getAvailableRenown());
+		
 				
-						
 		JLabel lblPowerPoints = new JLabel("Power Points");
 		lblPowerPoints.setBounds(973, 1, 90, 20);
 		demographicsPanel.add(lblPowerPoints);
+		
 				
-						
 		JLabel lblSkillPoints = new JLabel("Skill Points");
 		lblSkillPoints.setBounds(973, 25, 90, 20);
 		demographicsPanel.add(lblSkillPoints);
-						
+		
 		powerPointsField = new JFormattedTextField();
 		powerPointsField.setBounds(1056, 1, 86, 20);
 		demographicsPanel.add(powerPointsField);
@@ -550,8 +581,8 @@ public class MainWindow {
 			}
 		});
 		powerPointsField.setValue(currentSheet.getPowerPoints());
+		
 				
-						
 		skillPointsField = new JFormattedTextField();
 		skillPointsField.setBounds(1056, 25, 86, 20);
 		demographicsPanel.add(skillPointsField);
@@ -566,46 +597,102 @@ public class MainWindow {
 			}
 		});
 		skillPointsField.setValue(currentSheet.getSkillPoints());
-		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
-		bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
-		speedField.setValue(currentSheet.getSpeed());			
-				
-				JPanel physStatsPanel = new JPanel();
-				physStatsPanel.setBackground(new Color(192, 192, 192));
-				physStatsPanel.setBounds(45, 160, 1152, 247);
-				dcrpgFrame.getContentPane().add(physStatsPanel);
-				physStatsPanel.setLayout(null);
-				
-				
-				Panel reflexesPanel = new Panel();
-				reflexesPanel.setBounds(0, 0, 364, 247);
-				physStatsPanel.add(reflexesPanel);
-				reflexesPanel.setBackground(new Color(255, 51, 51));
-				reflexesPanel.setLayout(null);
-				
-				Label reflexesLabel = new Label("Reflexes");
-				reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-				reflexesLabel.setBounds(132, 10, 90, 30);
-				reflexesPanel.add(reflexesLabel);
-				
-				JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
-				reflexesLevel.setColumns(2);
-				reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
-				reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
-				reflexesLevel.setBounds(299, 10, 50, 35);
-				reflexesPanel.add(reflexesLevel);
-				
-				Panel acroPanel = new Panel();
-				acroPanel.setBackground(new Color(255, 153, 153));
-				acroPanel.setBounds(5, 50, 354, 32);
-				reflexesPanel.add(acroPanel);
-				acroPanel.setLayout(null);
-				
-				Label acroLabel = new Label("Acrobatics");
-				acroLabel.setBounds(35, 5, 120, 22);
-				acroPanel.add(acroLabel);
-				acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-				
+		
+			udoField = new JFormattedTextField();
+			udoField.setBounds(1112, 0, 75, 20);
+			panel.add(udoField);
+			udoField.setHorizontalAlignment(SwingConstants.RIGHT);
+			udoField.setColumns(10);
+			udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
+			{
+				@Override
+				public void keyReleased(KeyEvent e) 
+				{
+					String[] udos = udoField.getText().split("[+]");
+					if(udos.length > 0)
+						currentSheet.setUdoDice(udos[0]);
+					if(udos.length > 1)
+						currentSheet.setUdoBonus(Integer.parseInt(udos[1]));
+				}
+			});
+			udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+			
+			bodyPointsField = new JFormattedTextField();
+			bodyPointsField.setBounds(979, 0, 75, 43);
+			panel.add(bodyPointsField);
+			bodyPointsField.setFont(new Font("Arial", Font.BOLD, 20));
+			bodyPointsField.setHorizontalAlignment(SwingConstants.CENTER);
+			bodyPointsField.setColumns(10);
+			bodyPointsField.addKeyListener(new KeyAdapter()
+			{
+				@Override
+				public void keyReleased(KeyEvent e) 
+				{
+					String[] bps = bodyPointsField.getText().split("/");
+					if(bps.length > 0)
+						currentSheet.setBodyPointsCurrent(Integer.parseInt(bps[0]));
+					if(bps.length > 1)
+						currentSheet.setBodyPointsMax(Integer.parseInt(bps[1]));
+				}
+			});
+			bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+			
+					
+					speedField = new JFormattedTextField();
+					speedField.setBounds(1112, 23, 75, 20);
+					panel.add(speedField);
+					speedField.setHorizontalAlignment(SwingConstants.RIGHT);
+					speedField.setColumns(10);
+					speedField.addKeyListener(new KeyAdapter() 
+					{
+						@Override
+						public void keyReleased(KeyEvent e) 
+						{
+							currentSheet.setSpeed(speedField.getText());
+						}
+					});
+					speedField.setValue(currentSheet.getSpeed());			
+					
+							
+							JButton btnNew = new JButton("New");
+							btnNew.setBounds(247, 10, 69, 23);
+							panel.add(btnNew);
+							
+							physStatsPanel = new JPanel();
+							physStatsPanel.setBounds(35, 154, 1152, 247);
+							panel.add(physStatsPanel);
+							physStatsPanel.setBackground(new Color(192, 192, 192));
+							physStatsPanel.setLayout(null);
+							
+							Panel reflexesPanel = new Panel();
+							reflexesPanel.setBounds(0, 0, 364, 247);
+							physStatsPanel.add(reflexesPanel);
+							reflexesPanel.setBackground(new Color(255, 51, 51));
+							reflexesPanel.setLayout(null);
+							
+							Label reflexesLabel = new Label("Reflexes");
+							reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+							reflexesLabel.setBounds(132, 10, 90, 30);
+							reflexesPanel.add(reflexesLabel);
+							
+							JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
+							reflexesLevel.setColumns(2);
+							reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
+							reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
+							reflexesLevel.setBounds(299, 10, 50, 35);
+							reflexesPanel.add(reflexesLevel);
+							
+							Panel acroPanel = new Panel();
+							acroPanel.setBackground(new Color(255, 153, 153));
+							acroPanel.setBounds(5, 50, 354, 32);
+							reflexesPanel.add(acroPanel);
+							acroPanel.setLayout(null);
+							
+							Label acroLabel = new Label("Acrobatics");
+							acroLabel.setBounds(35, 5, 120, 22);
+							acroPanel.add(acroLabel);
+							acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+							
 		JFormattedTextField acroTotal = new JFormattedTextField();
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		acroTotal.setColumns(2);
@@ -1395,11 +1482,1993 @@ public class MainWindow {
 		resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
 		runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
 		swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
+		JCheckBox chckbxAcro = new JCheckBox("Show specs");
+		chckbxAcro.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
+				if(chckbxAcro.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
+					acroSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (acroSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					acroPanel.setSize(354, (32+extra));
+					dodgePanel.setLocation(5, dodgePanel.getY()+extra);
+					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);	
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < acroSpecsList.size(); i++)
+					{
+						int j = i;
+						acroSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField acroSpecs = acroSpecsFields.get(i);
+						acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						acroSpecs.setBackground(new Color(255, 204, 204));
+						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
+						acroPanel.add(acroSpecs);
+						acroSpecs.setText(acroSpecsList.get(i).getDescription());
+						acroSpecs.requestFocus();	
+
+						acroSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = acroSpecsList.get(j);
+									editing.setDescription(acroSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxAcro.setSelected(false);
+										chckbxAcro.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxAcro.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					acroSpecsList.clear();
+					for(JFormattedTextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						acroPanel.remove(t);
+						t = null;
+					}
+					acroSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(acroPanel.getHeight()-32)));
+					acroPanel.setSize(354, (32));
+					dodgePanel.setLocation(5, acroPanel.getY()+32);
+					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxAcro.setBackground(new Color(255, 153, 153));
+		chckbxAcro.setBounds(187, 5, 97, 23);
+		acroPanel.add(chckbxAcro);
+		JCheckBox chckbxDodge = new JCheckBox("Show specs");
+		chckbxDodge.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> dodgeSpecsList = currentSheet.assignSkillSpecs("Dodge");
+				if(chckbxDodge.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Dodge", "");
+					dodgeSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (dodgeSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					dodgePanel.setSize(354, (32+extra));
+					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+
+					for(int i = 0; i < dodgeSpecsList.size(); i++)
+					{
+						int j = i;
+						dodgeSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField dodgeSpecs = dodgeSpecsFields.get(i);
+						dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						dodgeSpecs.setBackground(new Color(255, 204, 204));
+						dodgeSpecs.setBounds(5, 33+(i*28), 279, 22);
+						dodgePanel.add(dodgeSpecs);
+						dodgeSpecs.setText(dodgeSpecsList.get(i).getDescription());
+						dodgeSpecs.requestFocus();	
+
+						dodgeSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = dodgeSpecsList.get(j);
+									editing.setDescription(dodgeSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxDodge.setSelected(false);
+										chckbxDodge.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxDodge.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					dodgeSpecsList.clear();
+					for(JFormattedTextField t : dodgeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						dodgePanel.remove(t);
+						t = null;
+					}
+					dodgeSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(dodgePanel.getHeight()-32)));
+					dodgePanel.setSize(354, (32));
+					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxDodge.setBackground(new Color(255, 102, 102));
+		chckbxDodge.setBounds(187, 5, 97, 23);
+		dodgePanel.add(chckbxDodge);
+		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
+		chckbxHandToHand.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> handToHandSpecsList = currentSheet.assignSkillSpecs("HandToHand");
+				if(chckbxHandToHand.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "HandToHand", "");
+					handToHandSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (handToHandSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					handToHandPanel.setSize(354, (32+extra));
+					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+
+					for(int i = 0; i < handToHandSpecsList.size(); i++)
+					{
+						int j = i;
+						handToHandSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField handToHandSpecs = handToHandSpecsFields.get(i);
+						handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						handToHandSpecs.setBackground(new Color(255, 204, 204));
+						handToHandSpecs.setBounds(5, 33+(i*28), 279, 22);
+						handToHandPanel.add(handToHandSpecs);
+						handToHandSpecs.setText(handToHandSpecsList.get(i).getDescription());
+						handToHandSpecs.requestFocus();	
+
+						handToHandSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = handToHandSpecsList.get(j);
+									editing.setDescription(handToHandSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxHandToHand.setSelected(false);
+										chckbxHandToHand.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxHandToHand.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					handToHandSpecsList.clear();
+					for(JFormattedTextField t : handToHandSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						handToHandPanel.remove(t);
+						t = null;
+					}
+					handToHandSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(handToHandPanel.getHeight()-32)));
+					handToHandPanel.setSize(354, (32));
+					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxHandToHand.setBackground(new Color(255, 153, 153));
+		chckbxHandToHand.setBounds(187, 5, 97, 23);
+		handToHandPanel.add(chckbxHandToHand);
+		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
+		chckbxMeleeWeapons.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> meleeWeaponsSpecsList = currentSheet.assignSkillSpecs("MeleeWeapons");
+				if(chckbxMeleeWeapons.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "MeleeWeapons", "");
+					meleeWeaponsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+
+					int extra = (meleeWeaponsSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					meleeWeaponsPanel.setSize(354, (32+extra));
+					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+
+					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
+					{
+						int j = i;
+						meleeWeaponsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
+						meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
+						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						meleeWeaponsPanel.add(meleeWeaponsSpecs);
+						meleeWeaponsSpecs.setText(meleeWeaponsSpecsList.get(i).getDescription());
+						meleeWeaponsSpecs.requestFocus();	
+
+						meleeWeaponsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = meleeWeaponsSpecsList.get(j);
+									editing.setDescription(meleeWeaponsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxMeleeWeapons.setSelected(false);
+										chckbxMeleeWeapons.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxMeleeWeapons.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					meleeWeaponsSpecsList.clear();
+					for(JFormattedTextField t : meleeWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						meleeWeaponsPanel.remove(t);
+						t = null;
+					}
+					meleeWeaponsSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
+					meleeWeaponsPanel.setSize(354, (32));
+					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxMeleeWeapons.setBackground(new Color(255, 102, 102));
+		chckbxMeleeWeapons.setBounds(187, 5, 97, 23);
+		meleeWeaponsPanel.add(chckbxMeleeWeapons);
+		JCheckBox chckbxStealth = new JCheckBox("Show specs");
+		chckbxStealth.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> stealthSpecsList = currentSheet.assignSkillSpecs("Stealth");
+				if(chckbxStealth.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Stealth", "");
+					stealthSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (stealthSpecsList.size())*28;
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
+					stealthPanel.setSize(354, (32+extra));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < stealthSpecsList.size(); i++)
+					{
+						int j = i;
+						stealthSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField stealthSpecs = stealthSpecsFields.get(i);
+						stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						stealthSpecs.setBackground(new Color(255, 204, 204));
+						stealthSpecs.setBounds(5, 33+(i*28), 279, 22);
+						stealthPanel.add(stealthSpecs);
+						stealthSpecs.setText(stealthSpecsList.get(i).getDescription());
+						stealthSpecs.requestFocus();	
+						stealthSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = stealthSpecsList.get(j);
+									editing.setDescription(stealthSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxStealth.setSelected(false);
+										chckbxStealth.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxStealth.isSelected())
+				{
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+										 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+						
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+						stealthSpecsList.clear();
+					for(JFormattedTextField t : stealthSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						stealthPanel.remove(t);
+						t = null;
+					}
+					stealthSpecsFields.clear();
+					
+					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
+					stealthPanel.setSize(354, (32));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxStealth.setBackground(new Color(255, 153, 153));
+		chckbxStealth.setBounds(187, 5, 97, 23);
+		stealthPanel.add(chckbxStealth);
+		JCheckBox chckbxCatch = new JCheckBox("Show specs");
+		chckbxCatch.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> catchSpecsList = currentSheet.assignSkillSpecs("Catch");
+				if(chckbxCatch.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Catch", "");
+					catchSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (catchSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					catchPanel.setSize(354, (32+extra));
+					climbingPanel.setLocation(5, climbingPanel.getY()+extra);
+					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < catchSpecsList.size(); i++)
+					{
+						int j = i;
+						catchSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField catchSpecs = catchSpecsFields.get(i);
+						catchSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						catchSpecs.setBackground(new Color(255, 235, 209));
+						catchSpecs.setBounds(5, 33+(i*28), 279, 22);
+						catchPanel.add(catchSpecs);
+						catchSpecs.setText(catchSpecsList.get(i).getDescription());
+						catchSpecs.requestFocus();	
+
+						catchSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = catchSpecsList.get(j);
+									editing.setDescription(catchSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxCatch.setSelected(false);
+										chckbxCatch.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxCatch.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					catchSpecsList.clear();
+					for(JFormattedTextField t : catchSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						catchPanel.remove(t);
+						t = null;
+					}
+					catchSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(catchPanel.getHeight()-32)));
+					catchPanel.setSize(354, (32));
+					climbingPanel.setLocation(5, catchPanel.getY()+32);
+					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxCatch.setBackground(new Color(255, 201, 131));
+		chckbxCatch.setBounds(187, 5, 97, 23);
+		catchPanel.add(chckbxCatch);
+		JCheckBox chckbxClimbing = new JCheckBox("Show specs");
+		chckbxClimbing.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> climbingSpecsList = currentSheet.assignSkillSpecs("Climbing");
+				if(chckbxClimbing.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Climbing", "");
+					climbingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (climbingSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					climbingPanel.setSize(354, (32+extra));
+					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < climbingSpecsList.size(); i++)
+					{
+						int j = i;
+						climbingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField climbingSpecs = climbingSpecsFields.get(i);
+						climbingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						climbingSpecs.setBackground(new Color(255, 235, 209));
+						climbingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						climbingPanel.add(climbingSpecs);
+						climbingSpecs.setText(climbingSpecsList.get(i).getDescription());
+						climbingSpecs.requestFocus();	
+
+						climbingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = climbingSpecsList.get(j);
+									editing.setDescription(climbingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxClimbing.setSelected(false);
+										chckbxClimbing.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxClimbing.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					climbingSpecsList.clear();
+					for(JFormattedTextField t : climbingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						climbingPanel.remove(t);
+						t = null;
+					}
+					climbingSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(climbingPanel.getHeight()-32)));
+					climbingPanel.setSize(354, (32));
+					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxClimbing.setBackground(new Color(255, 173, 84));
+		chckbxClimbing.setBounds(187, 5, 97, 23);
+		climbingPanel.add(chckbxClimbing);		
+		JCheckBox chckbxDriving = new JCheckBox("Show specs");
+		chckbxDriving.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> drivingSpecsList = currentSheet.assignSkillSpecs("Driving");
+				if(chckbxDriving.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Driving", "");
+					drivingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (drivingSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					drivingPanel.setSize(354, (32+extra));
+					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < drivingSpecsList.size(); i++)
+					{
+						int j = i;
+						drivingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField drivingSpecs = drivingSpecsFields.get(i);
+						drivingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						drivingSpecs.setBackground(new Color(255, 235, 209));
+						drivingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						drivingPanel.add(drivingSpecs);
+						drivingSpecs.setText(drivingSpecsList.get(i).getDescription());
+						drivingSpecs.requestFocus();	
+
+						drivingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = drivingSpecsList.get(j);
+									editing.setDescription(drivingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxDriving.setSelected(false);
+										chckbxDriving.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxDriving.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					drivingSpecsList.clear();
+					for(JFormattedTextField t : drivingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						drivingPanel.remove(t);
+						t = null;
+					}
+					drivingSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(drivingPanel.getHeight()-32)));
+					drivingPanel.setSize(354, (32));
+					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxDriving.setBackground(new Color(255, 201, 131));
+		chckbxDriving.setBounds(187, 5, 97, 23);
+		drivingPanel.add(chckbxDriving);		
+		JCheckBox chckbxMarksmanship = new JCheckBox("Show specs");
+		chckbxMarksmanship.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> marksmanshipSpecsList = currentSheet.assignSkillSpecs("Marksmanship");
+				if(chckbxMarksmanship.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Marksmanship", "");
+					marksmanshipSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (marksmanshipSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					marksmanshipPanel.setSize(354, (32+extra));
+					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < marksmanshipSpecsList.size(); i++)
+					{
+						int j = i;
+						marksmanshipSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField marksmanshipSpecs = marksmanshipSpecsFields.get(i);
+						marksmanshipSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						marksmanshipSpecs.setBackground(new Color(255, 235, 209));
+						marksmanshipSpecs.setBounds(5, 33+(i*28), 279, 22);
+						marksmanshipPanel.add(marksmanshipSpecs);
+						marksmanshipSpecs.setText(marksmanshipSpecsList.get(i).getDescription());
+						marksmanshipSpecs.requestFocus();	
+
+						marksmanshipSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = marksmanshipSpecsList.get(j);
+									editing.setDescription(marksmanshipSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxMarksmanship.setSelected(false);
+										chckbxMarksmanship.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxMarksmanship.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					marksmanshipSpecsList.clear();
+					for(JFormattedTextField t : marksmanshipSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						marksmanshipPanel.remove(t);
+						t = null;
+					}
+					marksmanshipSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(marksmanshipPanel.getHeight()-32)));
+					marksmanshipPanel.setSize(354, (32));
+					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxMarksmanship.setBackground(new Color(255, 173, 84));
+		chckbxMarksmanship.setBounds(187, 5, 97, 23);
+		marksmanshipPanel.add(chckbxMarksmanship);
+		JCheckBox chckbxThievery = new JCheckBox("Show specs");
+		chckbxThievery.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> thieverySpecsList = currentSheet.assignSkillSpecs("Thievery");
+				if(chckbxThievery.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Thievery", "");
+					thieverySpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (thieverySpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					thieveryPanel.setSize(354, (32+extra));
+					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < thieverySpecsList.size(); i++)
+					{
+						int j = i;
+						thieverySpecsFields.add(new JFormattedTextField());
+						JFormattedTextField thieverySpecs = thieverySpecsFields.get(i);
+						thieverySpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						thieverySpecs.setBackground(new Color(255, 235, 209));
+						thieverySpecs.setBounds(5, 33+(i*28), 279, 22);
+						thieveryPanel.add(thieverySpecs);
+						thieverySpecs.setText(thieverySpecsList.get(i).getDescription());
+						thieverySpecs.requestFocus();	
+
+						thieverySpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = thieverySpecsList.get(j);
+									editing.setDescription(thieverySpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxThievery.setSelected(false);
+										chckbxThievery.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxThievery.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					thieverySpecsList.clear();
+					for(JFormattedTextField t : thieverySpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						thieveryPanel.remove(t);
+						t = null;
+					}
+					thieverySpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
+					thieveryPanel.setSize(354, (32));
+					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxThievery.setBackground(new Color(255, 201, 131));
+		chckbxThievery.setBounds(187, 5, 97, 23);
+		thieveryPanel.add(chckbxThievery);
+		JCheckBox chckbxThrownWeapons = new JCheckBox("Show specs");
+		chckbxThrownWeapons.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> thrownWeaponsSpecsList = currentSheet.assignSkillSpecs("ThrownWeapons");
+				if(chckbxThrownWeapons.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "ThrownWeapons", "");
+					thrownWeaponsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (thrownWeaponsSpecsList.size())*28;
+					
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
+					thrownWeaponsPanel.setSize(354, (32+extra));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < thrownWeaponsSpecsList.size(); i++)
+					{
+						int j = i;
+						thrownWeaponsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField thrownWeaponsSpecs = thrownWeaponsSpecsFields.get(i);
+						thrownWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						thrownWeaponsSpecs.setBackground(new Color(255, 235, 209));
+						thrownWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						thrownWeaponsPanel.add(thrownWeaponsSpecs);
+						thrownWeaponsSpecs.setText(thrownWeaponsSpecsList.get(i).getDescription());
+						thrownWeaponsSpecs.requestFocus();	
+
+						thrownWeaponsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = thrownWeaponsSpecsList.get(j);
+									editing.setDescription(thrownWeaponsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxThrownWeapons.setSelected(false);
+										chckbxThrownWeapons.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxThrownWeapons.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					thrownWeaponsSpecsList.clear();
+					for(JFormattedTextField t : thrownWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						thrownWeaponsPanel.remove(t);
+						t = null;
+					}
+					thrownWeaponsSpecsFields.clear();
+							
+					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
+					thrownWeaponsPanel.setSize(354, (32));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxThrownWeapons.setBackground(new Color(255, 173, 84));
+		chckbxThrownWeapons.setBounds(187, 5, 97, 23);
+		thrownWeaponsPanel.add(chckbxThrownWeapons);	
+		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
+		chckbxAthletics.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> athleticsSpecsList = currentSheet.assignSkillSpecs("Athletics");
+				if(chckbxAthletics.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Athletics", "");
+					athleticsSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (athleticsSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					athleticsPanel.setSize(354, (32+extra));
+					leapPanel.setLocation(5, leapPanel.getY()+extra);
+					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < athleticsSpecsList.size(); i++)
+					{
+						int j = i;
+						athleticsSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField athleticsSpecs = athleticsSpecsFields.get(i);
+						athleticsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						athleticsSpecs.setBackground(new Color(255, 255, 204));
+						athleticsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						athleticsPanel.add(athleticsSpecs);
+						athleticsSpecs.setText(athleticsSpecsList.get(i).getDescription());
+						athleticsSpecs.requestFocus();	
+
+						athleticsSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = athleticsSpecsList.get(j);
+									editing.setDescription(athleticsSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxAthletics.setSelected(false);
+										chckbxAthletics.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxAthletics.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					athleticsSpecsList.clear();
+					for(JFormattedTextField t : athleticsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						athleticsPanel.remove(t);
+						t = null;
+					}
+					athleticsSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(athleticsPanel.getHeight()-32)));
+					athleticsPanel.setSize(354, (32));
+					leapPanel.setLocation(5, athleticsPanel.getY()+32);
+					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxAthletics.setBackground(new Color(240, 230, 140));
+		chckbxAthletics.setBounds(187, 5, 97, 23);
+		athleticsPanel.add(chckbxAthletics);		
+		JCheckBox chckbxLeap = new JCheckBox("Show specs");
+		chckbxLeap.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> leapSpecsList = currentSheet.assignSkillSpecs("Leap");
+				if(chckbxLeap.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Leap", "");
+					leapSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (leapSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					leapPanel.setSize(354, (32+extra));
+					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < leapSpecsList.size(); i++)
+					{
+						int j = i;
+						leapSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField leapSpecs = leapSpecsFields.get(i);
+						leapSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						leapSpecs.setBackground(new Color(255, 255, 204));
+						leapSpecs.setBounds(5, 33+(i*28), 279, 22);
+						leapPanel.add(leapSpecs);
+						leapSpecs.setText(leapSpecsList.get(i).getDescription());
+						leapSpecs.requestFocus();	
+
+						leapSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = leapSpecsList.get(j);
+									editing.setDescription(leapSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxLeap.setSelected(false);
+										chckbxLeap.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxLeap.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					leapSpecsList.clear();
+					for(JFormattedTextField t : leapSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						leapPanel.remove(t);
+						t = null;
+					}
+					leapSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(leapPanel.getHeight()-32)));
+					leapPanel.setSize(354, (32));
+					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxLeap.setBackground(new Color(255, 255, 153));
+		chckbxLeap.setBounds(187, 5, 97, 23);
+		leapPanel.add(chckbxLeap);		
+		JCheckBox chckbxLifting = new JCheckBox("Show specs");
+		chckbxLifting.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> liftingSpecsList = currentSheet.assignSkillSpecs("Lifting");
+				if(chckbxLifting.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Lifting", "");
+					liftingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (liftingSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					liftingPanel.setSize(354, (32+extra));
+					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < liftingSpecsList.size(); i++)
+					{
+						int j = i;
+						liftingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField liftingSpecs = liftingSpecsFields.get(i);
+						liftingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						liftingSpecs.setBackground(new Color(255, 255, 204));
+						liftingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						liftingPanel.add(liftingSpecs);
+						liftingSpecs.setText(liftingSpecsList.get(i).getDescription());
+						liftingSpecs.requestFocus();	
+
+						liftingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = liftingSpecsList.get(j);
+									editing.setDescription(liftingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxLifting.setSelected(false);
+										chckbxLifting.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxLifting.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					liftingSpecsList.clear();
+					for(JFormattedTextField t : liftingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						liftingPanel.remove(t);
+						t = null;
+					}
+					liftingSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(liftingPanel.getHeight()-32)));
+					liftingPanel.setSize(354, (32));
+					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxLifting.setBackground(new Color(240, 230, 140));
+		chckbxLifting.setBounds(187, 5, 97, 23);
+		liftingPanel.add(chckbxLifting);	
+		JCheckBox chckbxResistance = new JCheckBox("Show specs");
+		chckbxResistance.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> resistanceSpecsList = currentSheet.assignSkillSpecs("Resistance");
+				if(chckbxResistance.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Resistance", "");
+					resistanceSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (resistanceSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					resistancePanel.setSize(354, (32+extra));
+					runningPanel.setLocation(5, runningPanel.getY()+extra);
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < resistanceSpecsList.size(); i++)
+					{
+						int j = i;
+						resistanceSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField resistanceSpecs = resistanceSpecsFields.get(i);
+						resistanceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						resistanceSpecs.setBackground(new Color(255, 255, 204));
+						resistanceSpecs.setBounds(5, 33+(i*28), 279, 22);
+						resistancePanel.add(resistanceSpecs);
+						resistanceSpecs.setText(resistanceSpecsList.get(i).getDescription());
+						resistanceSpecs.requestFocus();	
+
+						resistanceSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = resistanceSpecsList.get(j);
+									editing.setDescription(resistanceSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxResistance.setSelected(false);
+										chckbxResistance.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxResistance.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					resistanceSpecsList.clear();
+					for(JFormattedTextField t : resistanceSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						resistancePanel.remove(t);
+						t = null;
+					}
+					resistanceSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(resistancePanel.getHeight()-32)));
+					resistancePanel.setSize(354, (32));
+					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxResistance.setBackground(new Color(255, 255, 153));
+		chckbxResistance.setBounds(187, 5, 97, 23);
+		resistancePanel.add(chckbxResistance);		
+		JCheckBox chckbxRunning = new JCheckBox("Show specs");
+		chckbxRunning.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> runningSpecsList = currentSheet.assignSkillSpecs("Running");
+				if(chckbxRunning.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Running", "");
+					runningSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (runningSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					runningPanel.setSize(354, (32+extra));
+					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < runningSpecsList.size(); i++)
+					{
+						int j = i;
+						runningSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField runningSpecs = runningSpecsFields.get(i);
+						runningSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						runningSpecs.setBackground(new Color(255, 255, 204));
+						runningSpecs.setBounds(5, 33+(i*28), 279, 22);
+						runningPanel.add(runningSpecs);
+						runningSpecs.setText(runningSpecsList.get(i).getDescription());
+						runningSpecs.requestFocus();	
+
+						runningSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = runningSpecsList.get(j);
+									editing.setDescription(runningSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxRunning.setSelected(false);
+										chckbxRunning.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxRunning.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					runningSpecsList.clear();
+					for(JFormattedTextField t : runningSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						runningPanel.remove(t);
+						t = null;
+					}
+					runningSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
+					runningPanel.setSize(354, (32));
+					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxRunning.setBackground(new Color(240, 230, 140));
+		chckbxRunning.setBounds(187, 5, 97, 23);
+		runningPanel.add(chckbxRunning);	
+		JCheckBox chckbxSwimming = new JCheckBox("Show specs");
+		chckbxSwimming.addItemListener(new ItemListener() 
+		{
+			int blankId;
+			public void itemStateChanged(ItemEvent arg0) 
+			{		
+				List<SkillSpec> swimmingSpecsList = currentSheet.assignSkillSpecs("Swimming");
+				if(chckbxSwimming.isSelected())
+				{
+					blankId = nextSpecId;
+					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Swimming", "");
+					swimmingSpecsList.add(blank);
+					specs.add(blank);
+					nextSpecId++;
+					int extra = (swimmingSpecsList.size())*28;
+					
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
+					swimmingPanel.setSize(354, (32+extra));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
+					for(int i = 0; i < swimmingSpecsList.size(); i++)
+					{
+						int j = i;
+						swimmingSpecsFields.add(new JFormattedTextField());
+						JFormattedTextField swimmingSpecs = swimmingSpecsFields.get(i);
+						swimmingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
+						swimmingSpecs.setBackground(new Color(255, 255, 204));
+						swimmingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						swimmingPanel.add(swimmingSpecs);
+						swimmingSpecs.setText(swimmingSpecsList.get(i).getDescription());
+						swimmingSpecs.requestFocus();	
+
+						swimmingSpecs.addKeyListener(new KeyAdapter() 
+						{
+							@Override
+							public void keyReleased(KeyEvent e) 
+							{
+								SkillSpec editing = swimmingSpecsList.get(j);
+									editing.setDescription(swimmingSpecs.getText());
+									for(SkillSpec ss : specs)
+									{
+										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
+										{
+											ss.setDescription(editing.getDescription());
+											currentSheet.setSkillSpecs(specs);
+											break;
+										}
+									}
+									if(e.getKeyCode() == KeyEvent.VK_ENTER)
+									{
+										chckbxSwimming.setSelected(false);
+										chckbxSwimming.setSelected(true);
+									}
+							}
+						});
+					}
+				}
+				else if(!chckbxSwimming.isSelected())
+				{
+					// WHY DUPLICATING A BLANK SPACE
+					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
+					{
+						specs.remove(blankId);
+						if(blankId == (nextSpecId-1))
+							nextSpecId--;		
+					}
+											 
+					boolean removingEmpty = true;
+					while(removingEmpty)
+					{
+						for(int i = 0; i < specs.size(); i++)
+						{
+							for(SkillSpec ss : specs)
+							{
+								if(ss.getDescription().replace(" ", "").equals(""))
+								{		
+
+									specs.remove(ss);
+									currentSheet.setSkillSpecs(specs);
+									break;
+								}
+							}
+						}
+						removingEmpty = false;
+					}
+								
+					if(specs.size() > 0)
+						nextSpecId = specs.get(specs.size()-1).getId() + 1;
+
+					swimmingSpecsList.clear();
+					for(JFormattedTextField t : swimmingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
+					{
+						swimmingPanel.remove(t);
+						t = null;
+					}
+					swimmingSpecsFields.clear();
+							
+					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
+					swimmingPanel.setSize(354, (32));
+					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+				}
+			}
+		});
+		chckbxSwimming.setBackground(new Color(255, 255, 153));
+		chckbxSwimming.setBounds(187, 5, 97, 23);
+		swimmingPanel.add(chckbxSwimming);		
 		
-		JPanel mentalStatsPanel = new JPanel();
+		mentalStatsPanel = new JPanel();
+		mentalStatsPanel.setBounds(35, 431, 1152, 279);
+		panel.add(mentalStatsPanel);
 		mentalStatsPanel.setBackground(new Color(192, 192, 192));
-		mentalStatsPanel.setBounds(45, 437, 1152, 279);
-		dcrpgFrame.getContentPane().add(mentalStatsPanel);
 		mentalStatsPanel.setLayout(null);
 		
 		Panel knowledgePanel = new Panel();
@@ -2245,1985 +4314,6 @@ public class MainWindow {
 				}
 			}
 		});
-		
-		// AcroSpecs
-		List<JFormattedTextField> acroSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxAcro = new JCheckBox("Show specs");
-		chckbxAcro.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
-				if(chckbxAcro.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
-					acroSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-
-					int extra = (acroSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					acroPanel.setSize(354, (32+extra));
-					dodgePanel.setLocation(5, dodgePanel.getY()+extra);
-					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
-					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-
-					for(int i = 0; i < acroSpecsList.size(); i++)
-					{
-						int j = i;
-						acroSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField acroSpecs = acroSpecsFields.get(i);
-						acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						acroSpecs.setBackground(new Color(255, 204, 204));
-						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
-						acroPanel.add(acroSpecs);
-						acroSpecs.setText(acroSpecsList.get(i).getDescription());
-						acroSpecs.requestFocus();	
-
-						acroSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = acroSpecsList.get(j);
-									editing.setDescription(acroSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxAcro.setSelected(false);
-										chckbxAcro.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxAcro.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					acroSpecsList.clear();
-					for(JFormattedTextField t : acroSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						acroPanel.remove(t);
-						t = null;
-					}
-					acroSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(acroPanel.getHeight()-32)));
-					acroPanel.setSize(354, (32));
-					dodgePanel.setLocation(5, acroPanel.getY()+32);
-					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
-					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		
-		
-		// DodgeSpecs
-		List<JFormattedTextField> dodgeSpecsFields = new ArrayList<JFormattedTextField>();
-		chckbxAcro.setBackground(new Color(255, 153, 153));
-		chckbxAcro.setBounds(187, 5, 97, 23);
-		acroPanel.add(chckbxAcro);
-		JCheckBox chckbxDodge = new JCheckBox("Show specs");
-		chckbxDodge.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> dodgeSpecsList = currentSheet.assignSkillSpecs("Dodge");
-				if(chckbxDodge.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Dodge", "");
-					dodgeSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-
-					int extra = (dodgeSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					dodgePanel.setSize(354, (32+extra));
-					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
-					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-
-					for(int i = 0; i < dodgeSpecsList.size(); i++)
-					{
-						int j = i;
-						dodgeSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField dodgeSpecs = dodgeSpecsFields.get(i);
-						dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						dodgeSpecs.setBackground(new Color(255, 204, 204));
-						dodgeSpecs.setBounds(5, 33+(i*28), 279, 22);
-						dodgePanel.add(dodgeSpecs);
-						dodgeSpecs.setText(dodgeSpecsList.get(i).getDescription());
-						dodgeSpecs.requestFocus();	
-
-						dodgeSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = dodgeSpecsList.get(j);
-									editing.setDescription(dodgeSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxDodge.setSelected(false);
-										chckbxDodge.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxDodge.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					dodgeSpecsList.clear();
-					for(JFormattedTextField t : dodgeSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						dodgePanel.remove(t);
-						t = null;
-					}
-					dodgeSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(dodgePanel.getHeight()-32)));
-					dodgePanel.setSize(354, (32));
-					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
-					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-				}
-			}
-		});
-		chckbxDodge.setBackground(new Color(255, 102, 102));
-		chckbxDodge.setBounds(187, 5, 97, 23);
-		dodgePanel.add(chckbxDodge);
-		
-		
-		// HandToHandSpecs
-		List<JFormattedTextField> handToHandSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
-		chckbxHandToHand.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> handToHandSpecsList = currentSheet.assignSkillSpecs("HandToHand");
-				if(chckbxHandToHand.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "HandToHand", "");
-					handToHandSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-
-					int extra = (handToHandSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					handToHandPanel.setSize(354, (32+extra));
-					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
-					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-
-					for(int i = 0; i < handToHandSpecsList.size(); i++)
-					{
-						int j = i;
-						handToHandSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField handToHandSpecs = handToHandSpecsFields.get(i);
-						handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						handToHandSpecs.setBackground(new Color(255, 204, 204));
-						handToHandSpecs.setBounds(5, 33+(i*28), 279, 22);
-						handToHandPanel.add(handToHandSpecs);
-						handToHandSpecs.setText(handToHandSpecsList.get(i).getDescription());
-						handToHandSpecs.requestFocus();	
-
-						handToHandSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = handToHandSpecsList.get(j);
-									editing.setDescription(handToHandSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxHandToHand.setSelected(false);
-										chckbxHandToHand.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxHandToHand.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					handToHandSpecsList.clear();
-					for(JFormattedTextField t : handToHandSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						handToHandPanel.remove(t);
-						t = null;
-					}
-					handToHandSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(handToHandPanel.getHeight()-32)));
-					handToHandPanel.setSize(354, (32));
-					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
-					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-				}
-			}
-		});
-		chckbxHandToHand.setBackground(new Color(255, 153, 153));
-		chckbxHandToHand.setBounds(187, 5, 97, 23);
-		handToHandPanel.add(chckbxHandToHand);
-		
-		
-		// MeleeWeaponsSpecs
-		List<JFormattedTextField> meleeWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
-		chckbxMeleeWeapons.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> meleeWeaponsSpecsList = currentSheet.assignSkillSpecs("MeleeWeapons");
-				if(chckbxMeleeWeapons.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "MeleeWeapons", "");
-					meleeWeaponsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-
-					int extra = (meleeWeaponsSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					meleeWeaponsPanel.setSize(354, (32+extra));
-					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-
-					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
-					{
-						int j = i;
-						meleeWeaponsSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
-						meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
-						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
-						meleeWeaponsPanel.add(meleeWeaponsSpecs);
-						meleeWeaponsSpecs.setText(meleeWeaponsSpecsList.get(i).getDescription());
-						meleeWeaponsSpecs.requestFocus();	
-
-						meleeWeaponsSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = meleeWeaponsSpecsList.get(j);
-									editing.setDescription(meleeWeaponsSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxMeleeWeapons.setSelected(false);
-										chckbxMeleeWeapons.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxMeleeWeapons.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					meleeWeaponsSpecsList.clear();
-					for(JFormattedTextField t : meleeWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						meleeWeaponsPanel.remove(t);
-						t = null;
-					}
-					meleeWeaponsSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
-					meleeWeaponsPanel.setSize(354, (32));
-					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-				}
-			}
-		});
-		chckbxMeleeWeapons.setBackground(new Color(255, 102, 102));
-		chckbxMeleeWeapons.setBounds(187, 5, 97, 23);
-		meleeWeaponsPanel.add(chckbxMeleeWeapons);
-		
-		
-		// StealthSpecs
-		List<JFormattedTextField> stealthSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxStealth = new JCheckBox("Show specs");
-		chckbxStealth.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> stealthSpecsList = currentSheet.assignSkillSpecs("Stealth");
-				if(chckbxStealth.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Stealth", "");
-					stealthSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (stealthSpecsList.size())*28;
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					stealthPanel.setSize(354, (32+extra));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-					
-					for(int i = 0; i < stealthSpecsList.size(); i++)
-					{
-						int j = i;
-						stealthSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField stealthSpecs = stealthSpecsFields.get(i);
-						stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						stealthSpecs.setBackground(new Color(255, 204, 204));
-						stealthSpecs.setBounds(5, 33+(i*28), 279, 22);
-						stealthPanel.add(stealthSpecs);
-						stealthSpecs.setText(stealthSpecsList.get(i).getDescription());
-						stealthSpecs.requestFocus();	
-						stealthSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = stealthSpecsList.get(j);
-									editing.setDescription(stealthSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxStealth.setSelected(false);
-										chckbxStealth.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxStealth.isSelected())
-				{
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-										 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-						
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-						stealthSpecsList.clear();
-					for(JFormattedTextField t : stealthSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						stealthPanel.remove(t);
-						t = null;
-					}
-					stealthSpecsFields.clear();
-					
-					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
-					stealthPanel.setSize(354, (32));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-
-				}
-			}
-		});
-		chckbxStealth.setBackground(new Color(255, 153, 153));
-		chckbxStealth.setBounds(187, 5, 97, 23);
-		stealthPanel.add(chckbxStealth);
-		// CatchSpecs
-		List<JFormattedTextField> catchSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxCatch = new JCheckBox("Show specs");
-		chckbxCatch.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> catchSpecsList = currentSheet.assignSkillSpecs("Catch");
-				if(chckbxCatch.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Catch", "");
-					catchSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (catchSpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					catchPanel.setSize(354, (32+extra));
-					climbingPanel.setLocation(5, climbingPanel.getY()+extra);
-					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
-					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < catchSpecsList.size(); i++)
-					{
-						int j = i;
-						catchSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField catchSpecs = catchSpecsFields.get(i);
-						catchSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						catchSpecs.setBackground(new Color(255, 235, 209));
-						catchSpecs.setBounds(5, 33+(i*28), 279, 22);
-						catchPanel.add(catchSpecs);
-						catchSpecs.setText(catchSpecsList.get(i).getDescription());
-						catchSpecs.requestFocus();	
-
-						catchSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = catchSpecsList.get(j);
-									editing.setDescription(catchSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxCatch.setSelected(false);
-										chckbxCatch.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxCatch.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					catchSpecsList.clear();
-					for(JFormattedTextField t : catchSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						catchPanel.remove(t);
-						t = null;
-					}
-					catchSpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(catchPanel.getHeight()-32)));
-					catchPanel.setSize(354, (32));
-					climbingPanel.setLocation(5, catchPanel.getY()+32);
-					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
-					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxCatch.setBackground(new Color(255, 201, 131));
-		chckbxCatch.setBounds(187, 5, 97, 23);
-		catchPanel.add(chckbxCatch);
-		
-		
-		// ClimbingSpecs
-		List<JFormattedTextField> climbingSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxClimbing = new JCheckBox("Show specs");
-		chckbxClimbing.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> climbingSpecsList = currentSheet.assignSkillSpecs("Climbing");
-				if(chckbxClimbing.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Climbing", "");
-					climbingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (climbingSpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					climbingPanel.setSize(354, (32+extra));
-					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
-					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < climbingSpecsList.size(); i++)
-					{
-						int j = i;
-						climbingSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField climbingSpecs = climbingSpecsFields.get(i);
-						climbingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						climbingSpecs.setBackground(new Color(255, 235, 209));
-						climbingSpecs.setBounds(5, 33+(i*28), 279, 22);
-						climbingPanel.add(climbingSpecs);
-						climbingSpecs.setText(climbingSpecsList.get(i).getDescription());
-						climbingSpecs.requestFocus();	
-
-						climbingSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = climbingSpecsList.get(j);
-									editing.setDescription(climbingSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxClimbing.setSelected(false);
-										chckbxClimbing.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxClimbing.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					climbingSpecsList.clear();
-					for(JFormattedTextField t : climbingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						climbingPanel.remove(t);
-						t = null;
-					}
-					climbingSpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(climbingPanel.getHeight()-32)));
-					climbingPanel.setSize(354, (32));
-					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
-					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxClimbing.setBackground(new Color(255, 173, 84));
-		chckbxClimbing.setBounds(187, 5, 97, 23);
-		climbingPanel.add(chckbxClimbing);		
-		
-		// DrivingSpecs
-		List<JFormattedTextField> drivingSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxDriving = new JCheckBox("Show specs");
-		chckbxDriving.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> drivingSpecsList = currentSheet.assignSkillSpecs("Driving");
-				if(chckbxDriving.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Driving", "");
-					drivingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (drivingSpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					drivingPanel.setSize(354, (32+extra));
-					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
-					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < drivingSpecsList.size(); i++)
-					{
-						int j = i;
-						drivingSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField drivingSpecs = drivingSpecsFields.get(i);
-						drivingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						drivingSpecs.setBackground(new Color(255, 235, 209));
-						drivingSpecs.setBounds(5, 33+(i*28), 279, 22);
-						drivingPanel.add(drivingSpecs);
-						drivingSpecs.setText(drivingSpecsList.get(i).getDescription());
-						drivingSpecs.requestFocus();	
-
-						drivingSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = drivingSpecsList.get(j);
-									editing.setDescription(drivingSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxDriving.setSelected(false);
-										chckbxDriving.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxDriving.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					drivingSpecsList.clear();
-					for(JFormattedTextField t : drivingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						drivingPanel.remove(t);
-						t = null;
-					}
-					drivingSpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(drivingPanel.getHeight()-32)));
-					drivingPanel.setSize(354, (32));
-					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
-					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxDriving.setBackground(new Color(255, 201, 131));
-		chckbxDriving.setBounds(187, 5, 97, 23);
-		drivingPanel.add(chckbxDriving);		
-		
-		// MarksmanshipSpecs
-		List<JFormattedTextField> marksmanshipSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxMarksmanship = new JCheckBox("Show specs");
-		chckbxMarksmanship.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> marksmanshipSpecsList = currentSheet.assignSkillSpecs("Marksmanship");
-				if(chckbxMarksmanship.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Marksmanship", "");
-					marksmanshipSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (marksmanshipSpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					marksmanshipPanel.setSize(354, (32+extra));
-					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
-					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < marksmanshipSpecsList.size(); i++)
-					{
-						int j = i;
-						marksmanshipSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField marksmanshipSpecs = marksmanshipSpecsFields.get(i);
-						marksmanshipSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						marksmanshipSpecs.setBackground(new Color(255, 235, 209));
-						marksmanshipSpecs.setBounds(5, 33+(i*28), 279, 22);
-						marksmanshipPanel.add(marksmanshipSpecs);
-						marksmanshipSpecs.setText(marksmanshipSpecsList.get(i).getDescription());
-						marksmanshipSpecs.requestFocus();	
-
-						marksmanshipSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = marksmanshipSpecsList.get(j);
-									editing.setDescription(marksmanshipSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxMarksmanship.setSelected(false);
-										chckbxMarksmanship.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxMarksmanship.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					marksmanshipSpecsList.clear();
-					for(JFormattedTextField t : marksmanshipSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						marksmanshipPanel.remove(t);
-						t = null;
-					}
-					marksmanshipSpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(marksmanshipPanel.getHeight()-32)));
-					marksmanshipPanel.setSize(354, (32));
-					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
-					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxMarksmanship.setBackground(new Color(255, 173, 84));
-		chckbxMarksmanship.setBounds(187, 5, 97, 23);
-		marksmanshipPanel.add(chckbxMarksmanship);
-		
-		// ThieverySpecs
-		List<JFormattedTextField> thieverySpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxThievery = new JCheckBox("Show specs");
-		chckbxThievery.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> thieverySpecsList = currentSheet.assignSkillSpecs("Thievery");
-				if(chckbxThievery.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Thievery", "");
-					thieverySpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (thieverySpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					thieveryPanel.setSize(354, (32+extra));
-					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < thieverySpecsList.size(); i++)
-					{
-						int j = i;
-						thieverySpecsFields.add(new JFormattedTextField());
-						JFormattedTextField thieverySpecs = thieverySpecsFields.get(i);
-						thieverySpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						thieverySpecs.setBackground(new Color(255, 235, 209));
-						thieverySpecs.setBounds(5, 33+(i*28), 279, 22);
-						thieveryPanel.add(thieverySpecs);
-						thieverySpecs.setText(thieverySpecsList.get(i).getDescription());
-						thieverySpecs.requestFocus();	
-
-						thieverySpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = thieverySpecsList.get(j);
-									editing.setDescription(thieverySpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxThievery.setSelected(false);
-										chckbxThievery.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxThievery.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					thieverySpecsList.clear();
-					for(JFormattedTextField t : thieverySpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						thieveryPanel.remove(t);
-						t = null;
-					}
-					thieverySpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
-					thieveryPanel.setSize(354, (32));
-					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxThievery.setBackground(new Color(255, 201, 131));
-		chckbxThievery.setBounds(187, 5, 97, 23);
-		thieveryPanel.add(chckbxThievery);
-		
-		// ThrownWeaponsSpecs
-		List<JFormattedTextField> thrownWeaponsSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxThrownWeapons = new JCheckBox("Show specs");
-		chckbxThrownWeapons.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> thrownWeaponsSpecsList = currentSheet.assignSkillSpecs("ThrownWeapons");
-				if(chckbxThrownWeapons.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "ThrownWeapons", "");
-					thrownWeaponsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (thrownWeaponsSpecsList.size())*28;
-					
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					thrownWeaponsPanel.setSize(354, (32+extra));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < thrownWeaponsSpecsList.size(); i++)
-					{
-						int j = i;
-						thrownWeaponsSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField thrownWeaponsSpecs = thrownWeaponsSpecsFields.get(i);
-						thrownWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						thrownWeaponsSpecs.setBackground(new Color(255, 235, 209));
-						thrownWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
-						thrownWeaponsPanel.add(thrownWeaponsSpecs);
-						thrownWeaponsSpecs.setText(thrownWeaponsSpecsList.get(i).getDescription());
-						thrownWeaponsSpecs.requestFocus();	
-
-						thrownWeaponsSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = thrownWeaponsSpecsList.get(j);
-									editing.setDescription(thrownWeaponsSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxThrownWeapons.setSelected(false);
-										chckbxThrownWeapons.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxThrownWeapons.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					thrownWeaponsSpecsList.clear();
-					for(JFormattedTextField t : thrownWeaponsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						thrownWeaponsPanel.remove(t);
-						t = null;
-					}
-					thrownWeaponsSpecsFields.clear();
-							
-					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
-					thrownWeaponsPanel.setSize(354, (32));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxThrownWeapons.setBackground(new Color(255, 173, 84));
-		chckbxThrownWeapons.setBounds(187, 5, 97, 23);
-		thrownWeaponsPanel.add(chckbxThrownWeapons);	
-		// AthleticsSpecs
-		List<JFormattedTextField> athleticsSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
-		chckbxAthletics.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> athleticsSpecsList = currentSheet.assignSkillSpecs("Athletics");
-				if(chckbxAthletics.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Athletics", "");
-					athleticsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (athleticsSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					athleticsPanel.setSize(354, (32+extra));
-					leapPanel.setLocation(5, leapPanel.getY()+extra);
-					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
-					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
-					runningPanel.setLocation(5, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < athleticsSpecsList.size(); i++)
-					{
-						int j = i;
-						athleticsSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField athleticsSpecs = athleticsSpecsFields.get(i);
-						athleticsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						athleticsSpecs.setBackground(new Color(255, 255, 204));
-						athleticsSpecs.setBounds(5, 33+(i*28), 279, 22);
-						athleticsPanel.add(athleticsSpecs);
-						athleticsSpecs.setText(athleticsSpecsList.get(i).getDescription());
-						athleticsSpecs.requestFocus();	
-
-						athleticsSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = athleticsSpecsList.get(j);
-									editing.setDescription(athleticsSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxAthletics.setSelected(false);
-										chckbxAthletics.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxAthletics.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					athleticsSpecsList.clear();
-					for(JFormattedTextField t : athleticsSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						athleticsPanel.remove(t);
-						t = null;
-					}
-					athleticsSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(athleticsPanel.getHeight()-32)));
-					athleticsPanel.setSize(354, (32));
-					leapPanel.setLocation(5, athleticsPanel.getY()+32);
-					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
-					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxAthletics.setBackground(new Color(240, 230, 140));
-		chckbxAthletics.setBounds(187, 5, 97, 23);
-		athleticsPanel.add(chckbxAthletics);		
-		
-		// LeapSpecs
-		List<JFormattedTextField> leapSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxLeap = new JCheckBox("Show specs");
-		chckbxLeap.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> leapSpecsList = currentSheet.assignSkillSpecs("Leap");
-				if(chckbxLeap.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Leap", "");
-					leapSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (leapSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					leapPanel.setSize(354, (32+extra));
-					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
-					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
-					runningPanel.setLocation(5, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < leapSpecsList.size(); i++)
-					{
-						int j = i;
-						leapSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField leapSpecs = leapSpecsFields.get(i);
-						leapSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						leapSpecs.setBackground(new Color(255, 255, 204));
-						leapSpecs.setBounds(5, 33+(i*28), 279, 22);
-						leapPanel.add(leapSpecs);
-						leapSpecs.setText(leapSpecsList.get(i).getDescription());
-						leapSpecs.requestFocus();	
-
-						leapSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = leapSpecsList.get(j);
-									editing.setDescription(leapSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxLeap.setSelected(false);
-										chckbxLeap.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxLeap.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					leapSpecsList.clear();
-					for(JFormattedTextField t : leapSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						leapPanel.remove(t);
-						t = null;
-					}
-					leapSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(leapPanel.getHeight()-32)));
-					leapPanel.setSize(354, (32));
-					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
-					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxLeap.setBackground(new Color(255, 255, 153));
-		chckbxLeap.setBounds(187, 5, 97, 23);
-		leapPanel.add(chckbxLeap);		
-		
-		// LiftingSpecs
-		List<JFormattedTextField> liftingSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxLifting = new JCheckBox("Show specs");
-		chckbxLifting.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> liftingSpecsList = currentSheet.assignSkillSpecs("Lifting");
-				if(chckbxLifting.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Lifting", "");
-					liftingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (liftingSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					liftingPanel.setSize(354, (32+extra));
-					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
-					runningPanel.setLocation(5, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < liftingSpecsList.size(); i++)
-					{
-						int j = i;
-						liftingSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField liftingSpecs = liftingSpecsFields.get(i);
-						liftingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						liftingSpecs.setBackground(new Color(255, 255, 204));
-						liftingSpecs.setBounds(5, 33+(i*28), 279, 22);
-						liftingPanel.add(liftingSpecs);
-						liftingSpecs.setText(liftingSpecsList.get(i).getDescription());
-						liftingSpecs.requestFocus();	
-
-						liftingSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = liftingSpecsList.get(j);
-									editing.setDescription(liftingSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxLifting.setSelected(false);
-										chckbxLifting.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxLifting.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					liftingSpecsList.clear();
-					for(JFormattedTextField t : liftingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						liftingPanel.remove(t);
-						t = null;
-					}
-					liftingSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(liftingPanel.getHeight()-32)));
-					liftingPanel.setSize(354, (32));
-					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
-					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxLifting.setBackground(new Color(240, 230, 140));
-		chckbxLifting.setBounds(187, 5, 97, 23);
-		liftingPanel.add(chckbxLifting);	
-		
-		// ResistanceSpecs
-		List<JFormattedTextField> resistanceSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxResistance = new JCheckBox("Show specs");
-		chckbxResistance.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> resistanceSpecsList = currentSheet.assignSkillSpecs("Resistance");
-				if(chckbxResistance.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Resistance", "");
-					resistanceSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (resistanceSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					resistancePanel.setSize(354, (32+extra));
-					runningPanel.setLocation(5, runningPanel.getY()+extra);
-					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < resistanceSpecsList.size(); i++)
-					{
-						int j = i;
-						resistanceSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField resistanceSpecs = resistanceSpecsFields.get(i);
-						resistanceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						resistanceSpecs.setBackground(new Color(255, 255, 204));
-						resistanceSpecs.setBounds(5, 33+(i*28), 279, 22);
-						resistancePanel.add(resistanceSpecs);
-						resistanceSpecs.setText(resistanceSpecsList.get(i).getDescription());
-						resistanceSpecs.requestFocus();	
-
-						resistanceSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = resistanceSpecsList.get(j);
-									editing.setDescription(resistanceSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxResistance.setSelected(false);
-										chckbxResistance.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxResistance.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					resistanceSpecsList.clear();
-					for(JFormattedTextField t : resistanceSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						resistancePanel.remove(t);
-						t = null;
-					}
-					resistanceSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(resistancePanel.getHeight()-32)));
-					resistancePanel.setSize(354, (32));
-					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
-					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxResistance.setBackground(new Color(255, 255, 153));
-		chckbxResistance.setBounds(187, 5, 97, 23);
-		resistancePanel.add(chckbxResistance);		
-		
-		// RunningSpecs
-		List<JFormattedTextField> runningSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxRunning = new JCheckBox("Show specs");
-		chckbxRunning.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> runningSpecsList = currentSheet.assignSkillSpecs("Running");
-				if(chckbxRunning.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Running", "");
-					runningSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (runningSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					runningPanel.setSize(354, (32+extra));
-					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < runningSpecsList.size(); i++)
-					{
-						int j = i;
-						runningSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField runningSpecs = runningSpecsFields.get(i);
-						runningSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						runningSpecs.setBackground(new Color(255, 255, 204));
-						runningSpecs.setBounds(5, 33+(i*28), 279, 22);
-						runningPanel.add(runningSpecs);
-						runningSpecs.setText(runningSpecsList.get(i).getDescription());
-						runningSpecs.requestFocus();	
-
-						runningSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = runningSpecsList.get(j);
-									editing.setDescription(runningSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxRunning.setSelected(false);
-										chckbxRunning.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxRunning.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					runningSpecsList.clear();
-					for(JFormattedTextField t : runningSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						runningPanel.remove(t);
-						t = null;
-					}
-					runningSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
-					runningPanel.setSize(354, (32));
-					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxRunning.setBackground(new Color(240, 230, 140));
-		chckbxRunning.setBounds(187, 5, 97, 23);
-		runningPanel.add(chckbxRunning);	
-		
-		// SwimmingSpecs
-		List<JFormattedTextField> swimmingSpecsFields = new ArrayList<JFormattedTextField>();
-		JCheckBox chckbxSwimming = new JCheckBox("Show specs");
-		chckbxSwimming.addItemListener(new ItemListener() 
-		{
-			int blankId;
-			public void itemStateChanged(ItemEvent arg0) 
-			{		
-				List<SkillSpec> swimmingSpecsList = currentSheet.assignSkillSpecs("Swimming");
-				if(chckbxSwimming.isSelected())
-				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Swimming", "");
-					swimmingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-					int extra = (swimmingSpecsList.size())*28;
-					
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					swimmingPanel.setSize(354, (32+extra));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					
-					for(int i = 0; i < swimmingSpecsList.size(); i++)
-					{
-						int j = i;
-						swimmingSpecsFields.add(new JFormattedTextField());
-						JFormattedTextField swimmingSpecs = swimmingSpecsFields.get(i);
-						swimmingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
-						swimmingSpecs.setBackground(new Color(255, 255, 204));
-						swimmingSpecs.setBounds(5, 33+(i*28), 279, 22);
-						swimmingPanel.add(swimmingSpecs);
-						swimmingSpecs.setText(swimmingSpecsList.get(i).getDescription());
-						swimmingSpecs.requestFocus();	
-
-						swimmingSpecs.addKeyListener(new KeyAdapter() 
-						{
-							@Override
-							public void keyReleased(KeyEvent e) 
-							{
-								SkillSpec editing = swimmingSpecsList.get(j);
-									editing.setDescription(swimmingSpecs.getText());
-									for(SkillSpec ss : specs)
-									{
-										if(ss.getId() == editing.getId() && !ss.getDescription().replace(" ", "").equals(""))
-										{
-											ss.setDescription(editing.getDescription());
-											currentSheet.setSkillSpecs(specs);
-											break;
-										}
-									}
-									if(e.getKeyCode() == KeyEvent.VK_ENTER)
-									{
-										chckbxSwimming.setSelected(false);
-										chckbxSwimming.setSelected(true);
-									}
-							}
-						});
-					}
-				}
-				else if(!chckbxSwimming.isSelected())
-				{
-					// WHY DUPLICATING A BLANK SPACE
-					if(specs.size() > blankId && specs.get(blankId).getDescription().replace(" ", "").equals(""))
-					{
-						specs.remove(blankId);
-						if(blankId == (nextSpecId-1))
-							nextSpecId--;		
-					}
-											 
-					boolean removingEmpty = true;
-					while(removingEmpty)
-					{
-						for(int i = 0; i < specs.size(); i++)
-						{
-							for(SkillSpec ss : specs)
-							{
-								if(ss.getDescription().replace(" ", "").equals(""))
-								{		
-
-									specs.remove(ss);
-									currentSheet.setSkillSpecs(specs);
-									break;
-								}
-							}
-						}
-						removingEmpty = false;
-					}
-								
-					if(specs.size() > 0)
-						nextSpecId = specs.get(specs.size()-1).getId() + 1;
-
-					swimmingSpecsList.clear();
-					for(JFormattedTextField t : swimmingSpecsFields) // DOES THIS EVEN DO ANYTHING?	
-					{
-						swimmingPanel.remove(t);
-						t = null;
-					}
-					swimmingSpecsFields.clear();
-							
-					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
-					swimmingPanel.setSize(354, (32));
-					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-				}
-			}
-		});
-		chckbxSwimming.setBackground(new Color(255, 255, 153));
-		chckbxSwimming.setBounds(187, 5, 97, 23);
-		swimmingPanel.add(chckbxSwimming);		
-		// ArcaneLoreSpecs
-		List<JFormattedTextField> arcaneLoreSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxArcaneLore = new JCheckBox("Show specs");
 		chckbxArcaneLore.addItemListener(new ItemListener() 
 		{
@@ -4250,7 +4340,8 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < arcaneLoreSpecsList.size(); i++)
 					{
@@ -4338,16 +4429,14 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxArcaneLore.setBackground(new Color(144, 238, 144));
 		chckbxArcaneLore.setBounds(187, 5, 97, 23);
 		arcaneLorePanel.add(chckbxArcaneLore);		
-		
-		// DemolitionsSpecs
-		List<JFormattedTextField> demolitionsSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxDemolitions = new JCheckBox("Show specs");
 		chckbxDemolitions.addItemListener(new ItemListener() 
 		{
@@ -4373,7 +4462,8 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < demolitionsSpecsList.size(); i++)
 					{
@@ -4460,16 +4550,14 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxDemolitions.setBackground(new Color(50, 205, 50));
 		chckbxDemolitions.setBounds(187, 5, 97, 23);
 		demolitionsPanel.add(chckbxDemolitions);	
-		
-		// LanguagesSpecs
-		List<JFormattedTextField> languagesSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxLanguages = new JCheckBox("Show specs");
 		chckbxLanguages.addItemListener(new ItemListener() 
 		{
@@ -4494,7 +4582,8 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < languagesSpecsList.size(); i++)
 					{
@@ -4580,16 +4669,14 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxLanguages.setBackground(new Color(144, 238, 144));
 		chckbxLanguages.setBounds(187, 5, 97, 23);
 		languagesPanel.add(chckbxLanguages);	
-		
-		// MedicineSpecs
-		List<JFormattedTextField> medicineSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxMedicine = new JCheckBox("Show specs");
 		chckbxMedicine.addItemListener(new ItemListener() 
 		{
@@ -4613,7 +4700,9 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
 					for(int i = 0; i < medicineSpecsList.size(); i++)
 					{
 						int j = i;
@@ -4697,15 +4786,14 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxMedicine.setBackground(new Color(50, 205, 50));
 		chckbxMedicine.setBounds(187, 5, 97, 23);
 		medicinePanel.add(chckbxMedicine);		
-		
-		// ScholarSpecs
-		List<JFormattedTextField> scholarSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxScholar = new JCheckBox("Show specs");
 		chckbxScholar.addItemListener(new ItemListener() 
 		{
@@ -4728,7 +4816,9 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
 					for(int i = 0; i < scholarSpecsList.size(); i++)
 					{
 						int j = i;
@@ -4811,15 +4901,14 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxScholar.setBackground(new Color(144, 238, 144));
 		chckbxScholar.setBounds(187, 5, 97, 23);
 		scholarPanel.add(chckbxScholar);
-		
-		// ScienceSpecs
-		List<JFormattedTextField> scienceSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxScience = new JCheckBox("Show specs");
 		chckbxScience.addItemListener(new ItemListener() 
 		{
@@ -4841,7 +4930,9 @@ public class MainWindow {
 					sciencePanel.setSize(354, (32+extra));
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
+					
 					for(int i = 0; i < scienceSpecsList.size(); i++)
 					{
 						int j = i;
@@ -4923,15 +5014,14 @@ public class MainWindow {
 					sciencePanel.setSize(354, (32));
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxScience.setBackground(new Color(50, 205, 50));
 		chckbxScience.setBounds(187, 5, 97, 23);
 		sciencePanel.add(chckbxScience);		
-		
-		// SecuritySpecs
-		List<JFormattedTextField> securitySpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxSecurity = new JCheckBox("Show specs");
 		chckbxSecurity.addItemListener(new ItemListener() 
 		{
@@ -4952,6 +5042,8 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					securityPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < securitySpecsList.size(); i++)
 					{
@@ -5033,14 +5125,14 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(securityPanel.getHeight()-32)));
 					securityPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxSecurity.setBackground(new Color(144, 238, 144));
 		chckbxSecurity.setBounds(187, 5, 97, 23);
 		securityPanel.add(chckbxSecurity);
-		// ArtistSpecs
-		List<JFormattedTextField> artistSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxArtist = new JCheckBox("Show specs");
 		chckbxArtist.addItemListener(new ItemListener() 
 		{
@@ -5065,6 +5157,8 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < artistSpecsList.size(); i++)
 					{
@@ -5151,15 +5245,14 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxArtist.setBackground(new Color(135, 206, 235));
 		chckbxArtist.setBounds(187, 5, 97, 23);
 		artistPanel.add(chckbxArtist);			
-		
-		// EngineeringSpecs
-		List<JFormattedTextField> engineeringSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxEngineering = new JCheckBox("Show specs");
 		chckbxEngineering.addItemListener(new ItemListener() 
 		{
@@ -5183,6 +5276,8 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < engineeringSpecsList.size(); i++)
 					{
@@ -5268,15 +5363,14 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxEngineering.setBackground(new Color(5, 191, 255));
 		chckbxEngineering.setBounds(187, 5, 97, 23);
 		engineeringPanel.add(chckbxEngineering);	
-		
-		// SearchSpecs
-		List<JFormattedTextField> searchSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxSearch = new JCheckBox("Show specs");
 		chckbxSearch.addItemListener(new ItemListener() 
 		{
@@ -5299,6 +5393,8 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < searchSpecsList.size(); i++)
 					{
@@ -5383,15 +5479,14 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxSearch.setBackground(new Color(135, 206, 235));
 		chckbxSearch.setBounds(187, 5, 97, 23);
 		searchPanel.add(chckbxSearch);		
-		
-		// StreetwiseSpecs
-		List<JFormattedTextField> streetwiseSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxStreetwise = new JCheckBox("Show specs");
 		chckbxStreetwise.addItemListener(new ItemListener() 
 		{
@@ -5413,6 +5508,8 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < streetwiseSpecsList.size(); i++)
 					{
@@ -5496,15 +5593,14 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxStreetwise.setBackground(new Color(5, 191, 255));
 		chckbxStreetwise.setBounds(187, 5, 97, 23);
 		streetwisePanel.add(chckbxStreetwise);		
-		
-		// SurveillanceSpecs
-		List<JFormattedTextField> surveillanceSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxSurveillance = new JCheckBox("Show specs");
 		chckbxSurveillance.addItemListener(new ItemListener() 
 		{
@@ -5525,6 +5621,8 @@ public class MainWindow {
 					surveillancePanel.setSize(354, (32+extra));
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < surveillanceSpecsList.size(); i++)
 					{
@@ -5607,15 +5705,14 @@ public class MainWindow {
 					surveillancePanel.setSize(354, (32));
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxSurveillance.setBackground(new Color(135, 206, 235));
 		chckbxSurveillance.setBounds(187, 5, 97, 23);
 		surveillancePanel.add(chckbxSurveillance);		
-		
-		// SurvivalSpecs
-		List<JFormattedTextField> survivalSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxSurvival = new JCheckBox("Show specs");
 		chckbxSurvival.addItemListener(new ItemListener() 
 		{
@@ -5635,6 +5732,8 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					survivalPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < survivalSpecsList.size(); i++)
 					{
@@ -5716,16 +5815,14 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(survivalPanel.getHeight()-32)));
 					survivalPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxSurvival.setBackground(new Color(5, 191, 255));
 		chckbxSurvival.setBounds(187, 5, 97, 23);
 		survivalPanel.add(chckbxSurvival);		
-
-		// BluffSpecs
-		List<JFormattedTextField> bluffSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxBluff = new JCheckBox("Show specs");
 		chckbxBluff.addItemListener(new ItemListener() 
 		{
@@ -5750,7 +5847,8 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < bluffSpecsList.size(); i++)
 					{
@@ -5836,16 +5934,14 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxBluff.setBackground(new Color(221, 160, 221));
 		chckbxBluff.setBounds(187, 5, 97, 23);
 		bluffPanel.add(chckbxBluff);	
-		
-		// CharmSpecs
-		List<JFormattedTextField> charmSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxCharm = new JCheckBox("Show specs");
 		chckbxCharm.addItemListener(new ItemListener() 
 		{
@@ -5869,6 +5965,8 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < charmSpecsList.size(); i++)
 					{
@@ -5953,16 +6051,14 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxCharm.setBackground(new Color(218, 112, 214));
 		chckbxCharm.setBounds(187, 5, 97, 23);
 		charmPanel.add(chckbxCharm);		
-		
-		// IntimidationSpecs
-		List<JFormattedTextField> intimidationSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxIntimidation = new JCheckBox("Show specs");
 		chckbxIntimidation.addItemListener(new ItemListener() 
 		{
@@ -5985,6 +6081,8 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < intimidationSpecsList.size(); i++)
 					{
@@ -6068,16 +6166,14 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxIntimidation.setBackground(new Color(221, 160, 221));
 		chckbxIntimidation.setBounds(187, 5, 97, 23);
 		intimidationPanel.add(chckbxIntimidation);	
-		
-		// PersuasionSpecs
-		List<JFormattedTextField> persuasionSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxPersuasion = new JCheckBox("Show specs");
 		chckbxPersuasion.addItemListener(new ItemListener() 
 		{
@@ -6099,6 +6195,8 @@ public class MainWindow {
 					persuasionPanel.setSize(354, (32+extra));
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < persuasionSpecsList.size(); i++)
 					{
@@ -6181,16 +6279,14 @@ public class MainWindow {
 					persuasionPanel.setSize(354, (32));
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
 		chckbxPersuasion.setBackground(new Color(218, 112, 214));
 		chckbxPersuasion.setBounds(187, 5, 97, 23);
 		persuasionPanel.add(chckbxPersuasion);		
-		
-		// WillpowerSpecs
-		List<JFormattedTextField> willpowerSpecsFields = new ArrayList<JFormattedTextField>();
 		JCheckBox chckbxWillpower = new JCheckBox("Show specs");
 		chckbxWillpower.addItemListener(new ItemListener() 
 		{
@@ -6211,6 +6307,8 @@ public class MainWindow {
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					willpowerPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < willpowerSpecsList.size(); i++)
 					{
@@ -6292,7 +6390,8 @@ public class MainWindow {
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(willpowerPanel.getHeight()-32)));
 					willpowerPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-
+					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
+					dcrpgFrame.revalidate();
 				}
 			}
 		});
@@ -6313,27 +6412,71 @@ public class MainWindow {
 		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
 		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
+		chckbxDemographics.setBounds(35, 33, 164, 23);
+		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
-		chckbxDemographics.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				if(chckbxDemographics.isSelected())
-				{
-					demographicsPanel.setVisible(true);
-					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()+demographicsPanel.getHeight());
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()+demographicsPanel.getHeight());
-				}
-				else if(!chckbxDemographics.isSelected())
-				{
-					demographicsPanel.setVisible(false);
-					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()-demographicsPanel.getHeight());
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()-demographicsPanel.getHeight());
-				}
-			}
-		});
-		chckbxDemographics.setBounds(45, 39, 164, 23);
-		dcrpgFrame.getContentPane().add(chckbxDemographics);
 		
 		JButton btnLoad = new JButton("Load");
+		btnLoad.setBounds(167, 10, 69, 23);
+		panel.add(btnLoad);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(329, 10, 69, 23);
+		panel.add(btnSave);
+		btnSave.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				chckbxAcro.setSelected(false);
+				chckbxDodge.setSelected(false);
+				chckbxHandToHand.setSelected(false);
+				chckbxMeleeWeapons.setSelected(false);
+				chckbxStealth.setSelected(false);
+				
+				chckbxCatch.setSelected(false);
+				chckbxClimbing.setSelected(false);
+				chckbxDriving.setSelected(false);
+				chckbxMarksmanship.setSelected(false);
+				chckbxThievery.setSelected(false);
+				chckbxThrownWeapons.setSelected(false);
+						
+				chckbxAthletics.setSelected(false);
+				chckbxLeap.setSelected(false);
+				chckbxLifting.setSelected(false);
+				chckbxResistance.setSelected(false);
+				chckbxRunning.setSelected(false);
+				chckbxSwimming.setSelected(false);
+						
+				chckbxArcaneLore.setSelected(false);
+				chckbxDemolitions.setSelected(false);
+				chckbxLanguages.setSelected(false);
+				chckbxMedicine.setSelected(false);
+				chckbxScholar.setSelected(false);
+				chckbxScience.setSelected(false);
+				chckbxSecurity.setSelected(false);
+				
+				chckbxArtist.setSelected(false);
+				chckbxEngineering.setSelected(false);
+				chckbxSearch.setSelected(false);
+				chckbxStreetwise.setSelected(false);
+				chckbxSurveillance.setSelected(false);
+				chckbxSurvival.setSelected(false);
+				
+				chckbxBluff.setSelected(false);
+				chckbxCharm.setSelected(false);
+				chckbxIntimidation.setSelected(false);
+				chckbxPersuasion.setSelected(false);
+				chckbxWillpower.setSelected(false);
+				
+				// Write save code here - should be easy
+				dao.update(currentSheet);
+				for(SkillSpec ss : currentSheet.getSkillSpecs())
+				{
+					dao.updateSpec(ss);
+				}
+				dao.saveAll();
+			}
+		});
 		btnLoad.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -6484,67 +6627,22 @@ public class MainWindow {
 						}
 					}
 				});
-				
-				btnLoad.setBounds(167, 11, 69, 23);
-				dcrpgFrame.getContentPane().add(btnLoad);
-				
-				JButton btnSave = new JButton("Save");
-				btnSave.setBounds(329, 11, 69, 23);
-				dcrpgFrame.getContentPane().add(btnSave);
-				btnSave.addActionListener(new ActionListener() 
+		chckbxDemographics.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(chckbxDemographics.isSelected())
 				{
-					public void actionPerformed(ActionEvent arg0) 
-					{
-						chckbxAcro.setSelected(false);
-						chckbxDodge.setSelected(false);
-						chckbxHandToHand.setSelected(false);
-						chckbxMeleeWeapons.setSelected(false);
-						chckbxStealth.setSelected(false);
-						
-						chckbxCatch.setSelected(false);
-						chckbxClimbing.setSelected(false);
-						chckbxDriving.setSelected(false);
-						chckbxMarksmanship.setSelected(false);
-						chckbxThievery.setSelected(false);
-						chckbxThrownWeapons.setSelected(false);
-								
-						chckbxAthletics.setSelected(false);
-						chckbxLeap.setSelected(false);
-						chckbxLifting.setSelected(false);
-						chckbxResistance.setSelected(false);
-						chckbxRunning.setSelected(false);
-						chckbxSwimming.setSelected(false);
-								
-						chckbxArcaneLore.setSelected(false);
-						chckbxDemolitions.setSelected(false);
-						chckbxLanguages.setSelected(false);
-						chckbxMedicine.setSelected(false);
-						chckbxScholar.setSelected(false);
-						chckbxScience.setSelected(false);
-						chckbxSecurity.setSelected(false);
-						
-						chckbxArtist.setSelected(false);
-						chckbxEngineering.setSelected(false);
-						chckbxSearch.setSelected(false);
-						chckbxStreetwise.setSelected(false);
-						chckbxSurveillance.setSelected(false);
-						chckbxSurvival.setSelected(false);
-						
-						chckbxBluff.setSelected(false);
-						chckbxCharm.setSelected(false);
-						chckbxIntimidation.setSelected(false);
-						chckbxPersuasion.setSelected(false);
-						chckbxWillpower.setSelected(false);
-						
-						// Write save code here - should be easy
-						dao.update(currentSheet);
-						for(SkillSpec ss : currentSheet.getSkillSpecs())
-						{
-							dao.updateSpec(ss);
-						}
-						dao.saveAll();
-					}
-				});
+					demographicsPanel.setVisible(true);
+					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()+demographicsPanel.getHeight());
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()+demographicsPanel.getHeight());
+				}
+				else if(!chckbxDemographics.isSelected())
+				{
+					demographicsPanel.setVisible(false);
+					physStatsPanel.setLocation(physStatsPanel.getX(), physStatsPanel.getY()-demographicsPanel.getHeight());
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), mentalStatsPanel.getY()-demographicsPanel.getHeight());
+				}
+			}
+		});
 				
 
 				

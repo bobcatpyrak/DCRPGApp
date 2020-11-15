@@ -1,0 +1,209 @@
+[33mcommit e006b050af7b64bbe01925ef432f7d0a8378f1f0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 14 16:59:46 2020 -0500
+
+    reorganized panes and such
+
+[33mcommit c1ae507c235c32e17a4b7fe580868dbd7cd3637c[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 14 15:45:25 2020 -0500
+
+    added presence stats
+
+[33mcommit c6509b09a8fc6908f960b05924f197a4559637ef[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 14 14:28:14 2020 -0500
+
+    perception stats added
+
+[33mcommit 3286989de8c083d5bc2a4e0eb287a38dae2b2d5a[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 14 13:31:08 2020 -0500
+
+    added Knowledge stats
+
+[33mcommit 046cabbfeacece0cfadcae0a7019efde16636614[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Tue Nov 10 23:10:36 2020 -0500
+
+    added Coordination and Physique stat blocks
+
+[33mcommit c96134d7f90f9c48227d20611568ac3959f8c77d[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Mon Nov 9 13:57:22 2020 -0500
+
+    added Full Name field, reorganized GUI for demographics
+
+[33mcommit 68369b751c5c0c3fe4d290a1511f26970c7b8467[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Mon Nov 9 12:21:18 2020 -0500
+
+    added saving to misc stats and reflexes stats
+
+[33mcommit af1dcffab4db352aa693b09e8dd7ede62860a34d[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sun Nov 8 21:08:18 2020 -0500
+
+    Fully functional Reflexes stat block, except for saving/rolling
+
+[33mcommit ed5afd4c06090c3c52d24d7ae336c31fe93ce512[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sun Nov 8 19:01:45 2020 -0500
+
+    debugged specializations pulldown for Acrobatics
+
+[33mcommit e356886c0e0dc72080ab8a5d842d541b9aa6e30c[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sun Nov 8 15:09:06 2020 -0500
+
+    identified the bug to fix. that's all
+
+[33mcommit 68f91997649021f03ebf9cd12e2da748a87865ea[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sun Nov 8 14:47:33 2020 -0500
+
+    working on drop-down menu for Acrobatics
+
+[33mcommit ac60a69c90be645d4863b83c767a09f3d5d276a8[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sun Nov 8 10:39:06 2020 -0500
+
+    before changing sizes everywhere
+
+[33mcommit 43f67d8380ca1ae39b2725cc6ae5258ddc3d29da[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 7 21:38:57 2020 -0500
+
+    finished demographics loading from sheet
+
+[33mcommit 3f6a17b019a7bd21316e74d8bf5b06fcb12e3a9f[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 7 21:26:06 2020 -0500
+
+    finished gui for Reflexes, started adding misc stats
+
+[33mcommit 1df276342816652dcadf8d650e15a670230eb628[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Sat Nov 7 12:20:17 2020 -0500
+
+    began creating stat blocks in gui
+
+[33mcommit 8e0c6d240c552c15d872776a214db7d36bb66fd5[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Fri Nov 6 12:32:04 2020 -0500
+
+    gui attempts
+
+[33mcommit bb2624d79b5b45b9a52bed26378cb4ca7d880dac[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Mon Oct 26 09:20:04 2020 -0400
+
+    working on windowmaker
+
+[33mcommit c251d250732879ac2d65eff579c593ab01db462a[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Fri Oct 23 14:13:12 2020 -0400
+
+    gui experimenting
+
+[33mcommit ceff6b27c8ff4b2bdfc18a7fd811dd8a6bf1afdd[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Fri Oct 23 12:27:52 2020 -0400
+
+    dcrpg-web added pojos and repos. futurevalue2 created
+
+[33mcommit 145f71d808a57363926f6004cfa3d56595ca35f3[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Thu Oct 22 02:22:12 2020 -0400
+
+    ch 18 begun
+
+[33mcommit 98de3987e53f1ea6cd1944a1e16ee12583b64048[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Wed Oct 21 12:27:24 2020 -0400
+
+    Begin work on GUI
+
+[33mcommit 205edb3ece520c1a0010f8ecbe31ac7f34c000f7[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Thu Oct 15 14:22:20 2020 -0400
+
+    fixed bug in getAllMiscStats and set in CharacterSheet
+
+[33mcommit 1a3bd1bf0b50476917bb109acd3eaf789c74d4c3[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Thu Oct 15 00:30:38 2020 -0400
+
+    Advantage and Disadvantage hard-coded
+
+[33mcommit ad7abf8761f2a3488921a101b10ba96d747a210f[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Wed Oct 14 16:33:43 2020 -0400
+
+    condensed to one text file, finished add SkillSpec, started to add CharacterSheetAdvantage and disadvantage
+
+[33mcommit 1c34f733a8bbe0f82a9ba302a2a2966d72dedde5[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Wed Oct 14 12:38:48 2020 -0400
+
+    CharacterSheet methods added, and CharacterSheetTextFile refined. SkillSpec begun
+
+[33mcommit 9003db3a4c4c6b984af179b0fb8d34e39ff8b48c[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Wed Oct 14 09:09:43 2020 -0400
+
+    initial commit of Java files
+
+[33mcommit 7a60baf52061e915626084f061e5511485616cfb[m
+Author: Jonathan Pyrak <bobcatpyrak@gmail.com>
+Date:   Mon Oct 12 16:25:17 2020 -0400
+
+    starting to add Item tables
+
+[33mcommit 9b284d4cb2dace0cea828de8622ba10770a0fc96[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Wed Sep 23 15:51:33 2020 -0400
+
+    Renamed Place table back to Location
+
+[33mcommit b67e2044663ddb8da29573e769b2c1d7dc556de7[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Wed Sep 23 15:50:00 2020 -0400
+
+    Hard coded Disadvantages, changed all tables to non-plural, changed Character table to CharacterSheet and Location table stuff
+
+[33mcommit 7df6277359c0bf5ca78e6f03c5067209a4500063[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Tue Sep 22 12:01:02 2020 -0400
+
+    Hard coded Advantages into database
+
+[33mcommit ed36d772dcec1ac5f31b3d56dde956ebb33a2412[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Mon Sep 21 16:30:08 2020 -0400
+
+    Small comments added
+
+[33mcommit c9311fb12dfe1f3f947eb3162c39958259be4d2b[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Mon Sep 21 15:45:08 2020 -0400
+
+    Figured out most of Powers, Advantages
+
+[33mcommit 9126a0b1df55c00fb6d5078836902f799105628a[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Fri Sep 18 16:09:15 2020 -0400
+
+    added skillspecs tables
+
+[33mcommit a5ece11d1575db10ddd592eee293b2972be2cd6c[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Thu Sep 17 12:40:21 2020 -0400
+
+    Added tables for Locations, Areas, and Hubs
+
+[33mcommit ba5e687f70cd3e1d4f0dd6f2012b8efe471bb081[m
+Author: Jonathan Pyrak <jonathanpyrak@gmail.com>
+Date:   Thu Sep 17 11:23:21 2020 -0400
+
+    Initial Commit

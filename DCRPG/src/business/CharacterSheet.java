@@ -60,6 +60,7 @@ public class CharacterSheet
 	}
 	public void setName(String name) {
 		this.name = name;
+		setPicture(name+".png");
 	}
 	public String getPicture() {
 		return picture;

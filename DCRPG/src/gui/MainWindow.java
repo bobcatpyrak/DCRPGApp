@@ -1,10 +1,14 @@
 package gui;
 
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.text.*;
-
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,6 +23,7 @@ import library.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.border.LineBorder;
 
 public class MainWindow {
 
@@ -54,6 +59,10 @@ public class MainWindow {
 	private JPanel demographicsPanel;
 	private JPanel mentalStatsPanel;
 	private JPanel physStatsPanel;
+	private BufferedImage img;
+	private ImageIcon icon;
+	
+	private boolean imgChange = true;
 	
 
 	/**
@@ -144,7 +153,18 @@ public class MainWindow {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
+		// Creates a folder for images if doesn't exist
+		String imgString = "images";
+		Path imgPath = Paths.get(imgString);
+		if (Files.notExists(imgPath))
+			try 
+			{
+				Files.createDirectories(imgPath);
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 	}
 	
 
@@ -6423,6 +6443,64 @@ public class MainWindow {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(329, 10, 69, 23);
 		panel.add(btnSave);
+		
+
+		/*JLabel imgLabel = new JLabel();
+		imgLabel.setBackground(Color.WHITE);
+		ImageIcon icon = new ImageIcon(currentSheet.getPicture());	
+		Image picture = icon.getImage().getScaledInstance(300,  350,  Image.SCALE_DEFAULT);
+		icon.setImage(picture);
+		imgLabel.setIcon(icon);
+		imgLabel.setBounds(1217, 23, 300, 350);
+		panel.add(imgLabel);*/
+		
+		
+		icon = new ImageIcon(currentSheet.getPicture());
+		img = null;
+		try 
+		{
+		    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+		    img = Scalr.resize(img, 300, 350);
+		    icon.setImage(img);
+		} catch (IOException e) {
+			
+		}
+		
+		
+		JLabel imgLabel = new JLabel();
+
+		imgLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		imgLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		imgLabel.setBackground(Color.WHITE);
+		imgLabel.setIcon(icon);
+		imgLabel.setBounds(1217, 23, 300, 350);
+		panel.add(imgLabel);
+		
+	    imgLabel.setTransferHandler(new ImageSelection());
+	    MouseListener listener = new MouseAdapter() {
+	      public void mousePressed(MouseEvent me) {
+	        JComponent comp = (JComponent) me.getSource();
+	        TransferHandler handler = comp.getTransferHandler();
+	        handler.exportAsDrag(comp, me, TransferHandler.COPY);     
+	      }
+	    };
+	    
+	    imgLabel.addMouseListener(listener);
+	    
+		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				if(imgChange)
+				{
+			        icon = (ImageIcon)imgLabel.getIcon();
+				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
+				    icon.setImage(img);
+				}
+			}
+		});
+	    
+	    
+		
 		btnSave.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -6475,15 +6553,28 @@ public class MainWindow {
 					dao.updateSpec(ss);
 				}
 				dao.saveAll();
+				
+				try {
+				    // retrieve image
+			        icon = (ImageIcon)imgLabel.getIcon();
+				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
+				    icon.setImage(img);
+				    
+				    File outputfile = new File("images/"+currentSheet.getName().toLowerCase()+".png");
+				    ImageIO.write(img, "png", outputfile);
+				} catch (IOException e) {
+					System.out.println(e);
+				}
 			}
 		});
+
 		btnLoad.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				for(CharacterSheet s : sheets)
 				{
-					if(s.getName().equals(nameSearchField.getText()))
+					if(s.getName().toLowerCase().equals(nameSearchField.getText().toLowerCase()))
 					{
 							chckbxAcro.setSelected(false);
 							chckbxDodge.setSelected(false);
@@ -6546,6 +6637,35 @@ public class MainWindow {
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
+							
+							
+							imgChange = false;
+							try 
+							{
+							    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+							    imgLabel.setIcon(null);
+								img = null;
+							    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+							    img = Scalr.resize(img, 300, 350);
+							    icon.setImage(img);
+							    imgLabel.setIcon(icon);
+							} catch (IOException e) 
+							{
+								try
+								{
+									imgLabel.setIcon(null);
+									img = null;
+								    img = ImageIO.read(new File("images/blank.png"));
+								    img = Scalr.resize(img, 300, 350);
+								    icon.setImage(img);
+								    imgLabel.setIcon(icon);
+								}
+								catch (IOException e2)
+								{
+									
+								}
+							} 
+							imgChange = true;
 									
 							reflexesLevel.setValue(currentSheet.getReflexes());
 							acroLevel.setValue(currentSheet.getAcrobatics());
@@ -6646,16 +6766,16 @@ public class MainWindow {
 				
 
 				
-				nameSearchField.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) 
-					{
-						if(e.getKeyCode() == KeyEvent.VK_ENTER)
-						{
-							btnLoad.doClick();
-						}
-					}
-				});
+		nameSearchField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					btnLoad.doClick();
+				}
+			}
+		});
 	}
 	
 	public int setPanelSize(int h1, int h2, int h3)
@@ -6667,4 +6787,5 @@ public class MainWindow {
 		else
 			return h3;
 	}
+	
 }

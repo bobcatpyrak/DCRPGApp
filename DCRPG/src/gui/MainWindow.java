@@ -63,6 +63,9 @@ public class MainWindow {
 	private ImageIcon icon;
 	
 	private boolean imgChange = true;
+	boolean isNew = false;
+	boolean newPic = false;
+
 	
 
 	/**
@@ -6194,6 +6197,7 @@ public class MainWindow {
 		chckbxIntimidation.setBackground(new Color(221, 160, 221));
 		chckbxIntimidation.setBounds(187, 5, 97, 23);
 		intimidationPanel.add(chckbxIntimidation);	
+		
 		JCheckBox chckbxPersuasion = new JCheckBox("Show specs");
 		chckbxPersuasion.addItemListener(new ItemListener() 
 		{
@@ -6443,17 +6447,7 @@ public class MainWindow {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(329, 10, 69, 23);
 		panel.add(btnSave);
-		
-
-		/*JLabel imgLabel = new JLabel();
-		imgLabel.setBackground(Color.WHITE);
-		ImageIcon icon = new ImageIcon(currentSheet.getPicture());	
-		Image picture = icon.getImage().getScaledInstance(300,  350,  Image.SCALE_DEFAULT);
-		icon.setImage(picture);
-		imgLabel.setIcon(icon);
-		imgLabel.setBounds(1217, 23, 300, 350);
-		panel.add(imgLabel);*/
-		
+				
 		
 		icon = new ImageIcon(currentSheet.getPicture());
 		img = null;
@@ -6495,6 +6489,7 @@ public class MainWindow {
 			        icon = (ImageIcon)imgLabel.getIcon();
 				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
 				    icon.setImage(img);
+				    newPic = true;
 				}
 			}
 		});
@@ -6547,24 +6542,55 @@ public class MainWindow {
 				chckbxWillpower.setSelected(false);
 				
 				// Write save code here - should be easy
-				dao.update(currentSheet);
-				for(SkillSpec ss : currentSheet.getSkillSpecs())
+				String duplicate = "Did not save: Duplicate Name";
+				boolean isDuplicate = false;
+				boolean isOverwrite = false;
+				for(CharacterSheet cs: sheets)
 				{
-					dao.updateSpec(ss);
+					if(cs.getName().toLowerCase().equals(currentSheet.getName().toLowerCase())
+							|| cs.getName().toLowerCase().equals(duplicate.toLowerCase()))
+					{
+						isDuplicate = true;
+						if(cs.getId()==currentSheet.getId())
+							isOverwrite = true;
+					}
+					
 				}
-				dao.saveAll();
-				
-				try {
-				    // retrieve image
-			        icon = (ImageIcon)imgLabel.getIcon();
-				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
-				    icon.setImage(img);
-				    
-				    File outputfile = new File("images/"+currentSheet.getName().toLowerCase()+".png");
-				    ImageIO.write(img, "png", outputfile);
-				} catch (IOException e) {
-					System.out.println(e);
+
+				if(!isDuplicate || isOverwrite)
+				{
+					if(isNew)
+					{
+						nextSheetId++;
+						sheets.add(currentSheet);
+						isNew = false;
+					}
+					
+					dao.update(currentSheet);
+					for(SkillSpec ss : currentSheet.getSkillSpecs())
+					{
+						dao.updateSpec(ss);
+					}
+					dao.saveAll();
+					if(newPic)
+					{
+						try 
+						{
+						    // retrieve image
+					        icon = (ImageIcon)imgLabel.getIcon();
+						    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
+						    icon.setImage(img);
+						    String n = currentSheet.getName().toLowerCase();
+						    
+						    File outputfile = new File("images/"+n+".png");
+						    ImageIO.write(img, "png", outputfile);
+						} catch (IOException e) {
+							System.out.println(e);
+						}
+					}
 				}
+				else
+					nameField.setValue(duplicate);
 			}
 		});
 
@@ -6659,6 +6685,7 @@ public class MainWindow {
 								    img = Scalr.resize(img, 300, 350);
 								    icon.setImage(img);
 								    imgLabel.setIcon(icon);
+								    newPic = false;
 								}
 								catch (IOException e2)
 								{
@@ -6742,7 +6769,9 @@ public class MainWindow {
 							charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
 							intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
 							persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
-							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());							
+							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());			
+							
+							isNew = false;
 							}
 						}
 					}
@@ -6763,7 +6792,182 @@ public class MainWindow {
 				}
 			}
 		});
+		
+		
+		// new
+		btnNew.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				CharacterSheet newCS = new CharacterSheet(nextSheetId);
+				newCS.setName("");
+				newCS.setPicture("blank.png");
+				newCS.setAllDemographics(" % % % % % % % % % ");
+				newCS.setAllMiscStats("1d6%0%3%0%0%0%0%0%30%30");
+				newCS.setAllStats("2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0");
 				
+				currentSheet = newCS;
+
+				chckbxAcro.setSelected(false);
+				chckbxDodge.setSelected(false);
+				chckbxHandToHand.setSelected(false);
+				chckbxMeleeWeapons.setSelected(false);
+				chckbxStealth.setSelected(false);
+
+				chckbxCatch.setSelected(false);
+				chckbxClimbing.setSelected(false);
+				chckbxDriving.setSelected(false);
+				chckbxMarksmanship.setSelected(false);
+				chckbxThievery.setSelected(false);
+				chckbxThrownWeapons.setSelected(false);
+
+				chckbxAthletics.setSelected(false);
+				chckbxLeap.setSelected(false);
+				chckbxLifting.setSelected(false);
+				chckbxResistance.setSelected(false);
+				chckbxRunning.setSelected(false);
+				chckbxSwimming.setSelected(false);
+
+				chckbxArcaneLore.setSelected(false);
+				chckbxDemolitions.setSelected(false);
+				chckbxLanguages.setSelected(false);
+				chckbxMedicine.setSelected(false);
+				chckbxScholar.setSelected(false);
+				chckbxScience.setSelected(false);
+				chckbxSecurity.setSelected(false);
+
+				chckbxArtist.setSelected(false);
+				chckbxEngineering.setSelected(false);
+				chckbxSearch.setSelected(false);
+				chckbxStreetwise.setSelected(false);
+				chckbxSurveillance.setSelected(false);
+				chckbxSurvival.setSelected(false);
+
+				chckbxBluff.setSelected(false);
+				chckbxCharm.setSelected(false);
+				chckbxIntimidation.setSelected(false);
+				chckbxPersuasion.setSelected(false);
+				chckbxWillpower.setSelected(false);
+
+				
+				nameSearchField.setText("");
+				// load the entire dang sheet
+				nameField.setText(currentSheet.getName());
+				fullNameField.setText(currentSheet.getFullName());
+				occupationField.setText(currentSheet.getOccupation());
+				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
+				genderField.setText(currentSheet.getGender());
+				raceField.setText(currentSheet.getRace());
+				heightField.setText(currentSheet.getHeight());
+				weightField.setText(currentSheet.getWeight());
+				eyeColorField.setText(currentSheet.getEyeColor());
+				hairColorField.setText(currentSheet.getHairColor());
+				heroPointsField.setText(currentSheet.getHeroPoints());
+				villainPointsField.setText(currentSheet.getVillainPoints());
+				availableRenownField.setText(currentSheet.getAvailableRenown());
+				powerPointsField.setText(currentSheet.getPowerPoints());
+				skillPointsField.setText(currentSheet.getSkillPoints());
+				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+				speedField.setValue(currentSheet.getSpeed());
+
+				imgChange = false;
+				try
+				{
+					imgLabel.setIcon(null);
+					img = null;
+					img = ImageIO.read(new File("images/blank.png"));
+					img = Scalr.resize(img, 300, 350);
+					icon.setImage(img);
+					imgLabel.setIcon(icon);
+					newPic = false;
+				}
+				catch (IOException e)
+				{
+				}
+				 
+				imgChange = true;
+
+				reflexesLevel.setValue(currentSheet.getReflexes());
+				acroLevel.setValue(currentSheet.getAcrobatics());
+				dodgeLevel.setValue(currentSheet.getDodge());
+				handToHandLevel.setValue(currentSheet.getHandToHand());
+				meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+				stealthLevel.setValue(currentSheet.getStealth());
+				acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+				dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+				handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+				meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+				stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+				coordinationLevel.setValue(currentSheet.getCoordination());
+				catchLevel.setValue(currentSheet.getCatching());
+				climbingLevel.setValue(currentSheet.getClimb());
+				drivingLevel.setValue(currentSheet.getDrive());
+				marksmanshipLevel.setValue(currentSheet.getMarksmanship());
+				thieveryLevel.setValue(currentSheet.getThievery());
+				thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
+				catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
+				climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
+				drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
+				marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
+				thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
+				thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
+				physiqueLevel.setValue(currentSheet.getPhysique());
+				athleticsLevel.setValue(currentSheet.getAthletics());
+				leapLevel.setValue(currentSheet.getLeap());
+				liftingLevel.setValue(currentSheet.getLifting());
+				resistanceLevel.setValue(currentSheet.getResistance());
+				runningLevel.setValue(currentSheet.getRunning());
+				swimmingLevel.setValue(currentSheet.getSwimming());
+				athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
+				leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
+				liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
+				resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
+				runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
+				swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
+				knowledgeLevel.setValue(currentSheet.getKnowledge());
+				arcaneLoreLevel.setValue(currentSheet.getArcaneLore());
+				demolitionsLevel.setValue(currentSheet.getDemolitions());
+				languagesLevel.setValue(currentSheet.getLanguages());
+				medicineLevel.setValue(currentSheet.getMedicine());
+				scholarLevel.setValue(currentSheet.getScholar());
+				scienceLevel.setValue(currentSheet.getScience());
+				securityLevel.setValue(currentSheet.getSecurity());
+				arcaneLoreTotal.setValue(currentSheet.getArcaneLore() + currentSheet.getKnowledge());
+				demolitionsTotal.setValue(currentSheet.getDemolitions() + currentSheet.getKnowledge());
+				languagesTotal.setValue(currentSheet.getLanguages() + currentSheet.getKnowledge());
+				medicineTotal.setValue(currentSheet.getMedicine() + currentSheet.getKnowledge());
+				scholarTotal.setValue(currentSheet.getScholar() + currentSheet.getKnowledge());
+				scienceTotal.setValue(currentSheet.getScience() + currentSheet.getKnowledge());
+				securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
+				perceptionLevel.setValue(currentSheet.getPerception());
+				artistLevel.setValue(currentSheet.getArtist());
+				engineeringLevel.setValue(currentSheet.getEngineering());
+				searchLevel.setValue(currentSheet.getSearch());
+				streetwiseLevel.setValue(currentSheet.getStreetwise());
+				surveillanceLevel.setValue(currentSheet.getSurveillance());
+				survivalLevel.setValue(currentSheet.getSurvival());
+				artistTotal.setValue(currentSheet.getArtist() + currentSheet.getPerception());
+				engineeringTotal.setValue(currentSheet.getEngineering() + currentSheet.getPerception());
+				searchTotal.setValue(currentSheet.getSearch() + currentSheet.getPerception());
+				streetwiseTotal.setValue(currentSheet.getStreetwise() + currentSheet.getPerception());
+				surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
+				survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());	
+				presenceLevel.setValue(currentSheet.getPresence());
+				bluffLevel.setValue(currentSheet.getBluff());
+				charmLevel.setValue(currentSheet.getCharm());
+				intimidationLevel.setValue(currentSheet.getIntimidation());
+				persuasionLevel.setValue(currentSheet.getPersuasion());
+				willpowerLevel.setValue(currentSheet.getWillpower());
+				bluffTotal.setValue(currentSheet.getBluff() + currentSheet.getPresence());
+				charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
+				intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
+				persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
+				willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
+				
+				isNew = true;
+			}
+		});
 
 				
 		nameSearchField.addKeyListener(new KeyAdapter() {

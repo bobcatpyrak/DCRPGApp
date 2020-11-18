@@ -300,6 +300,12 @@ public class MainWindow {
 		panel.setLayout(null);
 		panel.setPreferredSize(new Dimension(1887, 1035));
 		
+		dcrpgFrame.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+        		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
+            }
+        });
+		
 		JLabel nameLabel = new JLabel("Name");
 		nameLabel.setBounds(419, 0, 131, 42);
 		panel.add(nameLabel);

@@ -29,23 +29,23 @@ public enum Advantage
 	VENTRILOQUIST("Ventriloquism", 1, "This advantage provides players with a unique specialization in Artist; Ventriloquism-related rolls in Charm and Bluff receive +1.", false),
 	WEALTH("Wealth", 2, "This character has deep pockets and a variety of assets; as such, they begin the campaign with $500,000 or the equivalent for their race.", false);
 
-	private final String name;
+	private final String nameA;
 	private final int cost;
 	private final String description;
 	private final boolean param;
 	
-	Advantage(String name, int cost, String description, boolean param)
+	Advantage(String nameA, int cost, String description, boolean param)
 	{
-		this.name = name;
+		this.nameA = nameA;
 		this.cost = cost;
 		this.description = description;
 		this.param = param;
 	}
-	/*
-	public String name()
+	
+	public String nameA()
 	{
-		return name;
-	}*/
+		return nameA;
+	}
 	
 	public int cost()
 	{

@@ -29,22 +29,17 @@ $$SkillSpecEnd$$
 $$CharacterSheetAdvantageBegin$$
 0	0	WEALTH	null
 1	1	WEALTH	null
-2	2	WEALTH	null
-3	3	WEALTH	null
-4	4	WEALTH	null
-5	5	WEALTH	null
-6	6	WEALTH	null
-7	7	WEALTH	null
+2	1	WEALTH	null
+3	1	WEALTH	null
+4	1	WEALTH	null
+5	1	WEALTH	null
+6	1	WEALTH	null
+7	1	WEALTH	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
 0	0	SECRET_IDENTITY	null
 1	1	SECRET_IDENTITY	null
 2	2	SECRET_IDENTITY	null
-3	3	SECRET_IDENTITY	null
-4	4	SECRET_IDENTITY	null
-5	5	SECRET_IDENTITY	null
-6	6	SECRET_IDENTITY	null
-7	7	SECRET_IDENTITY	null
 $$CharacterSheetDisadvantageEnd$$
 

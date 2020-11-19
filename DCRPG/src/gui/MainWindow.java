@@ -61,6 +61,7 @@ public class MainWindow {
 	private JPanel physStatsPanel;
 	private BufferedImage img;
 	private ImageIcon icon;
+	private AdvantagePanel advantagePanel;
 	
 	private boolean imgChange = true;
 	boolean isNew = false;
@@ -211,7 +212,8 @@ public class MainWindow {
 		dcrpgFrame.setTitle("DCRPG App");
 		dcrpgFrame.setForeground(new Color(204, 0, 51));
 		dcrpgFrame.setBackground(Color.RED);
-		dcrpgFrame.setBounds(0, 0, 1920, 1080);
+		dcrpgFrame.setLocation(0, 0);
+		dcrpgFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		dcrpgFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		NumberFormat nums = NumberFormat.getNumberInstance();
@@ -291,7 +293,7 @@ public class MainWindow {
 		dcrpgFrame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setSize(1902, 1039);
+		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
 		scrollPane.setPreferredSize(new Dimension(1902, 1039));
 		dcrpgFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
@@ -305,6 +307,7 @@ public class MainWindow {
         		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
             }
         });
+		
 		
 		JLabel nameLabel = new JLabel("Name");
 		nameLabel.setBounds(419, 0, 131, 42);
@@ -5630,6 +5633,7 @@ public class MainWindow {
 		chckbxStreetwise.setBackground(new Color(5, 191, 255));
 		chckbxStreetwise.setBounds(187, 5, 97, 23);
 		streetwisePanel.add(chckbxStreetwise);		
+		
 		JCheckBox chckbxSurveillance = new JCheckBox("Show specs");
 		chckbxSurveillance.addItemListener(new ItemListener() 
 		{
@@ -6446,6 +6450,12 @@ public class MainWindow {
 		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
 		
+	    advantagePanel = new AdvantagePanel(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);
+	    panel.add(advantagePanel);
+		
+		
+		
+		
 		JButton btnLoad = new JButton("Load");
 		btnLoad.setBounds(167, 10, 69, 23);
 		panel.add(btnLoad);
@@ -6477,7 +6487,8 @@ public class MainWindow {
 		imgLabel.setBounds(1217, 23, 300, 350);
 		panel.add(imgLabel);
 		
-	    imgLabel.setTransferHandler(new ImageSelection());
+	    imgLabel.setTransferHandler(new ImageSelection());	    
+	    
 	    MouseListener listener = new MouseAdapter() {
 	      public void mousePressed(MouseEvent me) {
 	        JComponent comp = (JComponent) me.getSource();
@@ -6775,7 +6786,10 @@ public class MainWindow {
 							charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
 							intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
 							persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
-							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());			
+							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
+							
+							advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);	
+							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advantagePanel.getHeight()));
 							
 							isNew = false;
 							}
@@ -6971,6 +6985,9 @@ public class MainWindow {
 				persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
 				willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
 				
+				advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);	
+				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advantagePanel.getHeight()));
+
 				isNew = true;
 			}
 		});
@@ -6997,5 +7014,4 @@ public class MainWindow {
 		else
 			return h3;
 	}
-	
 }

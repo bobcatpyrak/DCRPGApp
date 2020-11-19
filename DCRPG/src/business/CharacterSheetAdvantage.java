@@ -73,5 +73,11 @@ public class CharacterSheetAdvantage
 		this.description = description;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return id + " " + characterSheetId + " " + adv.name();
+	}
+	
 	
 }

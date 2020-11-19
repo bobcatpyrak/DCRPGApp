@@ -36,23 +36,23 @@ public enum Disadvantage
 	
 	;
 	
-	private final String name;
+	private final String nameD;
 	private final int cost;
 	private final String description;
 	private final boolean param;
 	
-	Disadvantage(String name, int cost, String description, boolean param)
+	Disadvantage(String nameD, int cost, String description, boolean param)
 	{
-		this.name = name;
+		this.nameD = nameD;
 		this.cost = cost;
 		this.description = description;
 		this.param = param;
 	}
-	/*
-	public String name()
+	
+	public String nameD()
 	{
-		return name;
-	}*/
+		return nameD;
+	}
 	
 	public int cost()
 	{

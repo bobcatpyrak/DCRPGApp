@@ -6450,7 +6450,7 @@ public class MainWindow {
 		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
 		
-	    advantagePanel = new AdvantagePanel(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);
+	    advantagePanel = new AdvantagePanel(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet);
 	    panel.add(advantagePanel);
 		
 		
@@ -6573,6 +6573,8 @@ public class MainWindow {
 					}
 					
 				}
+				
+
 
 				if(!isDuplicate || isOverwrite)
 				{
@@ -6582,11 +6584,45 @@ public class MainWindow {
 						sheets.add(currentSheet);
 						isNew = false;
 					}
+								
 					
-					dao.update(currentSheet);
+					List<SkillSpec> oldSpecs = dao.getSheet(currentSheet.getId()).getSkillSpecs();
+					List<CharacterSheetAdvantage> oldCSA = dao.getSheet(currentSheet.getId()).getCSA();
+					List<CharacterSheetDisadvantage> oldCSD = dao.getSheet(currentSheet.getId()).getCSD();
+					
+					dao.updateSheet(currentSheet);
+					
+					
+					
 					for(SkillSpec ss : currentSheet.getSkillSpecs())
 					{
+						System.out.println("saving: " + ss.getDescription());
 						dao.updateSpec(ss);
+						
+						for(SkillSpec s : oldSpecs)
+						{
+							boolean delete = true;
+
+							if(ss.getId()==s.getId())
+								delete = false;
+
+							if(delete)
+							{
+								System.out.println("Deleting: " + s.getDescription());
+								dao.deleteSpec(s);
+							}
+						}
+					}
+
+					
+					
+					for(CharacterSheetAdvantage csa : currentSheet.getCSA())
+					{
+						dao.updateCSA(csa);
+					}
+					for(CharacterSheetDisadvantage csd : currentSheet.getCSD())
+					{
+						dao.updateCSD(csd);
 					}
 					dao.saveAll();
 					if(newPic)
@@ -6788,7 +6824,7 @@ public class MainWindow {
 							persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
 							willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
 							
-							advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);	
+							advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet);	
 							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advantagePanel.getHeight()));
 							
 							isNew = false;
@@ -6985,7 +7021,7 @@ public class MainWindow {
 				persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
 				willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
 				
-				advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet, advs, disadvs);	
+				advantagePanel.setNewCharacter(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, currentSheet);	
 				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advantagePanel.getHeight()));
 
 				isNew = true;

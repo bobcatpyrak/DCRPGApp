@@ -41,6 +41,8 @@ public class CharacterSheet
 	int presence; 		int bluff; 		int charm; 			int intimidation; 	int persuasion; 	int willpower;
 	// other stat arrays
 	List<SkillSpec> skillSpecs = new ArrayList<SkillSpec>();
+	List<CharacterSheetAdvantage> advs = new ArrayList<CharacterSheetAdvantage>();
+	List<CharacterSheetDisadvantage> disadvs = new ArrayList<CharacterSheetDisadvantage>();
 	
 	public CharacterSheet(int id)
 	{
@@ -459,6 +461,37 @@ public class CharacterSheet
 		}
 		return specs;
 	}
+	
+	// methods for CSA's
+	public void setCSA(List<CharacterSheetAdvantage> csaDAO)
+	{
+		advs.clear();
+		for (CharacterSheetAdvantage csa : csaDAO)
+		{	
+			if(csa.getCharacterSheetId() == id)
+				advs.add(csa);
+		}
+	}
+	public List<CharacterSheetAdvantage> getCSA()
+	{
+		return advs;
+	}
+	
+	// methods for CSD's
+	public void setCSD(List<CharacterSheetDisadvantage> csdDAO)
+	{
+		disadvs.clear();
+		for (CharacterSheetDisadvantage csd : csdDAO)
+		{	
+			if(csd.getCharacterSheetId() == id)
+				disadvs.add(csd);
+		}
+	}
+	public List<CharacterSheetDisadvantage> getCSD()
+	{
+		return disadvs;
+	}
+	
 	
 	// Methods for getting and setting all demographics
 	public String getAllDemographics()

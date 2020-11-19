@@ -24,6 +24,9 @@ $$SkillSpecBegin$$
 15	3	Surveillance	Listening 2
 16	3	Willpower	Earth Manipulation 1
 17	1	Stealth	Nighttime 3
+18	2	Acrobatics	a
+19	2	Acrobatics	b
+20	2	Acrobatics	c
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$

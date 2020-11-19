@@ -220,11 +220,14 @@ public class AdvantagePanel extends JPanel
 			csdX.setVerticalTextPosition(JButton.TOP);
 			csdX.setMargin(new Insets(0,0,0,0));
 			advPanel.add(csdX);
-			csdX.addActionListener(new ActionListener() 
+			csdX.addActionListener(new ActionListener() // right now, this button removes every single advantage and disadvantage
 			{
 				public void actionPerformed(ActionEvent arg0) 
 				{
+					System.out.println("Removing " + csa);
 					advs.remove(csa);
+					for(CharacterSheetAdvantage aaa : advs)
+						System.out.println("Still have CSA#: "+aaa);
 					cs.setCSA(advs);
 					setNewCharacter(x, y, cs);
 				}

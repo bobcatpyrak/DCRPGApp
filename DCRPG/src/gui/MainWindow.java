@@ -6587,44 +6587,97 @@ public class MainWindow {
 								
 					
 					List<SkillSpec> oldSpecs = dao.getSheet(currentSheet.getId()).getSkillSpecs();
-					List<CharacterSheetAdvantage> oldCSA = dao.getSheet(currentSheet.getId()).getCSA();
+					List<CharacterSheetAdvantage> oldCSA = dao.getSheet(currentSheet.getId()).getCSA();//THIS IS BLANK FOR SOME REASON
 					List<CharacterSheetDisadvantage> oldCSD = dao.getSheet(currentSheet.getId()).getCSD();
+					
+					for(CharacterSheetAdvantage aaa : oldCSA)
+						System.out.println(aaa);
 					
 					dao.updateSheet(currentSheet);
 					
 					
 					
 					for(SkillSpec ss : currentSheet.getSkillSpecs())
-					{
-						System.out.println("saving: " + ss.getDescription());
 						dao.updateSpec(ss);
-						
+					boolean deleting = true;
+					while(deleting)
+					{
 						for(SkillSpec s : oldSpecs)
 						{
 							boolean delete = true;
-
-							if(ss.getId()==s.getId())
-								delete = false;
-
+							
+							for(SkillSpec ss : currentSheet.getSkillSpecs())
+							{
+								if(ss.getId()==s.getId())
+									delete = false;
+							}
+	
 							if(delete)
 							{
 								System.out.println("Deleting: " + s.getDescription());
 								dao.deleteSpec(s);
+								break;
 							}
 						}
-					}
-
+						deleting = false;
+					}					
 					
 					
 					for(CharacterSheetAdvantage csa : currentSheet.getCSA())
-					{
 						dao.updateCSA(csa);
-					}
-					for(CharacterSheetDisadvantage csd : currentSheet.getCSD())
+					deleting = true;
+					while(deleting)
 					{
+						for(CharacterSheetAdvantage csa : oldCSA)
+						{
+							System.out.println(csa);
+							boolean delete = true;
+							
+							for(CharacterSheetAdvantage csas : currentSheet.getCSA())
+							{
+								if(csas.getId()==csa.getId())
+									delete = false;
+							}
+	
+							if(delete)
+							{
+								System.out.println("Deleting: " + csa.getDescription());
+								dao.deleteCSA(csa);
+								break;
+							}
+						}
+						deleting = false;
+					}	
+					
+					for(CharacterSheetDisadvantage csd : currentSheet.getCSD())
 						dao.updateCSD(csd);
-					}
+					deleting = true;
+					while(deleting)
+					{
+						for(CharacterSheetDisadvantage csd : oldCSD)
+						{
+							boolean delete = true;
+							
+							for(CharacterSheetDisadvantage csds : currentSheet.getCSD())
+							{
+								if(csds.getId()==csd.getId())
+									delete = false;
+							}
+	
+							if(delete)
+							{
+								System.out.println("Deleting: " + csd.getDescription());
+								dao.deleteCSD(csd);
+								break;
+							}
+						}
+						deleting = false;
+					}	
+					
+		
 					dao.saveAll();
+					
+					
 					if(newPic)
 					{
 						try 
@@ -6828,10 +6881,10 @@ public class MainWindow {
 							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advantagePanel.getHeight()));
 							
 							isNew = false;
-							}
 						}
 					}
-				});
+				}
+			});
 		chckbxDemographics.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				if(chckbxDemographics.isSelected())

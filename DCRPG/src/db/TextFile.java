@@ -136,6 +136,8 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setAllMiscStats(fields[4]);
 							cs.setAllStats(fields[5]);
 							cs.setSkillSpecs(specs);
+							cs.setCSA(advs);
+							cs.setCSD(disadvs);
 							sheets.add(cs);
 							line = in.readLine();
 						}
@@ -365,30 +367,62 @@ public class TextFile implements DAO<CharacterSheet>
 	}
 	public boolean updateSheet(CharacterSheet t) 
 	{
-		int index = t.getId();
-		sheets.remove(index);
-		sheets.add(index, t);
+		int index = -1;
+		for(CharacterSheet cs : sheets)
+		{
+			if(cs.getId()==t.getId())
+				index = sheets.indexOf(cs);
+		}
+		if(index >= 0)
+		{
+			sheets.remove(index);
+			sheets.add(index, t);
+		}
 		return true;
 	}
 	public boolean updateSpec(SkillSpec t) 
 	{
-		int index = t.getId();
-		specs.remove(index);
-		specs.add(index, t);
+		int index = -1;
+		for(SkillSpec ss : specs)
+		{
+			if(ss.getId()==t.getId())
+				index = specs.indexOf(ss);
+		}
+		if(index >= 0)
+		{
+			specs.remove(index);
+			specs.add(index, t);
+		}
 		return true;
 	}
 	public boolean updateCSA(CharacterSheetAdvantage t) 
 	{
-		int index = t.getId();
-		advs.remove(index);
-		advs.add(index, t);
+		int index = -1;
+		for(CharacterSheetAdvantage csa : advs)
+		{
+			if(csa.getId()==t.getId())
+				index = advs.indexOf(csa);
+		}
+		if(index >= 0)
+		{
+			advs.remove(index);
+			advs.add(index, t);
+		}
 		return true;
 	}
 	public boolean updateCSD(CharacterSheetDisadvantage t) 
 	{
-		int index = t.getId();
-		disadvs.remove(index);
-		disadvs.add(index, t);
+		int index = -1;
+		for(CharacterSheetDisadvantage csd : disadvs)
+		{
+			if(csd.getId()==t.getId())
+				index = disadvs.indexOf(csd);
+		}
+		if(index >= 0)
+		{
+			disadvs.remove(index);
+			disadvs.add(index, t);
+		}
 		return true;
 	}
 

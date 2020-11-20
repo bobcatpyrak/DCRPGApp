@@ -151,7 +151,7 @@ public class AdvantagePanel extends JPanel
 			disadvPanel.add(csdLabel);					
 			
 			JButton csdX = new JButton();
-			csdX.setBounds(718, disadvLocation+7, 16, 20);
+			csdX.setBounds(208, disadvLocation+7, 16, 20);
 			csdX.setFont(new Font("Dialog", Font.PLAIN, 20));
 			csdX.setText("x");
 			csdX.setHorizontalTextPosition(JButton.LEFT);

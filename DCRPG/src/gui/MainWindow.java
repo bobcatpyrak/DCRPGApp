@@ -1538,7 +1538,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);	
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);	advantagePanel.setLocation(advantagePanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
 					panel.setPreferredSize(new Dimension(1884, 509+physStatsPanel.getHeight()+mentalStatsPanel.getHeight()));
 					dcrpgFrame.revalidate();
 					

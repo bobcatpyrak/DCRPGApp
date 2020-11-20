@@ -2,14 +2,12 @@ package gui;
 import business.*;
 import library.*;
 
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 
 import javax.swing.JButton;
@@ -27,16 +25,31 @@ public class AdvantagePanel extends JPanel
 	private CharacterSheet cs;
 	private List<CharacterSheetAdvantage> advs = new ArrayList<>();
 	private List<CharacterSheetDisadvantage> disadvs = new ArrayList<>();
+	private List<CharacterSheetAdvantage> advsList = new ArrayList<>();
+	private List<CharacterSheetDisadvantage> disadvsList = new ArrayList<>();
 	
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public AdvantagePanel(int x, int y, CharacterSheet cs) 
+	public AdvantagePanel(int x, int y, CharacterSheet cs, List<CharacterSheetAdvantage> advsList, List<CharacterSheetDisadvantage> disadvsList) 
 	{
 		super();
 		this.cs = cs;
-		advs = cs.getCSA();
-		disadvs = cs.getCSD();
+		this.advsList = advsList;
+		this.disadvsList = disadvsList;
+		
+
+		for(CharacterSheetAdvantage csa : advsList)
+		{
+			if(csa.getCharacterSheetId() == cs.getId())
+				advs.add(csa);
+		}
+
+		for(CharacterSheetDisadvantage csd : disadvsList)
+		{
+			if(csd.getCharacterSheetId() == cs.getId())
+				disadvs.add(csd);
+		}
 		
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -63,10 +76,9 @@ public class AdvantagePanel extends JPanel
 		disadvLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		disadvPanel.add(disadvLabel);
 		
-		int advLocation = 7;
+		int advLocation = 27;
 		for(CharacterSheetAdvantage csa : advs)
 		{
-			advLocation += 20;
 			String csaStr = "<html><b>";
 			csaStr += csa.getAdv().nameA()+"</b>";
 			if(csa.getAdv().param())
@@ -85,40 +97,36 @@ public class AdvantagePanel extends JPanel
 			{
 				csaLabel.setSize(500, csaLabel.getHeight()+20);
 			}
-			csaLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			advPanel.add(csaLabel);
 			
-			//new stuff here
-			JButton csdX = new JButton();
-			csdX.setBounds(7, advLocation, 20, 20);
-			csdX.setFont(new Font("Dialog", Font.PLAIN, 20));
-			csdX.setText("x");
-			csdX.setHorizontalTextPosition(JButton.LEFT);
-			csdX.setVerticalTextPosition(JButton.TOP);
-			csdX.setMargin(new Insets(0,0,0,0));
-			advPanel.add(csdX);
-			csdX.addActionListener(new ActionListener() 
+			JButton csaX = new JButton();
+			csaX.setBounds(7, advLocation+7, 16, 20);
+			csaX.setFont(new Font("Dialog", Font.PLAIN, 20));
+			csaX.setText("x");
+			csaX.setHorizontalTextPosition(JButton.LEFT);
+			csaX.setVerticalTextPosition(JButton.TOP);
+			csaX.setMargin(new Insets(0,0,0,0));
+			advPanel.add(csaX);
+			csaX.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent arg0) 
 				{
-					advs.remove(csa);
-					cs.setCSA(advs);
-					setNewCharacter(x, y, cs);
+					advsList.remove(csa);
+					cs.setCSA(advsList);
+					setNewCharacter(x, y, cs, advsList, disadvsList);
 				}
 			});
-			// new stuff here
+			
 			advLocation = advLocation+csaLabel.getHeight();
 		}
 		if(advs.size()==0)
 			advLocation+=20;
-		
 		advPanel.setBounds(7, 7, 745, advLocation+7);
 
 		
-		int disadvLocation = 7;
+		int disadvLocation = 27;
 		for(CharacterSheetDisadvantage csd : disadvs)
 		{
-			disadvLocation += 20;
 			String csdStr = "<html><b>";
 			csdStr += csd.getDisadv().nameD()+"</b>";
 			if(csd.getDisadv().param())
@@ -135,10 +143,31 @@ public class AdvantagePanel extends JPanel
 			csdLabel.setBounds(228, disadvLocation, 500, 0);
 			for(int j = 0; j < csdStr.length(); j+=100)
 			{
+				System.out.println(csd);
 				csdLabel.setSize(500, csdLabel.getHeight()+20);
 			}
-			csdLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-			disadvPanel.add(csdLabel);			
+			if(csdStr.length() < 110)
+				csdLabel.setSize(500, 30);
+			disadvPanel.add(csdLabel);					
+			
+			JButton csdX = new JButton();
+			csdX.setBounds(718, disadvLocation+7, 16, 20);
+			csdX.setFont(new Font("Dialog", Font.PLAIN, 20));
+			csdX.setText("x");
+			csdX.setHorizontalTextPosition(JButton.LEFT);
+			csdX.setVerticalTextPosition(JButton.TOP);
+			csdX.setMargin(new Insets(0,0,0,0));
+			disadvPanel.add(csdX);
+			csdX.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					System.out.println("Removing " + csd);
+					disadvsList.remove(csd);
+					cs.setCSD(disadvsList);
+					setNewCharacter(x, y, cs, advsList, disadvsList);
+				}
+			});
 			
 			disadvLocation = disadvLocation+csdLabel.getHeight();
 		}
@@ -151,15 +180,28 @@ public class AdvantagePanel extends JPanel
 
 	}
 	
-	public void setNewCharacter(int x, int y, CharacterSheet cs)
+	public void setNewCharacter(int x, int y, CharacterSheet cs, List<CharacterSheetAdvantage> advsList, List<CharacterSheetDisadvantage> disadvsList)
 	{
 		removeAll();
 		
 		this.cs = cs;
 		advs.clear();
 		disadvs.clear();
-		advs = cs.getCSA();
-		disadvs = cs.getCSD();
+		this.advsList = advsList;
+		this.disadvsList = disadvsList;
+
+		for(CharacterSheetAdvantage csa : advsList)
+		{
+			System.out.println("Trying to add " + csa);
+			if(csa.getCharacterSheetId() == cs.getId())
+				advs.add(csa);
+		}
+
+		for(CharacterSheetDisadvantage csd : disadvsList)
+		{
+			if(csd.getCharacterSheetId() == cs.getId())
+				disadvs.add(csd);
+		}
 
 		
 		setBackground(new Color(0, 0, 0));
@@ -187,10 +229,9 @@ public class AdvantagePanel extends JPanel
 		disadvLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		disadvPanel.add(disadvLabel);
 		
-		int advLocation = 7;
+		int advLocation = 27;
 		for(CharacterSheetAdvantage csa : advs)
 		{
-			advLocation += 20;
 			String csaStr = "<html><b>";
 			csaStr += csa.getAdv().nameA()+"</b>";
 			if(csa.getAdv().param())
@@ -209,27 +250,23 @@ public class AdvantagePanel extends JPanel
 			{
 				csaLabel.setSize(500, csaLabel.getHeight()+20);
 			}
-			csaLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			advPanel.add(csaLabel);
 			
-			JButton csdX = new JButton();
-			csdX.setBounds(7, advLocation, 20, 20);
-			csdX.setFont(new Font("Dialog", Font.PLAIN, 20));
-			csdX.setText("x");
-			csdX.setHorizontalTextPosition(JButton.LEFT);
-			csdX.setVerticalTextPosition(JButton.TOP);
-			csdX.setMargin(new Insets(0,0,0,0));
-			advPanel.add(csdX);
-			csdX.addActionListener(new ActionListener() // right now, this button removes every single advantage and disadvantage
+			JButton csaX = new JButton();
+			csaX.setBounds(7, advLocation+7, 16, 20);
+			csaX.setFont(new Font("Dialog", Font.PLAIN, 20));
+			csaX.setText("x");
+			csaX.setHorizontalTextPosition(JButton.LEFT);
+			csaX.setVerticalTextPosition(JButton.TOP);
+			csaX.setMargin(new Insets(0,0,0,0));
+			advPanel.add(csaX);
+			csaX.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent arg0) 
 				{
-					System.out.println("Removing " + csa);
-					advs.remove(csa);
-					for(CharacterSheetAdvantage aaa : advs)
-						System.out.println("Still have CSA#: "+aaa);
-					cs.setCSA(advs);
-					setNewCharacter(x, y, cs);
+					advsList.remove(csa);
+					cs.setCSA(advsList);
+					setNewCharacter(x, y, cs, advsList, disadvsList);
 				}
 			});
 			
@@ -240,10 +277,9 @@ public class AdvantagePanel extends JPanel
 		advPanel.setBounds(7, 7, 745, advLocation+7);
 
 		
-		int disadvLocation = 7;
+		int disadvLocation = 27;
 		for(CharacterSheetDisadvantage csd : disadvs)
 		{
-			disadvLocation += 20;
 			String csdStr = "<html><b>";
 			csdStr += csd.getDisadv().nameD()+"</b>";
 			if(csd.getDisadv().param())
@@ -257,13 +293,35 @@ public class AdvantagePanel extends JPanel
 			csdLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			csdLabel.setHorizontalAlignment(SwingConstants.LEFT);
 			
-			csdLabel.setBounds(238, disadvLocation, 500, 0);
+			csdLabel.setBounds(228, disadvLocation, 500, 0);
 			for(int j = 0; j < csdStr.length(); j+=100)
 			{
+				System.out.println(csd);
 				csdLabel.setSize(500, csdLabel.getHeight()+20);
 			}
-			csdLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-			disadvPanel.add(csdLabel);
+			if(csdStr.length() < 110)
+				csdLabel.setSize(500, 30);
+			disadvPanel.add(csdLabel);			
+			
+			JButton csdX = new JButton();
+			csdX.setBounds(208, disadvLocation+7, 16, 20);
+			csdX.setFont(new Font("Dialog", Font.PLAIN, 20));
+			csdX.setText("x");
+			csdX.setHorizontalTextPosition(JButton.LEFT);
+			csdX.setVerticalTextPosition(JButton.TOP);
+			csdX.setMargin(new Insets(0,0,0,0));
+			disadvPanel.add(csdX);
+			csdX.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					System.out.println("Removing " + csd);
+					disadvsList.remove(csd);
+					cs.setCSD(disadvsList);
+					setNewCharacter(x, y, cs, advsList, disadvsList);
+				}
+			});
+			
 			disadvLocation = disadvLocation+csdLabel.getHeight();
 		}
 		if(disadvs.size()==0)
@@ -275,10 +333,10 @@ public class AdvantagePanel extends JPanel
 	
 	public List<CharacterSheetAdvantage> saveAdvs()
 	{
-		return advs;
+		return advsList;
 	}
 	public List<CharacterSheetDisadvantage> saveDisadvs()
 	{
-		return disadvs;
+		return disadvsList;
 	}
 }

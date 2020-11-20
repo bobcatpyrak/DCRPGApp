@@ -1,8 +1,10 @@
 $$CharacterSheetBegin$$
 0	Character Name	blank.png	Occupation%Base%Location%Gender%Race%Height%Weight%EyeColor%EyeColor%Full Character Name	0d6%0%3%0%0%0%0%0%0%0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0
 1	Batman	batman.png	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark%Bruce Wayne	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
-2	Alfred	alfred.png	Butler%Wayne Manor%45%Male%Human%Tallish%Lean%Black%Grey%Alfred Pennyworth	1d6%3%3%37%0%12%0%14%30%30	4%1%4%5%6%2%5%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
-3	Fields	fields.png	Transdimensional Traveler%The Clocktower, sometimes%45%Male%Human%5'10%163%Gray-Blue%Dark Brown%Alexander "Fields" McKenzie	2d6%0%4%75%0%0%0/0%0/0%30%30	7%1%3%8%1%1%2%1%1%0%1%0%1%4%0%1%1%1%1%1%2%0%0%0%1%0%0%1%5%2%1%1%1%1%0%5%1%1%0%6%5
+2	Alfred	Alfred.png	Butler%Wayne Manor%45%Male%Human%Tallish%Lean%Black%Grey%Alfred Pennyworth	1d6%3%3%37%0%12%0%14%30%30	4%1%4%5%6%2%5%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6
+3	Fields	fields.png	Transdimensional Traveler%The Clocktower, sometimes%45%Male%Human%5'10%163%Gray-Blue%Dark Brown%Alexander "Fields" McKenzie	2d6%0%4%75%0%0%0/0%0/0%30%30	5%21%3%8%1%1%2%1%1%0%1%0%1%4%0%1%1%1%1%1%2%0%0%0%1%0%0%1%5%2%1%1%1%1%0%5%1%1%0%6%5
+4	Russ Wilson	Russ Wilson.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%4%5%0%30%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0
+5	Bloodhound (Travis Clevenger)	Bloodhound (Travis Clevenger).png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
@@ -29,17 +31,15 @@ $$SkillSpecEnd$$
 $$CharacterSheetAdvantageBegin$$
 0	0	WEALTH	null
 1	1	WEALTH	null
-2	1	WEALTH	null
-3	1	WEALTH	null
-4	1	WEALTH	null
-5	1	WEALTH	null
-6	1	WEALTH	null
 7	2	COURAGE	null
+8	1	COURAGE	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
 0	0	SECRET_IDENTITY	null
 1	1	SECRET_IDENTITY	null
 2	2	SECRET_IDENTITY	null
+3	1	HIDES_EMOTIONS	null
+4	3	SECRET_IDENTITY	null
 $$CharacterSheetDisadvantageEnd$$
 

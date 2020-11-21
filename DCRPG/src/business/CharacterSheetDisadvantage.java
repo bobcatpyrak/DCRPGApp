@@ -1,7 +1,7 @@
 package business;
 import library.*;
 
-public class CharacterSheetDisadvantage 
+public class CharacterSheetDisadvantage implements Comparable
 {
 	int id;
 	int characterSheetId;
@@ -68,6 +68,12 @@ public class CharacterSheetDisadvantage
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public int compareTo(Object csd2) 
+	{
+		return disadv.nameD().compareTo(((CharacterSheetDisadvantage) csd2).getDisadv().nameD());
 	}
 	
 	

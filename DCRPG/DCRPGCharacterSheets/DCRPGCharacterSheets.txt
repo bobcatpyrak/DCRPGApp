@@ -33,6 +33,9 @@ $$CharacterSheetAdvantageBegin$$
 1	1	WEALTH	null
 7	2	COURAGE	null
 8	1	COURAGE	null
+10	2	ACUTE_SENSE	Sight
+11	2	STATUS	null
+11	2	PHOTOGRAPHIC_MEMORY	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$

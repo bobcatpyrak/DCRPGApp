@@ -35,12 +35,12 @@ public class MainWindow {
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static CharacterSheet currentSheet;
 	
-	private static int nextSheetId;
+	public static int nextSheetId;
 	private static int nextSpecId;
-	private static int nextCSAId;
-	private static int nextCSDId;
+	public static int nextCSAId;
+	public static int nextCSDId;
 	
-	private JFrame dcrpgFrame;
+	public static JFrame dcrpgFrame;
 	private JFormattedTextField nameSearchField;
 	private JFormattedTextField nameField;
 	private JFormattedTextField udoField;

@@ -1,5 +1,8 @@
 package library;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Disadvantage 
 {
 	BLACKOUT("Blackout", 3, "During high-pressure situations, this character has a tendency to blackout for several minutes.  They have no recollection of this lost time.  The character might black out whenever they roll a Nat 1, based on a failed Willpower roll.  Failure means that they fall unconscious for 3 turns or 3 minutes without interference.", false),
@@ -41,6 +44,7 @@ public enum Disadvantage
 	private final String description;
 	private final boolean param;
 	
+	
 	Disadvantage(String nameD, int cost, String description, boolean param)
 	{
 		this.nameD = nameD;
@@ -67,5 +71,42 @@ public enum Disadvantage
 	{
 		return param;
 	}
-
+	
+	public static List<Disadvantage> getAll()
+	{
+		List<Disadvantage> d = new ArrayList<Disadvantage>();
+		d.add(BLACKOUT);
+		d.add(CENTER_OF_CONVERSATION);
+		d.add(CHILDISH_APPEARANCE);
+		d.add(COWARDICE);
+		d.add(DARK_SECRET);
+		d.add(DEBT);
+		d.add(DELUSIONS_OF_GRANDEUR);
+		d.add(EXTREMELY_COMPETITIVE);
+		d.add(FANATIC);
+		d.add(FORGETFUL);
+		d.add(FUGITIVE);
+		d.add(HIDES_EMOTIONS);
+		d.add(ILLITERATE);
+		d.add(IMPULSIVENESS);
+		d.add(INFAMY);
+		d.add(KLEPTOMANIACAL_TENDENCIES);
+		d.add(LONG_WINDED);
+		d.add(LOW_SELF_ESTEEM);
+		d.add(MEDICAL_PROBLEM);
+		d.add(NARCISSISTIC);
+		d.add(NIGHTMARES);
+		d.add(OBSESSIVE_TENDENCIES);
+		d.add(PARANOIA);
+		d.add(PATHOLOGICAL_LIAR);
+		d.add(PHOBIA);
+		d.add(SECRET_IDENTITY);
+		d.add(SHADY_BACKGROUND);
+		d.add(TARGETED_FOR_ASSASSINATION);
+		d.add(TECHNOLOGICALLY_CHALLENGED);
+		d.add(UNATTRACTIVE_APPEARANCE);
+		d.add(UNCOORDINATED);
+		
+		return d;
+	}
 }

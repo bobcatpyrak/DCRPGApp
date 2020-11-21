@@ -34,8 +34,8 @@ $$CharacterSheetAdvantageBegin$$
 7	2	COURAGE	null
 8	1	COURAGE	null
 10	2	ACUTE_SENSE	Sight
-11	2	STATUS	null
 11	2	PHOTOGRAPHIC_MEMORY	null
+11	2	STATUS	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
@@ -44,5 +44,6 @@ $$CharacterSheetDisadvantageBegin$$
 2	2	SECRET_IDENTITY	null
 3	1	HIDES_EMOTIONS	null
 4	3	SECRET_IDENTITY	null
+5	2	COWARDICE	null
 $$CharacterSheetDisadvantageEnd$$
 

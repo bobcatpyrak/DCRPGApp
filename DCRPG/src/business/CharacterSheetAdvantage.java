@@ -82,7 +82,6 @@ public class CharacterSheetAdvantage implements Comparable<CharacterSheetAdvanta
 	@Override
 	public int compareTo(CharacterSheetAdvantage csa2) 
 	{
-		System.out.println("Trying");
 		return adv.nameA().compareTo(csa2.getAdv().nameA());
 	}
 	

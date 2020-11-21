@@ -6904,6 +6904,19 @@ public class MainWindow {
 			}
 		});
 		
+		class ResizeListener extends ComponentAdapter 
+		{
+	        public void componentResized(ComponentEvent e) 
+	        {
+	        	advantagePanel.setLocation(advantagePanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
+	        }
+	        public void componentMoved(ComponentEvent e)
+	        {
+	        	advantagePanel.setLocation(advantagePanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
+	        }
+		}
+		mentalStatsPanel.addComponentListener(new ResizeListener());
+		
 		
 		// new
 		btnNew.addActionListener(new ActionListener() 

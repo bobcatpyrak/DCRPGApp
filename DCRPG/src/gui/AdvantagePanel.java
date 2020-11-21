@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.Font;
 import java.awt.Insets;
 
@@ -295,40 +298,37 @@ public class AdvantagePanel extends JPanel
 		warning.setForeground(Color.red);
 		l.add(warning);
 		
-		// change to list state change listener
-		MouseListener mouseListener = new MouseAdapter() 
+		ListSelectionListener listSelectionListener = new ListSelectionListener()
 		{
-		    public void mouseClicked(MouseEvent e) 
-		    {
-		        if (e.getClickCount() == 1) 
-		        {
-		        	if(isAdv)
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) 
+			{
+				if(isAdv)
+	        	{
+		        	for(Advantage a : advantages)
 		        	{
-			        	for(Advantage a : advantages)
-			        	{
-			        		if(a.nameA() == (String)list.getSelectedValue())
-			        		dispA = a;	
-			        	}
-			        	desc.setText(dispA.description());
-			        	if(dispA.param())
-							param.setEnabled(true);
+		        		if(a.nameA() == (String)list.getSelectedValue())
+		        		dispA = a;	
 		        	}
-		        	else
+		        	desc.setText(dispA.description());
+		        	if(dispA.param())
+						param.setEnabled(true);
+	        	}
+	        	else
+	        	{
+		        	for(Disadvantage d : disadvantages)
 		        	{
-			        	for(Disadvantage d : disadvantages)
-			        	{
-			        		if(d.nameD() == (String)list.getSelectedValue())
-			        		dispD = d;	
-			        	}
-			        	desc.setText(dispD.description());
-			        	if(dispD.param())
-			        		param.setEnabled(true);
+		        		if(d.nameD() == (String)list.getSelectedValue())
+		        		dispD = d;	
 		        	}
-		        	warning.setText("");
-		         }
-		    }
+		        	desc.setText(dispD.description());
+		        	if(dispD.param())
+		        		param.setEnabled(true);
+	        	}
+	        	warning.setText("");	
+			}	
 		};
-		list.addMouseListener(mouseListener);
+		list.addListSelectionListener(listSelectionListener);
 		
 		add.addActionListener(new ActionListener() 
 		{

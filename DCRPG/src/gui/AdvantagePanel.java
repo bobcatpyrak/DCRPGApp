@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,6 +26,7 @@ import java.awt.Insets;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -240,6 +242,8 @@ public class AdvantagePanel extends JPanel
 		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 745, disadvLocation+7);
 		
 	    setBounds(x, y, 759, 21+advPanel.getHeight()+disadvPanel.getHeight());
+	    MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
+	    MainWindow.dcrpgFrame.revalidate();
 	}
 	
 	private void advantagePicker(boolean isAdv)
@@ -276,6 +280,7 @@ public class AdvantagePanel extends JPanel
 		JScrollPane jsp = new JScrollPane(list);
 		jsp.setBounds(0, 0, 200, 283);
 		l.add(jsp);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JLabel desc = new JLabel();
 		desc.setBounds(207, 0, 170, 220);
@@ -313,6 +318,8 @@ public class AdvantagePanel extends JPanel
 		        	desc.setText(dispA.description());
 		        	if(dispA.param())
 						param.setEnabled(true);
+		        	else
+		        		param.setEnabled(false);
 	        	}
 	        	else
 	        	{
@@ -324,6 +331,8 @@ public class AdvantagePanel extends JPanel
 		        	desc.setText(dispD.description());
 		        	if(dispD.param())
 		        		param.setEnabled(true);
+		        	else
+		        		param.setEnabled(false);
 	        	}
 	        	warning.setText("");	
 			}	
@@ -347,10 +356,17 @@ public class AdvantagePanel extends JPanel
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
-					else if(dispA != null && !dispA.param() || dispA.param() && !param.getText().equals(""))
+					else if(dispA != null && !dispA.param())
 					{
+						boolean duplicate = false;
 						CharacterSheetAdvantage csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA);
-						advsList.add(csa);
+						for(CharacterSheetAdvantage c : advs)
+						{
+							if (csa.getAdvStr().equals(c.getAdvStr()))
+								duplicate = true;
+						}
+						if(!duplicate)
+							advsList.add(csa);
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 

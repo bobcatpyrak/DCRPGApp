@@ -92,7 +92,7 @@ public class AdvantagePanel extends JPanel
 		setLayout(null);
 		
 		JPanel advPanel = new JPanel();
-		advPanel.setBackground(new Color(255, 99, 71));
+		advPanel.setBackground(new Color(162, 196, 201));
 		add(advPanel);
 		advPanel.setLayout(null);
 		
@@ -119,7 +119,7 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel disadvPanel = new JPanel();
 		disadvPanel.setBounds(7, advPanel.getY()+advPanel.getHeight()+10, 745, 20);
-		disadvPanel.setBackground(new Color(32, 178, 170));
+		disadvPanel.setBackground(new Color(213, 166, 189));
 		add(disadvPanel);
 		disadvPanel.setLayout(null);
 		

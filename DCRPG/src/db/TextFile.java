@@ -12,6 +12,7 @@ public class TextFile implements DAO<CharacterSheet>
 	private List<SkillSpec> specs = null;
 	private List<CharacterSheetAdvantage> advs = null;
 	private List<CharacterSheetDisadvantage> disadvs = null;
+	private List<CharacterSheetPower> powers = null;
 	private Path sheetsPath = null;
 	private File sheetsFile = null;
 	private final String FIELD_SEP = "\t";
@@ -26,6 +27,7 @@ public class TextFile implements DAO<CharacterSheet>
 		specs = getAllSpecs();
 		advs = getAllCSA();
 		disadvs = getAllCSD();
+		powers = getAllCSP();
 		sheets = getAllSheets();
 	}
 	@Override
@@ -48,6 +50,10 @@ public class TextFile implements DAO<CharacterSheet>
 	public CharacterSheetDisadvantage getCSD(int id) 
 	{
 		return disadvs.get(id);
+	}
+	public CharacterSheetPower getCSP(int id) 
+	{
+		return powers.get(id);
 	}
 	
 	@Override
@@ -138,6 +144,7 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setSkillSpecs(specs);
 							cs.setCSA(advs);
 							cs.setCSD(disadvs);
+							cs.setCSP(powers);
 							sheets.add(cs);
 							line = in.readLine();
 						}
@@ -329,6 +336,64 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}	
+	public List<CharacterSheetPower> getAllCSP() 
+	{	
+		if(powers != null)
+			return powers;
+		
+		powers = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
+				{
+					if (line.equals("$$CharacterSheetPowerBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$CharacterSheetPowerEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							CharacterSheetPower csp = new CharacterSheetPower(Integer.parseInt(fields[0]));
+							csp.setCharacterSheetId(Integer.parseInt(fields[1]));
+							csp.setLevel(Integer.parseInt(fields[2]));
+							csp.setPower(fields[3]);
+							csp.setCost(Integer.parseInt(fields[4]));
+							csp.setSpecs(fields[5]);
+							csp.setWeakness(fields[6]);
+							powers.add(csp);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				return powers;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}	
 	
 	@Override
 	public boolean add(CharacterSheet t) 
@@ -354,6 +419,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean addCSD(CharacterSheetDisadvantage t) 
 	{
 		disadvs.add(t);
+		return true;
+	}
+	public boolean addCSP(CharacterSheetPower t) 
+	{
+		powers.add(t);
 		return true;
 	}
 
@@ -425,6 +495,21 @@ public class TextFile implements DAO<CharacterSheet>
 		}
 		return true;
 	}
+	public boolean updateCSP(CharacterSheetPower t) 
+	{
+		int index = -1;
+		for(CharacterSheetPower csp : powers)
+		{
+			if(csp.getId()==t.getId())
+				index = powers.indexOf(csp);
+		}
+		if(index >= 0)
+		{
+			powers.remove(index);
+			powers.add(index, t);
+		}
+		return true;
+	}
 
 	@Override
 	public boolean delete(CharacterSheet t) 
@@ -450,6 +535,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean deleteCSD(CharacterSheetDisadvantage t) 
 	{
 		disadvs.remove(t);
+		return true;
+	}
+	public boolean deleteCSP(CharacterSheetPower t) 
+	{
+		powers.remove(t);
 		return true;
 	}
 
@@ -493,6 +583,15 @@ public class TextFile implements DAO<CharacterSheet>
 				+ FIELD_SEP + csd.getDescription());
 			}
 			out.println("$$CharacterSheetDisadvantageEnd$$");
+			out.println();
+			// CSP
+			out.println("$$CharacterSheetPowerBegin$$");
+			for (CharacterSheetPower csp : powers)
+			{
+				out.println(csp.getId() + FIELD_SEP + csp.getCharacterSheetId() + FIELD_SEP + csp.getLevel() + FIELD_SEP + csp.getPowerStr() 
+				+ FIELD_SEP + csp.getCost() + FIELD_SEP + csp.getSpecs() + FIELD_SEP + csp.getWeakness());
+			}
+			out.println("$$CharacterSheetPowerEnd$$");
 			out.println();
 			return true;
 		}

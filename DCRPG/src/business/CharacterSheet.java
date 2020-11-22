@@ -43,6 +43,7 @@ public class CharacterSheet
 	List<SkillSpec> skillSpecs = new ArrayList<SkillSpec>();
 	List<CharacterSheetAdvantage> advs = new ArrayList<CharacterSheetAdvantage>();
 	List<CharacterSheetDisadvantage> disadvs = new ArrayList<CharacterSheetDisadvantage>();
+	List<CharacterSheetPower> pwrs = new ArrayList<CharacterSheetPower>();
 	
 	public CharacterSheet(int id)
 	{
@@ -490,6 +491,21 @@ public class CharacterSheet
 	public List<CharacterSheetDisadvantage> getCSD()
 	{
 		return disadvs;
+	}
+	
+	// methods for CSP's
+	public void setCSP(List<CharacterSheetPower> cspDAO)
+	{
+		pwrs.clear();
+		for (CharacterSheetPower csp : cspDAO)
+		{	
+			if(csp.getCharacterSheetId() == id)
+				pwrs.add(csp);
+		}
+	}
+	public List<CharacterSheetPower> getCSP()
+	{
+		return pwrs;
 	}
 	
 	

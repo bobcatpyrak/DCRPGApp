@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import business.*;
@@ -24,12 +25,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class MainWindow {
 
 	private static TextFile dao = new TextFile();
 	private static List<CharacterSheet> sheets;
-	private static String[] sheetNames;
+	private static List<String> searchList = new ArrayList<String>();
 	private static List<SkillSpec> specs;
 	private static List<CharacterSheetAdvantage> advs;
 	private static List<CharacterSheetDisadvantage> disadvs;
@@ -96,13 +99,13 @@ public class MainWindow {
 		if(disadvs.size() > 0)
 			nextCSDId = disadvs.get(disadvs.size()-1).getId() + 1;
 		
-		//this needs to rerun when a new sheet is saved
-		sheetNames = new String[sheets.size()];
+		//this needs to rerun when a new sheet is saved. Or not. I think it's useless?
+	/*	sheetNames = new String[sheets.size()];
 		int nameIndex = 0;
 		for(CharacterSheet s : sheets)
 		{
 			sheetNames[nameIndex] = s.getName();
-		}
+		}*/
 		
 		// initialize currentSheet
 		currentSheet = sheets.get(0);
@@ -324,6 +327,17 @@ public class MainWindow {
 		nameSearchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		nameSearchField.setText("(type character name)");
 		nameSearchField.setColumns(10);
+		
+		JPanel searches = new JPanel();
+		searches.setLayout(null);
+		searches.setBounds(nameSearchField.getX(), nameSearchField.getY()+nameSearchField.getHeight(), nameSearchField.getWidth()+50, 100);
+		JList searchesList = new JList();
+		searchesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JScrollPane jsp = new JScrollPane(searchesList);
+		jsp.setBounds(0, 0, searches.getWidth(), searches.getHeight());
+		searches.add(jsp);
+		panel.add(searches);
+		searches.setVisible(false);
 		
 		nameField = new JFormattedTextField();
 		nameField.setBounds(560, 0, 367, 42);
@@ -7108,12 +7122,76 @@ public class MainWindow {
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
+				searchList.clear();
+				if(!nameSearchField.getText().equals(""))
+				{
+					for(CharacterSheet s : sheets)
+					{
+						if(s.getName().toLowerCase().contains(nameSearchField.getText().toLowerCase()))
+							searchList.add(s.getName());
+					}
+					Collections.sort(searchList);
+				}
+				if(!searchList.isEmpty())
+				{
+					for(String s : searchList)
+						System.out.println(s);
+					System.out.println("Should be displaying");
+					searchesList.setListData(searchList.toArray());
+					searches.setVisible(true);
+				}
+				if(searchList.isEmpty())
+				{
+					searches.setVisible(false);
+				}
+					
 				if(e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
 					btnLoad.doClick();
 				}
 			}
 		});
+		
+		nameSearchField.addFocusListener(new FocusAdapter() 
+		{
+			@Override
+			public void focusGained(FocusEvent e) 
+			{	
+				System.out.println("Hey! Listen!");
+				if(!searchList.isEmpty())
+				{
+					for(String s : searchList)
+						System.out.println(s);
+					System.out.println("Should be displaying");
+					searchesList.setListData(searchList.toArray());
+					searches.setVisible(true);
+				}
+				if(searchList.isEmpty())
+				{
+					searches.setVisible(false);
+				}
+			}
+			
+			@Override
+			public void focusLost(FocusEvent e)
+			{
+				System.out.println("Bye!");
+				searches.setVisible(false);
+			}
+		});
+		
+		ListSelectionListener listSelectionListener = new ListSelectionListener()
+		{
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) 
+			{
+				if(searchesList.getSelectedValue() != null)
+					nameSearchField.setText(searchesList.getSelectedValue().toString());
+				panel.grabFocus();
+			}	
+		};
+		searchesList.addListSelectionListener(listSelectionListener);
+		
 	}
 	
 	public int setPanelSize(int h1, int h2, int h3)

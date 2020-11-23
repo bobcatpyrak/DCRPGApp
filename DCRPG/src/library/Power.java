@@ -17,6 +17,8 @@ public enum Power
 			+ "<b>Lvl. 10</b> - The character can tap into any animal’s abilities within 10 miles, at a potency rate of 100%.  They may also tap into meta-abilities at a maximum level of 5. <br></html>", 
 			"1000 feet  33%", "", " 5000 feet 33%", "", "3 miles 50%.  Meta-abilities max level 1.", "", " 5 miles 75%.  Meta-abilities max level of 3.", "", "",  "10 miles 100%.  Meta-abilities max level 5"),
 
+	BIND("Bind", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+	
 	CHEMICAL_MIMESIS("Chemical Mimesis", 3, "<html><b>Governing Skills: Survival</b><br>"
 			+ "This character can tap into the building blocks of physics and use the natural properties of the chemicals around them to alter their own physiology, providing new bonuses and physical talents to their own bodies temporarily.  Chemical Mimesis functions as follows: a character’s control of the molecular function of their body increases as their level increases, providing a range of molecular information to draw upon.  Characters must search for specific chemicals, in order to glean new abilities.   As a character’s level increases, the depth and breadth of their ability increases as well.  Only one chemical can be mimicked at a time.<br>"
 			+ "Potency Rate: The character’s ceiling on a skill in proportion to that skill level from the chemical the character is mimicking.<br>"
@@ -45,6 +47,12 @@ public enum Power
 	CLINGING("Clinging", 1, "<html><b>Governing Skills: Climbing</b><br>"
 			+ "Clinging functions in two ways; one, it provides a bonus to climbing equal to its level (a character with Clinging Lvl. 5 receives a +5 bonus to their climbing rolls).  Two, it eradicates any need for climbing equipment and opens up vertical or slick surfaces to climbing roll attempts.  Clinging also allows a character to ride fast-moving objects (not individuals), using climbing rolls to affix the character to the target object.  Finally, Clinging reduces the difficulty modifier of a climbing roll by half of Clinging’s level, rounded down.<br></html>", "", "", "", "", "", "", "", "", "", ""),
 
+	DISEASE("Disease", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	DISINTEGRATION("Disintegration", 4, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+	
+	ELASTICITY("Elasticity", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	DIGESTIVE_ADAPTABILITY("Digestive Adaptability", 2, "<html><b>Governing Skills: Resistance</b><br>"
 			+ "The character has a unique digestive system, and as such, they are able to eat unique objects normally considered inedible or dangerous to anyone else, reducing or in some cases negating the penalty that would be caused by imbibing the objects in question.  At level 1, the character will begin to make resistance rolls based on a difficulty level determined by the level of Digestive Adaptability.  Successful rolls, lower the amount of damage received by poisons or objects that could harm the consumer.  At level 3, ingested poison only deals a one-time amount of damage instead of persistent damage.   At level 5, successful rolls can begin to negate all damage rather than reduce it, and digestion has sped up to a rapid pace.  At level 10, only the most volatile of materials will cause damage to the consumer, and objects are almost immediately digested in their entirety<br></html>.", "", "", "", "", "", "", "", "", "", ""), 
 
@@ -64,12 +72,26 @@ public enum Power
 	ENVIRONMENTAL_IMMUNITY("Environmental Immunity", 1, "<html><b>Governing Skills: Survival</b><br>"
 			+ "The character is able to endure extreme conditions without adverse penalties.  This most commonly manifests in ways such as waterbreathing (or a lack of necessity to breathe at all for long periods of time), but it also includes the ability to endure extreme temperatures, extreme pressure, or unusual airborne compounds and atmospheres.  Environmental Immunity’s level determines the maximum level of the difficulty modifier a character may attempt to endure with lesser or completely negated negative effects.  In terms of benchmarks, Environmental Immunity Lvl. 5 would grant waterbreathing, and Lvl. 10 would allow a character to exist for some time in the vacuum of space (usually 48 hours before the effects of solar radiation begin to bear down on the character)<br></html>",  "", "", "", "", "", "", "", "", "", ""), 
 
+	EXTRA_BODY_PART("Extra Body Part", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	IMMUNITY("Immunity", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	INFRAVISION("Infravision", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	INVISIBILITY("Invisibility", 7, "<html><b>Governing Skills: Sneak, Resistance</b><br>"
 			+ "A character with the ability to turn their bodies invisible activates this ability in the way a person might tense a muscle, and as such, this is an activated ability.  Invisibility is a fairly cut-and-dried ability, and increasing the level of invisibility simply increases the versatility and intensity of the power.  The longer a character remains invisible, the more likely the exertion of this ability affects their body.  A character can stay invisible for 6 rounds in combat consecutively or for roughly 5 minutes out-of-combat before they began to experience adverse effects<br>"
 			+ "<br><b>Lvl. 1 -</b> The character can turn themselves invisible.  This leaves only a faint outline around their body, as if there is a light saran wrap form of a living being replacing their visual presence.  Invisibility is rolled on sneak with no modifiers.<br>"
 			+ "<b>Lvl. 3 -</b> At this level the character disappears entirely from view, lowering the difficulty of all sneak roll difficulty modifiers to 1.  Characters who can see only on the visual spectrum will only suss out the presence of the target through alternative means or rolls of 20 or more.  As the level increases, this number rises, reaching a maximum peak of 30.<br>"
 			+ "<b>Lvl. 7 -</b> The character can touch other objects, turning them invisible as well.  These objects must be of a mass less than the character’s own.<br>"
 			+ "<b>Lvl. 10 -</b> The character can touch any object or individual, turning them invisible, up to 800 pounds in weight.<br></html>.","", "", "Sneak difficulty -1", "", "", "", "Lower mass object Invisibility", "", "", "800lbs max for object invisibility"), 
+
+	LONGEVITY("Longevity", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	MICROWAVE_PROJECTION("Microwave Projection", 4, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	MIMICRY("Mimicry", 10, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	MULTIPLICITY("Multiplicity", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	NATURAL_WEAPONS("Natural Weapons", 2, "<html><b>Governing Skill: Varies, Depending on Type of Weapon</b><br>"
 			+ "There are a wide variety of potential natural weapons available to any character, depending on their species.  Characters with more animalistic natures may choose to use claws or fangs or teeth, while extraterrestrial beings may have unusual appendages that are whip-like.  Natural Weapons deal only physical damage and are generally governed by Hand-to-Hand.  A Natural Weapon bolsters the unarmed damage output of a character by an additional +1 per level of Natural Weapons.  This stack can add up significantly.  At level 5 and level 10, instead of +1 to the unarmed damage output, Natural Weapons adds a 1D4 to the unarmed damage output, meaning a maxed out Natural Weapons ability adds a total of 2D4+8 to a character’s UDO.<br></html>", "UDO + 1", "UDO + 2", "UDO +3 ", "UDO + 4", "UDO 1d4+4 ", "UDO 1d4+5", "UDO 1d4+6", "UDO 1d4+7", "UDO 1d4+8 ", "UDO 2d4+8"),
@@ -83,6 +105,8 @@ public enum Power
 			+ "<b>Lvl. 5 - </b>The character can tap into any plant’s abilities within 3 miles, at a potency rate of 50%.  They may also tap into meta-abilities at a maximum level of 1. <br>"
 			+ "<b>Lvl. 7 -</b> The character can tap into any plant’s abilities within 5 miles, at a potency rate of 75%.  They may also tap into meta-abilities at a maximum level of 3. <br>"
 			+ "<b>Lvl. 10 -</b> The character can tap into any plant’s abilities within 10 miles, at a potency rate of 100%.  They may also tap into meta-abilities at a maximum level of 5.<br></html>",  "1000 feet  33%", "", " 5000 feet 33%", "", "3 miles 50%.  Meta-abilities max level 1.", "", " 5 miles 75%.  Meta-abilities max level of 3.", "", "",  "10 miles 100%.  Meta-abilities max level 5"),
+
+	REDIMENSIONALITY("Redimensionality", 5, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	SHAPECHANGING("Shapechanging", 7, "<html><b>Governing Skills: Artist (Disguise), Bluff, Charm, Intimidation, Any Skill Utilized by Natural Abilities.</b><br>"
 			+ "A shapeshifter can change their form and appearance at will.  As a shapeshifter’s talent increases, their ability to create increasingly more complex forms of shapeshifting grow as well.  The biggest limiting factor to a shapeshifter is their mass - a shapeshifter is not able to increase or decrease their mass at will.  As a shapeshifter’s abilities reach higher levels, they begin to receive stat boosts for duplicating the natural effects of the items or creatures they become.  These do not include metahuman abilities or magical enchantments.  Shapeshifting is governed most primarily by the Disguise specialization, and it is rolled against a Difficulty Level based upon that.  Extremely complex disguises - such as duplicating specific individuals - may not be available until some later levels.<br>"
@@ -119,8 +143,18 @@ public enum Power
 	SUPER_PRESENCE("Super Presence", 3, "<html><b>Governing Skills: Presence</b><br>"
 			+ "Superattributes are a flat boost to the raw attribute score of any attribute.  Any effects provided by those attributes are boosted accordingly.  Superattributes must be specialized.  In order to take a superattribute, an attribute must be chosen in order for this boost to take effect.  Characters may take multiple superattributes, each leveled independently of one another.<br></html>", "", "", "", "", "", "", "", "", "", ""), 
 
+	SUPERBREATH("Superbreath", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	SUPERSENSES("Supersenses", 1,  "<html><b>Governing Skills: Search, Surveillance, Survival</b><br>"
 			+ "Characters with super-senses use their ability as natural boosts to rolls involving those senses in the governing skills.  This can provide an entirely new level of information based upon those rolls, and it dramatically increases the likelihood of success with those rolls, turning even low-rolled numbers into notable successes.  Each sense can bring a new world of information, and characters can take this power multiple times, once for each sense.  Supersenses do not lower difficulty modifiers, but rather, when activated, provide their own difficulty modifiers and their own results of success.<br></html>",  "", "", "", "", "", "", "", "", "", ""), 
+
+	SUSPENDED_ANIMATION("Suspended Animation", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	SUSTENANCE("Sustenance", 1, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	ULTRAVENTRILOQUISM("Ultraventriloquism", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	VAMPIRISM("Vampirism", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	X_RAY_VISION("X-Ray Vision", 3, "<html><b>Governing Skills: Perception</b><br>"
 			+ "Different from super-vision, X-Ray Vision is an activated ability that temporarily replaces regular sight so long as it is being used; X-Ray vision can permeate through objects based on their functional thickness, or more accurately, based on their density.  X-Ray Vision gains use as the level increases, becoming more versatile.<br>"
@@ -133,6 +167,8 @@ public enum Power
 
 	ANIMATION("Animation", 2, "<html><b>Governing Skills: Persuasion</b><br>"
 			+ "Your very touch can coax the cold, dead objects of the world to live, serving you in perfunctory ways so long as you maintain your focus on the object.  Note that animation does not give true sentience to an object; communicating with the inanimate is an entirely separate skillset.  As Animation increases in skill, larger and more complex objects may become subservient to your whim.  At Animation Level 5, you can animate two simultaneous objects.  At Animation Level 10, you can animate three simultaneous objects.<br></html>", "Gain Animation", "", "", "", "Animate up to 2 objects", "", "", "", "", "Animate up to 3 objects"), 
+
+	ASTRAL_FORM("Astral Form", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	EMPATHY("Empathy", 2, "<html><b>Governing Skills: Medicine (Psychology), Willpower</b>"
 			+ "<br>A character with empathy can detect other character’s emotions and manipulate them using their willpower.<br>"
@@ -175,6 +211,14 @@ public enum Power
 			+ "<b>Lvl 8. - </b>All language rolls are rolled at double advantage.  The difficulty modifier of all Language rolls is decreased by 4.  Each language roll receives a bonus of +7.<br>"
 			+ "<b>Lvl 9. -</b> All language rolls are rolled at double advantage.  The difficulty modifier of all Language rolls is decreased by 4.  Each language roll receives a bonus of +8.<br>"
 			+ "<b>Lvl 10. -</b> All language rolls are rolled at triple advantage.  The difficulty modifier of all Language rolls is decreased by 4.  Each language roll receives a bonus of +8.<br></html>", "Roll at advantage", "Roll at advantage +1, Difficulty -1", "Roll at advantage +2, Difficulty -1", "Roll at advantage +3, Difficulty -2", "Roll at 2x advantage +4, Difficulty -2", "Roll at 2x advantage +5, Difficulty -3", "Roll at 2x advantage +6, Difficulty -3", "Roll at 2x advantage +7, Difficulty -4", "Roll at 2x advantage +8, Difficulty -4", "Roll at 3x advantage +8, Difficulty -4"),
+
+	MENTAL_BLAST("Mental Blast", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	POSSESSION("Possession", 5, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	POWER_SENSE("Power Sense", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	PSYCHIC_BLAST("Psychic Blast", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	PSYCHIC_MANIFESTATION("Psychic Manifestation", 2, "<html><b>Governing Skills: Willpower</b><br>"
 			+ "A psychic manifestation can take the form of any particular type of weapon as envisioned by the mind of its user.  This manifestation, once created, is anchored to that particular design permanently - unless something significant changes in the mind or soul of its creator.  These manifestations are able to be moved mentally, and independently of the character’s normal combat actions, outside of summoning it.  A psychic manifestation has half the Body Points of its creator, but when destroyed, it can be summoned again.  A psychic manifestation also moves at a rate of 4 sq.<br>"
@@ -229,6 +273,12 @@ public enum Power
 			+ "<b>Lvl 9. -</b> The difficulty modifier of all Language rolls involving plants is decreased by 4.  Each language roll receives a bonus of +8.<br>"
 			+ "<b>Lvl 10. - </b>All language rolls involving plants are rolled at advantage.  The difficulty modifier of all Language rolls is decreased by 4.  Each language roll receives a bonus of +8.<br></html>", "Roll Languages to speak to plants", "Difficulty -1 Moddifier +1", "Difficulty -1 Moddifier +2", "Difficulty -2 Moddifier +3", "Difficulty -2 Moddifier +4", "Difficulty -3 Moddifier +5", "Difficulty -3 Modifier +6", "Difficulty -4 Modifier +7", "Difficulty -4 Moddifier +8", "Roll at Advantage, Difficulty -4 Moddifier +8"), 
 
+	TELEKINESIS("Telekinesis", 5, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	TELEPATHY("Telepathy", 5, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	DIMENSIONAL_TRAVEL("Dimensional Travel", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	FLIGHT("Flight", 3, "<html><b>Governing Skills: Acrobatics (Flight)</b><br>"
 			+ "The character can increase their height and rate of speed at each level increase.  Movement speed increases are only applicable while flying; flight cannot occur in certain indoor spaces, subject to the narrator’s discretion.  Narrative or non-combat uses of flight will be governed by the Flight specialization of Acrobatics.<br>"
 			+ "<br><b>Lvl 1 - </b>200 feet, 4 sq. movement per round.<br>"
@@ -242,8 +292,14 @@ public enum Power
 			+ "<b>Lvl 9 - </b>You can fly in the vacuum of space, 7 sq. movement per round.<br>"
 			+ "<b>Lvl 10 -</b> No flight restrictions aside from the narrator’s discretion, 8 sq. movement per round.<br></html>", "200ft, 4 squares per round", "300ft, 4 squares per round", "400ft, 4 squares per round", "500ft,  5 squares per round", "1000ft, 6 squares per round", "2000ft, 6 squares per round", "5000ft, 6 squares per round", "10000ft, 6 squares per round", "Space flight, 7 squares per round", "No restrictions, 8 squares per round"), 
 
+	SUPERJUMP("Superjump", 2, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+	
+	TELEPORTATION("Teleportation", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	ENERGY_ABSORPTION("Energy Absorption", 3, "<html><b>Governing Skills: Physique</b><br>"
 			+ "A character with energy absorption can channel kinetic or electrical energies to increase the amount of damage they deal on their next attack.  By taking damage, a character with Energy Absorption can utilize a percentage of the body points dealt to them to increase their next attack’s damage.  The percentage of damage redirected is always the level of Energy Absorption multiplied by 10, and that damage is always rounded down.  Energy Absorption is used in lieu of blocking or dodging as a defensive response to an attack.  It also can be used in or out of combat to divert large releases of energy from things such as broken engines or waves of cosmic radiation.  Sometimes, these will provide benefits for the character’s next attack, even if damage is not sustained.<br></html>", "10% redirection", "20% redirection", "30% redirection", "40% redirection", "50% redirection", "60% redirection", "70% redirection", "80% redirection", "90% redirection", "100% redirection"), 
+
+	FORCEFIELD("Forcefield", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	HEALING("Healing", 7, "<html><b>Governing Skills: Medicine, Science, Willpower</b><br>"
 			+ "Healers have a twofold ability - one, to restore body points to PCs and NPCs, and two, to fix wounds that exist both narratively and non-narratively.  Healers can restore body points out of pools devoted to individual players.  These pools increase as the healers’ level increases, as well as their own body points.  Healers can never resurrect a character from the dead, nor are they able to repair damage done by certain high level magic casters or reality manipulators.  They also cannot heal damage from anti-matter.  If a wound has pre-existed for a long period of time, the body likely has adapted to function around it, so a healer could not, say, heal paralysis from 10 years ago, or restore an eye lost 5 years ago."
@@ -264,9 +320,19 @@ public enum Power
 			+ "<br>There are two types of damage: body point damage and penalty damage, that may result in a stat increase.  Body points can be restored at any time by physical contact, but penalty eradication must be done via d20 rolls on skill checks.  For healers, in-combat healing on skill checks must first match the level of healing to the difficulty level before attempting to heal via either Healing or Medicine.  Additional skill checks may be attached for complicated injuries or unusual physiologies at the narrator’s discretion."
 			+ "<br></html>", "10BP + 5% at 1d6 per turn", "12BP + 5% at 1d6+1 per turn", "15BP + 5% at 1d6+2 per turn", "15BP + 10% at 1d6+3 per turn", "18BP + 10% at 2d6 per turn", "18BP + 15% at 2d6+1 per turn",  "18BP + 25% at 2d6+2 per turn", "20BP + 25% at 2d6+3 per turn", "20BP + 33% at 2d6+5 per turn", "20BP + 50% at 3d6+4 per turn"), 
 
+	INVULNERABILITY("Invulnerability", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	MENTAL_SHIELD("Mental Shield", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
 	NATURAL_ARMOR("Natural Armor", 3, "<html><b>Governing Skills: None</b><br>"
 			+ "Natural Armor is a layer of skin or exoskeleton that can withstand attacks of a certain magnitude.  This deflected damage can measure in a range of 10-20 Body Points in a battle, depending on the level of Natural Armor.  Natural Armor has a pool of 10+X Body Points that can be deflected at any point in combat via d4 rolls. Each d4 roll dictates the amount of damage negated by Natural Armor, up until the pool is depleted in combat.  At level 5, the d4 becomes a d6, and at level 10, it becomes a d8.  The X in 10+X is the level of Natural Armor.<br></html>", 
 			"11 BP at d4", "12 BP at d4", "13 BP at d4", "14 BP at d4", "15 BP at d6", "16 BP at d6", "17 BP at d6", "18 BP at d6", "19 BP at d6", "20BP at d8"),
+
+	POWER_SHIELD("Power Shield", 3, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	RESURRECTION("Resurrection", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	AIR_MANIPULATION("Air Manipulation", 5, "Description Incoming", "1D6 air damage", "1D6+2 air damage", "1D6+4 air damage, bindings available", "2D6+1 air damage", "2D6+2 air damage", "2D6+3 air damage", "2D6+4 air damage", "3D6+1 air damage", "3D6+2 air damage", "3D6+3 air damage"),
 
 	DARKNESS_MANIPULATION("Darkness Manipulation", 5, "<html><b>Governing Skills: Stealth, Willpower, Intimidation, Survival</b><br>"
 			+ "A character with Darkness Manipulation can manipulate and use the stuff of shadows to commit dark, dark acts.  This can include traveling through shadows, concealing oneself within shadows and using shadows to bind or harm others.  Darkness, however, is defined by the amount of light emanating from any particular location. There is a Shade Setting in every location, set by the amount of light.  This Shade Setting defines bonuses and damage dealt.  The brighter a location is, the more focused the shadows are, dealing more damage, but the harder it is to accrue a significant amount of shadowstuff for your efforts.  The darker it is, the more shadowstuff is available to you, but the less potent those shadows are when they strike.  A slightly overcast alleyway would be a 5 on the Shade Setting; pitch black darkness is a 10, and pure brightness is a 1.<br>"
@@ -306,6 +372,16 @@ public enum Power
 			+ "<b>Lvl. 9 - </b>At this level, a character may touch two other individuals to affect them. <br>"
 			+ "<b>Lvl. 10 - </b>At this level, a character may partially affect other individuals in the same way the character could affect themselves at Level 5. <br></html>", "Self use", "", "usable for equipment", "", "usable on packs and weapons", "", "Object/Person touch", "", "Touch two individuals", "Touch two individuals at level 5 rate"),
 
+	EARTH_MANIPULATION("Earth Manipulation", 5, "Description Incoming", "1D6 earth damage", "1D6+2 earth damage", "1D6+4 earth damage, bindings available", "2D6+1 earth damage", "2D6+2 earth damage", "2D6+3 earth damage", "2D6+4 earth damage", "3D6+1 earth damage", "3D6+2 earth damage", "3D6+3 earth damage"),
+
+	ELECTRICITY_MANIPULATION("Electricity Manipulation", 6, "Description Incoming", "1D6 electric damage", "1D6+2 electric damage", "1D6+4 electric damage, bindings available", "2D6+1 electric damage", "2D6+2 electric damage", "2D6+3 electric damage", "2D6+4 electric damage", "3D6+1 electric damage", "3D6+2 electric damage", "3D6+3 electric damage"),
+
+	ENERGY_MANIPULATION("Energy Manipulation", 9, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+	
+	FIRE_MANIPULATION("Fire Manipulation", 5, "Description Incoming", "1D6 fire damage", "1D6+2 fire damage", "1D6+4 fire damage, bindings available", "2D6+1 fire damage", "2D6+2 fire damage", "2D6+3 fire damage", "2D6+4 fire damage", "3D6+1 fire damage", "3D6+2 fire damage", "3D6+3 fire damage"),
+
+	ICE_MANIPULATION("Ice Manipulation", 5, "Description Incoming", "1D6 ice damage", "1D6+2 ice damage", "1D6+4 ice damage, bindings available", "2D6+1 ice damage", "2D6+2 ice damage", "2D6+3 ice damage", "2D6+4 ice damage", "3D6+1 ice damage", "3D6+2 ice damage", "3D6+3 ice damage"),
+
 	LIGHT_MANIPULATION("Light Manipulation", 5, "<html><b>Governing Skills: Marksmanship, Willpower, Artist</b><br>"
 			+ "This individual can harness create and harness raw light in its most primal form and focus it into basic solid construction.  Working inverse of Darkness Manipulation, Light Manipulation functions on the same Shade Setting mechanic but in the complete opposite way.  The chart is below:<br>"
 			+ "<br><b>Shade Settings:</b><br>"
@@ -331,7 +407,9 @@ public enum Power
 			+ "<b>Lvl. 9 - </b>A character may unleash a blast of light to deal 3D6+2 light damage, and they can create crude two-dimensional holographic images that lack substance but can be finely detailed.<br>"
 			+ "<b>Lvl. 10 -</b> A character may unleash a blast of light to deal 3D6+3 light damage.  A character’s two-dimensional images become three-dimensional, hard light constructs.<br></html>", "1D6 light damage, blinding flashes", "1D6+2 light damage", "1D6+4 light damage, Bindings available", "2D6+1 light damage", "2D6+2 light damage, can choose to impair", "2D6+3 light damage, Light drawing", "2D6+4 light damage", "3D6+1 light damage, 10BP Light cloak", "3D6+2 light damage",  "3D6+3 light damage, hard constructs available"),
 
+	KINETIC_MANIPULATION("Kinetic Manipulation", 8, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
+	MAGNETIC_MANIPULATION("Magnetic Manipulation", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	MATTER_MANIPULATION("Matter Manipulation", 9, "<html><b>Governing Skills: Science, Resistance, Acrobatics (Flying (Self)), Marksmanship, Physique</b><br>"
 			+ "Characters with Matter Manipulation can command different types of inorganic matter in gas, solid or liquid form.  They also can, eventually, turn their own body into raw forms of inorganic matter.  These forms of matter materialize as raw elements or basic compounds.  The character, however, cannot manipulate any form of organic matter.  An element’s number on the periodic table determines the difficulty in manipulating or creating it.<br>"
@@ -346,6 +424,7 @@ public enum Power
 			+ "<b>Lvl. 9 - </b>The hero can spontaneously create matter.  The amount available is subject to the complexity of the raw element.<br>"
 			+ "<b>Lvl. 10 - </b>The character can alter and reshape matter into complex forms with multiple forms of inorganic compounds, such as creating swing sets, dishware, etc.<br></html>", "Simple alterations", "Can create 2D6 projectiles", "Raw combinations available", "Can begin to transport elements", "Transmutations available", "Can create transportation", "Can change self composition aside from size", "Projectiles now 2D6+6", "Spontaneous matter creation", "Complex matter reshaping available"), 
 
+	MECHANICAL_MANIPULATION("Mechanical Manipulation", 8, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	PLANT_MANIPULATION("Plant Manipulation", 5, "<html><b>Governing Skills: Melee Weapons, Marksmanship, Survival</b><br>"
 			+ "This individual is in tune with the Green and can generate or alter any natural elements around them.  Generally speaking, individuals with plant manipulation feel a kinship with the Green, meaning that their relationship with the natural world is strong and affectionate.  Over time, they may become more removed from other forms of mortal creatures, and at level 10 of Plant Manipulation, the character must make a Willpower roll to determine if they will shutter themselves away inside of a cocoon of trees and flowers.  Plant Manipulation weakens the further a character gets from Earth, so a character may consider bringing many samples of dirt with them if they leave the planet - if a character is able to anchor their feet in mud, dirt or other raw earthen materials, they gain advantage on Plant Manipulation rolls.  If a character is off-Earth without any raw materials of Earth, they roll at disadvantage.<br><br>"
@@ -387,6 +466,9 @@ public enum Power
 			+ "<b>1/10 Natural Size (Lvl 9.) </b>- The following skills have their difficulty modifier lowered by 4 and gain a +7 bonus to their rolls: sneak, charm, disguise.  The following skills have their difficulty modifier increased by 6 and gain a -7 penalty to their rolls: all physique skills, physique, and intimidation.<br>"
 			+ "<b>1/10 Natural Size EXTREME (Lvl 10.)</b> - The following skills have their difficulty modifier lowered by 5 and gain a +8 bonus to their rolls: sneak, charm, disguise.  The following skills have their difficulty modifier increased by 6 and gain a -7 penalty to their rolls: all physique skills, physique, and intimidation.  In addition, the character gains advantage on the following rolls: Reflexes, Coordination.<br></html>", "UDO+1d6, size bonus and penalties +/- 1", "UDO+1d6+2, size bonus and penalties +/- 2", "UDO+1d6+4, size bonus and penalties +/- 2", "UDO+2d6, size bonus and penalties +/- 3", "UDO+2d6+2, size bonus and penalties +/- 4", "UDO+2d6+3, size bonus and penalties +/- 5", "UDO+2d6+4, size bonus and penalties +/- 5", "UDO+3d6+1, size bonus and penalties +/- 6", "UDO+3d6+2, size bonus and penalties +/- 7", "UDO+3d6+3, size bonus and penalties +8/-7"), 
 
+	SONIC_MANIPULATION("Sonic Manipulation", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	SPEED_MANIPULATION("Speed Manipulation", 7, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	WATER_MANIPULATION("Water Manipulation",5, "<html><b>Governing Skills: Melee Weapons, Marksmanship, Survival</b><br>"
 			+ "This individual is a water elemental of some sort, turning the ebbs and flow of the tides to their own purposes.  However, as an individual with an exceptional proclivity for controlling the liquid form of water, this character must also ingest a significant amount of water with regularity.  Every half an hour, this individual requires a half gallon of water to drink.  A gallon of water can take one item slot, and if they do not drink, their body point cap is reduced by 5 for each half hour without water.  Once water is ingested, their body points return to normal.<br><br>"
@@ -401,6 +483,8 @@ public enum Power
 			+ "<b>Lvl. 8 - </b>A character may unleash a torrent of water from their hands to deal 3D6+1 water damage. The character can begin to sheathe themselves in a thin but malleable external layer of bluish-clear water that has its own independent 10 Body Point statistic; this layer can last the duration of combat, but once destroyed, disappears.  <br>"
 			+ "<b>Lvl. 9 - </b>A character may unleash a torrent of water from their hands to deal 3D6+2 water damage.  The character can create rudimentary objects out of water, which hold their form so long as the character provides concentration.<br>"
 			+ "<b>Lvl. 10 -</b> A character may unleash a torrent of water from their hands to deal 3D6+3 water damage.  They can also summon up tidal force waves if they are close enough to an independent body of water, crashing down on foes and friends alike in a 5 sq. radius.<br></html>", "1D6 water damage", "1D6+2 water damage. Can create water spheres", "1D6+4 water damage. Bindings available", "2D6+1 water damage", "2D6+2 water damage", "2D6+3 water damage", "2D6+4 water damage", "3D6+1 water damage, 10BP water layer", "3D6+2 water damage", "3D6+3 water damage"), 
+
+	WEATHER_MANIPULATION("Weather Manipulation", 6, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	SORCERY("Sorcery", 8, "<html><b>Governing Skills: Arcane Lore, Languages, Willpower</b><br>"
 			+ "Sorcery is the devotion of a character to the arcane arts, practicing dark magicks.  Sorcery and wizardry are two sides of the same coin; a character with more villain points than hero points, practicing magic, utilizes sorcery.  A benefit of sorcery is that, in exchange for damaging the caster in terms of body points, the caster can reaccrue spell casting uses.<br><br>"
@@ -431,6 +515,10 @@ public enum Power
 			"2 Sigs, Unlimited Lv 1, 10 Lv 2, 7 Lv 3, 2 Lv 4", 
 			"2 Sigs, Unlimited Lv 1, Unlimited Lv 2, 8 Lv 3, 3 Lv 4", 
 			"3 Sigs, Unlimited Lv 1, Unlimited Lv 2, 10 Lv 3, 4 Lv 4"), 
+
+	SPIRIT_MANIPULATION("Spirit Manipulation", 7, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
+
+	SUMMONING("Summoning", 4, "Description Incoming", "", "", "", "", "", "", "", "", "", ""),
 
 	WIZARDRY("Wizardry", 8, "<html><b>Governing Skills: Arcane Lore, Languages, Willpower</b><br>"
 			+ "Wizardry is the focus and devotion in the study of mystical enchantments and magical wards.  Sorcery and wizardry are two sides of the same coin; a character with more hero points than villain points, practicing magic, utilizes wizardry.  A benefit of wizardry is that, in exchange for expending a Level 3 or 4 spell use, wizards can double the damage done by a cast spell.<br>"
@@ -543,15 +631,27 @@ public enum Power
 	{
 		List<Power> p = new ArrayList<Power>();
 		p.add(ANIMAL_MIMESIS);
+		p.add(BIND);
 		p.add(CHEMICAL_MIMESIS);
 		p.add(CHEMICAL_PROJECTION);
 		p.add(CLINGING);
+		p.add(DISEASE);
+		p.add(DISINTEGRATION);
+		p.add(ELASTICITY);
 		p.add(DIGESTIVE_ADAPTABILITY);
 		p.add(ENERGY_PROJECTION);
 		p.add(ENVIRONMENTAL_IMMUNITY);
+		p.add(EXTRA_BODY_PART);
+		p.add(IMMUNITY);
+		p.add(INFRAVISION);
 		p.add(INVISIBILITY);
+		p.add(LONGEVITY);
+		p.add(MICROWAVE_PROJECTION);
+		p.add(MIMICRY);
+		p.add(MULTIPLICITY);
 		p.add(NATURAL_WEAPONS);
 		p.add(PLANT_MIMESIS);
+		p.add(REDIMENSIONALITY);
 		p.add(SHAPECHANGING);
 		p.add(SONAR_SENSE);
 		p.add(SUPER_REFLEXES);
@@ -560,31 +660,65 @@ public enum Power
 		p.add(SUPER_KNOWLEDGE);
 		p.add(SUPER_PERCEPTION);
 		p.add(SUPER_PRESENCE);
+		p.add(SUPERBREATH);
 		p.add(SUPERSENSES);
+		p.add(SUSPENDED_ANIMATION);
+		p.add(SUSTENANCE);
+		p.add(ULTRAVENTRILOQUISM);
+		p.add(VAMPIRISM);
 		p.add(X_RAY_VISION);
 		p.add(ANIMATION);
+		p.add(ASTRAL_FORM);
 		p.add(EMPATHY);
 		p.add(ESP);
 		p.add(EXPLOSION);
 		p.add(EXPULSION);
 		p.add(ILLUSION);
 		p.add(LANGUAGE_COMPREHENSION);
+		p.add(MENTAL_BLAST);
+		p.add(POSSESSION);
+		p.add(POWER_SENSE);
+		p.add(PSYCHIC_BLAST);
 		p.add(PSYCHIC_MANIFESTATION);
 		p.add(SPEAK_WITH_ANIMALS);
 		p.add(SPEAK_WITH_INANIMATES);
 		p.add(SPEAK_WITH_PLANTS);
+		p.add(TELEKINESIS);
+		p.add(TELEPATHY);
+		p.add(DIMENSIONAL_TRAVEL);
 		p.add(FLIGHT);
+		p.add(SUPERJUMP);
+		p.add(TELEPORTATION);
 		p.add(ENERGY_ABSORPTION);
+		p.add(FORCEFIELD);
 		p.add(HEALING);
+		p.add(INVULNERABILITY);
+		p.add(MENTAL_SHIELD);
 		p.add(NATURAL_ARMOR);
+		p.add(POWER_SHIELD);
+		p.add(RESURRECTION);
+		p.add(AIR_MANIPULATION);
 		p.add(DARKNESS_MANIPULATION);
 		p.add(DENSITY_MANIPULATION);
+		p.add(EARTH_MANIPULATION);
+		p.add(ELECTRICITY_MANIPULATION);
+		p.add(ENERGY_MANIPULATION);
+		p.add(FIRE_MANIPULATION);
+		p.add(ICE_MANIPULATION);
 		p.add(LIGHT_MANIPULATION);
+		p.add(KINETIC_MANIPULATION);
+		p.add(MAGNETIC_MANIPULATION);
 		p.add(MATTER_MANIPULATION);
+		p.add(MECHANICAL_MANIPULATION);
 		p.add(PLANT_MANIPULATION);
 		p.add(SIZE_MANIPULATION);
+		p.add(SONIC_MANIPULATION);
+		p.add(SPEED_MANIPULATION);
 		p.add(WATER_MANIPULATION);
+		p.add(WEATHER_MANIPULATION);
 		p.add(SORCERY);
+		p.add(SPIRIT_MANIPULATION);
+		p.add(SUMMONING);
 		p.add(WIZARDRY);
 		
 		return p;

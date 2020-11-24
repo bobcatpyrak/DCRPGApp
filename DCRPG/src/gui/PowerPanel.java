@@ -139,7 +139,7 @@ public class PowerPanel extends JPanel
 			JLabel lvlLabel = new JLabel("Level: " + csp.getLevel());
 			lvlLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			lvlLabel.setHorizontalAlignment(SwingConstants.LEFT);	
-			lvlLabel.setBounds(250, 0, 50, 20);
+			lvlLabel.setBounds(pwrPanel.getWidth()-50, 0, 50, 20);
 			pwrPanel.add(lvlLabel);
 			
 			JLabel shorthandLabel = new JLabel(csp.getShorthand());

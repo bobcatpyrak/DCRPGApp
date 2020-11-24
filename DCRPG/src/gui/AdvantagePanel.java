@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -93,6 +94,7 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel advPanel = new JPanel();
 		advPanel.setBackground(new Color(255, 99, 71));
+		advPanel.setBounds(7, 7, 645, 20);
 		add(advPanel);
 		advPanel.setLayout(null);
 		
@@ -118,13 +120,13 @@ public class AdvantagePanel extends JPanel
 		});
 		
 		JPanel disadvPanel = new JPanel();
-		disadvPanel.setBounds(7, advPanel.getY()+advPanel.getHeight()+10, 745, 20);
 		disadvPanel.setBackground(new Color(32, 178, 170));
+		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 645, 20);
 		add(disadvPanel);
 		disadvPanel.setLayout(null);
 		
 		JLabel disadvLabel = new JLabel("Disadvantages");
-		disadvLabel.setBounds(634, 7, 104, 16);
+		disadvLabel.setBounds(disadvPanel.getWidth()-111, 7, 104, 16);
 		disadvLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		disadvPanel.add(disadvLabel);
 		
@@ -159,16 +161,17 @@ public class AdvantagePanel extends JPanel
 			JLabel csaLabel = new JLabel(csaStr);
 			csaLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			csaLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			csaLabel.setVerticalAlignment(SwingConstants.TOP);
 			
 			csaLabel.setBounds(27, advLocation, 500, 0);
-			for(int j = 0; j < csaStr.length(); j+=100)
+			for(int j = 0; j < csaStr.length()-20; j+=98)
 			{
 				csaLabel.setSize(500, csaLabel.getHeight()+20);
 			}
 			advPanel.add(csaLabel);
 			
 			JButton csaX = new JButton();
-			csaX.setBounds(7, advLocation+7, 16, 20);
+			csaX.setBounds(7, advLocation, 16, 20);
 			csaX.setFont(new Font("Dialog", Font.BOLD, 15));
 			csaX.setText("X");
 			csaX.setHorizontalTextPosition(JButton.LEFT);
@@ -189,7 +192,7 @@ public class AdvantagePanel extends JPanel
 		}
 		if(advs.size()==0)
 			advLocation+=20;
-		advPanel.setBounds(7, 7, 745, advLocation+7);
+		advPanel.setBounds(7, 7, 645, advLocation+7);
 
 		
 		int disadvLocation = 27;
@@ -207,9 +210,11 @@ public class AdvantagePanel extends JPanel
 			JLabel csdLabel = new JLabel(csdStr);
 			csdLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			csdLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			csdLabel.setVerticalAlignment(SwingConstants.TOP);
+
 			
-			csdLabel.setBounds(228, disadvLocation, 500, 0);
-			for(int j = 0; j < csdStr.length(); j+=100)
+			csdLabel.setBounds(128, disadvLocation, 500, 0);
+			for(int j = 0; j < csdStr.length(); j+=98)
 			{
 				csdLabel.setSize(500, csdLabel.getHeight()+20);
 			}
@@ -218,7 +223,7 @@ public class AdvantagePanel extends JPanel
 			disadvPanel.add(csdLabel);			
 			
 			JButton csdX = new JButton();
-			csdX.setBounds(208, disadvLocation+7, 16, 20);
+			csdX.setBounds(csdLabel.getX()-20, disadvLocation, 16, 20);
 			csdX.setFont(new Font("Dialog", Font.BOLD, 15));
 			csdX.setText("X");
 			csdX.setHorizontalTextPosition(JButton.LEFT);
@@ -239,9 +244,9 @@ public class AdvantagePanel extends JPanel
 		}
 		if(disadvs.size()==0)
 			disadvLocation+=20;
-		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 745, disadvLocation+7);
+		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 645, disadvLocation+7);
 		
-	    setBounds(x, y, 759, 21+advPanel.getHeight()+disadvPanel.getHeight());
+	    setBounds(x, y, 659, 21+advPanel.getHeight()+disadvPanel.getHeight());
 	    MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
 	    MainWindow.dcrpgFrame.revalidate();
 	}
@@ -345,31 +350,33 @@ public class AdvantagePanel extends JPanel
 			{
 				if(isAdv)
 				{
+					boolean duplicate = false;
+					CharacterSheetAdvantage csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA);
+					for(CharacterSheetAdvantage c : advs)
+					{
+						if (csa.getAdvStr().equals(c.getAdvStr()))
+							duplicate = true;
+					}
 					if(dispA == null)
 					{
 						warning.setText("Please select an Advantage");
 					}
+					else if(duplicate && !dispA.param())
+					{
+						warning.setText("Duplicate Advantage");
+					}
 					else if(dispA != null && dispA.param() && !param.getText().equals(""))
 					{
-						CharacterSheetAdvantage csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA, param.getText());
+						csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA, param.getText());
 						advsList.add(csa);
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
 					else if(dispA != null && !dispA.param())
 					{
-						boolean duplicate = false;
-						CharacterSheetAdvantage csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA);
-						for(CharacterSheetAdvantage c : advs)
-						{
-							if (csa.getAdvStr().equals(c.getAdvStr()))
-								duplicate = true;
-						}
-						if(!duplicate)
-							advsList.add(csa);
+						advsList.add(csa);
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
-
 					}
 					else if(dispA.param() && param.getText().equals(""))
 					{
@@ -378,24 +385,33 @@ public class AdvantagePanel extends JPanel
 				}
 				else
 				{
+					boolean duplicate = false;
+					CharacterSheetDisadvantage csd = new CharacterSheetDisadvantage(MainWindow.nextCSDId, cs.getId(), dispD);
+					for(CharacterSheetDisadvantage c : disadvs)
+					{
+						if (csd.getDisadvStr().equals(c.getDisadvStr()))
+							duplicate = true;
+					}
 					if(dispD == null)
 					{
 						warning.setText("Please select a Disadvantage");
 					}
+					else if(duplicate && !dispD.param())
+					{
+						warning.setText("Duplicate Disadvantage");
+					}
 					else if(dispD != null && dispD.param() && !param.getText().equals(""))
 					{
-						CharacterSheetDisadvantage csd = new CharacterSheetDisadvantage(MainWindow.nextCSDId, cs.getId(), dispD, param.getText());
+						csd = new CharacterSheetDisadvantage(MainWindow.nextCSDId, cs.getId(), dispD, param.getText());
 						disadvsList.add(csd);
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
 					else if(dispD != null && !dispD.param() || dispD.param() && !param.getText().equals(""))
 					{
-						CharacterSheetDisadvantage csd = new CharacterSheetDisadvantage(MainWindow.nextCSDId, cs.getId(), dispD);
 						disadvsList.add(csd);
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
-
 					}
 					else if(dispD.param() && param.getText().equals(""))
 					{

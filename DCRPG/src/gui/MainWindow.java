@@ -3536,6 +3536,8 @@ public class MainWindow {
 		advPowerPanel.setBackground(new Color(192, 192, 192));
 		advPowerPanel.setLayout(null);
 		
+		
+		
 		Panel knowledgePanel = new Panel();
 		knowledgePanel.setBounds(0, 0, 364, 279);
 		mentalStatsPanel.add(knowledgePanel);
@@ -7207,6 +7209,33 @@ public class MainWindow {
 		};
 		searchesList.addListSelectionListener(listSelectionListener);
 		
+		
+		advantagePanel.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				if(advantagePanel.getHeight() >= powerPanel.getHeight())
+					advPowerPanel.setSize(advPowerPanel.getWidth(), advantagePanel.getHeight());
+				else
+					advPowerPanel.setSize(advPowerPanel.getWidth(), powerPanel.getHeight());
+				resize(panel, advPowerPanel);
+			}
+		});
+		powerPanel.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) 
+			{
+				if(advantagePanel.getHeight() >= powerPanel.getHeight())
+					advPowerPanel.setSize(advPowerPanel.getWidth(), advantagePanel.getHeight());
+				else
+					advPowerPanel.setSize(advPowerPanel.getWidth(), powerPanel.getHeight());
+				resize(panel, advPowerPanel);
+			}
+		});
+	}
+	
+	public void resize(JPanel pane, JPanel advPow)
+	{
+		pane.setPreferredSize(new Dimension(pane.getWidth(), advPow.getY()+advPow.getHeight()+30));
 	}
 	
 	public int setPanelSize(int h1, int h2, int h3)

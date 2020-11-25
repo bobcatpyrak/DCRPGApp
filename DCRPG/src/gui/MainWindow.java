@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.text.*;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +22,6 @@ import library.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -52,17 +50,7 @@ public class MainWindow {
 	private JFormattedTextField udoField;
 	private JFormattedTextField bodyPointsField;
 	private JFormattedTextField speedField;
-	private JFormattedTextField genderField;
-	private JFormattedTextField raceField;
-	private JFormattedTextField heightField;
-	private JFormattedTextField weightField;
-	private JFormattedTextField heroPointsField;
-	private JFormattedTextField villainPointsField;
-	private JFormattedTextField powerPointsField;
-	private JFormattedTextField skillPointsField;
-	private JFormattedTextField occupationField;
-	private JFormattedTextField baseOfOperationsField;
-	private JPanel demographicsPanel;
+	private DemographicsPanel demographicsPanel;
 	private JPanel mentalStatsPanel;
 	private JPanel physStatsPanel;
 	public static JPanel advPowerPanel;
@@ -325,12 +313,12 @@ public class MainWindow {
 		
 		
 		JLabel nameLabel = new JLabel("Name");
-		nameLabel.setBounds(419, 0, 131, 42);
+		nameLabel.setBounds(468, 0, 107, 42);
 		panel.add(nameLabel);
-		nameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+		nameLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
 		nameSearchField = new JFormattedTextField();
-		nameSearchField.setBounds(10, 10, 148, 20);
+		nameSearchField.setBounds(10, 10, 148, 23);
 		panel.add(nameSearchField);
 		nameSearchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		nameSearchField.setText("(type character name)");
@@ -348,9 +336,9 @@ public class MainWindow {
 		searches.setVisible(false);
 		
 		nameField = new JFormattedTextField();
-		nameField.setBounds(560, 0, 367, 42);
+		nameField.setBounds(585, 0, 367, 42);
 		panel.add(nameField);
-		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+		nameField.setFont(new Font("Dialog", Font.PLAIN, 30));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setColumns(10);
 		nameField.addKeyListener(new KeyAdapter() 
@@ -363,328 +351,75 @@ public class MainWindow {
 		});
 		
 		
-		//load initial sheet
 		nameField.setText(currentSheet.getName());
 		
 		JLabel udoLabel = new JLabel("UDO");
-		udoLabel.setBounds(1065, 0, 90, 20);
+		udoLabel.setBounds(1112, 0, 60, 20);
 		panel.add(udoLabel);
 		
-		JLabel bodyPointsLabel = new JLabel("<html><body>  Body<br>Points</body></html>");
-		bodyPointsLabel.setBounds(925, 0, 60, 42);
+		JLabel locationLabel = new JLabel("Location");
+		locationLabel.setBounds(1112, 23, 60, 20);
+		panel.add(locationLabel);
+		
+		JLabel bodyPointsLabel = new JLabel(" Body Points");
+		bodyPointsLabel.setBounds(962, 0, 75, 20);
 		panel.add(bodyPointsLabel);
-		bodyPointsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel speedLabel = new JLabel("Speed");
-		speedLabel.setBounds(1065, 23, 90, 20);
+		speedLabel.setBounds(962, 23, 75, 20);
 		panel.add(speedLabel);
 		
-		demographicsPanel = new JPanel();
-		demographicsPanel.setBounds(35, 54, 1152, 70);
+		demographicsPanel = new DemographicsPanel(currentSheet);
 		panel.add(demographicsPanel);
-		demographicsPanel.setBackground(new Color(204, 255, 255));
-		demographicsPanel.setLayout(null);
 		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(1, 1, 54, 20);
-		demographicsPanel.add(lblGender);
 		
-		JLabel lblHeight = new JLabel("Height");
-		lblHeight.setBounds(1, 25, 90, 20);
-		demographicsPanel.add(lblHeight);
 		
-		JLabel lblWeight = new JLabel("Weight");
-		lblWeight.setBounds(1, 49, 90, 20);
-		demographicsPanel.add(lblWeight);
-		
-		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(171, 49, 74, 20);
-		demographicsPanel.add(lblHairColor);
-		
-		genderField = new JFormattedTextField();
-		genderField.setBounds(51, 1, 100, 20);
-		demographicsPanel.add(genderField);
-		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
-		genderField.setColumns(10);
-		genderField.addKeyListener(new KeyAdapter() 
+		udoField = new JFormattedTextField();
+		udoField.setBounds(1172, 0, 110, 20);
+		panel.add(udoField);
+		udoField.setHorizontalAlignment(SwingConstants.LEFT);
+		udoField.setColumns(10);
+		udoField.addKeyListener(new KeyAdapter()
 		{
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setGender(genderField.getText());
+				String[] udos = udoField.getText().split("[+]");
+				if(udos.length > 0)
+					currentSheet.setUdoDice(udos[0]);
+				if(udos.length > 1)
+					currentSheet.setUdoBonus(Integer.parseInt(udos[1]));
 			}
 		});
+		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 		
-		heightField = new JFormattedTextField();
-		heightField.setBounds(51, 25, 100, 20);
-		demographicsPanel.add(heightField);
-		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heightField.setColumns(10);
-		heightField.addKeyListener(new KeyAdapter() 
+		JFormattedTextField locationField = new JFormattedTextField();
+		locationField.setBounds(1172, 23, 110, 20);
+		panel.add(locationField);
+		locationField.setHorizontalAlignment(SwingConstants.LEFT);
+		locationField.setColumns(10);
+		locationField.addKeyListener(new KeyAdapter() 
 		{
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setHeight(heightField.getText());
+				currentSheet.setLocation(locationField.getText());
 			}
 		});
+		locationField.setValue(currentSheet.getLocation());	
 		
-		weightField = new JFormattedTextField();
-		weightField.setBounds(51, 49, 100, 20);
-		demographicsPanel.add(weightField);
-		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
-		weightField.setColumns(10);
-		weightField.addKeyListener(new KeyAdapter() 
+		bodyPointsField = new JFormattedTextField();
+		bodyPointsField.setBounds(1042, 0, 60, 20);
+		panel.add(bodyPointsField);
+		bodyPointsField.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		bodyPointsField.setHorizontalAlignment(SwingConstants.LEFT);
+		bodyPointsField.setColumns(10);
+		bodyPointsField.addKeyListener(new KeyAdapter()
 		{
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
-				currentSheet.setWeight(weightField.getText());
-			}
-		});
-		
-		JFormattedTextField hairColorField = new JFormattedTextField();
-		hairColorField.setBounds(238, 49, 100, 20);
-		demographicsPanel.add(hairColorField);
-		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		hairColorField.setColumns(10);
-		hairColorField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setHairColor(hairColorField.getText());
-			}
-		});
-		genderField.setText(currentSheet.getGender());
-		heightField.setText(currentSheet.getHeight());
-		weightField.setText(currentSheet.getWeight());
-		hairColorField.setText(currentSheet.getHairColor());
-		
-		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(171, 1, 90, 20);
-		demographicsPanel.add(lblRace);
-		
-		raceField = new JFormattedTextField();
-		raceField.setBounds(238, 1, 100, 20);
-		demographicsPanel.add(raceField);
-		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
-		raceField.setColumns(10);
-		raceField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setRace(raceField.getText());
-			}
-		});
-		raceField.setText(currentSheet.getRace());
-		
-		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(171, 25, 90, 20);
-		demographicsPanel.add(lblEyeColor);
-		
-		JFormattedTextField eyeColorField = new JFormattedTextField();
-		eyeColorField.setBounds(238, 25, 100, 20);
-		demographicsPanel.add(eyeColorField);
-		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
-		eyeColorField.setColumns(10);
-		eyeColorField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setEyeColor(eyeColorField.getText());
-			}
-		});
-		eyeColorField.setText(currentSheet.getEyeColor());
-		
-		JLabel lblFullName = new JLabel("Full Name");
-		lblFullName.setBounds(395, 1, 90, 20);
-		demographicsPanel.add(lblFullName);
-		
-		JFormattedTextField fullNameField = new JFormattedTextField();
-		fullNameField.setBounds(473, 1, 245, 20);
-		demographicsPanel.add(fullNameField);
-		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
-		fullNameField.setColumns(10);
-		fullNameField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setFullName(fullNameField.getText());
-			}
-		});
-		fullNameField.setText(currentSheet.getFullName());
-		
-		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(395, 25, 74, 20);
-		demographicsPanel.add(lblOccupation);
-		
-		occupationField = new JFormattedTextField();
-		occupationField.setBounds(473, 25, 245, 20);
-		demographicsPanel.add(occupationField);
-		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
-		occupationField.setColumns(10);
-		occupationField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setOccupation(occupationField.getText());
-			}
-		});
-		occupationField.setText(currentSheet.getOccupation());
-		
-				
-		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(395, 49, 90, 20);
-		demographicsPanel.add(lblHomeBase);
-		
-		baseOfOperationsField = new JFormattedTextField();
-		baseOfOperationsField.setBounds(473, 49, 245, 20);
-		demographicsPanel.add(baseOfOperationsField);
-		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		baseOfOperationsField.setColumns(10);
-		baseOfOperationsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setBaseOfOperations(baseOfOperationsField.getText());
-			}
-		});
-		baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
-		
-		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(788, 1, 90, 20);
-		demographicsPanel.add(lblHeroPoints);
-		
-				
-		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(788, 25, 74, 20);
-		demographicsPanel.add(lblVillainPoints);
-		
-		JLabel lblAvailableRenown = new JLabel("Renown");
-		lblAvailableRenown.setBounds(788, 49, 90, 20);
-		demographicsPanel.add(lblAvailableRenown);
-		
-		heroPointsField = new JFormattedTextField();
-		heroPointsField.setBounds(871, 1, 86, 20);
-		demographicsPanel.add(heroPointsField);
-		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		heroPointsField.setColumns(10);
-		heroPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setHeroPoints(heroPointsField.getText());
-			}
-		});
-		heroPointsField.setValue(currentSheet.getHeroPoints());
-		
-		villainPointsField = new JFormattedTextField();
-		villainPointsField.setBounds(871, 25, 86, 20);
-		demographicsPanel.add(villainPointsField);
-		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		villainPointsField.setColumns(10);
-		villainPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setVillainPoints(villainPointsField.getText());
-			}
-		});
-		villainPointsField.setValue(currentSheet.getVillainPoints());
-		
-		JFormattedTextField availableRenownField = new JFormattedTextField();
-		availableRenownField.setBounds(871, 49, 86, 20);
-		demographicsPanel.add(availableRenownField);
-		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
-		availableRenownField.setColumns(10);
-		availableRenownField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setAvailableRenown(availableRenownField.getText());
-			}
-		});
-		availableRenownField.setValue(currentSheet.getAvailableRenown());
-		
-				
-		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(973, 1, 90, 20);
-		demographicsPanel.add(lblPowerPoints);
-		
-				
-		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(973, 25, 90, 20);
-		demographicsPanel.add(lblSkillPoints);
-		
-		powerPointsField = new JFormattedTextField();
-		powerPointsField.setBounds(1056, 1, 86, 20);
-		demographicsPanel.add(powerPointsField);
-		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		powerPointsField.setColumns(10);
-		powerPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setPowerPoints(powerPointsField.getText());
-			}
-		});
-		powerPointsField.setValue(currentSheet.getPowerPoints());
-		
-				
-		skillPointsField = new JFormattedTextField();
-		skillPointsField.setBounds(1056, 25, 86, 20);
-		demographicsPanel.add(skillPointsField);
-		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
-		skillPointsField.setColumns(10);
-		skillPointsField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				currentSheet.setSkillPoints(skillPointsField.getText());
-			}
-		});
-		skillPointsField.setValue(currentSheet.getSkillPoints());
-		
-			udoField = new JFormattedTextField();
-			udoField.setBounds(1112, 0, 75, 20);
-			panel.add(udoField);
-			udoField.setHorizontalAlignment(SwingConstants.RIGHT);
-			udoField.setColumns(10);
-			udoField.addKeyListener(new KeyAdapter()////////////////this doesn't work
-			{
-				@Override
-				public void keyReleased(KeyEvent e) 
-				{
-					String[] udos = udoField.getText().split("[+]");
-					if(udos.length > 0)
-						currentSheet.setUdoDice(udos[0]);
-					if(udos.length > 1)
-						currentSheet.setUdoBonus(Integer.parseInt(udos[1]));
-				}
-			});
-			udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
-			
-			bodyPointsField = new JFormattedTextField();
-			bodyPointsField.setBounds(979, 0, 75, 43);
-			panel.add(bodyPointsField);
-			bodyPointsField.setFont(new Font("Arial", Font.BOLD, 20));
-			bodyPointsField.setHorizontalAlignment(SwingConstants.CENTER);
-			bodyPointsField.setColumns(10);
-			bodyPointsField.addKeyListener(new KeyAdapter()
-			{
-				@Override
-				public void keyReleased(KeyEvent e) 
+				if(bodyPointsField.getText().contains("/"))
 				{
 					String[] bps = bodyPointsField.getText().split("/");
 					if(bps.length > 0)
@@ -692,28 +427,29 @@ public class MainWindow {
 					if(bps.length > 1)
 						currentSheet.setBodyPointsMax(Integer.parseInt(bps[1]));
 				}
-			});
-			bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+			}
+		});
+		bodyPointsField.setText("100/100");
 			
 					
-					speedField = new JFormattedTextField();
-					speedField.setBounds(1112, 23, 75, 20);
-					panel.add(speedField);
-					speedField.setHorizontalAlignment(SwingConstants.RIGHT);
-					speedField.setColumns(10);
-					speedField.addKeyListener(new KeyAdapter() 
-					{
-						@Override
-						public void keyReleased(KeyEvent e) 
-						{
-							currentSheet.setSpeed(speedField.getText());
-						}
-					});
-					speedField.setValue(currentSheet.getSpeed());			
+		speedField = new JFormattedTextField();
+		speedField.setBounds(1042, 23, 60, 20);
+		panel.add(speedField);
+		speedField.setHorizontalAlignment(SwingConstants.LEFT);
+		speedField.setColumns(10);
+		speedField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setSpeed(speedField.getText());
+			}
+		});
+		speedField.setValue(currentSheet.getSpeed());			
 					
 							
 							JButton btnNew = new JButton("New");
-							btnNew.setBounds(247, 10, 69, 23);
+							btnNew.setBounds(243, 10, 65, 23);
 							panel.add(btnNew);
 							
 							physStatsPanel = new JPanel();
@@ -6496,11 +6232,11 @@ public class MainWindow {
 		advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 		
 		JButton btnLoad = new JButton("Load");
-		btnLoad.setBounds(167, 10, 69, 23);
+		btnLoad.setBounds(168, 10, 65, 23);
 		panel.add(btnLoad);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(329, 10, 69, 23);
+		btnSave.setBounds(318, 10, 65, 23);
 		panel.add(btnSave);
 				
 		
@@ -6523,10 +6259,14 @@ public class MainWindow {
 		imgLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(1217, 23, 300, 350);
+		imgLabel.setBounds(1217, 53, 300, 350);
 		panel.add(imgLabel);
 		
 	    imgLabel.setTransferHandler(new ImageSelection());	    
+	    
+	    JButton btnCopy = new JButton("Copy");
+	    btnCopy.setBounds(393, 10, 65, 23);
+	    panel.add(btnCopy);
 	    
 	    MouseListener listener = new MouseAdapter() {
 	      public void mousePressed(MouseEvent me) {
@@ -6783,24 +6523,13 @@ public class MainWindow {
 								
 							currentSheet = s;
 							// load the entire dang sheet
+							demographicsPanel.setNewCharacter(currentSheet);
 							nameField.setText(currentSheet.getName());
-							fullNameField.setText(currentSheet.getFullName());
-							occupationField.setText(currentSheet.getOccupation());
-							baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
-							genderField.setText(currentSheet.getGender());
-							raceField.setText(currentSheet.getRace());
-							heightField.setText(currentSheet.getHeight());
-							weightField.setText(currentSheet.getWeight());
-							eyeColorField.setText(currentSheet.getEyeColor());
-							hairColorField.setText(currentSheet.getHairColor());
-							heroPointsField.setText(currentSheet.getHeroPoints());
-							villainPointsField.setText(currentSheet.getVillainPoints());
-							availableRenownField.setText(currentSheet.getAvailableRenown());
-							powerPointsField.setText(currentSheet.getPowerPoints());
-							skillPointsField.setText(currentSheet.getSkillPoints());
+						
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
+							locationField.setValue(currentSheet.getLocation());
 							
 							
 							imgChange = false;
@@ -7015,23 +6744,13 @@ public class MainWindow {
 				nameSearchField.setText("");
 				// load the entire dang sheet
 				nameField.setText(currentSheet.getName());
-				fullNameField.setText(currentSheet.getFullName());
-				occupationField.setText(currentSheet.getOccupation());
-				baseOfOperationsField.setText(currentSheet.getBaseOfOperations());
-				genderField.setText(currentSheet.getGender());
-				raceField.setText(currentSheet.getRace());
-				heightField.setText(currentSheet.getHeight());
-				weightField.setText(currentSheet.getWeight());
-				eyeColorField.setText(currentSheet.getEyeColor());
-				hairColorField.setText(currentSheet.getHairColor());
-				heroPointsField.setText(currentSheet.getHeroPoints());
-				villainPointsField.setText(currentSheet.getVillainPoints());
-				availableRenownField.setText(currentSheet.getAvailableRenown());
-				powerPointsField.setText(currentSheet.getPowerPoints());
-				skillPointsField.setText(currentSheet.getSkillPoints());
+				demographicsPanel.setNewCharacter(currentSheet);
+				
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
+				locationField.setValue(currentSheet.getLocation());
+
 
 				imgChange = false;
 				try

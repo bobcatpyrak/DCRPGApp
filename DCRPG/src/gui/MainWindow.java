@@ -338,7 +338,7 @@ public class MainWindow {
 		nameField = new JFormattedTextField();
 		nameField.setBounds(585, 0, 367, 42);
 		panel.add(nameField);
-		nameField.setFont(new Font("Dialog", Font.PLAIN, 30));
+		nameField.setFont(new Font("Dialog", Font.PLAIN, 24));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setColumns(10);
 		nameField.addKeyListener(new KeyAdapter() 

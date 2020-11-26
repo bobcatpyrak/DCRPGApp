@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import business.CharacterSheet;
+import business.Item;
+
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -30,6 +32,10 @@ public class EquipmentTab extends JScrollPane
 		panel.setLayout(null);
 		panel.setSize(1894,  1008);
 		panel.setPreferredSize(new Dimension(1894, 1008));
+		
+		Item i = new Item("Test", "nein iron.png");
+		i.setLocation(100, 100);
+		panel.add(i);
 		
 	}
 	

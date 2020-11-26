@@ -169,9 +169,31 @@ public class MainWindow {
 			{
 				e.printStackTrace();
 			}
+		// Creates a folder for character images if doesn't exist
+		String imgSheetString = "images/sheets";
+		Path imgSheetPath = Paths.get(imgSheetString);
+		if (Files.notExists(imgSheetPath))
+			try 
+			{
+				Files.createDirectories(imgSheetPath);
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		// Creates a folder for item images if doesn't exist
+		String imgItemString = "images/items";
+		Path imgItemPath = Paths.get(imgItemString);
+		if (Files.notExists(imgItemPath))
+			try 
+			{
+				Files.createDirectories(imgItemPath);
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 	}
-	
-
 	
 	
 	/**
@@ -6257,7 +6279,7 @@ public class MainWindow {
 		img = null;
 		try 
 		{
-		    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+		    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
 		    img = Scalr.resize(img, 300, 350);
 		    icon.setImage(img);
 		} catch (IOException e) {
@@ -6469,7 +6491,7 @@ public class MainWindow {
 						    icon.setImage(img);
 						    String n = currentSheet.getName().toLowerCase();
 						    
-						    File outputfile = new File("images/"+n+".png");
+						    File outputfile = new File("images/sheets/"+n+".png");
 						    ImageIO.write(img, "png", outputfile);
 						} catch (IOException e) {
 							System.out.println(e);
@@ -6545,10 +6567,10 @@ public class MainWindow {
 							imgChange = false;
 							try 
 							{
-							    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+							    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
 							    imgLabel.setIcon(null);
 								img = null;
-							    img = ImageIO.read(new File("images/"+currentSheet.getPicture()));
+							    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
 							    img = Scalr.resize(img, 300, 350);
 							    icon.setImage(img);
 							    imgLabel.setIcon(icon);
@@ -6558,7 +6580,7 @@ public class MainWindow {
 								{
 									imgLabel.setIcon(null);
 									img = null;
-								    img = ImageIO.read(new File("images/blank.png"));
+								    img = ImageIO.read(new File("images/sheets/blank.png"));
 								    img = Scalr.resize(img, 300, 350);
 								    icon.setImage(img);
 								    imgLabel.setIcon(icon);
@@ -6767,7 +6789,7 @@ public class MainWindow {
 				{
 					imgLabel.setIcon(null);
 					img = null;
-					img = ImageIO.read(new File("images/blank.png"));
+					img = ImageIO.read(new File("images/sheets/blank.png"));
 					img = Scalr.resize(img, 300, 350);
 					icon.setImage(img);
 					imgLabel.setIcon(icon);

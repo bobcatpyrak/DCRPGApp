@@ -295,10 +295,22 @@ public class MainWindow {
 		
 		dcrpgFrame.getContentPane().setLayout(null);
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 1902, 1039);
+		dcrpgFrame.getContentPane().add(tabbedPane);
+		//tabbedPane.setVisible(true);
+				
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
+		tabbedPane.addTab("Character Sheet", null, scrollPane, null);
 		scrollPane.setPreferredSize(new Dimension(1902, 1039));
-		dcrpgFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		//dcrpgFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
+		EquipmentTab etab = new EquipmentTab(currentSheet);
+		tabbedPane.addTab("Equipment", null, etab, null);
+
+		
+		
 		
 		panel = new JPanel();
 		scrollPane.setViewportView(panel);
@@ -308,6 +320,7 @@ public class MainWindow {
 		dcrpgFrame.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
         		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
+        		etab.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
             }
         });
 		
@@ -370,9 +383,7 @@ public class MainWindow {
 		panel.add(speedLabel);
 		
 		demographicsPanel = new DemographicsPanel(currentSheet);
-		panel.add(demographicsPanel);
-		
-		
+		panel.add(demographicsPanel);	
 		
 		udoField = new JFormattedTextField();
 		udoField.setBounds(1172, 0, 110, 20);
@@ -448,45 +459,57 @@ public class MainWindow {
 		speedField.setValue(currentSheet.getSpeed());			
 					
 							
-							JButton btnNew = new JButton("New");
-							btnNew.setBounds(243, 10, 65, 23);
-							panel.add(btnNew);
+		JButton btnNew = new JButton("New");
+		btnNew.setBounds(243, 10, 65, 23);
+		panel.add(btnNew);
+		
+		JButton btnLoad = new JButton("Load");
+		btnLoad.setBounds(168, 10, 65, 23);
+		panel.add(btnLoad);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(318, 10, 65, 23);
+		panel.add(btnSave);
+		
+	    JButton btnCopy = new JButton("Copy");
+	    btnCopy.setBounds(393, 10, 65, 23);
+	    panel.add(btnCopy);
 							
-							physStatsPanel = new JPanel();
-							physStatsPanel.setBounds(35, 154, 1152, 247);
-							panel.add(physStatsPanel);
-							physStatsPanel.setBackground(new Color(192, 192, 192));
-							physStatsPanel.setLayout(null);
-							
-							Panel reflexesPanel = new Panel();
-							reflexesPanel.setBounds(0, 0, 364, 247);
-							physStatsPanel.add(reflexesPanel);
-							reflexesPanel.setBackground(new Color(255, 51, 51));
-							reflexesPanel.setLayout(null);
-							
-							Label reflexesLabel = new Label("Reflexes");
-							reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-							reflexesLabel.setBounds(132, 10, 90, 30);
-							reflexesPanel.add(reflexesLabel);
-							
-							JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
-							reflexesLevel.setColumns(2);
-							reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
-							reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
-							reflexesLevel.setBounds(299, 10, 50, 35);
-							reflexesPanel.add(reflexesLevel);
-							
-							Panel acroPanel = new Panel();
-							acroPanel.setBackground(new Color(255, 153, 153));
-							acroPanel.setBounds(5, 50, 354, 32);
-							reflexesPanel.add(acroPanel);
-							acroPanel.setLayout(null);
-							
-							Label acroLabel = new Label("Acrobatics");
-							acroLabel.setBounds(35, 5, 120, 22);
-							acroPanel.add(acroLabel);
-							acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-							
+		physStatsPanel = new JPanel();
+		physStatsPanel.setBounds(35, 154, 1152, 247);
+		panel.add(physStatsPanel);
+		physStatsPanel.setBackground(new Color(192, 192, 192));
+		physStatsPanel.setLayout(null);
+
+		Panel reflexesPanel = new Panel();
+		reflexesPanel.setBounds(0, 0, 364, 247);
+		physStatsPanel.add(reflexesPanel);
+		reflexesPanel.setBackground(new Color(255, 51, 51));
+		reflexesPanel.setLayout(null);
+
+		Label reflexesLabel = new Label("Reflexes");
+		reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
+		reflexesLabel.setBounds(132, 10, 90, 30);
+		reflexesPanel.add(reflexesLabel);
+
+		JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
+		reflexesLevel.setColumns(2);
+		reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
+		reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		reflexesLevel.setBounds(299, 10, 50, 35);
+		reflexesPanel.add(reflexesLevel);
+
+		Panel acroPanel = new Panel();
+		acroPanel.setBackground(new Color(255, 153, 153));
+		acroPanel.setBounds(5, 50, 354, 32);
+		reflexesPanel.add(acroPanel);
+		acroPanel.setLayout(null);
+
+		Label acroLabel = new Label("Acrobatics");
+		acroLabel.setBounds(35, 5, 120, 22);
+		acroPanel.add(acroLabel);
+		acroLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+
 		JFormattedTextField acroTotal = new JFormattedTextField();
 		acroTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		acroTotal.setColumns(2);
@@ -552,9 +575,7 @@ public class MainWindow {
 		dodgeLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		dodgeLevel.setBounds(5, 7, 24, 20);
 		dodgePanel.add(dodgeLevel);
-		
-
-		
+			
 		Panel handToHandPanel = new Panel();
 		handToHandPanel.setLayout(null);
 		handToHandPanel.setBackground(new Color(255, 153, 153));
@@ -565,137 +586,137 @@ public class MainWindow {
 		handToHandLabel.setFont(new Font("Verdana", Font.BOLD, 13));
 		handToHandLabel.setBounds(35, 5, 120, 22);
 		handToHandPanel.add(handToHandLabel);
-		
-				JFormattedTextField handToHandTotal = new JFormattedTextField();
-				handToHandTotal.setColumns(2);
-				handToHandTotal.setEditable(false);
-				handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
-				handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
-				handToHandTotal.setBounds(294, 5, 50, 22);
-				handToHandPanel.add(handToHandTotal);
-				
-				JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
-				handToHandLevel.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) {
-						if(handToHandLevel.getText().matches("[0-9]+"))
-						{
-							int i = Integer.parseInt(handToHandLevel.getText());
-							int j = Integer.parseInt(reflexesLevel.getText());
-							currentSheet.setHandToHand(i);
-							handToHandTotal.setValue(i+j);	
-						}
-					}
-				});
-				handToHandLevel.setColumns(2);
-				handToHandLevel.setFont(new Font("Arial", Font.BOLD, 14));
-				handToHandLevel.setHorizontalAlignment(SwingConstants.CENTER);
-				handToHandLevel.setBounds(5, 5, 24, 22);
-				handToHandPanel.add(handToHandLevel);
-				
-				
-				
-				Panel meleeWeaponsPanel = new Panel();
-				meleeWeaponsPanel.setLayout(null);
-				meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
-				meleeWeaponsPanel.setBounds(5, 146, 354, 32);
-				reflexesPanel.add(meleeWeaponsPanel);
-				
-				Label meleeWeaponsLabel = new Label("Melee Weapons");
-				meleeWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-				meleeWeaponsLabel.setBounds(35, 5, 120, 22);
-				meleeWeaponsPanel.add(meleeWeaponsLabel);
-				
-				JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
-				meleeWeaponsTotal.setColumns(2);
-				meleeWeaponsTotal.setEditable(false);
-				meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
-				meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
-				meleeWeaponsTotal.setBounds(294, 5, 50, 22);
-				meleeWeaponsPanel.add(meleeWeaponsTotal);
-				
-				JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
-				meleeWeaponsLevel.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) {
-						if(meleeWeaponsLevel.getText().matches("[0-9]+"))
-						{
-							int i = Integer.parseInt(meleeWeaponsLevel.getText());
-							int j = Integer.parseInt(reflexesLevel.getText());
-							currentSheet.setMeleeWeapons(i);
-							meleeWeaponsTotal.setValue(i+j);	
-						}
-					}
-				});
-				meleeWeaponsLevel.setColumns(2);
-				meleeWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
-				meleeWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
-				meleeWeaponsLevel.setBounds(5, 7, 24, 20);
-				meleeWeaponsPanel.add(meleeWeaponsLevel);
-				
-				
-				
-				Panel stealthPanel = new Panel();
-				stealthPanel.setLayout(null);
-				stealthPanel.setBackground(new Color(255, 153, 153));
-				stealthPanel.setBounds(5, 178, 354, 32);
-				reflexesPanel.add(stealthPanel);
-				
-				Label stealthLabel = new Label("Stealth");
-				stealthLabel.setFont(new Font("Verdana", Font.BOLD, 13));
-				stealthLabel.setBounds(35, 5, 120, 22);
-				stealthPanel.add(stealthLabel);
-				
-				JFormattedTextField stealthTotal = new JFormattedTextField();
-				stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
-				stealthTotal.setColumns(2);
-				stealthTotal.setEditable(false);
-				stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
-				stealthTotal.setBounds(294, 5, 50, 22);
-				stealthPanel.add(stealthTotal);
-				
-				JFormattedTextField stealthLevel = new JFormattedTextField(nums);
-				stealthLevel.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) {
-						if(stealthLevel.getText().matches("[0-9]+"))
-						{
-							int i = Integer.parseInt(stealthLevel.getText());
-							int j = Integer.parseInt(reflexesLevel.getText());
-							currentSheet.setStealth(i);
-							stealthTotal.setValue(i+j);	
-						}
-					}
-				});
-				stealthLevel.setColumns(2);
-				stealthLevel.setHorizontalAlignment(SwingConstants.CENTER);
-				stealthLevel.setFont(new Font("Arial", Font.BOLD, 14));
-				stealthLevel.setBounds(5, 5, 24, 22);
-				stealthPanel.add(stealthLevel);
-				
-				reflexesLevel.addKeyListener(new KeyAdapter() {
-					@Override
-					public void keyReleased(KeyEvent e) {
-						if(reflexesLevel.getText().matches("[0-9]+"))
-						{
-							int i = Integer.parseInt(reflexesLevel.getText());
-							int j = Integer.parseInt(acroLevel.getText());
-							int k = Integer.parseInt(dodgeLevel.getText());
-							int l = Integer.parseInt(handToHandLevel.getText());
-							int m = Integer.parseInt(meleeWeaponsLevel.getText());
-							int n = Integer.parseInt(stealthLevel.getText());
 
-							currentSheet.setReflexes(i);
-							acroTotal.setValue(i+j);
-							dodgeTotal.setValue(i+k);
-							handToHandTotal.setValue(i+l);	
-							meleeWeaponsTotal.setValue(i+m);
-							stealthTotal.setValue(i+n);
-						}
-					}
-				});
-				
-				
+		JFormattedTextField handToHandTotal = new JFormattedTextField();
+		handToHandTotal.setColumns(2);
+		handToHandTotal.setEditable(false);
+		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		handToHandTotal.setBounds(294, 5, 50, 22);
+		handToHandPanel.add(handToHandTotal);
+
+		JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
+		handToHandLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(handToHandLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(handToHandLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setHandToHand(i);
+					handToHandTotal.setValue(i+j);	
+				}
+			}
+		});
+		handToHandLevel.setColumns(2);
+		handToHandLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		handToHandLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		handToHandLevel.setBounds(5, 5, 24, 22);
+		handToHandPanel.add(handToHandLevel);
+
+
+
+		Panel meleeWeaponsPanel = new Panel();
+		meleeWeaponsPanel.setLayout(null);
+		meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
+		meleeWeaponsPanel.setBounds(5, 146, 354, 32);
+		reflexesPanel.add(meleeWeaponsPanel);
+
+		Label meleeWeaponsLabel = new Label("Melee Weapons");
+		meleeWeaponsLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		meleeWeaponsLabel.setBounds(35, 5, 120, 22);
+		meleeWeaponsPanel.add(meleeWeaponsLabel);
+
+		JFormattedTextField meleeWeaponsTotal = new JFormattedTextField();
+		meleeWeaponsTotal.setColumns(2);
+		meleeWeaponsTotal.setEditable(false);
+		meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		meleeWeaponsTotal.setBounds(294, 5, 50, 22);
+		meleeWeaponsPanel.add(meleeWeaponsTotal);
+
+		JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
+		meleeWeaponsLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(meleeWeaponsLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(meleeWeaponsLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setMeleeWeapons(i);
+					meleeWeaponsTotal.setValue(i+j);	
+				}
+			}
+		});
+		meleeWeaponsLevel.setColumns(2);
+		meleeWeaponsLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		meleeWeaponsLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		meleeWeaponsLevel.setBounds(5, 7, 24, 20);
+		meleeWeaponsPanel.add(meleeWeaponsLevel);
+
+
+
+		Panel stealthPanel = new Panel();
+		stealthPanel.setLayout(null);
+		stealthPanel.setBackground(new Color(255, 153, 153));
+		stealthPanel.setBounds(5, 178, 354, 32);
+		reflexesPanel.add(stealthPanel);
+
+		Label stealthLabel = new Label("Stealth");
+		stealthLabel.setFont(new Font("Verdana", Font.BOLD, 13));
+		stealthLabel.setBounds(35, 5, 120, 22);
+		stealthPanel.add(stealthLabel);
+
+		JFormattedTextField stealthTotal = new JFormattedTextField();
+		stealthTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		stealthTotal.setColumns(2);
+		stealthTotal.setEditable(false);
+		stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
+		stealthTotal.setBounds(294, 5, 50, 22);
+		stealthPanel.add(stealthTotal);
+
+		JFormattedTextField stealthLevel = new JFormattedTextField(nums);
+		stealthLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(stealthLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(stealthLevel.getText());
+					int j = Integer.parseInt(reflexesLevel.getText());
+					currentSheet.setStealth(i);
+					stealthTotal.setValue(i+j);	
+				}
+			}
+		});
+		stealthLevel.setColumns(2);
+		stealthLevel.setHorizontalAlignment(SwingConstants.CENTER);
+		stealthLevel.setFont(new Font("Arial", Font.BOLD, 14));
+		stealthLevel.setBounds(5, 5, 24, 22);
+		stealthPanel.add(stealthLevel);
+
+		reflexesLevel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(reflexesLevel.getText().matches("[0-9]+"))
+				{
+					int i = Integer.parseInt(reflexesLevel.getText());
+					int j = Integer.parseInt(acroLevel.getText());
+					int k = Integer.parseInt(dodgeLevel.getText());
+					int l = Integer.parseInt(handToHandLevel.getText());
+					int m = Integer.parseInt(meleeWeaponsLevel.getText());
+					int n = Integer.parseInt(stealthLevel.getText());
+
+					currentSheet.setReflexes(i);
+					acroTotal.setValue(i+j);
+					dodgeTotal.setValue(i+k);
+					handToHandTotal.setValue(i+l);	
+					meleeWeaponsTotal.setValue(i+m);
+					stealthTotal.setValue(i+n);
+				}
+			}
+		});
+
+
 		reflexesLevel.setValue(currentSheet.getReflexes());
 		acroLevel.setValue(currentSheet.getAcrobatics());
 		dodgeLevel.setValue(currentSheet.getDodge());
@@ -1276,6 +1297,7 @@ public class MainWindow {
 		resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
 		runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
 		swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
+		
 		JCheckBox chckbxAcro = new JCheckBox("Show specs");
 		chckbxAcro.addItemListener(new ItemListener() 
 		{
@@ -6231,16 +6253,7 @@ public class MainWindow {
 		int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 		advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 		
-		JButton btnLoad = new JButton("Load");
-		btnLoad.setBounds(168, 10, 65, 23);
-		panel.add(btnLoad);
-		
-		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(318, 10, 65, 23);
-		panel.add(btnSave);
-				
-		
-		icon = new ImageIcon(currentSheet.getPicture());
+		icon = new ImageIcon();
 		img = null;
 		try 
 		{
@@ -6263,10 +6276,6 @@ public class MainWindow {
 		panel.add(imgLabel);
 		
 	    imgLabel.setTransferHandler(new ImageSelection());	    
-	    
-	    JButton btnCopy = new JButton("Copy");
-	    btnCopy.setBounds(393, 10, 65, 23);
-	    panel.add(btnCopy);
 	    
 	    MouseListener listener = new MouseAdapter() {
 	      public void mousePressed(MouseEvent me) {
@@ -6524,8 +6533,9 @@ public class MainWindow {
 							currentSheet = s;
 							// load the entire dang sheet
 							demographicsPanel.setNewCharacter(currentSheet);
-							nameField.setText(currentSheet.getName());
-						
+							etab.setNewCharacter(currentSheet);
+							
+							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
@@ -6745,7 +6755,7 @@ public class MainWindow {
 				// load the entire dang sheet
 				nameField.setText(currentSheet.getName());
 				demographicsPanel.setNewCharacter(currentSheet);
-				
+				etab.setNewCharacter(currentSheet);				
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());

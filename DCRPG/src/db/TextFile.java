@@ -13,6 +13,7 @@ public class TextFile implements DAO<CharacterSheet>
 	private List<CharacterSheetAdvantage> advs = null;
 	private List<CharacterSheetDisadvantage> disadvs = null;
 	private List<CharacterSheetPower> powers = null;
+	private List<Inventory> invs = null;
 	private Path sheetsPath = null;
 	private File sheetsFile = null;
 	private final String FIELD_SEP = "\t";
@@ -28,6 +29,7 @@ public class TextFile implements DAO<CharacterSheet>
 		advs = getAllCSA();
 		disadvs = getAllCSD();
 		powers = getAllCSP();
+		invs = getAllInv();
 		sheets = getAllSheets();
 	}
 	@Override
@@ -54,6 +56,10 @@ public class TextFile implements DAO<CharacterSheet>
 	public CharacterSheetPower getCSP(int id) 
 	{
 		return powers.get(id);
+	}
+	public Inventory getInv(int id)
+	{
+		return invs.get(id);
 	}
 	
 	@Override
@@ -145,6 +151,7 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setCSA(advs);
 							cs.setCSD(disadvs);
 							cs.setCSP(powers);
+							cs.setInv(invs);
 							sheets.add(cs);
 							line = in.readLine();
 						}
@@ -394,6 +401,59 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}	
+	public List<Inventory> getAllInv() 
+	{	
+		if(invs != null)
+			return invs;
+		
+		invs = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
+				{
+					if (line.equals("$$InventoryBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$InventoryEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							Inventory i = new Inventory(Integer.parseInt(fields[0]));
+							i.setInventory(fields[1], fields[2]);
+							invs.add(i);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				return invs;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}	
 	
 	@Override
 	public boolean add(CharacterSheet t) 
@@ -424,6 +484,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean addCSP(CharacterSheetPower t) 
 	{
 		powers.add(t);
+		return true;
+	}
+	public boolean addInv(Inventory t) 
+	{
+		invs.add(t);
 		return true;
 	}
 
@@ -510,6 +575,21 @@ public class TextFile implements DAO<CharacterSheet>
 		}
 		return true;
 	}
+	public boolean updateInv(Inventory t) 
+	{
+		int index = -1;
+		for(Inventory i : invs)
+		{
+			if(i.getCharacterSheetId()==t.getCharacterSheetId())
+				index = invs.indexOf(i);
+		}
+		if(index >= 0)
+		{
+			invs.remove(index);
+			invs.add(index, t);
+		}
+		return true;
+	}
 
 	@Override
 	public boolean delete(CharacterSheet t) 
@@ -540,6 +620,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean deleteCSP(CharacterSheetPower t) 
 	{
 		powers.remove(t);
+		return true;
+	}
+	public boolean deleteInv(Inventory t) 
+	{
+		invs.remove(t);
 		return true;
 	}
 
@@ -592,6 +677,14 @@ public class TextFile implements DAO<CharacterSheet>
 				+ FIELD_SEP + csp.getCost() + FIELD_SEP + csp.getSpecs() + FIELD_SEP + csp.getWeakness());
 			}
 			out.println("$$CharacterSheetPowerEnd$$");
+			out.println();
+			// Inventory
+			out.println("$$InventoryBegin$$");
+			for (Inventory i : invs)
+			{
+				out.println(i.getCharacterSheetId() + FIELD_SEP + i.getAllHeld() + FIELD_SEP + i.getStorageSplit());
+			}
+			out.println("$$InventoryEnd$$");
 			out.println();
 			return true;
 		}

@@ -35,6 +35,7 @@ public class MainWindow {
 	private static List<CharacterSheetAdvantage> advs;
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static List<CharacterSheetPower> powers;
+	private static List<Inventory> invs;
 	private static CharacterSheet currentSheet;
 	
 	public static int nextSheetId;
@@ -77,6 +78,7 @@ public class MainWindow {
 		advs = dao.getAllCSA();
 		disadvs = dao.getAllCSD();
 		powers = dao.getAllCSP();
+		invs = dao.getAllInv();
 		
 		nextSheetId = 0;
 		nextSpecId = 0;
@@ -6555,7 +6557,7 @@ public class MainWindow {
 							currentSheet = s;
 							// load the entire dang sheet
 							demographicsPanel.setNewCharacter(currentSheet);
-							etab.setNewCharacter(currentSheet);
+							etab.setNewCharacter(currentSheet, currentSheet.getInv());
 							
 							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
@@ -6777,7 +6779,7 @@ public class MainWindow {
 				// load the entire dang sheet
 				nameField.setText(currentSheet.getName());
 				demographicsPanel.setNewCharacter(currentSheet);
-				etab.setNewCharacter(currentSheet);				
+				etab.setNewCharacter(currentSheet, currentSheet.getInv());				
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());

@@ -44,11 +44,13 @@ public class CharacterSheet
 	List<CharacterSheetAdvantage> advs = new ArrayList<CharacterSheetAdvantage>();
 	List<CharacterSheetDisadvantage> disadvs = new ArrayList<CharacterSheetDisadvantage>();
 	List<CharacterSheetPower> pwrs = new ArrayList<CharacterSheetPower>();
+	Inventory inventory;
 	
 	public CharacterSheet(int id)
 	{
 		this.id = id;
 		speed = "3";
+		inventory = new Inventory(id);
 	}
 	
 	
@@ -508,6 +510,24 @@ public class CharacterSheet
 		return pwrs;
 	}
 	
+	// Inventory Methods
+	public void setInv(List<Inventory> invDAO)
+	{
+		inventory = null;
+		for(Inventory i : invDAO)
+		{
+			if(i.getCharacterSheetId() == id)
+			{
+				inventory = i;
+				break;
+			}
+		}
+	}
+	
+	public Inventory getInv()
+	{
+		return inventory;
+	}
 	
 	// Methods for getting and setting all demographics
 	public String getAllDemographics()

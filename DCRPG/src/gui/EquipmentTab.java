@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import business.CharacterSheet;
+import business.Inventory;
 import business.Item;
 
 import javax.swing.JTextPane;
@@ -23,6 +24,7 @@ public class EquipmentTab extends JScrollPane
 	private JFormattedTextField nameField;
 	
 	private CharacterSheet cs;
+	private Inventory inv;
 	
 	
 	public EquipmentTab(CharacterSheet cs)
@@ -60,9 +62,9 @@ public class EquipmentTab extends JScrollPane
 		JPanel equipment = new JPanel();
 		equipment.setBackground(Color.BLACK);
 		equipment.setLayout(null);
-		equipment.setPreferredSize(new Dimension(645, 1281));
+		equipment.setPreferredSize(new Dimension(645, 1369));
 		JScrollPane equipmentScroll = new JScrollPane(equipment);
-		equipmentScroll.setBounds(0, 43, 668, 965);
+		equipmentScroll.setBounds(0, 43, 668, 966);
 		panel.add(equipmentScroll);
 		
 		Item cap = new Item("Cap");
@@ -78,35 +80,35 @@ public class EquipmentTab extends JScrollPane
 		equipment.add(neck);
 		
 		Item wrists = new Item("Wrists");
-		wrists.setLocation(5, 324);
+		wrists.setLocation(5, 346);
 		equipment.add(wrists);
 		
 		Item chest = new Item("Chest");
-		chest.setLocation(220, 324);
+		chest.setLocation(220, 346);
 		equipment.add(chest);
 		
 		Item weapon = new Item("Weapon");
-		weapon.setLocation(435, 324);
+		weapon.setLocation(435, 346);
 		equipment.add(weapon);
 		
 		Item ring1 = new Item("Ring 1");
-		ring1.setLocation(5, 643);
+		ring1.setLocation(5, 687);
 		equipment.add(ring1);
 		
 		Item waist = new Item("Waist");
-		waist.setLocation(220, 643);
+		waist.setLocation(220, 687);
 		equipment.add(waist);
 		
 		Item ring2 = new Item("Ring 2");
-		ring2.setLocation(435, 643);
+		ring2.setLocation(435, 687);
 		equipment.add(ring2);
 		
 		Item legs = new Item("Legs");
-		legs.setLocation(105, 962);
+		legs.setLocation(105, 1028);
 		equipment.add(legs);
 		
 		Item feet = new Item("Feet");
-		feet.setLocation(325, 962);
+		feet.setLocation(325, 1028);
 		equipment.add(feet);
 		
 		JPanel pack = new JPanel();
@@ -182,9 +184,10 @@ public class EquipmentTab extends JScrollPane
 		storage.add(i2);
 	}
 	
-	public void setNewCharacter(CharacterSheet cs)
+	public void setNewCharacter(CharacterSheet cs, Inventory inv)
 	{
 		this.cs = cs;
 		nameField.setText(cs.getName());
+		this.inv = inv;
 	}
 }

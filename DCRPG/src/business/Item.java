@@ -34,11 +34,12 @@ public class Item extends JPanel
 	private JLabel slot;
 	private JLabel imgLabel;
 	private JFormattedTextField description;
+	private JFormattedTextField nameField;
 
-	private String slotStr;
+	private int id;
 	private String descStr;
 	private String path;
-	private int characterSheetId = -1;
+	private String name;
 	
 	private boolean imgChange = true;
 	private boolean newPic = false;
@@ -46,7 +47,7 @@ public class Item extends JPanel
 	public Item()
 	{
 		super();	
-		setSize(210, 314);
+		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -58,6 +59,20 @@ public class Item extends JPanel
 		slot.setHorizontalTextPosition(SwingConstants.CENTER);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		nameField = new JFormattedTextField();
+		nameField.setBounds(2, 24, 206, 20);
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setText("(name)");
+		add(nameField);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setName(nameField.getText());
+			}
+		});
 		
 		icon = new ImageIcon();
 		img = null;
@@ -76,7 +91,7 @@ public class Item extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 24, 206, 266);
+		imgLabel.setBounds(2, 46, 206, 266);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -104,7 +119,7 @@ public class Item extends JPanel
 		});	
 		
 		description = new JFormattedTextField();
-		description.setBounds(2, 292, 206, 20);
+		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
@@ -121,7 +136,7 @@ public class Item extends JPanel
 	public Item(String slotStr)
 	{
 		super();
-		setSize(210, 314);
+		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -131,6 +146,20 @@ public class Item extends JPanel
 		slot.setBounds(2, 2, 206, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		nameField = new JFormattedTextField();
+		nameField.setBounds(2, 24, 206, 20);
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setText("(name)");
+		add(nameField);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setName(nameField.getText());
+			}
+		});
 		
 		icon = new ImageIcon();
 		img = null;
@@ -149,7 +178,7 @@ public class Item extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 24, 206, 266);
+		imgLabel.setBounds(2, 46, 206, 266);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -177,7 +206,7 @@ public class Item extends JPanel
 		});	
 		
 		description = new JFormattedTextField();
-		description.setBounds(2, 290, 206, 20);
+		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
@@ -195,7 +224,7 @@ public class Item extends JPanel
 	{
 		super();
 		this.path = path;
-		setSize(210, 314);
+		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -205,6 +234,20 @@ public class Item extends JPanel
 		slot.setBounds(2, 2, 206, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		nameField = new JFormattedTextField();
+		nameField.setBounds(2, 24, 206, 20);
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setText("(name)");
+		add(nameField);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setName(nameField.getText());
+			}
+		});
 		
 		icon = new ImageIcon();
 		img = null;
@@ -223,7 +266,7 @@ public class Item extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 24, 206, 266);
+		imgLabel.setBounds(2, 46, 206, 266);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -251,7 +294,7 @@ public class Item extends JPanel
 		});	
 		
 		description = new JFormattedTextField();
-		description.setBounds(2, 290, 206, 20);
+		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
@@ -270,7 +313,7 @@ public class Item extends JPanel
 		super();
 		this.path = path;
 		this.descStr = descStr;
-		setSize(210, 314);
+		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -280,6 +323,20 @@ public class Item extends JPanel
 		slot.setBounds(2, 2, 206, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		nameField = new JFormattedTextField();
+		nameField.setBounds(2, 24, 206, 20);
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setText("(name)");
+		add(nameField);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setName(nameField.getText());
+			}
+		});
 		
 		icon = new ImageIcon();
 		img = null;
@@ -298,7 +355,7 @@ public class Item extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 24, 206, 266);
+		imgLabel.setBounds(2, 46, 206, 266);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -326,7 +383,7 @@ public class Item extends JPanel
 		});	
 		
 		description = new JFormattedTextField();
-		description.setBounds(2, 290, 206, 20);
+		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText(descStr);
 		add(description);
@@ -340,12 +397,22 @@ public class Item extends JPanel
 		});
 	}
 	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 	
-	
-	
+	public String getName()
+	{
+		return name;
+	}
 	
 	public void setDescStr(String descStr)
 	{
 		this.descStr = descStr;
+	}
+	public String getDescStr()
+	{
+		return descStr;
 	}
 }

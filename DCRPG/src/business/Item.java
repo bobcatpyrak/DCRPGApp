@@ -38,6 +38,7 @@ public class Item extends JPanel
 	private String slotStr;
 	private String descStr;
 	private String path;
+	private int characterSheetId = -1;
 	
 	private boolean imgChange = true;
 	private boolean newPic = false;
@@ -62,7 +63,7 @@ public class Item extends JPanel
 		img = null;
 		try 
 		{
-		    img = ImageIO.read(new File("images/sheets/blank.png"));
+		    img = ImageIO.read(new File("images/items/blank.png"));
 		    img = Scalr.resize(img, 206, 266);
 		    icon.setImage(img);
 		} catch (IOException e) {
@@ -126,7 +127,7 @@ public class Item extends JPanel
 		
 		slot = new JLabel(slotStr);
 		slot.setBackground(Color.WHITE);
-		slot.setFont(new Font("Verdana", Font.PLAIN, 11));
+		slot.setFont(new Font("Verdana", Font.BOLD, 11));
 		slot.setBounds(2, 2, 206, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
@@ -135,7 +136,7 @@ public class Item extends JPanel
 		img = null;
 		try 
 		{
-		    img = ImageIO.read(new File("images/sheets/blank.png"));
+		    img = ImageIO.read(new File("images/items/blank.png"));
 		    img = Scalr.resize(img, 206, 266);
 		    icon.setImage(img);
 		} catch (IOException e) {

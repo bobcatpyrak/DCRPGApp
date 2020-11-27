@@ -33,7 +33,7 @@ public class Inventory
 	private int pack13;
 	private int pack14;
 	private int pack15;
-	private ArrayList<Integer> storage;
+	private ArrayList<Integer> storage = new ArrayList<Integer>();
 	
 	public Inventory(int characterSheetId)
 	{
@@ -404,15 +404,14 @@ public class Inventory
 		pack14 = items[24];
 		pack15 = items[25];
 		
+		String[] fields2 = storageArray.split(FIELD_SEP);
 		
-		String[] fields2 = inv.split(FIELD_SEP);
-	
 		for(String s : fields2)
 		{
 			if(!s.equals("0"))
-			storage.add(Integer.parseInt(s));
+				storage.add(Integer.parseInt(s));
 		}
-		storage.add(0);
+		storage.add(0);		
 	}
 	
 }

@@ -3,7 +3,17 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -11,6 +21,7 @@ import javax.swing.JScrollPane;
 import business.CharacterSheet;
 import business.Inventory;
 import business.Item;
+import library.Scalr;
 
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
@@ -60,6 +71,8 @@ public class EquipmentTab extends JScrollPane
 		setSize(1902, 1039);
 		setPreferredSize(new Dimension(1902, 1039));
 		this.cs = cs;
+		
+		inv = MainWindow.invs.get(0);
 			
 		panel = new JPanel();
 		setViewportView(panel);
@@ -79,6 +92,17 @@ public class EquipmentTab extends JScrollPane
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setText(cs.getName());
 		nameField.setEnabled(false);
+		
+		JButton btnSave = new JButton("Save All Items");
+		btnSave.setBounds(60, 7, 120, 29);
+		panel.add(btnSave);
+		btnSave.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				saveItems(true);
+			}
+		});
 		
 		JLabel equipmentLabel = new JLabel("Equipment");
 		equipmentLabel.setBounds(0, 0, 668, 42);
@@ -215,8 +239,16 @@ public class EquipmentTab extends JScrollPane
 	{
 		this.cs = cs;
 		nameField.setText(cs.getName());
+
+		if(inv == null)
+		{
+			System.out.println("null inv");
+			inv = new Inventory(cs.getId());
+			MainWindow.invs.add(inv);
+		}
 		this.inv = inv;
 		
+		System.out.println("Inventory for character Id: " + inv.getCharacterSheetId());
 		
 		cap.set(MainWindow.items.get(inv.getCap()));
 		head.set(MainWindow.items.get(inv.getHead()));
@@ -247,5 +279,127 @@ public class EquipmentTab extends JScrollPane
 		pack15.set(MainWindow.items.get(inv.getPack15()));
 		
 		
+	}
+	
+	public void saveItems(boolean onlyItems)
+	{
+		for some reason, this method is blocking the load function from switching back properly. some list proably needs to be cleared or nullified
+		
+		List<Item> l = new ArrayList<Item>();
+
+		l.add(cap);			
+		l.add(head);
+		l.add(neck);			
+		l.add(wrists);			
+		l.add(chest);			
+		l.add(weapon);			
+		l.add(ring1);			
+		l.add(waist);			
+		l.add(ring2);			
+		l.add(legs);			
+		l.add(feet);			
+		l.add(pack1);			
+		l.add(pack2);			
+		l.add(pack3);			
+		l.add(pack4);			
+		l.add(pack5);			
+		l.add(pack6);			
+		l.add(pack7);
+		l.add(pack8);			
+		l.add(pack9);			
+		l.add(pack10);			
+		l.add(pack11);			
+		l.add(pack12);			
+		l.add(pack13);			
+		l.add(pack14);			
+		l.add(pack15);
+	
+		for(Item li : l)
+		{
+			if(!li.getName().equals("(name)"))
+			{
+				boolean newItem = true;
+				li.setPath(li.getName().toLowerCase()+".png");
+
+				for(Item i : MainWindow.items)
+				{
+					if(i.getName() == li.getName())
+					{
+						li.setId(i.getId());
+						i = li;
+						MainWindow.dao.updateItem(li);
+						newItem = false;
+						break;
+					}
+				}
+				
+				if(newItem)
+				{
+					li.setId(MainWindow.nextItemId);
+					System.out.println("Saved id is: "+ MainWindow.nextItemId);
+					MainWindow.dao.addItem(li);
+					MainWindow.items.add(li);
+					MainWindow.nextItemId++;
+					System.out.println("The new next id is: " + MainWindow.nextItemId);
+				}
+				
+				if(li.newPic())
+				{
+					try 
+					{
+					    // retrieve image
+				        BufferedImage img = li.retrievePic();
+					    					    
+					    File outputfile = new File("images/items/"+li.getPath());
+					    ImageIO.write(img, "png", outputfile);
+					} catch (IOException e) {
+						System.out.println(e);
+					}
+				}
+			}
+		}
+		
+		
+		inv.setCap(l.get(0).getId());
+		inv.setHead(l.get(1).getId());
+		inv.setNeck(l.get(2).getId());
+		inv.setWrists(l.get(3).getId());
+		inv.setChest(l.get(4).getId());
+		inv.setWeapon(l.get(5).getId());
+		inv.setRing1(l.get(6).getId());
+		inv.setWaist(l.get(7).getId());
+		inv.setRing2(l.get(8).getId());
+		inv.setLegs(l.get(9).getId());
+		inv.setFeet(l.get(10).getId());
+		inv.setPack1(l.get(11).getId());
+		inv.setPack2(l.get(12).getId());
+		inv.setPack3(l.get(13).getId());
+		inv.setPack4(l.get(14).getId());
+		inv.setPack5(l.get(15).getId());
+		inv.setPack6(l.get(16).getId());
+		inv.setPack7(l.get(17).getId());
+		inv.setPack8(l.get(18).getId());
+		inv.setPack9(l.get(19).getId());
+		inv.setPack10(l.get(20).getId());
+		inv.setPack11(l.get(21).getId());
+		inv.setPack12(l.get(22).getId());
+		inv.setPack13(l.get(23).getId());
+		inv.setPack14(l.get(24).getId());
+		inv.setPack15(l.get(25).getId());
+		
+		for(Inventory i : MainWindow.invs)
+		{
+			if(i.getCharacterSheetId() == inv.getCharacterSheetId())
+			{
+				i = inv;
+				MainWindow.dao.updateInv(inv);
+				break;
+			}
+		}
+		
+		cs.setInv(MainWindow.invs);
+		
+		if(onlyItems)
+			MainWindow.dao.saveAll();
 	}
 }

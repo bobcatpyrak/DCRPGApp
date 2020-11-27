@@ -28,14 +28,14 @@ import javax.swing.event.ListSelectionListener;
 
 public class MainWindow {
 
-	private static TextFile dao = new TextFile();
+	public static TextFile dao = new TextFile();
 	private static List<CharacterSheet> sheets;
 	private static List<String> searchList = new ArrayList<String>();
 	private static List<SkillSpec> specs;
 	private static List<CharacterSheetAdvantage> advs;
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static List<CharacterSheetPower> powers;
-	private static List<Inventory> invs;
+	public static List<Inventory> invs;
 	public static List<Item> items;
 	private static CharacterSheet currentSheet;
 	
@@ -102,7 +102,7 @@ public class MainWindow {
 			nextCSPId = powers.get(powers.size()-1).getId() + 1;
 		if(items.size() > 0)
 			nextItemId = items.get(items.size()-1).getId() + 1;
-		
+				
 		//this needs to rerun when a new sheet is saved. Or not. I think it's useless?
 	/*	sheetNames = new String[sheets.size()];
 		int nameIndex = 0;
@@ -6405,7 +6405,7 @@ public class MainWindow {
 								
 					
 					List<SkillSpec> oldSpecs = dao.getSheet(currentSheet.getId()).getSkillSpecs();
-					List<CharacterSheetAdvantage> oldCSA = dao.getSheet(currentSheet.getId()).getCSA();//THIS IS BLANK FOR SOME REASON
+					List<CharacterSheetAdvantage> oldCSA = dao.getSheet(currentSheet.getId()).getCSA();
 					List<CharacterSheetDisadvantage> oldCSD = dao.getSheet(currentSheet.getId()).getCSD();
 					
 					dao.updateSheet(currentSheet);
@@ -6485,6 +6485,7 @@ public class MainWindow {
 						deleting = false;
 					}	
 					
+					etab.saveItems(false);
 		
 					dao.saveAll();
 					

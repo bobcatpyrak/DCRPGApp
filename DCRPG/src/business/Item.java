@@ -37,11 +37,11 @@ public class Item extends JPanel
 	private JFormattedTextField nameField;
 
 	private int id;
-	private String descStr;
-	private String path;
-	private String name;
+	private String descStr = "(description)";
+	private String path = "blank";
+	private String name = "(name)";
 	
-	private boolean imgChange = true;
+	private boolean imgChange = false;
 	private boolean newPic = false;
 
 
@@ -102,7 +102,8 @@ public class Item extends JPanel
 			public void mousePressed(MouseEvent me) {
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
-				handler.exportAsDrag(comp, me, TransferHandler.COPY);     
+				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
+				imgChange = true;
 			}
 		};
 
@@ -132,7 +133,7 @@ public class Item extends JPanel
 			{
 				setDescStr(description.getText());
 			}
-		});
+		});	
 	}
 	
 	public Item(String slotStr)
@@ -190,6 +191,7 @@ public class Item extends JPanel
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
 				handler.exportAsDrag(comp, me, TransferHandler.COPY);     
+				imgChange = true;
 			}
 		};
 
@@ -222,182 +224,6 @@ public class Item extends JPanel
 		});
 	}
 	
-	public Item(String slotStr, String path)
-	{
-		super();
-		this.path = path;
-		setSize(210, 336);
-		setBackground(Color.LIGHT_GRAY);
-		setLayout(null);
-		
-		slot = new JLabel(slotStr);
-		slot.setBackground(Color.WHITE);
-		slot.setFont(new Font("Verdana", Font.PLAIN, 11));
-		slot.setBounds(2, 2, 206, 20);
-		slot.setHorizontalAlignment(SwingConstants.CENTER);
-		add(slot);
-		
-		nameField = new JFormattedTextField();
-		nameField.setBounds(2, 24, 206, 20);
-		nameField.setHorizontalAlignment(SwingConstants.CENTER);
-		nameField.setText("(name)");
-		add(nameField);
-		nameField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				setName(nameField.getText());
-			}
-		});
-		
-		icon = new ImageIcon();
-		img = null;
-		try 
-		{
-		    img = ImageIO.read(new File("images/items/"+path));
-		    img = Scalr.resize(img, 206, 266);
-		    icon.setImage(img);
-		} catch (IOException e) {
-			
-		}
-		
-		imgLabel = new JLabel();	
-		imgLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		imgLabel.setBackground(Color.WHITE);
-		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 46, 206, 266);
-		add(imgLabel);
-
-		imgLabel.setTransferHandler(new ImageSelection());	    
-
-		MouseListener listener = new MouseAdapter() {
-			public void mousePressed(MouseEvent me) {
-				JComponent comp = (JComponent) me.getSource();
-				TransferHandler handler = comp.getTransferHandler();
-				handler.exportAsDrag(comp, me, TransferHandler.COPY);     
-			}
-		};
-
-		imgLabel.addMouseListener(listener);
-
-		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange)
-				{
-					icon = (ImageIcon)imgLabel.getIcon();
-					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
-					icon.setImage(img);
-					newPic = true;
-				}
-			}
-		});	
-		
-		description = new JFormattedTextField();
-		description.setBounds(2, 314, 206, 20);
-		description.setHorizontalAlignment(SwingConstants.CENTER);
-		description.setText("(description)");
-		add(description);
-		description.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				setDescStr(description.getText());
-			}
-		});
-	}
-	
-	public Item(String slotStr, String path, String descStr)
-	{
-		super();
-		this.path = path;
-		this.descStr = descStr;
-		setSize(210, 336);
-		setBackground(Color.LIGHT_GRAY);
-		setLayout(null);
-		
-		slot = new JLabel(slotStr);
-		slot.setBackground(Color.WHITE);
-		slot.setFont(new Font("Verdana", Font.PLAIN, 11));
-		slot.setBounds(2, 2, 206, 20);
-		slot.setHorizontalAlignment(SwingConstants.CENTER);
-		add(slot);
-		
-		nameField = new JFormattedTextField();
-		nameField.setBounds(2, 24, 206, 20);
-		nameField.setHorizontalAlignment(SwingConstants.CENTER);
-		nameField.setText("(name)");
-		add(nameField);
-		nameField.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				setName(nameField.getText());
-			}
-		});
-		
-		icon = new ImageIcon();
-		img = null;
-		try 
-		{
-		    img = ImageIO.read(new File("images/items/"+path));
-		    img = Scalr.resize(img, 206, 266);
-		    icon.setImage(img);
-		} catch (IOException e) {
-			
-		}
-		
-		imgLabel = new JLabel();	
-		imgLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		imgLabel.setBackground(Color.WHITE);
-		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 46, 206, 266);
-		add(imgLabel);
-
-		imgLabel.setTransferHandler(new ImageSelection());	    
-
-		MouseListener listener = new MouseAdapter() {
-			public void mousePressed(MouseEvent me) {
-				JComponent comp = (JComponent) me.getSource();
-				TransferHandler handler = comp.getTransferHandler();
-				handler.exportAsDrag(comp, me, TransferHandler.COPY);     
-			}
-		};
-
-		imgLabel.addMouseListener(listener);
-
-		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange)
-				{
-					icon = (ImageIcon)imgLabel.getIcon();
-					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
-					icon.setImage(img);
-					newPic = true;
-				}
-			}
-		});	
-		
-		description = new JFormattedTextField();
-		description.setBounds(2, 314, 206, 20);
-		description.setHorizontalAlignment(SwingConstants.CENTER);
-		description.setText(descStr);
-		add(description);
-		description.addKeyListener(new KeyAdapter() 
-		{
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-				setDescStr(description.getText());
-			}
-		});
-	}
 	
 	public void setName(String name)
 	{
@@ -446,12 +272,29 @@ public class Item extends JPanel
 		img = null;
 		try 
 		{
+			imgChange = false;
 		    img = ImageIO.read(new File("images/items/"+path));
 		    img = Scalr.resize(img, 206, 266);
 		    icon.setImage(img);
+		    imgChange = true;
 		} catch (IOException e) {	
 		}
 		
+	}
+	
+	public boolean newPic()
+	{
+		return newPic;
+	}
+	
+	public BufferedImage retrievePic()
+	{
+		icon = (ImageIcon)imgLabel.getIcon();
+	    img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
+	    icon.setImage(img);
+	    newPic = false;
+	    
+	    return img;
 	}
 	
 }

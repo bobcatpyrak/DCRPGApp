@@ -65,9 +65,16 @@ $$CharacterSheetPowerBegin$$
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
+0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+3	1%0%0%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 $$InventoryEnd$$
 
 $$ItemBegin$$
 0	(name)	(description)	blank.png
+1	Bronze Double-Headed Axe	1d6+1	bronze double-headed axe.png
+2	Hawaiian Shirt	(description)	hawaiian shirt.png
 $$ItemEnd$$
 

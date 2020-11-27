@@ -44,9 +44,11 @@ public class Item extends JPanel
 	private boolean imgChange = true;
 	private boolean newPic = false;
 
-	public Item()
-	{
+
+	public Item(int id)
+	{	
 		super();	
+		this.id = id;
 		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -415,4 +417,41 @@ public class Item extends JPanel
 	{
 		return descStr;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	public void set(Item i)
+	{
+		this.id = i.getId();
+		this.descStr = i.getDescStr();
+		description.setText(descStr);
+		this.name = i.getName();
+		nameField.setText(name);
+		this.path = i.getPath();
+		
+		img = null;
+		try 
+		{
+		    img = ImageIO.read(new File("images/items/"+path));
+		    img = Scalr.resize(img, 206, 266);
+		    icon.setImage(img);
+		} catch (IOException e) {	
+		}
+		
+	}
+	
 }

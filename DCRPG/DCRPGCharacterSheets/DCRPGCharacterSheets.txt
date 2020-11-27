@@ -64,3 +64,10 @@ $$CharacterSheetPowerBegin$$
 3	3	6	EARTH_MANIPULATION	5	null	null
 $$CharacterSheetPowerEnd$$
 
+$$InventoryBegin$$
+$$InventoryEnd$$
+
+$$ItemBegin$$
+0	(name)	(description)	blank.png
+$$ItemEnd$$
+

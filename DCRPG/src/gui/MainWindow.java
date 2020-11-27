@@ -36,6 +36,7 @@ public class MainWindow {
 	private static List<CharacterSheetDisadvantage> disadvs;
 	private static List<CharacterSheetPower> powers;
 	private static List<Inventory> invs;
+	public static List<Item> items;
 	private static CharacterSheet currentSheet;
 	
 	public static int nextSheetId;
@@ -43,6 +44,7 @@ public class MainWindow {
 	public static int nextCSAId;
 	public static int nextCSDId;
 	public static int nextCSPId;
+	public static int nextItemId;
 	
 	public static JFrame dcrpgFrame;
 	public static JPanel panel;
@@ -79,12 +81,14 @@ public class MainWindow {
 		disadvs = dao.getAllCSD();
 		powers = dao.getAllCSP();
 		invs = dao.getAllInv();
+		items = dao.getAllItems();
 		
 		nextSheetId = 0;
 		nextSpecId = 0;
 		nextCSAId = 0;
 		nextCSDId = 0;
 		nextCSPId = 0;
+		nextItemId = 0;
 		
 		if(sheets.size() > 0)
 			nextSheetId = sheets.get(sheets.size()-1).getId() + 1;
@@ -96,6 +100,8 @@ public class MainWindow {
 			nextCSDId = disadvs.get(disadvs.size()-1).getId() + 1;
 		if(powers.size() > 0)
 			nextCSPId = powers.get(powers.size()-1).getId() + 1;
+		if(items.size() > 0)
+			nextItemId = items.get(items.size()-1).getId() + 1;
 		
 		//this needs to rerun when a new sheet is saved. Or not. I think it's useless?
 	/*	sheetNames = new String[sheets.size()];

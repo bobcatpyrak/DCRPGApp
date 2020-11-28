@@ -6564,7 +6564,7 @@ public class MainWindow {
 							currentSheet = s;
 							// load the entire dang sheet
 							demographicsPanel.setNewCharacter(currentSheet);
-							etab.setNewCharacter(currentSheet, currentSheet.getInv());
+							etab.setNewCharacter(currentSheet);
 							
 							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
@@ -6786,7 +6786,7 @@ public class MainWindow {
 				// load the entire dang sheet
 				nameField.setText(currentSheet.getName());
 				demographicsPanel.setNewCharacter(currentSheet);
-				etab.setNewCharacter(currentSheet, currentSheet.getInv());				
+				etab.setNewCharacter(currentSheet);				
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());

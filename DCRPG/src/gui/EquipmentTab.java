@@ -235,20 +235,23 @@ public class EquipmentTab extends JScrollPane
 		storage.add(i2);
 	}
 	
-	public void setNewCharacter(CharacterSheet cs, Inventory inv)
+	public void setNewCharacter(CharacterSheet cs)
 	{
 		this.cs = cs;
+		
 		nameField.setText(cs.getName());
 
-		if(inv == null)
+		if(cs.getInv() == null)
 		{
 			System.out.println("null inv");
 			inv = new Inventory(cs.getId());
 			MainWindow.invs.add(inv);
 		}
-		this.inv = inv;
+		else
+			inv = cs.getInv();
 		
-		System.out.println("Inventory for character Id: " + inv.getCharacterSheetId());
+
+
 		
 		cap.set(MainWindow.items.get(inv.getCap()));
 		head.set(MainWindow.items.get(inv.getHead()));
@@ -277,16 +280,16 @@ public class EquipmentTab extends JScrollPane
 		pack13.set(MainWindow.items.get(inv.getPack13()));
 		pack14.set(MainWindow.items.get(inv.getPack14()));
 		pack15.set(MainWindow.items.get(inv.getPack15()));
-		
-		
+				
 	}
 	
 	public void saveItems(boolean onlyItems)
 	{
-		for some reason, this method is blocking the load function from switching back properly. some list proably needs to be cleared or nullified
+	//	for some reason, this method is blocking the load function from switching back properly. some list proably needs to be cleared or nullified
 		
 		List<Item> l = new ArrayList<Item>();
 
+		// these adds add the current instance into a list, not the data. Somehow, that instance overwrites the MainWindow.items list
 		l.add(cap);			
 		l.add(head);
 		l.add(neck);			
@@ -323,24 +326,28 @@ public class EquipmentTab extends JScrollPane
 
 				for(Item i : MainWindow.items)
 				{
+					// MainWindow.items appears to be iterated through poorly
 					if(i.getName() == li.getName())
 					{
 						li.setId(i.getId());
-						i = li;
-						MainWindow.dao.updateItem(li);
+						i.setName(li.getName());
+						i.setDescStr(li.getDescStr());
+						i.setPath(li.getPath());
+						MainWindow.dao.updateItem(i);
 						newItem = false;
 						break;
 					}
 				}
 				
 				if(newItem)
-				{
-					li.setId(MainWindow.nextItemId);
-					System.out.println("Saved id is: "+ MainWindow.nextItemId);
-					MainWindow.dao.addItem(li);
-					MainWindow.items.add(li);
+				{					
+					Item i = new Item(MainWindow.nextItemId);
+					i.setDescStr(li.getDescStr());
+					i.setPath(li.getPath());
+					i.setName(li.getName());
+					MainWindow.dao.addItem(i);
+					MainWindow.items.add(i);
 					MainWindow.nextItemId++;
-					System.out.println("The new next id is: " + MainWindow.nextItemId);
 				}
 				
 				if(li.newPic())
@@ -398,7 +405,7 @@ public class EquipmentTab extends JScrollPane
 		}
 		
 		cs.setInv(MainWindow.invs);
-		
+				
 		if(onlyItems)
 			MainWindow.dao.saveAll();
 	}

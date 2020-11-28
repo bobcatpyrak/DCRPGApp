@@ -48,25 +48,22 @@ $$CharacterSheetDisadvantageBegin$$
 3	1	HIDES_EMOTIONS	null
 4	3	SECRET_IDENTITY	null
 5	2	COWARDICE	null
-6	3	DARK_SECRET	Firefly is Kite-Man, under cover!
-6	3	DARK_SECRET	Firefly is Kite-Man, under cover!
 6	3	DARK_SECRET	Black Spider is Batman, under cover!
 6	3	DARK_SECRET	Black Spider is Batman, under cover!
 6	3	DARK_SECRET	Martin Blank is Marcus Driver, under cover!
-7	3	EXTREMELY_COMPETITIVE	null
 7	3	EXTREMELY_COMPETITIVE	null
 $$CharacterSheetDisadvantageEnd$$
 
 $$CharacterSheetPowerBegin$$
 0	3	3	NATURAL_ARMOR	3	null	null
 1	3	1	ENERGY_ABSORPTION	3	null	null
-1	3	1	CLINGING	1	null	null
+2	3	1	CLINGING	1	null	null
 3	3	6	EARTH_MANIPULATION	5	null	null
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
 0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-3	1%0%0%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
@@ -76,5 +73,6 @@ $$ItemBegin$$
 0	(name)	(description)	blank.png
 1	Bronze Double-Headed Axe	1d6+1	bronze double-headed axe.png
 2	Hawaiian Shirt	(description)	hawaiian shirt.png
+3	Irish Flag	(description)	irish flag.png
 $$ItemEnd$$
 

@@ -31,14 +31,17 @@ $$SkillSpecEnd$$
 $$CharacterSheetAdvantageBegin$$
 0	0	WEALTH	null
 1	1	WEALTH	null
-7	2	COURAGE	null
-8	1	COURAGE	null
-10	2	ACUTE_SENSE	Sight
-11	2	PHOTOGRAPHIC_MEMORY	null
-11	2	STATUS	null
-12	3	CHARISMATIC	null
-12	3	WEALTH	null
-13	3	ACUTE_SENSE	Hearing
+2	2	COURAGE	null
+3	1	COURAGE	null
+4	2	ACUTE_SENSE	Sight
+5	2	PHOTOGRAPHIC_MEMORY	null
+6	2	STATUS	null
+7	3	WEALTH	null
+8	3	CHARISMATIC	null
+9	3	ACUTE_SENSE	Hearing
+10	4	CHARISMATIC	null
+11	4	DOUBLE_JOINTED	null
+12	4	MECHANICAL_APTITUDE	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
@@ -48,10 +51,11 @@ $$CharacterSheetDisadvantageBegin$$
 3	1	HIDES_EMOTIONS	null
 4	3	SECRET_IDENTITY	null
 5	2	COWARDICE	null
-6	3	DARK_SECRET	Black Spider is Batman, under cover!
-6	3	DARK_SECRET	Black Spider is Batman, under cover!
 6	3	DARK_SECRET	Martin Blank is Marcus Driver, under cover!
-7	3	EXTREMELY_COMPETITIVE	null
+7	3	DARK_SECRET	Black Spider is Batman, under cover!
+8	3	EXTREMELY_COMPETITIVE	null
+9	3	FANATIC	Music
+10	3	DARK_SECRET	Test secret
 $$CharacterSheetDisadvantageEnd$$
 
 $$CharacterSheetPowerBegin$$
@@ -62,11 +66,12 @@ $$CharacterSheetPowerBegin$$
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
-0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
 $$InventoryEnd$$
 
 $$ItemBegin$$

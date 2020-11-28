@@ -369,12 +369,14 @@ public class AdvantagePanel extends JPanel
 					{
 						csa = new CharacterSheetAdvantage(MainWindow.nextCSAId, cs.getId(), dispA, param.getText());
 						advsList.add(csa);
+						MainWindow.nextCSAId++;
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
 					else if(dispA != null && !dispA.param())
 					{
 						advsList.add(csa);
+						MainWindow.nextCSAId++;
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
@@ -404,12 +406,14 @@ public class AdvantagePanel extends JPanel
 					{
 						csd = new CharacterSheetDisadvantage(MainWindow.nextCSDId, cs.getId(), dispD, param.getText());
 						disadvsList.add(csd);
+						MainWindow.nextCSDId++;
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}
 					else if(dispD != null && !dispD.param() || dispD.param() && !param.getText().equals(""))
 					{
 						disadvsList.add(csd);
+						MainWindow.nextCSDId++;
 						picker.dispose();
 						setNewCharacter(x, y, cs, advsList, disadvsList);
 					}

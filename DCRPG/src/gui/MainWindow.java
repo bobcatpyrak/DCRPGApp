@@ -102,6 +102,9 @@ public class MainWindow {
 			nextCSPId = powers.get(powers.size()-1).getId() + 1;
 		if(items.size() > 0)
 			nextItemId = items.get(items.size()-1).getId() + 1;
+		
+		System.out.println(nextCSAId);
+		System.out.println(nextCSDId);
 				
 		//this needs to rerun when a new sheet is saved. Or not. I think it's useless?
 	/*	sheetNames = new String[sheets.size()];
@@ -113,20 +116,6 @@ public class MainWindow {
 		
 		// initialize currentSheet
 		currentSheet = sheets.get(0);
-
-		
-		CharacterSheet batman = new CharacterSheet(nextSheetId);
-		batman.setName("Batman2");
-		batman.setPicture("batman.png");
-		batman.setAllDemographics("CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark%Bruce Wayne");
-		batman.setAllMiscStats("2d6%6%5%68%3%250%0%17%45%46");
-		batman.setAllStats("6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6");
-		
-		SkillSpec batarang = new SkillSpec(nextSpecId, nextSheetId, "Thrown Weapons", "Batarangs");
-		CharacterSheetAdvantage batmanWealth = new CharacterSheetAdvantage(nextCSAId, nextSheetId, Advantage.WEALTH);
-		CharacterSheetDisadvantage batmanSecretIdentity = new CharacterSheetDisadvantage(nextCSDId, nextSheetId, Disadvantage.SECRET_IDENTITY);
-		
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

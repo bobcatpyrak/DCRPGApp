@@ -35,6 +35,7 @@ public class Item extends JPanel
 	private JLabel imgLabel;
 	private JFormattedTextField description;
 	private JFormattedTextField nameField;
+	private BufferedImage origImg;
 
 	private int id;
 	private String descStr = "(description)";
@@ -114,6 +115,7 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					icon = (ImageIcon)imgLabel.getIcon();
+					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
 					newPic = true;
@@ -202,6 +204,7 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					icon = (ImageIcon)imgLabel.getIcon();
+					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
 					newPic = true;
@@ -270,6 +273,8 @@ public class Item extends JPanel
 		this.path = i.getPath();
 		
 		img = null;
+		origImg = null;
+		newPic = false;
 		try 
 		{
 			imgChange = false;
@@ -289,12 +294,8 @@ public class Item extends JPanel
 	
 	public BufferedImage retrievePic()
 	{
-		icon = (ImageIcon)imgLabel.getIcon();
-	    img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
-	    icon.setImage(img);
-	    newPic = false;
-	    
-	    return img;
+		newPic = false;
+		return origImg;
 	}
 	
 }

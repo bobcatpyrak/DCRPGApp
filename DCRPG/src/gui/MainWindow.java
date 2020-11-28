@@ -58,6 +58,7 @@ public class MainWindow {
 	private JPanel physStatsPanel;
 	public static JPanel advPowerPanel;
 	private BufferedImage img;
+	private BufferedImage origImg;
 	private ImageIcon icon;
 	private AdvantagePanel advantagePanel;
 	private PowerPanel powerPanel;
@@ -82,9 +83,6 @@ public class MainWindow {
 		powers = dao.getAllCSP();
 		invs = dao.getAllInv();
 		items = dao.getAllItems();
-		
-		for(Item i : items)
-			System.out.println(i.getName());
 		
 		nextSheetId = 0;
 		nextSpecId = 0;
@@ -6302,6 +6300,7 @@ public class MainWindow {
 				if(imgChange)
 				{
 			        icon = (ImageIcon)imgLabel.getIcon();
+			        origImg = (BufferedImage)icon.getImage();
 				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
 				    icon.setImage(img);
 				    newPic = true;
@@ -6474,14 +6473,10 @@ public class MainWindow {
 					{
 						try 
 						{
-						    // retrieve image
-					        icon = (ImageIcon)imgLabel.getIcon();
-						    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 350);
-						    icon.setImage(img);
 						    String n = currentSheet.getName().toLowerCase();
 						    
 						    File outputfile = new File("images/sheets/"+n+".png");
-						    ImageIO.write(img, "png", outputfile);
+						    ImageIO.write(origImg, "png", outputfile);
 						} catch (IOException e) {
 							System.out.println(e);
 						}

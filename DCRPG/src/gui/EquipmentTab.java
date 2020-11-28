@@ -358,6 +358,8 @@ public class EquipmentTab extends JScrollPane
 		Item i2 = new Item("Item 2");
 		i2.setLocation(215, 0);
 		storage.add(i2);
+		
+		setNewCharacter(cs);
 	}
 	
 	public void setNewCharacter(CharacterSheet cs)

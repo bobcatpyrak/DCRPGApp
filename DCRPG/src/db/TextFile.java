@@ -33,6 +33,8 @@ public class TextFile implements DAO<CharacterSheet>
 		invs = getAllInv();
 		items = getAllItems();
 		sheets = getAllSheets();
+		
+		saveAll();
 	}
 	@Override
 	public CharacterSheet get(int id) 
@@ -139,6 +141,7 @@ public class TextFile implements DAO<CharacterSheet>
 				if (line != null)
 					reading = true;
 				
+				todo - autogenerate sheets for pictures, add drag and drop for items, finish equipment tab, then spells, then rolling
 				while (reading)
 				{
 					if (line.equals("$$CharacterSheetBegin$$"))
@@ -500,7 +503,7 @@ public class TextFile implements DAO<CharacterSheet>
 							
 							for(String path : images)
 							{
-								if(path.equals(fields[3]))
+								if(path.toLowerCase().equals(fields[3].toLowerCase()))
 								{
 									images.remove(path);
 									break;
@@ -508,6 +511,7 @@ public class TextFile implements DAO<CharacterSheet>
 							}
 							
 							items.add(i);
+							System.out.println(i.getPath());
 							line = in.readLine();
 						}
 						reading = false;
@@ -530,15 +534,10 @@ public class TextFile implements DAO<CharacterSheet>
 					Item i = new Item(nextItemId);
 					i.setPath(path);
 					String name = path.substring(0, path.indexOf('.'));
-					name = name.replace('_', ' ');
 					i.setName(name);
 					nextItemId++;
 					items.add(i);
-				}
-				
-				
-				
-				
+				}			
 				return items;
 			}
 			catch(IOException ioe)

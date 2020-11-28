@@ -2,7 +2,10 @@ package business;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -13,9 +16,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -58,10 +63,25 @@ public class Item extends JPanel
 		slot.setBackground(Color.WHITE);
 		slot.setText("test");
 		slot.setFont(new Font("Verdana", Font.PLAIN, 11));
-		slot.setBounds(2, 2, 206, 20);
+		slot.setBounds(20, 2, 170, 20);
 		slot.setHorizontalTextPosition(SwingConstants.CENTER);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		JButton xBtn = new JButton();
+		xBtn.setBounds(getWidth()-18, 2, 16, 16);
+		xBtn.setFont(new Font("Dialog", Font.BOLD, 12));
+		xBtn.setText("x");
+		xBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		xBtn.setMargin(new Insets(0,0,0,0));
+		add(xBtn);
+		xBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				clearItem();
+			}
+		});
 		
 		nameField = new JFormattedTextField();
 		nameField.setBounds(2, 24, 206, 20);
@@ -138,6 +158,9 @@ public class Item extends JPanel
 		});	
 	}
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public Item(String slotStr)
 	{
 		super();
@@ -151,6 +174,21 @@ public class Item extends JPanel
 		slot.setBounds(2, 2, 206, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
+		
+		JButton xBtn = new JButton();
+		xBtn.setBounds(getWidth()-18, 2, 16, 16);
+		xBtn.setFont(new Font("Dialog", Font.BOLD, 12));
+		xBtn.setText("x");
+		xBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		xBtn.setMargin(new Insets(0,0,0,0));
+		add(xBtn);
+		xBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				clearItem();
+			}
+		});
 		
 		nameField = new JFormattedTextField();
 		nameField.setBounds(2, 24, 206, 20);
@@ -263,14 +301,84 @@ public class Item extends JPanel
 		this.path = path;
 	}
 	
-	public void set(Item i)
+	public void set(List<Item> items, int itemId)
 	{
-		this.id = i.getId();
-		this.descStr = i.getDescStr();
-		description.setText(descStr);
-		this.name = i.getName();
+
+		Item i = null;
+		for(Item j : items)
+		{
+			if(j.getId()==itemId)
+				i = j;
+		}
+		if(i != null)
+		{
+			this.id = i.getId();
+			this.descStr = i.getDescStr();
+			description.setText(descStr);
+			this.name = i.getName();
+			nameField.setText(name);
+			this.path = i.getPath();
+			
+			img = null;
+			origImg = null;
+			newPic = false;
+			try 
+			{
+				imgChange = false;
+			    img = ImageIO.read(new File("images/items/"+path));
+			    img = Scalr.resize(img, 206, 266);
+			    icon.setImage(img);
+			    imgChange = true;
+			} catch (IOException e) {	
+				imgChange = true;
+			}
+			repaint();
+		}
+		else
+		{
+			this.id = 0;
+			this.name = "(name)";
+			this.descStr = "(description)";
+			this.path = "blank.png";
+			nameField.setText(name);
+			description.setText(descStr);
+			
+			img = null;
+			origImg = null;
+			newPic = false;
+			try 
+			{
+				imgChange = false;
+			    img = ImageIO.read(new File("images/items/"+path));
+			    img = Scalr.resize(img, 206, 266);
+			    icon.setImage(img);
+			    imgChange = true;
+			} catch (IOException e) {	
+				imgChange = true;
+			}
+			repaint();
+		}
+	}
+	
+	public boolean newPic()
+	{
+		return newPic;
+	}
+	
+	public BufferedImage retrievePic()
+	{
+		newPic = false;
+		return origImg;
+	}
+	
+	public void clearItem()
+	{
+		this.id = 0;
+		this.name = "(name)";
+		this.descStr = "(description)";
+		this.path = "blank.png";
 		nameField.setText(name);
-		this.path = i.getPath();
+		description.setText(descStr);
 		
 		img = null;
 		origImg = null;
@@ -283,19 +391,15 @@ public class Item extends JPanel
 		    icon.setImage(img);
 		    imgChange = true;
 		} catch (IOException e) {	
+			imgChange = true;
 		}
 		repaint();
 	}
 	
-	public boolean newPic()
+	public void setDisabled()
 	{
-		return newPic;
-	}
-	
-	public BufferedImage retrievePic()
-	{
-		newPic = false;
-		return origImg;
+		description.setEnabled(false);
+		nameField.setEnabled(false);
 	}
 	
 }

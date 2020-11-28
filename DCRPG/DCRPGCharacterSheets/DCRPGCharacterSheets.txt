@@ -68,7 +68,7 @@ $$InventoryBegin$$
 0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+3	1%7%3%0%2%5%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 $$InventoryEnd$$
@@ -79,9 +79,7 @@ $$ItemBegin$$
 2	Hawaiian Shirt	+2 charm, -2 intimidation	hawaiian shirt.png
 3	Irish Flag	Celebrate yaer Irish pride!	irish flag.png
 4	Catarang	(description)	Catarang.png
-5	nein iron	(description)	nein iron.png
-6	Wooden Crossbow	(description)	Wooden_Crossbow.png
-7	Nein Iron	1d12+2	nein iron.png
-7	Nein Iron	1d12+2	nein iron.png
+5	Nein Iron	1d12+2	nein iron.png
+7	Alfred	bald head	alfred.png
 $$ItemEnd$$
 

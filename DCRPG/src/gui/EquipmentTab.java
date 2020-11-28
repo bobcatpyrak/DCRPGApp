@@ -19,6 +19,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -139,7 +140,7 @@ public class EquipmentTab extends JScrollPane
 				{
 					if(i.getName().toLowerCase().equals(searchField.getText().toLowerCase()))
 					{
-						search.set(i);
+						search.set(MainWindow.items, i.getId());
 						break;
 					}
 				}
@@ -149,6 +150,7 @@ public class EquipmentTab extends JScrollPane
 		
 		search = new Item("Search");
 		search.setLocation(900, 100);
+		search.setDisabled();
 		panel.add(search);
 		
 		searchField.addKeyListener(new KeyAdapter() {
@@ -226,6 +228,37 @@ public class EquipmentTab extends JScrollPane
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				saveItems(true);
+			}
+		});
+		
+		JCheckBox delBox = new JCheckBox("Confirm Delete");
+		add(delBox);
+		delBox.setBounds(709, search.getY()+search.getHeight()-46, 177, 23);
+		
+		JButton btnDelete = new JButton("Delete Displayed Item");
+		btnDelete.setBounds(709, search.getY()+search.getHeight()-23, 177, 23);
+		btnDelete.setBackground(Color.red);
+		panel.add(btnDelete);
+		btnDelete.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if(delBox.isSelected())
+				{
+					for(Item i : MainWindow.items)
+					{
+						if(i.getId() == search.getId() && i.getId() != 0)
+						{
+							MainWindow.dao.deleteItem(i);
+							File f = new File("images/items/"+i.getPath());
+							f.delete();
+						}
+					}
+					searchField.setText("");
+					search.clearItem();
+					MainWindow.dao.saveAll();
+				}
+				delBox.setSelected(false);
 			}
 		});
 		
@@ -364,7 +397,6 @@ public class EquipmentTab extends JScrollPane
 	
 	public void setNewCharacter(CharacterSheet cs)
 	{
-		// NEED TO FIX: if a new picture has been dragged to a spot, then loading the character sheet does not overwrite that slot for whatever reason
 		this.cs = cs;
 		
 		nameField.setText(cs.getName());
@@ -379,33 +411,33 @@ public class EquipmentTab extends JScrollPane
 			inv = cs.getInv();
 		
 	
-		cap.set(MainWindow.items.get(inv.getCap()));
-		head.set(MainWindow.items.get(inv.getHead()));
-		neck.set(MainWindow.items.get(inv.getNeck()));
-		wrists.set(MainWindow.items.get(inv.getWrists()));
-		chest.set(MainWindow.items.get(inv.getChest()));
-		weapon.set(MainWindow.items.get(inv.getWeapon()));
-		ring1.set(MainWindow.items.get(inv.getRing1()));
-		waist.set(MainWindow.items.get(inv.getWaist()));
-		ring2.set(MainWindow.items.get(inv.getRing2()));
-		legs.set(MainWindow.items.get(inv.getLegs()));
-		feet.set(MainWindow.items.get(inv.getFeet()));
+		cap.set(MainWindow.items, inv.getCap());
+		head.set(MainWindow.items, inv.getHead());
+		neck.set(MainWindow.items, inv.getNeck());
+		wrists.set(MainWindow.items, inv.getWrists());
+		chest.set(MainWindow.items, inv.getChest());
+		weapon.set(MainWindow.items, inv.getWeapon());
+		ring1.set(MainWindow.items, inv.getRing1());
+		waist.set(MainWindow.items, inv.getWaist());
+		ring2.set(MainWindow.items, inv.getRing2());
+		legs.set(MainWindow.items, inv.getLegs());
+		feet.set(MainWindow.items, inv.getFeet());
 		
-		pack1.set(MainWindow.items.get(inv.getPack1()));
-		pack2.set(MainWindow.items.get(inv.getPack2()));
-		pack3.set(MainWindow.items.get(inv.getPack3()));
-		pack4.set(MainWindow.items.get(inv.getPack4()));
-		pack5.set(MainWindow.items.get(inv.getPack5()));
-		pack6.set(MainWindow.items.get(inv.getPack6()));
-		pack7.set(MainWindow.items.get(inv.getPack7()));
-		pack8.set(MainWindow.items.get(inv.getPack8()));
-		pack9.set(MainWindow.items.get(inv.getPack9()));
-		pack10.set(MainWindow.items.get(inv.getPack10()));
-		pack11.set(MainWindow.items.get(inv.getPack11()));
-		pack12.set(MainWindow.items.get(inv.getPack12()));
-		pack13.set(MainWindow.items.get(inv.getPack13()));
-		pack14.set(MainWindow.items.get(inv.getPack14()));
-		pack15.set(MainWindow.items.get(inv.getPack15()));
+		pack1.set(MainWindow.items, inv.getPack1());
+		pack2.set(MainWindow.items, inv.getPack2());
+		pack3.set(MainWindow.items, inv.getPack3());
+		pack4.set(MainWindow.items, inv.getPack4());
+		pack5.set(MainWindow.items, inv.getPack5());
+		pack6.set(MainWindow.items, inv.getPack6());
+		pack7.set(MainWindow.items, inv.getPack7());
+		pack8.set(MainWindow.items, inv.getPack8());
+		pack9.set(MainWindow.items, inv.getPack9());
+		pack10.set(MainWindow.items, inv.getPack10());
+		pack11.set(MainWindow.items, inv.getPack11());
+		pack12.set(MainWindow.items, inv.getPack12());
+		pack13.set(MainWindow.items, inv.getPack13());
+		pack14.set(MainWindow.items, inv.getPack14());
+		pack15.set(MainWindow.items, inv.getPack15());
 				
 	}
 	
@@ -449,7 +481,7 @@ public class EquipmentTab extends JScrollPane
 
 				for(Item i : MainWindow.items)
 				{
-					if(i.getName() == li.getName())
+					if(i.getName().toLowerCase().equals(li.getName().toLowerCase()))
 					{
 						li.setId(i.getId());
 						i.setName(li.getName());
@@ -464,12 +496,13 @@ public class EquipmentTab extends JScrollPane
 				if(newItem)
 				{					
 					Item i = new Item(MainWindow.nextItemId);
+					li.setId(i.getId());
 					i.setDescStr(li.getDescStr());
 					i.setPath(li.getPath());
 					i.setName(li.getName());
 					MainWindow.dao.addItem(i);
-					MainWindow.items.add(i);
 					MainWindow.nextItemId++;
+
 				}
 				
 				if(li.newPic())

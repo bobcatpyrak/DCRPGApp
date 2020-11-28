@@ -477,6 +477,14 @@ public class TextFile implements DAO<CharacterSheet>
 				if (line != null)
 					reading = true;
 				
+				String[] paths;
+				File f = new File("images/items");
+				paths = f.list();
+				
+				List<String> images = new ArrayList<String>();
+				for(int i = 0; i < paths.length; i++)
+					images.add(paths[i]);
+				
 				while (reading)
 				{
 					if (line.equals("$$ItemBegin$$"))
@@ -489,6 +497,16 @@ public class TextFile implements DAO<CharacterSheet>
 							i.setName(fields[1]);
 							i.setDescStr(fields[2]);
 							i.setPath(fields[3]);
+							
+							for(String path : images)
+							{
+								if(path.equals(fields[3]))
+								{
+									images.remove(path);
+									break;
+								}
+							}
+							
 							items.add(i);
 							line = in.readLine();
 						}
@@ -501,6 +519,26 @@ public class TextFile implements DAO<CharacterSheet>
 							reading = false;
 					}
 				}
+				
+				int nextItemId = 0;
+				
+				if(items.size() > 0)
+					nextItemId = items.get(items.size()-1).getId() + 1;
+				
+				for(String path : images)
+				{
+					Item i = new Item(nextItemId);
+					i.setPath(path);
+					String name = path.substring(0, path.indexOf('.'));
+					name = name.replace('_', ' ');
+					i.setName(name);
+					nextItemId++;
+					items.add(i);
+				}
+				
+				
+				
+				
 				return items;
 			}
 			catch(IOException ioe)

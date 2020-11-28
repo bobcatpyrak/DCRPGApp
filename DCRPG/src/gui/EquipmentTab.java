@@ -5,10 +5,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -24,8 +29,12 @@ import business.Item;
 import library.Scalr;
 
 import javax.swing.JTextPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
 
 public class EquipmentTab extends JScrollPane 
@@ -33,6 +42,8 @@ public class EquipmentTab extends JScrollPane
 	
 	private JPanel panel;
 	private JFormattedTextField nameField;
+	private static List<String> searchList = new ArrayList<String>();
+
 	
 	private CharacterSheet cs;
 	private Inventory inv;
@@ -64,6 +75,8 @@ public class EquipmentTab extends JScrollPane
 	private Item pack14;
 	private Item pack15;
 	
+	private Item search;
+	
 	
 	public EquipmentTab(CharacterSheet cs)
 	{
@@ -92,6 +105,118 @@ public class EquipmentTab extends JScrollPane
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setText(cs.getName());
 		nameField.setEnabled(false);
+		
+		JLabel searchLabel = new JLabel("Search");
+		searchLabel.setBounds(709, 100, 107, 42);
+		panel.add(searchLabel);
+		searchLabel.setFont(new Font("Dialog", Font.PLAIN, 30));
+		
+		JFormattedTextField searchField = new JFormattedTextField();
+		searchField.setBounds(709, 150, 177, 23);
+		panel.add(searchField);
+		searchField.setHorizontalAlignment(SwingConstants.RIGHT);
+		searchField.setText("(search for item by name)");
+		
+		JPanel searches = new JPanel();
+		searches.setLayout(null);
+		searches.setBounds(searchField.getX(), searchField.getY()+searchField.getHeight(), searchField.getWidth(), 100);
+		JList searchesList = new JList();
+		searchesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JScrollPane jsp = new JScrollPane(searchesList);
+		jsp.setBounds(0, 0, searches.getWidth(), searches.getHeight());
+		searches.add(jsp);
+		panel.add(searches);
+		searches.setVisible(false);
+		
+		JButton btnLoad = new JButton("Load");
+		btnLoad.setBounds(816, 113, 70, 29);
+		panel.add(btnLoad);
+		btnLoad.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				for(Item i : MainWindow.items)
+				{
+					if(i.getName().toLowerCase().equals(searchField.getText().toLowerCase()))
+					{
+						search.set(i);
+						break;
+					}
+				}
+				
+			}
+		});
+		
+		search = new Item("Search");
+		search.setLocation(900, 100);
+		panel.add(search);
+		
+		searchField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				searchList.clear();
+				if(!searchField.getText().equals(""))
+				{
+					for(Item i : MainWindow.items)
+					{
+						if(i.getName().toLowerCase().contains(searchField.getText().toLowerCase()))
+							searchList.add(i.getName());
+					}
+					Collections.sort(searchList);
+				}
+				if(!searchList.isEmpty())
+				{
+					searchesList.setListData(searchList.toArray());
+					searches.setVisible(true);
+				}
+				if(searchList.isEmpty())
+				{
+					searches.setVisible(false);
+				}
+					
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					btnLoad.doClick();
+					btnLoad.requestFocus();
+				}
+			}
+		});
+		
+		searchField.addFocusListener(new FocusAdapter() 
+		{
+			@Override
+			public void focusGained(FocusEvent e) 
+			{	
+				if(!searchList.isEmpty())
+				{
+					searchesList.setListData(searchList.toArray());
+					searches.setVisible(true);
+				}
+				if(searchList.isEmpty())
+				{
+					searches.setVisible(false);
+				}
+			}
+			
+			@Override
+			public void focusLost(FocusEvent e)
+			{
+				searches.setVisible(false);
+			}
+		});
+		
+		ListSelectionListener listSelectionListener = new ListSelectionListener()
+		{
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) 
+			{
+				if(searchesList.getSelectedValue() != null)
+					searchField.setText(searchesList.getSelectedValue().toString());
+				panel.grabFocus();
+			}	
+		};
+		searchesList.addListSelectionListener(listSelectionListener);
 		
 		JButton btnSave = new JButton("Save All Items");
 		btnSave.setBounds(60, 7, 120, 29);
@@ -225,7 +350,7 @@ public class EquipmentTab extends JScrollPane
 		storage.setPreferredSize(new Dimension(645, 1276));
 		JScrollPane storageScroll = new JScrollPane(storage);
 		storageScroll.setBounds(1302, 43, 650, 1025);
-		//panel.add(storageScroll);
+		//panel.add(storageScroll); STILL HAVE TO ADD STORAGE TO PANE
 		
 		Item i1 = new Item("Item 1");
 		i1.setLocation(0, 0);
@@ -237,6 +362,7 @@ public class EquipmentTab extends JScrollPane
 	
 	public void setNewCharacter(CharacterSheet cs)
 	{
+		// NEED TO FIX: if a new picture has been dragged to a spot, then loading the character sheet does not overwrite that slot for whatever reason
 		this.cs = cs;
 		
 		nameField.setText(cs.getName());
@@ -250,9 +376,7 @@ public class EquipmentTab extends JScrollPane
 		else
 			inv = cs.getInv();
 		
-
-
-		
+	
 		cap.set(MainWindow.items.get(inv.getCap()));
 		head.set(MainWindow.items.get(inv.getHead()));
 		neck.set(MainWindow.items.get(inv.getNeck()));
@@ -285,11 +409,8 @@ public class EquipmentTab extends JScrollPane
 	
 	public void saveItems(boolean onlyItems)
 	{
-	//	for some reason, this method is blocking the load function from switching back properly. some list proably needs to be cleared or nullified
-		
 		List<Item> l = new ArrayList<Item>();
 
-		// these adds add the current instance into a list, not the data. Somehow, that instance overwrites the MainWindow.items list
 		l.add(cap);			
 		l.add(head);
 		l.add(neck);			
@@ -326,7 +447,6 @@ public class EquipmentTab extends JScrollPane
 
 				for(Item i : MainWindow.items)
 				{
-					// MainWindow.items appears to be iterated through poorly
 					if(i.getName() == li.getName())
 					{
 						li.setId(i.getId());

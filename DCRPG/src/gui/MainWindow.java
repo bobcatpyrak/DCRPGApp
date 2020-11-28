@@ -83,6 +83,9 @@ public class MainWindow {
 		invs = dao.getAllInv();
 		items = dao.getAllItems();
 		
+		for(Item i : items)
+			System.out.println(i.getName());
+		
 		nextSheetId = 0;
 		nextSpecId = 0;
 		nextCSAId = 0;
@@ -103,18 +106,6 @@ public class MainWindow {
 		if(items.size() > 0)
 			nextItemId = items.get(items.size()-1).getId() + 1;
 		
-		System.out.println(nextCSAId);
-		System.out.println(nextCSDId);
-				
-		//this needs to rerun when a new sheet is saved. Or not. I think it's useless?
-	/*	sheetNames = new String[sheets.size()];
-		int nameIndex = 0;
-		for(CharacterSheet s : sheets)
-		{
-			sheetNames[nameIndex] = s.getName();
-		}*/
-		
-		// initialize currentSheet
 		currentSheet = sheets.get(0);
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -6258,7 +6249,7 @@ public class MainWindow {
 		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
 		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
-		chckbxDemographics.setBounds(35, 33, 164, 23);
+		chckbxDemographics.setBounds(35, 33, 164, 20);
 		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
 		
@@ -6679,6 +6670,7 @@ public class MainWindow {
 							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
 							
 							isNew = false;
+							break;
 						}
 					}
 				}

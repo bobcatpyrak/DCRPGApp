@@ -55,7 +55,6 @@ $$CharacterSheetDisadvantageBegin$$
 7	3	DARK_SECRET	Black Spider is Batman, under cover!
 8	3	EXTREMELY_COMPETITIVE	null
 9	3	FANATIC	Music
-10	3	DARK_SECRET	Test secret
 $$CharacterSheetDisadvantageEnd$$
 
 $$CharacterSheetPowerBegin$$
@@ -66,12 +65,12 @@ $$CharacterSheetPowerBegin$$
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
-0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
-1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
-2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
-3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
-4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
-5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0
+0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+2	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+3	1%0%3%0%2%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 $$InventoryEnd$$
 
 $$ItemBegin$$
@@ -79,5 +78,8 @@ $$ItemBegin$$
 1	Bronze Double-Headed Axe	1d6+1	bronze double-headed axe.png
 2	Hawaiian Shirt	(description)	hawaiian shirt.png
 3	Irish Flag	(description)	irish flag.png
+4	Catarang	(description)	Catarang.png
+5	nein iron	(description)	nein iron.png
+6	Wooden Crossbow	(description)	Wooden_Crossbow.png
 $$ItemEnd$$
 

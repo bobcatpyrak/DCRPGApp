@@ -279,7 +279,7 @@ public class Item extends JPanel
 		    imgChange = true;
 		} catch (IOException e) {	
 		}
-		
+		repaint();
 	}
 	
 	public boolean newPic()

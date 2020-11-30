@@ -141,7 +141,7 @@ public class TextFile implements DAO<CharacterSheet>
 				if (line != null)
 					reading = true;
 				
-				todo - autogenerate sheets for pictures, add drag and drop for items, finish equipment tab, then spells, then rolling
+			//	todo - autogenerate sheets for pictures, add drag and drop for items, finish equipment tab, then spells, then rolling
 				while (reading)
 				{
 					if (line.equals("$$CharacterSheetBegin$$"))
@@ -511,7 +511,6 @@ public class TextFile implements DAO<CharacterSheet>
 							}
 							
 							items.add(i);
-							System.out.println(i.getPath());
 							line = in.readLine();
 						}
 						reading = false;

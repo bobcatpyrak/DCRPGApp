@@ -82,8 +82,8 @@ public class EquipmentTab extends JScrollPane
 	public EquipmentTab(CharacterSheet cs)
 	{
 		super();
-		setSize(1902, 1039);
-		setPreferredSize(new Dimension(1902, 1039));
+		//setSize(1902, 1039);
+		setPreferredSize(MainWindow.tabbedPane.getSize());
 		this.cs = cs;
 		
 		inv = MainWindow.invs.get(0);

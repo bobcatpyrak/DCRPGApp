@@ -46,8 +46,11 @@ public class MainWindow {
 	public static int nextCSPId;
 	public static int nextItemId;
 	
+	public static Item newItem;
+	
 	public static JFrame dcrpgFrame;
 	public static JPanel panel;
+	public static JTabbedPane tabbedPane;
 	private JFormattedTextField nameSearchField;
 	private JFormattedTextField nameField;
 	private JFormattedTextField udoField;
@@ -303,16 +306,15 @@ public class MainWindow {
 		
 		dcrpgFrame.getContentPane().setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 1902, 1039);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
 		dcrpgFrame.getContentPane().add(tabbedPane);
-		//tabbedPane.setVisible(true);
-				
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
+		scrollPane.setPreferredSize(tabbedPane.getSize());
 		tabbedPane.addTab("Character Sheet", null, scrollPane, null);
-		scrollPane.setPreferredSize(new Dimension(1902, 1039));
-		//dcrpgFrame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+		dcrpgFrame.getContentPane().setSize(dcrpgFrame.getSize());
 		
 		EquipmentTab etab = new EquipmentTab(currentSheet);
 		tabbedPane.addTab("Equipment", null, etab, null);
@@ -323,10 +325,11 @@ public class MainWindow {
 		panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
-		panel.setPreferredSize(new Dimension(1887, 1035));
+		panel.setPreferredSize(new Dimension(1884, 1035));
 		
 		dcrpgFrame.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
+            	tabbedPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
         		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
         		etab.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
             }
@@ -6966,7 +6969,10 @@ public class MainWindow {
 					advPowerPanel.setSize(advPowerPanel.getWidth(), powerPanel.getHeight());
 				resize(panel, advPowerPanel);
 			}
-		});
+		});		
+		
+		panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()));
+
 	}
 	
 	public void resize(JPanel pane, JPanel advPow)

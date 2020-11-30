@@ -29,6 +29,7 @@ import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
 
+import gui.MainWindow;
 import library.ImageSelection;
 import library.Scalr;
 
@@ -229,8 +230,9 @@ public class Item extends JPanel
 		MouseListener listener = new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
 				JComponent comp = (JComponent) me.getSource();
+				MainWindow.newItem = Item.this;
 				TransferHandler handler = comp.getTransferHandler();
-				handler.exportAsDrag(comp, me, TransferHandler.COPY);     
+				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
 				imgChange = true;
 			}
 		};
@@ -241,6 +243,8 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
+					if(MainWindow.newItem != null)
+						Item.this.set(MainWindow.items, MainWindow.newItem.getId());
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);

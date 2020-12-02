@@ -135,6 +135,16 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
+					if(MainWindow.newItem != null)
+					{
+						int flip = MainWindow.newItem.getId();
+						if(!Item.this.getName().equals("(name)"))
+						{
+							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+							System.out.println(MainWindow.newItem.getName());
+						}
+						Item.this.set(MainWindow.items, flip);
+					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
@@ -244,7 +254,15 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					if(MainWindow.newItem != null)
-						Item.this.set(MainWindow.items, MainWindow.newItem.getId());
+					{
+						int flip = MainWindow.newItem.getId();
+						if(!Item.this.getName().equals("(name)"))
+						{
+							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+							System.out.println(MainWindow.newItem.getName());
+						}
+						Item.this.set(MainWindow.items, flip);
+					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);

@@ -43,7 +43,7 @@ public class Item extends JPanel
 	private JFormattedTextField nameField;
 	private BufferedImage origImg;
 
-	private int id;
+	private int id = 0;
 	private String descStr = "(description)";
 	private String path = "blank";
 	private String name = "(name)";
@@ -124,6 +124,7 @@ public class Item extends JPanel
 			public void mousePressed(MouseEvent me) {
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
+				MainWindow.newItem = Item.this;
 				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
 				imgChange = true;
 			}
@@ -135,6 +136,7 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
+					 this is the guilty code
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();

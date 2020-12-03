@@ -321,7 +321,6 @@ public class Inventory
 	public void setStorage(List<Integer> storage) 
 	{
 		List<Integer> save = new ArrayList<Integer>();
-		
 		for(Integer i : storage)
 		{
 			if(i != 0)

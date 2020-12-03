@@ -413,6 +413,8 @@ public class EquipmentTab extends JScrollPane
 		storageList.clear();
 		
 		nameField.setText(cs.getName());
+		
+		inv = null;
 
 		if(cs.getInv() == null)
 		{
@@ -453,12 +455,6 @@ public class EquipmentTab extends JScrollPane
 		pack15.set(MainWindow.items, inv.getPack15());
 		
 		
-		
-		Component[] delete = storage.getComponents();
-		for(int i = delete.length -1; i > 0; i--)
-		{
-			delete[i] = null;
-		}
 		storage.removeAll();
 		
 		int panelHeight = (inv.getStorage().size()/2)*336 + 346;
@@ -495,7 +491,6 @@ public class EquipmentTab extends JScrollPane
 	
 	public void saveItems(boolean onlyItems)
 	{
-		This Save function causes the storage panel to stick to whatever was saved for the next load
 		List<Item> l = new ArrayList<Item>();
 		List<Integer> storageSave = new ArrayList<Integer>();
 
@@ -527,7 +522,6 @@ public class EquipmentTab extends JScrollPane
 		l.add(pack15);
 		for(Item i : storageList)
 		{
-			System.out.println("Adding " + i.getName());
 			storageSave.add(i.getId());
 			l.add(i);
 		}
@@ -562,7 +556,6 @@ public class EquipmentTab extends JScrollPane
 					i.setName(li.getName());
 					MainWindow.dao.addItem(i);
 					MainWindow.nextItemId++;
-
 				}
 				
 				if(li.newPic())

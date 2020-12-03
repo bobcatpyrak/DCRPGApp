@@ -139,10 +139,7 @@ public class Item extends JPanel
 					{
 						int flip = MainWindow.newItem.getId();
 						if(!Item.this.getName().equals("(name)"))
-						{
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
-							System.out.println(MainWindow.newItem.getName());
-						}
 						Item.this.set(MainWindow.items, flip);
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
@@ -257,10 +254,7 @@ public class Item extends JPanel
 					{
 						int flip = MainWindow.newItem.getId();
 						if(!Item.this.getName().equals("(name)"))
-						{
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
-							System.out.println(MainWindow.newItem.getName());
-						}
 						Item.this.set(MainWindow.items, flip);
 					}
 					icon = (ImageIcon)imgLabel.getIcon();

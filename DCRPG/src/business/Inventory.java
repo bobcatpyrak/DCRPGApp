@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Inventory 
 {
@@ -33,7 +34,7 @@ public class Inventory
 	private int pack13;
 	private int pack14;
 	private int pack15;
-	private ArrayList<Integer> storage = new ArrayList<Integer>();
+	private List<Integer> storage = new ArrayList<Integer>();
 	
 	public Inventory(int characterSheetId)
 	{
@@ -313,12 +314,21 @@ public class Inventory
 		this.pack15 = pack15;
 	}
 
-	public ArrayList<Integer> getStorage() {
+	public List<Integer> getStorage() {
 		return storage;
 	}
 
-	public void setStorage(ArrayList<Integer> storage) {
-		this.storage = storage;
+	public void setStorage(List<Integer> storage) 
+	{
+		List<Integer> save = new ArrayList<Integer>();
+		
+		for(Integer i : storage)
+		{
+			if(i != 0)
+				save.add(i);
+		}
+		save.add(0);
+		this.storage = save;
 	}
 	
 	public String getStorageSplit()

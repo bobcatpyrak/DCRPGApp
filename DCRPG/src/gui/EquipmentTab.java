@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -44,7 +45,7 @@ public class EquipmentTab extends JScrollPane
 	private JPanel panel;
 	private JFormattedTextField nameField;
 	private static List<String> searchList = new ArrayList<String>();
-
+	private JPanel storage;
 	
 	private CharacterSheet cs;
 	private Inventory inv;
@@ -76,13 +77,14 @@ public class EquipmentTab extends JScrollPane
 	private Item pack14;
 	private Item pack15;
 	
+	private List<Item> storageList = new ArrayList<Item>();
+	
 	private Item search;
 	
 	
 	public EquipmentTab(CharacterSheet cs)
 	{
 		super();
-		//setSize(1902, 1039);
 		setPreferredSize(MainWindow.tabbedPane.getSize());
 		this.cs = cs;
 		
@@ -320,77 +322,87 @@ public class EquipmentTab extends JScrollPane
 		feet.setLocation(325, 1028);
 		equipment.add(feet);
 		
+
+		
 		JPanel pack = new JPanel();
 		pack.setLayout(null);
-		pack.setPreferredSize(new Dimension(645, 1276));
+		pack.setBackground(Color.black);
+		pack.setPreferredSize(new Dimension(645, 1710));
 		JScrollPane packScroll = new JScrollPane(pack);
-		packScroll.setBounds(panel.getWidth()-650, 43, 650, 1025);
+		packScroll.setBounds(panel.getWidth()-668, 43, 668, 966);
 		panel.add(packScroll);
+		
+		JLabel packLabel = new JLabel("Pack");
+		packLabel.setBounds(packScroll.getX(), 0, 668, 42);
+		packLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		packLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(packLabel);
 			
 		pack1 = new Item("Pack 1");
-		pack1.setLocation(0, 0);
+		pack1.setLocation(5, 5);
 		pack.add(pack1);
 		pack2 = new Item("Pack 2");
-		pack2.setLocation(215, 0);
+		pack2.setLocation(220, 5);
 		pack.add(pack2);
 		pack3 = new Item("Pack 3");
-		pack3.setLocation(430, 0);
+		pack3.setLocation(435, 5);
 		pack.add(pack3);
 	
 		pack4 = new Item("Pack 4");
-		pack4.setLocation(0, 319);
+		pack4.setLocation(5, 346);
 		pack.add(pack4);
 		pack5 = new Item("Pack 5");
-		pack5.setLocation(215, 319);
+		pack5.setLocation(220, 346);
 		pack.add(pack5);
 		pack6 = new Item("Pack 6");
-		pack6.setLocation(430, 319);
+		pack6.setLocation(435, 346);
 		pack.add(pack6);		
 		
 		pack7 = new Item("Pack 7");
-		pack7.setLocation(0, 638);
+		pack7.setLocation(5, 687);
 		pack.add(pack7);
 		pack8 = new Item("Pack 8");
-		pack8.setLocation(215, 638);
+		pack8.setLocation(220, 687);
 		pack.add(pack8);
 		pack9 = new Item("Pack 9");
-		pack9.setLocation(430, 638);
+		pack9.setLocation(435, 687);
 		pack.add(pack9);
 		
 		pack10 = new Item("Pack 10");
-		pack10.setLocation(0, 957);
+		pack10.setLocation(5, 1028);
 		pack.add(pack10);
 		pack11 = new Item("Pack 11");
-		pack11.setLocation(215, 957);
+		pack11.setLocation(220, 1028);
 		pack.add(pack11);
 		pack12 = new Item("Pack 12");
-		pack12.setLocation(430, 957);
+		pack12.setLocation(435, 1028);
 		pack.add(pack12);
 		
 		pack13 = new Item("Pack 13");
-		pack13.setLocation(0, 1276);
+		pack13.setLocation(5, 1369);
 		pack.add(pack13);
 		pack14 = new Item("Pack 14");
-		pack14.setLocation(215, 1276);
+		pack14.setLocation(220, 1369);
 		pack.add(pack14);
 		pack15 = new Item("Pack 15");
-		pack15.setLocation(1380, 1276);
+		pack15.setLocation(435, 1369);
 		pack.add(pack15);
 		
 		
-		JPanel storage = new JPanel();
+		storage = new JPanel();
+		storage.setBackground(Color.black);
 		storage.setLayout(null);
-		storage.setPreferredSize(new Dimension(645, 1276));
+		storage.setPreferredSize(new Dimension(430, 346));
 		JScrollPane storageScroll = new JScrollPane(storage);
-		storageScroll.setBounds(1302, 43, 650, 1025);
-		//panel.add(storageScroll); STILL HAVE TO ADD STORAGE TO PANE
+		storageScroll.setBounds(panel.getWidth()/2 - 226, 540, 452, panel.getHeight()-540);
+		storageScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+		panel.add(storageScroll); 
 		
-		Item i1 = new Item("Item 1");
-		i1.setLocation(0, 0);
-		storage.add(i1);
-		Item i2 = new Item("Item 2");
-		i2.setLocation(215, 0);
-		storage.add(i2);
+		JLabel storageLabel = new JLabel("Storage");
+		storageLabel.setBounds(storageScroll.getX(), storageScroll.getY()-46, storageScroll.getWidth(), 45);
+		storageLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		storageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(storageLabel);
 		
 		setNewCharacter(cs);
 	}
@@ -398,6 +410,7 @@ public class EquipmentTab extends JScrollPane
 	public void setNewCharacter(CharacterSheet cs)
 	{
 		this.cs = cs;
+		storageList.clear();
 		
 		nameField.setText(cs.getName());
 
@@ -438,12 +451,53 @@ public class EquipmentTab extends JScrollPane
 		pack13.set(MainWindow.items, inv.getPack13());
 		pack14.set(MainWindow.items, inv.getPack14());
 		pack15.set(MainWindow.items, inv.getPack15());
-				
+		
+		
+		
+		Component[] delete = storage.getComponents();
+		for(int i = delete.length -1; i > 0; i--)
+		{
+			delete[i] = null;
+		}
+		storage.removeAll();
+		
+		int panelHeight = (inv.getStorage().size()/2)*336 + 346;
+		storage.setPreferredSize(new Dimension(430, panelHeight));
+
+		boolean onLeft = true;
+		int count = 1;
+		int y = 5;
+		for(Integer i : inv.getStorage())
+		{
+			Item item = new Item("Item " + count);
+			if(onLeft)
+				item.setLocation(5, y);
+			else
+			{
+				item.setLocation(220, y);
+				y += 341;
+			}
+			item.set(MainWindow.items, i);
+			storageList.add(item);
+			storage.add(item);
+			
+			onLeft = !onLeft;
+			count++;
+		}
+		if(!onLeft)
+		{
+			Item item = new Item("Item " + count);
+			item.setLocation(220, y);
+			item.set(MainWindow.items, 0);
+			storage.add(item);
+		}	
 	}
 	
 	public void saveItems(boolean onlyItems)
 	{
+		This Save function causes the storage panel to stick to whatever was saved for the next load
 		List<Item> l = new ArrayList<Item>();
+		List<Integer> storageSave = new ArrayList<Integer>();
 
 		l.add(cap);			
 		l.add(head);
@@ -471,6 +525,12 @@ public class EquipmentTab extends JScrollPane
 		l.add(pack13);			
 		l.add(pack14);			
 		l.add(pack15);
+		for(Item i : storageList)
+		{
+			System.out.println("Adding " + i.getName());
+			storageSave.add(i.getId());
+			l.add(i);
+		}
 	
 		for(Item li : l)
 		{
@@ -548,6 +608,7 @@ public class EquipmentTab extends JScrollPane
 		inv.setPack13(l.get(23).getId());
 		inv.setPack14(l.get(24).getId());
 		inv.setPack15(l.get(25).getId());
+		inv.setStorage(storageSave);
 		
 		for(Inventory i : MainWindow.invs)
 		{

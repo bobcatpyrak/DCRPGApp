@@ -1,3 +1,6 @@
+			//	todo - finish equipment tab, then spells, then rolling
+
+
 package gui;
 
 import java.awt.*;

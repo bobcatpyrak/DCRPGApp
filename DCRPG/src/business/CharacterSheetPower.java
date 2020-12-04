@@ -46,47 +46,47 @@ public class CharacterSheetPower
 			if(!power.level10().equals(""))
 				shorthand = power.level10();
 		}
-		else if (level >= 9 && shorthand.equals(""))
+		if (level >= 9 && shorthand.equals(""))
 		{
 			if(!power.level9().equals(""))
 				shorthand = power.level9();
 		}
-		else if (level >= 8 && shorthand.equals(""))
+		if (level >= 8 && shorthand.equals(""))
 		{
 			if(!power.level8().equals(""))
 				shorthand = power.level8();
 		}
-		else if (level >= 7 && shorthand.equals(""))
+		if (level >= 7 && shorthand.equals(""))
 		{
 			if(!power.level7().equals(""))
 				shorthand = power.level7();
 		}
-		else if (level >= 6 && shorthand.equals(""))
+		if (level >= 6 && shorthand.equals(""))
 		{
 			if(!power.level6().equals(""))
 				shorthand = power.level6();
 		}
-		else if (level >= 5 && shorthand.equals(""))
+		if (level >= 5 && shorthand.equals(""))
 		{
 			if(!power.level5().equals(""))
 				shorthand = power.level5();
 		}
-		else if (level >= 4 && shorthand.equals(""))
+		if (level >= 4 && shorthand.equals(""))
 		{
 			if(!power.level4().equals(""))
 				shorthand = power.level4();
 		}
-		else if (level >= 3 && shorthand.equals(""))
+		if (level >= 3 && shorthand.equals(""))
 		{
 			if(!power.level3().equals(""))
 				shorthand = power.level3();
 		}
-		else if (level >= 2 && shorthand.equals(""))
+		if (level >= 2 && shorthand.equals(""))
 		{
 			if(!power.level2().equals(""))
 				shorthand = power.level2();
 		}
-		else if (level >= 1 && shorthand.equals(""))
+		if (level >= 1 && shorthand.equals(""))
 		{
 			if(!power.level1().equals(""))
 				shorthand = power.level1();

@@ -185,6 +185,18 @@ public class MainWindow {
 			{
 				e.printStackTrace();
 			}
+		// Creates a folder for spell images if doesn't exist
+		String imgSpellString = "images/spells";
+		Path imgSpellPath = Paths.get(imgSpellString);
+		if (Files.notExists(imgSpellPath))
+			try 
+			{
+				Files.createDirectories(imgSpellPath);
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
 	}
 	
 	
@@ -321,7 +333,9 @@ public class MainWindow {
 		
 		EquipmentTab etab = new EquipmentTab(currentSheet);
 		tabbedPane.addTab("Equipment", null, etab, null);
-
+		
+		SpellTab stab = new SpellTab(currentSheet);
+		tabbedPane.addTab("Spells", null, stab, null);
 		
 		
 		
@@ -335,6 +349,7 @@ public class MainWindow {
             	tabbedPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
         		scrollPane.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
         		etab.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
+        		stab.setSize(dcrpgFrame.getWidth()-18, dcrpgFrame.getHeight()-41);
             }
         });
 		

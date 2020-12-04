@@ -80,7 +80,7 @@ public class EquipmentTab extends JScrollPane
 	private List<Item> storageList = new ArrayList<Item>();
 	JScrollPane storageScroll;
 	
-	private Item search;
+	public static Item search;
 	
 	
 	public EquipmentTab(CharacterSheet cs)
@@ -111,12 +111,12 @@ public class EquipmentTab extends JScrollPane
 		nameField.setEnabled(false);
 		
 		JLabel searchLabel = new JLabel("Search");
-		searchLabel.setBounds(709, 100, 107, 42);
+		searchLabel.setBounds(679, 60, 107, 24);
 		panel.add(searchLabel);
-		searchLabel.setFont(new Font("Dialog", Font.PLAIN, 30));
+		searchLabel.setFont(new Font("Dialog", Font.PLAIN, 24));
 		
 		JFormattedTextField searchField = new JFormattedTextField();
-		searchField.setBounds(709, 150, 177, 23);
+		searchField.setBounds(679, 86, 157, 23);
 		panel.add(searchField);
 		searchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		searchField.setText("(search for item by name)");
@@ -133,7 +133,7 @@ public class EquipmentTab extends JScrollPane
 		searches.setVisible(false);
 		
 		JButton btnLoad = new JButton("Load");
-		btnLoad.setBounds(816, 113, 70, 29);
+		btnLoad.setBounds(766, 60, 65, 24);
 		panel.add(btnLoad);
 		btnLoad.addActionListener(new ActionListener() 
 		{
@@ -151,8 +151,8 @@ public class EquipmentTab extends JScrollPane
 			}
 		});
 		
-		search = new Item("Search");
-		search.setLocation(900, 100);
+		search = new Item("Selected", true);
+		search.setLocation(860, 60);
 		search.setDisabled();
 		panel.add(search);
 		
@@ -236,10 +236,10 @@ public class EquipmentTab extends JScrollPane
 		
 		JCheckBox delBox = new JCheckBox("Confirm Delete");
 		add(delBox);
-		delBox.setBounds(709, search.getY()+search.getHeight()-46, 177, 23);
+		delBox.setBounds(679, searchField.getY()+searchField.getHeight()+2, 157, 23);
 		
 		JButton btnDelete = new JButton("Delete Displayed Item");
-		btnDelete.setBounds(709, search.getY()+search.getHeight()-23, 177, 23);
+		btnDelete.setBounds(679, delBox.getY()+delBox.getHeight()+2, 157, 23);
 		btnDelete.setBackground(Color.red);
 		panel.add(btnDelete);
 		btnDelete.addActionListener(new ActionListener() 
@@ -393,15 +393,15 @@ public class EquipmentTab extends JScrollPane
 		storage = new JPanel();
 		storage.setBackground(Color.black);
 		storage.setLayout(null);
-		storage.setPreferredSize(new Dimension(430, 346));
+		storage.setPreferredSize(new Dimension(430, 256));
 		storageScroll = new JScrollPane(storage);
-		storageScroll.setBounds(panel.getWidth()/2 - 226, 540, 452, panel.getHeight()-540);
+		storageScroll.setBounds(panel.getWidth()/2 - 226, 630, 452, panel.getHeight()-630);
 		storageScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
 		panel.add(storageScroll); 
 		
 		JLabel storageLabel = new JLabel("Storage");
 		storageLabel.setBounds(storageScroll.getX(), storageScroll.getY()-46, storageScroll.getWidth(), 45);
-		storageLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		storageLabel.setFont(new Font("Dialog", Font.PLAIN, 38));
 		storageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(storageLabel);
 		
@@ -606,6 +606,7 @@ public class EquipmentTab extends JScrollPane
 					{
 					    // retrieve image
 				        BufferedImage img = li.retrievePic();
+				        
 					    					    
 					    File outputfile = new File("images/items/"+li.getPath());
 					    ImageIO.write(img, "png", outputfile);

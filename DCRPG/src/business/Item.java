@@ -30,6 +30,7 @@ import javax.swing.SwingConstants;
 import javax.swing.TransferHandler;
 import javax.swing.border.LineBorder;
 
+import gui.EquipmentTab;
 import gui.MainWindow;
 import library.ImageSelection;
 import library.Scalr;
@@ -51,6 +52,7 @@ public class Item extends JPanel
 	
 	private boolean imgChange = false;
 	private boolean newPic = false;
+	private boolean big = false;
 
 
 	public Item(int id)
@@ -126,6 +128,7 @@ public class Item extends JPanel
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
 				MainWindow.newItem = Item.this;
+				EquipmentTab.search.set(MainWindow.items, Item.this.getId());
 				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
 				imgChange = true;
 			}
@@ -137,6 +140,7 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
+					newPic = true;
 					// this is the guilty code
 					if(MainWindow.newItem != null)
 					{
@@ -144,13 +148,15 @@ public class Item extends JPanel
 						if(!Item.this.getName().equals("(name)"))
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
+						Item.this.setPath(path);
 						MainWindow.newItem = null;
+						newPic = false;
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
-					newPic = true;
+					
 				}
 			}
 		});	
@@ -242,6 +248,7 @@ public class Item extends JPanel
 			public void mousePressed(MouseEvent me) {
 				JComponent comp = (JComponent) me.getSource();
 				MainWindow.newItem = Item.this;
+				EquipmentTab.search.set(MainWindow.items, Item.this.getId());
 				TransferHandler handler = comp.getTransferHandler();
 				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
 				imgChange = true;
@@ -254,6 +261,7 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
+					newPic = true;
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();
@@ -261,18 +269,136 @@ public class Item extends JPanel
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						MainWindow.newItem = null;
+						newPic = false;
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
-					newPic = true;
+					
 				}
 			}
 		});	
 		
 		description = new JFormattedTextField();
 		description.setBounds(2, 314, 206, 20);
+		description.setHorizontalAlignment(SwingConstants.CENTER);
+		description.setText("(description)");
+		add(description);
+		description.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setDescStr(description.getText());
+			}
+		});
+	}
+	
+	public Item(String slotStr, boolean big)
+	{
+		super();
+		this.big = big;
+		setSize(354, 522);
+		setBackground(Color.LIGHT_GRAY);
+		setLayout(null);
+		
+		slot = new JLabel(slotStr);
+		slot.setBackground(Color.WHITE);
+		slot.setFont(new Font("Verdana", Font.BOLD, 11));
+		slot.setBounds(2, 2, 350, 20);
+		slot.setHorizontalAlignment(SwingConstants.CENTER);
+		add(slot);
+		
+		JButton xBtn = new JButton();
+		xBtn.setBounds(getWidth()-18, 2, 16, 16);
+		xBtn.setFont(new Font("Dialog", Font.BOLD, 12));
+		xBtn.setText("x");
+		xBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+		xBtn.setMargin(new Insets(0,0,0,0));
+		add(xBtn);
+		xBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				clearItem();
+			}
+		});
+		
+		nameField = new JFormattedTextField();
+		nameField.setBounds(2, 24, 350, 20);
+		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.setText("(name)");
+		add(nameField);
+		nameField.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				setName(nameField.getText());
+			}
+		});
+		
+		icon = new ImageIcon();
+		img = null;
+		try 
+		{
+		    img = ImageIO.read(new File("images/items/blank.png"));
+		    img = Scalr.resize(img, 350, 452);
+		    icon.setImage(img);
+		} catch (IOException e) {
+			
+		}
+		
+		imgLabel = new JLabel();	
+		imgLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		imgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		imgLabel.setBackground(Color.WHITE);
+		imgLabel.setIcon(icon);
+		imgLabel.setBounds(2, 46, 350, 452);
+		add(imgLabel);
+
+		imgLabel.setTransferHandler(new ImageSelection());	    
+
+		MouseListener listener = new MouseAdapter() {
+			public void mousePressed(MouseEvent me) {
+				JComponent comp = (JComponent) me.getSource();
+				MainWindow.newItem = Item.this;
+				EquipmentTab.search.set(MainWindow.items, Item.this.getId());
+				TransferHandler handler = comp.getTransferHandler();
+				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
+				imgChange = true;
+			}
+		};
+
+		imgLabel.addMouseListener(listener);
+
+		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				if(imgChange)
+				{
+					newPic = true;
+					if(MainWindow.newItem != null)
+					{
+						int flip = MainWindow.newItem.getId();
+						if(!Item.this.getName().equals("(name)"))
+							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+						Item.this.set(MainWindow.items, flip);
+						MainWindow.newItem = null;
+						newPic = false;
+					}
+					icon = (ImageIcon)imgLabel.getIcon();
+					origImg = (BufferedImage)icon.getImage();
+					img = Scalr.resize((BufferedImage)icon.getImage(), 350, 452);
+					icon.setImage(img);
+					
+				}
+			}
+		});	
+		
+		description = new JFormattedTextField();
+		description.setBounds(2, 500, 350, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
@@ -347,7 +473,10 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
-			    img = Scalr.resize(img, 206, 266);
+			    if(!big)
+			    	img = Scalr.resize(img, 206, 266);
+			    else if(big)
+			    	img = Scalr.resize(img, 350, 452);
 			    icon.setImage(img);
 			    imgChange = true;
 			} catch (IOException e) {	
@@ -371,7 +500,10 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
-			    img = Scalr.resize(img, 206, 266);
+			    if(!big)
+			    	img = Scalr.resize(img, 206, 266);
+			    else if(big)
+			    	img = Scalr.resize(img, 350, 452);
 			    icon.setImage(img);
 			    imgChange = true;
 			} catch (IOException e) {	
@@ -408,7 +540,10 @@ public class Item extends JPanel
 		{
 			imgChange = false;
 		    img = ImageIO.read(new File("images/items/"+path));
-		    img = Scalr.resize(img, 206, 266);
+		    if(!big)
+		    	img = Scalr.resize(img, 206, 266);
+		    else if(big)
+		    	img = Scalr.resize(img, 350, 452);
 		    icon.setImage(img);
 		    imgChange = true;
 		} catch (IOException e) {	

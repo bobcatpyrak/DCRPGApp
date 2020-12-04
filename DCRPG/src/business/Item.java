@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Label;
+import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -136,13 +137,14 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
-					 this is the guilty code
+					// this is the guilty code
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();
 						if(!Item.this.getName().equals("(name)"))
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
+						MainWindow.newItem = null;
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
@@ -258,6 +260,7 @@ public class Item extends JPanel
 						if(!Item.this.getName().equals("(name)"))
 							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
+						MainWindow.newItem = null;
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();

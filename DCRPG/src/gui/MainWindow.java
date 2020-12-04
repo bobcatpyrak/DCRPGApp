@@ -6542,6 +6542,7 @@ public class MainWindow {
 							chckbxPersuasion.setSelected(false);
 							chckbxWillpower.setSelected(false);
 								
+							newItem = null;
 							currentSheet = s;
 							// load the entire dang sheet
 							demographicsPanel.setNewCharacter(currentSheet);
@@ -6720,6 +6721,7 @@ public class MainWindow {
 				newCS.setAllMiscStats("1d6%0%3%0%0%0%0%0%30%30");
 				newCS.setAllStats("2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0");
 				
+				newItem = null;
 				currentSheet = newCS;
 
 				chckbxAcro.setSelected(false);

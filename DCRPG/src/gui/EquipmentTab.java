@@ -78,6 +78,7 @@ public class EquipmentTab extends JScrollPane
 	private Item pack15;
 	
 	private List<Item> storageList = new ArrayList<Item>();
+	JScrollPane storageScroll;
 	
 	private Item search;
 	
@@ -393,7 +394,7 @@ public class EquipmentTab extends JScrollPane
 		storage.setBackground(Color.black);
 		storage.setLayout(null);
 		storage.setPreferredSize(new Dimension(430, 346));
-		JScrollPane storageScroll = new JScrollPane(storage);
+		storageScroll = new JScrollPane(storage);
 		storageScroll.setBounds(panel.getWidth()/2 - 226, 540, 452, panel.getHeight()-540);
 		storageScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
 		panel.add(storageScroll); 
@@ -404,7 +405,46 @@ public class EquipmentTab extends JScrollPane
 		storageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(storageLabel);
 		
+		JButton btnAddRow = new JButton("Add Row");
+		btnAddRow.setBounds(storageLabel.getX()+storageLabel.getWidth()-90, storageLabel.getY()+22, 90, 23);
+		panel.add(btnAddRow);
+		btnAddRow.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addRow();
+			}
+		});
+		
 		setNewCharacter(cs);
+		
+	}
+	
+	public void addRow()
+	{
+		int count = storage.getComponents().length + 1;
+		int y = (count/2)*341 + 5;
+		
+		Item item1 = new Item("Item " + count);
+		item1.setLocation(5, y);
+		item1.set(MainWindow.items, 0);
+		storage.add(item1);
+		storageList.add(item1);
+
+		
+		count++;
+		
+		Item item2 = new Item("Item " + count);
+		item2.setLocation(220, y);
+		item2.set(MainWindow.items, 0);
+		storage.add(item2);
+		storageList.add(item2);
+
+		
+		int panelHeight = (storage.getComponents().length/2) * 341 + 5;
+		storage.setPreferredSize(new Dimension(430, panelHeight));
+		storageScroll.revalidate();
+		
 	}
 	
 	public void setNewCharacter(CharacterSheet cs)
@@ -457,8 +497,8 @@ public class EquipmentTab extends JScrollPane
 		
 		storage.removeAll();
 		
-		int panelHeight = (inv.getStorage().size()/2)*336 + 346;
-		storage.setPreferredSize(new Dimension(430, panelHeight));
+//		int panelHeight = (inv.getStorage().size()/2)*336 + 346;
+//		storage.setPreferredSize(new Dimension(430, panelHeight));
 
 		boolean onLeft = true;
 		int count = 1;
@@ -487,6 +527,8 @@ public class EquipmentTab extends JScrollPane
 			item.set(MainWindow.items, 0);
 			storage.add(item);
 		}	
+		int panelHeight = (storage.getComponents().length/2) * 341 + 5;
+		storage.setPreferredSize(new Dimension(430, panelHeight));
 	}
 	
 	public void saveItems(boolean onlyItems)

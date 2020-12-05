@@ -39,7 +39,7 @@ public class Spell extends JPanel
 	public Spell()
 	{
 		super();
-		setSize(300, 150);
+		setSize(364, 184);
 		setBackground(Color.LIGHT_GRAY);
 		setBorder(new LineBorder(Color.black));
 		setLayout(null);
@@ -59,7 +59,7 @@ public class Spell extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 2, 300, 150);
+		imgLabel.setBounds(2, 2, 360, 180);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -91,7 +91,7 @@ public class Spell extends JPanel
 						newPic = false;
 					}*/
 					icon = (ImageIcon)imgLabel.getIcon();
-				    img = Scalr.resize((BufferedImage)icon.getImage(), 300, 150);
+				    img = Scalr.resize((BufferedImage)icon.getImage(), 360, 180);
 					//origImg = (BufferedImage)icon.getImage();
 					icon.setImage(img);
 					
@@ -114,7 +114,7 @@ public class Spell extends JPanel
 				try 
 				{
 				    img = ImageIO.read(new File("images/spells/"+path));
-				    img = Scalr.resize(img, 300, 150);
+				    img = Scalr.resize(img, 360, 180);
 				    icon.setImage(img);
 				} catch (IOException e) {
 				}

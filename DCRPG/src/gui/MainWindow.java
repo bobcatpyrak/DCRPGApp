@@ -6504,6 +6504,7 @@ public class MainWindow {
 						    
 						    File outputfile = new File("images/sheets/"+n+".png");
 						    ImageIO.write(origImg, "png", outputfile);
+						    newPic = false;
 						} catch (IOException e) {
 							System.out.println(e);
 						}
@@ -6568,6 +6569,7 @@ public class MainWindow {
 							// load the entire dang sheet
 							demographicsPanel.setNewCharacter(currentSheet);
 							etab.setNewCharacter(currentSheet);
+							stab.setNewCharacter(currentSheet);
 							
 							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
@@ -6579,7 +6581,7 @@ public class MainWindow {
 							imgChange = false;
 							try 
 							{
-							    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
+							    origImg = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
 							    imgLabel.setIcon(null);
 								img = null;
 							    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));

@@ -42,6 +42,10 @@ public class SpellTab extends JScrollPane
 	private JLabel level2Max;
 	private JLabel level3Max;
 	private JLabel level4Max;
+	private JFormattedTextField level1Current;
+	private JFormattedTextField level2Current;
+	private JFormattedTextField level3Current;
+	private JFormattedTextField level4Current;
 	
 	private CharacterSheet cs;
 	
@@ -89,7 +93,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				//saveSpells(true);
+				resetSlots();
 			}
 		});
 		
@@ -215,7 +219,7 @@ public class SpellTab extends JScrollPane
 		panel.add(slots1Label);
 		slots1Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
-		JFormattedTextField level1Current = new JFormattedTextField();
+		level1Current = new JFormattedTextField();
 		level1Current.setBounds(slots1Label.getX()+slots1Label.getWidth(), 0, 70, 70);
 		panel.add(level1Current);
 		level1Current.setFont(new Font("Dialog", Font.PLAIN, 70));
@@ -231,7 +235,7 @@ public class SpellTab extends JScrollPane
 		panel.add(slots2Label);
 		slots2Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
-		JFormattedTextField level2Current = new JFormattedTextField();
+		level2Current = new JFormattedTextField();
 		level2Current.setBounds(slots2Label.getX()+slots2Label.getWidth(), 0, 70, 70);
 		panel.add(level2Current);
 		level2Current.setFont(new Font("Dialog", Font.PLAIN, 70));
@@ -247,7 +251,7 @@ public class SpellTab extends JScrollPane
 		panel.add(slots3Label);
 		slots3Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
-		JFormattedTextField level3Current = new JFormattedTextField();
+		level3Current = new JFormattedTextField();
 		level3Current.setBounds(slots3Label.getX()+slots3Label.getWidth(), 100, 70, 70);
 		panel.add(level3Current);
 		level3Current.setFont(new Font("Dialog", Font.PLAIN, 70));
@@ -263,7 +267,7 @@ public class SpellTab extends JScrollPane
 		panel.add(slots4Label);
 		slots4Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
-		JFormattedTextField level4Current = new JFormattedTextField();
+		level4Current = new JFormattedTextField();
 		level4Current.setBounds(slots4Label.getX()+slots4Label.getWidth(), 100, 70, 70);
 		panel.add(level4Current);
 		level4Current.setFont(new Font("Dialog", Font.PLAIN, 70));
@@ -351,6 +355,14 @@ public class SpellTab extends JScrollPane
 	{
 		this.cs = cs;
 		List<CharacterSheetPower> pwrs = cs.getCSP();
+		level1Max.setText("/ 0");
+		level2Max.setText("/ 0");
+		level3Max.setText("/ 0");
+		level4Max.setText("/ 0");
+		level1Current.setText("");
+		level2Current.setText("");
+		level3Current.setText("");
+		level4Current.setText("");
 		for(CharacterSheetPower csp : pwrs)
 		{
 			if(csp.getPowerStr().equalsIgnoreCase("WIZARDRY") || csp.getPowerStr().equalsIgnoreCase("SORCERY"))
@@ -390,6 +402,124 @@ public class SpellTab extends JScrollPane
 					level3Max.setText("/ 4");
 					level4Max.setText("/ 2");
 				}
+				else if(csp.getLevel() == 5)
+				{
+					level1Max.setText("/10");
+					level2Max.setText("/ 5");
+					level3Max.setText("/ 2");
+					level4Max.setText("/ 1");
+				}
+				else if(csp.getLevel() == 4)
+				{
+					level1Max.setText("/10");
+					level2Max.setText("/ 4");
+					level3Max.setText("/ 2");
+					level4Max.setText("/ 1");
+				}
+				else if(csp.getLevel() == 3)
+				{
+					level1Max.setText("/ 9");
+					level2Max.setText("/ 3");
+					level3Max.setText("/ 1");
+					level4Max.setText("/ 1");
+				}
+				else if(csp.getLevel() == 2)
+				{
+					level1Max.setText("/ 8");
+					level2Max.setText("/ 3");
+					level3Max.setText("/ 1");
+					level4Max.setText("/ 0");
+				}
+				else if(csp.getLevel() == 1)
+				{
+					level1Max.setText("/ 7");
+					level2Max.setText("/ 2");
+					level3Max.setText("/ 1");
+					level4Max.setText("/ 0");
+				}
+				break;
+			}
+		}
+	}
+	
+	public void resetSlots()
+	{
+		List<CharacterSheetPower> pwrs = cs.getCSP();
+		for(CharacterSheetPower csp : pwrs)
+		{
+			if(csp.getPowerStr().equalsIgnoreCase("WIZARDRY") || csp.getPowerStr().equalsIgnoreCase("SORCERY"))
+			{
+				if(csp.getLevel() == 10)
+				{
+					level1Current.setText("X");
+					level2Current.setText("X");
+					level3Current.setText("10");
+					level4Current.setText("4");
+				}
+				else if(csp.getLevel() == 9)
+				{
+					level1Current.setText("X");
+					level2Current.setText("X");
+					level3Current.setText("8");
+					level4Current.setText("3");
+				}
+				else if(csp.getLevel() == 8)
+				{
+					level1Current.setText("X");
+					level2Current.setText("10");
+					level3Current.setText("7");
+					level4Current.setText("2");
+				}
+				else if(csp.getLevel() == 7)
+				{
+					level1Current.setText("X");
+					level2Current.setText("10");
+					level3Current.setText("5");
+					level4Current.setText("2");
+				}
+				else if(csp.getLevel() == 6)
+				{
+					level1Current.setText("X");
+					level2Current.setText("7");
+					level3Current.setText("4");
+					level4Current.setText("2");
+				}
+				else if(csp.getLevel() == 5)
+				{
+					level1Current.setText("10");
+					level2Current.setText("5");
+					level3Current.setText("2");
+					level4Current.setText("1");
+				}
+				else if(csp.getLevel() == 4)
+				{
+					level1Current.setText("10");
+					level2Current.setText("4");
+					level3Current.setText("2");
+					level4Current.setText("1");
+				}
+				else if(csp.getLevel() == 3)
+				{
+					level1Current.setText("9");
+					level2Current.setText("3");
+					level3Current.setText("1");
+					level4Current.setText("1");
+				}
+				else if(csp.getLevel() == 2)
+				{
+					level1Current.setText("8");
+					level2Current.setText("3");
+					level3Current.setText("1");
+					level4Current.setText("0");
+				}
+				else if(csp.getLevel() == 1)
+				{
+					level1Current.setText("7");
+					level2Current.setText("2");
+					level3Current.setText("1");
+					level4Current.setText("0");
+				}
+				break;
 			}
 		}
 	}

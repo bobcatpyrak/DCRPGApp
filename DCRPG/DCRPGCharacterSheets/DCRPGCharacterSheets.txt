@@ -85,3 +85,13 @@ $$ItemBegin$$
 9	alfred	(description)	alfred.jpg
 $$ItemEnd$$
 
+$$SpellBegin$$
+0	Ivy Bind Thee	Ivy Bind Thee.png
+1	Lightning Bolt	Lightning Bolt.png
+2	Lip Service	Lip Service.png
+3	Nose Stuck In A Book	Nose Stuck In A Book.png
+4	Pay Dirt	Pay Dirt.png
+5	Punching Bag	Punching Bag.png
+6	Repunch the Sounding Joy	Repunch the Sounding Joy.png
+$$SpellEnd$$
+

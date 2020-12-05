@@ -40,6 +40,7 @@ public class MainWindow {
 	private static List<CharacterSheetPower> powers;
 	public static List<Inventory> invs;
 	public static List<Item> items;
+	public static List<Spell> spells;
 	private static CharacterSheet currentSheet;
 	
 	public static int nextSheetId;
@@ -48,6 +49,7 @@ public class MainWindow {
 	public static int nextCSDId;
 	public static int nextCSPId;
 	public static int nextItemId;
+	public static int nextSpellId;
 	
 	public static Item newItem;
 	
@@ -89,6 +91,7 @@ public class MainWindow {
 		powers = dao.getAllCSP();
 		invs = dao.getAllInv();
 		items = dao.getAllItems();
+		spells = dao.getAllSpells();
 		
 		nextSheetId = 0;
 		nextSpecId = 0;
@@ -96,6 +99,7 @@ public class MainWindow {
 		nextCSDId = 0;
 		nextCSPId = 0;
 		nextItemId = 0;
+		nextSpellId = 0;
 		
 		if(sheets.size() > 0)
 			nextSheetId = sheets.get(sheets.size()-1).getId() + 1;
@@ -109,6 +113,8 @@ public class MainWindow {
 			nextCSPId = powers.get(powers.size()-1).getId() + 1;
 		if(items.size() > 0)
 			nextItemId = items.get(items.size()-1).getId() + 1;
+		if(spells.size() > 0)
+			nextSpellId = spells.get(spells.size()-1).getId() + 1;
 		
 		currentSheet = sheets.get(0);
 		

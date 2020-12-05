@@ -237,6 +237,7 @@ public class EquipmentTab extends JScrollPane
 		JCheckBox delBox = new JCheckBox("Confirm Delete");
 		add(delBox);
 		delBox.setBounds(679, searchField.getY()+searchField.getHeight()+2, 157, 23);
+		delBox.repaint();
 		
 		JButton btnDelete = new JButton("Delete Displayed Item");
 		btnDelete.setBounds(679, delBox.getY()+delBox.getHeight()+2, 157, 23);

@@ -15,6 +15,7 @@ public class TextFile implements DAO<CharacterSheet>
 	private List<CharacterSheetPower> powers = null;
 	private List<Inventory> invs = null;
 	private List<Item> items = null;
+	private List<Spell> spells = null;
 	private Path sheetsPath = null;
 	private File sheetsFile = null;
 	private final String FIELD_SEP = "\t";
@@ -32,6 +33,7 @@ public class TextFile implements DAO<CharacterSheet>
 		powers = getAllCSP();
 		invs = getAllInv();
 		items = getAllItems();
+		spells = getAllSpells();
 		sheets = getAllSheets();
 		
 		saveAll();
@@ -68,6 +70,10 @@ public class TextFile implements DAO<CharacterSheet>
 	public Item getItem(int id)
 	{
 		return items.get(id);
+	}
+	public Spell getSpell(int id)
+	{
+		return spells.get(id);
 	}
 	
 	@Override
@@ -550,6 +556,95 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}	
+	public List<Spell> getAllSpells() 
+	{	
+		if(spells != null)
+			return spells;
+		
+		spells = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				String[] paths;
+				File f = new File("images/spells");
+				paths = f.list();
+				
+				List<String> images = new ArrayList<String>();
+				for(int i = 0; i < paths.length; i++)
+					images.add(paths[i]);
+				
+				while (reading)
+				{
+					if (line.equals("$$SpellBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$SpellEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							Spell s = new Spell();
+							s.setId(Integer.parseInt(fields[0]));
+							s.setName(fields[1]);
+							s.setPath(fields[2]);
+							
+							for(String path : images)
+							{
+								if(path.toLowerCase().equals(fields[2].toLowerCase()))
+								{
+									images.remove(path);
+									break;
+								}
+							}
+							
+							spells.add(s);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				
+				int nextSpellId = 0;
+				
+				if(spells.size() > 0)
+					nextSpellId = spells.get(spells.size()-1).getId() + 1;
+				
+				for(String path : images)
+				{
+					Spell s = new Spell();
+					s.setId(nextSpellId);
+					s.setPath(path);
+					String name = path.substring(0, path.indexOf('.'));
+					s.setName(name);
+					nextSpellId++;
+					spells.add(s);
+				}			
+				return spells;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}	
 	
 	@Override
 	public boolean add(CharacterSheet t) 
@@ -590,6 +685,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean addItem(Item t) 
 	{
 		items.add(t);
+		return true;
+	}
+	public boolean addSpell(Spell t)
+	{
+		spells.add(t);
 		return true;
 	}
 
@@ -706,6 +806,21 @@ public class TextFile implements DAO<CharacterSheet>
 		}
 		return true;
 	}
+	public boolean updateSpell(Spell t) 
+	{
+		int index = -1;
+		for(Spell s : spells)
+		{
+			if(s.getId()==t.getId())
+				index = spells.indexOf(s);
+		}
+		if(index >= 0)
+		{
+			spells.remove(index);
+			spells.add(index, t);
+		}
+		return true;
+	}
 
 	@Override
 	public boolean delete(CharacterSheet t) 
@@ -746,6 +861,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean deleteItem(Item t) 
 	{
 		items.remove(t);
+		return true;
+	}
+	public boolean deleteSpell(Spell t) 
+	{
+		spells.remove(t);
 		return true;
 	}
 
@@ -814,6 +934,14 @@ public class TextFile implements DAO<CharacterSheet>
 				out.println(i.getId() + FIELD_SEP + i.getName() + FIELD_SEP + i.getDescStr() + FIELD_SEP + i.getPath());
 			}
 			out.println("$$ItemEnd$$");
+			out.println();
+			// Spells
+			out.println("$$SpellBegin$$"); 
+			for (Spell s : spells)
+			{
+				out.println(s.getId() + FIELD_SEP + s.getName() + FIELD_SEP + s.getPath());
+			}
+			out.println("$$SpellEnd$$");
 			out.println();
 			return true;
 		}

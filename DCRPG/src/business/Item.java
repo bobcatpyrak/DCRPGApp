@@ -109,7 +109,6 @@ public class Item extends JPanel
 		    img = Scalr.resize(img, 206, 266);
 		    icon.setImage(img);
 		} catch (IOException e) {
-			
 		}
 							
 		imgLabel = new JLabel();	
@@ -141,7 +140,6 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					newPic = true;
-					// this is the guilty code
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();

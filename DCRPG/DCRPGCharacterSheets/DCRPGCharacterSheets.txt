@@ -88,12 +88,17 @@ $$ItemBegin$$
 $$ItemEnd$$
 
 $$SpellBegin$$
-0	Ivy Bind Thee	Ivy Bind Thee.png
+0	null	null.png
 1	Lightning Bolt	Lightning Bolt.png
 2	Lip Service	Lip Service.png
 3	Nose Stuck In A Book	Nose Stuck In A Book.png
 4	Pay Dirt	Pay Dirt.png
 5	Punching Bag	Punching Bag.png
 6	Repunch the Sounding Joy	Repunch the Sounding Joy.png
+7	Ivy Bind Thee	Ivy Bind Thee.png
 $$SpellEnd$$
+
+$$SpellInventoryBegin$$
+5	6%7%0	2%5%4%3%0	1%0	0	0
+$$SpellInventoryEnd$$
 

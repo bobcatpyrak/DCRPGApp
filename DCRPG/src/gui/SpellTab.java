@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -28,6 +29,7 @@ import business.CharacterSheet;
 import business.CharacterSheetPower;
 import business.Item;
 import business.Spell;
+import business.SpellInventory;
 
 
 
@@ -46,6 +48,12 @@ public class SpellTab extends JScrollPane
 	private JFormattedTextField level2Current;
 	private JFormattedTextField level3Current;
 	private JFormattedTextField level4Current;
+	
+	private JPanel sigSpells;
+	private JPanel level1Spells;
+	private JPanel level2Spells;
+	private JPanel level3Spells;
+	private JPanel level4Spells;
 	
 	private CharacterSheet cs;
 	
@@ -284,13 +292,29 @@ public class SpellTab extends JScrollPane
 		sigLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
 		sigLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JPanel sigSpells = new JPanel();
+		sigSpells = new JPanel();
 		sigSpells.setBackground(Color.BLACK);
 		sigSpells.setLayout(null);
-		sigSpells.setPreferredSize(new Dimension(364, 1369));
+		sigSpells.setPreferredSize(new Dimension(364, 184));
 		JScrollPane sigSpellsScroll = new JScrollPane(sigSpells);
 		sigSpellsScroll.setBounds(0, 250, 382, 760);
 		panel.add(sigSpellsScroll);
+		sigSpellsScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+		
+		JButton btnAddSig = new JButton("+");
+		btnAddSig.setBackground(new Color(0, 250, 154));
+		btnAddSig.setMargin(new Insets(0,0,0,0));
+		btnAddSig.setFont(new Font("Dialog", Font.BOLD, 40));
+		btnAddSig.setBounds(sigSpellsScroll.getX()+sigSpellsScroll.getWidth()-40, sigSpellsScroll.getY()-40, 40, 40);
+		panel.add(btnAddSig);
+		btnAddSig.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addSpell(sigSpells, sigSpellsScroll);
+			}
+		});
 		
 		JLabel level1Label = new JLabel("Level 1");
 		level1Label.setBounds(383, 205, 382, 42);
@@ -298,13 +322,29 @@ public class SpellTab extends JScrollPane
 		level1Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		level1Label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel level1Spells = new JPanel();
+		level1Spells = new JPanel();
 		level1Spells.setBackground(Color.BLACK);
 		level1Spells.setLayout(null);
-		level1Spells.setPreferredSize(new Dimension(364, 1369));
+		level1Spells.setPreferredSize(new Dimension(364, 184));
 		JScrollPane level1SpellsScroll = new JScrollPane(level1Spells);
 		level1SpellsScroll.setBounds(383, 250, 382, 760);
 		panel.add(level1SpellsScroll);
+		level1SpellsScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+		
+		JButton btnAdd1st = new JButton("+");
+		btnAdd1st.setBackground(Color.magenta);
+		btnAdd1st.setMargin(new Insets(0,0,0,0));
+		btnAdd1st.setFont(new Font("Dialog", Font.BOLD, 40));
+		btnAdd1st.setBounds(level1SpellsScroll.getX()+level1SpellsScroll.getWidth()-40, level1SpellsScroll.getY()-40, 40, 40);
+		panel.add(btnAdd1st);
+		btnAdd1st.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addSpell(level1Spells, level1SpellsScroll);
+			}
+		});
 		
 		JLabel level2Label = new JLabel("Level 2");
 		level2Label.setBounds(766, 205, 382, 42);
@@ -312,13 +352,29 @@ public class SpellTab extends JScrollPane
 		level2Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		level2Label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel level2Spells = new JPanel();
+		level2Spells = new JPanel();
 		level2Spells.setBackground(Color.BLACK);
 		level2Spells.setLayout(null);
-		level2Spells.setPreferredSize(new Dimension(364, 1369));
+		level2Spells.setPreferredSize(new Dimension(364, 184));
 		JScrollPane level2SpellsScroll = new JScrollPane(level2Spells);
 		level2SpellsScroll.setBounds(766, 250, 382, 760);
 		panel.add(level2SpellsScroll);
+		level2SpellsScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+		
+		JButton btnAdd2nd = new JButton("+");
+		btnAdd2nd.setBackground(new Color(0, 250, 154));
+		btnAdd2nd.setMargin(new Insets(0,0,0,0));
+		btnAdd2nd.setFont(new Font("Dialog", Font.BOLD, 40));
+		btnAdd2nd.setBounds(level2SpellsScroll.getX()+level2SpellsScroll.getWidth()-40, level2SpellsScroll.getY()-40, 40, 40);
+		panel.add(btnAdd2nd);
+		btnAdd2nd.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addSpell(level2Spells, level2SpellsScroll);
+			}
+		});
 		
 		JLabel level3Label = new JLabel("Level 3");
 		level3Label.setBounds(1149, 205, 382, 42);
@@ -326,13 +382,29 @@ public class SpellTab extends JScrollPane
 		level3Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		level3Label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel level3Spells = new JPanel();
+		level3Spells = new JPanel();
 		level3Spells.setBackground(Color.BLACK);
 		level3Spells.setLayout(null);
-		level3Spells.setPreferredSize(new Dimension(364, 1369));
+		level3Spells.setPreferredSize(new Dimension(364, 184));
 		JScrollPane level3SpellsScroll = new JScrollPane(level3Spells);
 		level3SpellsScroll.setBounds(1149, 250, 382, 760);
 		panel.add(level3SpellsScroll);
+		level3SpellsScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+		
+		JButton btnAdd3rd = new JButton("+");
+		btnAdd3rd.setBackground(Color.magenta);
+		btnAdd3rd.setMargin(new Insets(0,0,0,0));
+		btnAdd3rd.setFont(new Font("Dialog", Font.BOLD, 40));
+		btnAdd3rd.setBounds(level3SpellsScroll.getX()+level3SpellsScroll.getWidth()-40, level3SpellsScroll.getY()-40, 40, 40);
+		panel.add(btnAdd3rd);
+		btnAdd3rd.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addSpell(level3Spells, level3SpellsScroll);
+			}
+		});
 		
 		JLabel level4Label = new JLabel("Level 4");
 		level4Label.setBounds(1512, 205, 382, 42);
@@ -340,13 +412,29 @@ public class SpellTab extends JScrollPane
 		level4Label.setFont(new Font("Dialog", Font.PLAIN, 40));
 		level4Label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel level4Spells = new JPanel();
+		level4Spells = new JPanel();
 		level4Spells.setBackground(Color.BLACK);
 		level4Spells.setLayout(null);
-		level4Spells.setPreferredSize(new Dimension(364, 1369));
+		level4Spells.setPreferredSize(new Dimension(364, 184));
 		JScrollPane level4SpellsScroll = new JScrollPane(level4Spells);
 		level4SpellsScroll.setBounds(1512, 250, 382, 760);
 		panel.add(level4SpellsScroll);
+		level4SpellsScroll.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+
+		
+		JButton btnAdd4th = new JButton("+");
+		btnAdd4th.setBackground(new Color(0, 250, 154));
+		btnAdd4th.setMargin(new Insets(0,0,0,0));
+		btnAdd4th.setFont(new Font("Dialog", Font.BOLD, 40));
+		btnAdd4th.setBounds(level4SpellsScroll.getX()+level4SpellsScroll.getWidth()-40, level4SpellsScroll.getY()-40, 40, 40);
+		panel.add(btnAdd4th);
+		btnAdd4th.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				addSpell(level4Spells, level4SpellsScroll);
+			}
+		});
 		
 		setNewCharacter(cs);
 	}
@@ -355,6 +443,12 @@ public class SpellTab extends JScrollPane
 	{
 		this.cs = cs;
 		List<CharacterSheetPower> pwrs = cs.getCSP();
+		sigSpells.removeAll();
+		level1Spells.removeAll();
+		level2Spells.removeAll();
+		level3Spells.removeAll();
+		level4Spells.removeAll();
+		
 		level1Max.setText("/ 0");
 		level2Max.setText("/ 0");
 		level3Max.setText("/ 0");
@@ -440,6 +534,62 @@ public class SpellTab extends JScrollPane
 				break;
 			}
 		}
+		
+		SpellInventory inv = cs.getSpellInv();
+		if(inv != null)
+		{
+			int index = 0;
+			for(Integer i : inv.getSig())
+			{
+				Spell s = new Spell();
+				s.setLocation(0, index);
+				s.set(i);
+				sigSpells.add(s);	
+				index += 184;
+			}
+			sigSpells.setPreferredSize(new Dimension(364, index));
+			index = 0;
+			for(Integer i : inv.getFirst())
+			{
+				Spell s = new Spell();
+				s.setLocation(0, index);
+				s.set(i);
+				level1Spells.add(s);	
+				index += 184;
+			}
+			level1Spells.setPreferredSize(new Dimension(364, index));
+			index = 0;
+			for(Integer i : inv.getSecond())
+			{
+				Spell s = new Spell();
+				s.setLocation(0, index);
+				s.set(i);
+				level2Spells.add(s);	
+				index += 184;
+			}
+			level2Spells.setPreferredSize(new Dimension(364, index));
+			index = 0;
+			for(Integer i : inv.getThird())
+			{
+				Spell s = new Spell();
+				s.setLocation(0, index);
+				s.set(i);
+				level3Spells.add(s);	
+				index += 184;
+			}
+			level3Spells.setPreferredSize(new Dimension(364, index));
+			index = 0;
+			for(Integer i : inv.getFourth())
+			{
+				Spell s = new Spell();
+				s.setLocation(0, index);
+				s.set(i);
+				level4Spells.add(s);	
+				index += 184;
+			}	
+			level4Spells.setPreferredSize(new Dimension(364, index));
+		}
+		
 	}
 	
 	public void resetSlots()
@@ -524,5 +674,16 @@ public class SpellTab extends JScrollPane
 		}
 	}
 	
+	public void addSpell(JPanel pane, JScrollPane scroll)
+	{
+		int index = 184*pane.getComponentCount();
+		Spell s = new Spell();
+		s.setLocation(0, index);
+		s.set(0);
+		pane.add(s);
+		pane.setPreferredSize(new Dimension(364, 184+index));
+		pane.repaint();
+		scroll.revalidate();
+	}
 	
 }

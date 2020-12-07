@@ -45,6 +45,7 @@ public class CharacterSheet
 	List<CharacterSheetDisadvantage> disadvs = new ArrayList<CharacterSheetDisadvantage>();
 	List<CharacterSheetPower> pwrs = new ArrayList<CharacterSheetPower>();
 	Inventory inventory;
+	SpellInventory spellInv;
 	
 	public CharacterSheet(int id)
 	{
@@ -527,6 +528,25 @@ public class CharacterSheet
 	public Inventory getInv()
 	{
 		return inventory;
+	}
+	
+	// Inventory Methods
+	public void setSpellInv(List<SpellInventory> invDAO)
+	{
+		spellInv = null;
+		for(SpellInventory i : invDAO)
+		{
+			if(i.getCharacterSheetId() == id)
+			{
+				spellInv = i;
+				break;
+			}
+		}
+	}
+	
+	public SpellInventory getSpellInv()
+	{
+		return spellInv;
 	}
 	
 	// Methods for getting and setting all demographics

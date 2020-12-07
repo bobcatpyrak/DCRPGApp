@@ -41,6 +41,7 @@ public class MainWindow {
 	public static List<Inventory> invs;
 	public static List<Item> items;
 	public static List<Spell> spells;
+	public static List<SpellInventory> spellInvs;
 	private static CharacterSheet currentSheet;
 	
 	public static int nextSheetId;
@@ -92,6 +93,7 @@ public class MainWindow {
 		invs = dao.getAllInv();
 		items = dao.getAllItems();
 		spells = dao.getAllSpells();
+		spellInvs = dao.getAllSpellInv();
 		
 		nextSheetId = 0;
 		nextSpecId = 0;

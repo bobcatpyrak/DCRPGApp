@@ -16,6 +16,7 @@ public class TextFile implements DAO<CharacterSheet>
 	private List<Inventory> invs = null;
 	private List<Item> items = null;
 	private List<Spell> spells = null;
+	private List<SpellInventory> spellInvs = null;
 	private Path sheetsPath = null;
 	private File sheetsFile = null;
 	private final String FIELD_SEP = "\t";
@@ -34,6 +35,7 @@ public class TextFile implements DAO<CharacterSheet>
 		invs = getAllInv();
 		items = getAllItems();
 		spells = getAllSpells();
+		spellInvs = getAllSpellInv();
 		sheets = getAllSheets();
 		
 		saveAll();
@@ -74,6 +76,10 @@ public class TextFile implements DAO<CharacterSheet>
 	public Spell getSpell(int id)
 	{
 		return spells.get(id);
+	}
+	public SpellInventory getSpellInv(int id)
+	{
+		return spellInvs.get(id);
 	}
 	
 	@Override
@@ -166,6 +172,7 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setCSD(disadvs);
 							cs.setCSP(powers);
 							cs.setInv(invs);
+							cs.setSpellInv(spellInvs);
 							sheets.add(cs);
 							line = in.readLine();
 						}
@@ -645,6 +652,59 @@ public class TextFile implements DAO<CharacterSheet>
 			return null;
 		}
 	}	
+	public List<SpellInventory> getAllSpellInv() 
+	{	
+		if(spellInvs != null)
+			return spellInvs;
+		
+		spellInvs = new ArrayList<>();
+		if(Files.exists(sheetsPath))
+		{
+			try (BufferedReader in = new BufferedReader(new FileReader(sheetsFile)))
+			{
+				
+				String line = in.readLine();
+				boolean reading = false;
+				
+				if (line != null)
+					reading = true;
+				
+				while (reading)
+				{
+					if (line.equals("$$SpellInventoryBegin$$"))
+					{
+						line = in.readLine();
+						while (!line.equals("$$SpellInventoryEnd$$"))
+						{
+							String[] fields = line.split(FIELD_SEP);
+							SpellInventory i = new SpellInventory(Integer.parseInt(fields[0]));
+							i.setSpellInventory(fields[1], fields[2], fields[3], fields[4], fields[5]);
+							spellInvs.add(i);
+							line = in.readLine();
+						}
+						reading = false;
+					}
+					else
+					{
+						line = in.readLine();
+						if (line == null)
+							reading = false;
+					}
+				}
+				return spellInvs;
+			}
+			catch(IOException ioe)
+			{
+				System.out.println(ioe);
+				return null;
+			}
+		}	
+		else
+		{
+			System.out.println(sheetsPath + " is empty.");
+			return null;
+		}
+	}	
 	
 	@Override
 	public boolean add(CharacterSheet t) 
@@ -690,6 +750,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean addSpell(Spell t)
 	{
 		spells.add(t);
+		return true;
+	}
+	public boolean addSpellInv(SpellInventory t)
+	{
+		spellInvs.add(t);
 		return true;
 	}
 
@@ -821,6 +886,21 @@ public class TextFile implements DAO<CharacterSheet>
 		}
 		return true;
 	}
+	public boolean updateSpellInv(SpellInventory t) 
+	{
+		int index = -1;
+		for(SpellInventory s : spellInvs)
+		{
+			if(s.getCharacterSheetId()==t.getCharacterSheetId())
+				index = spellInvs.indexOf(s);
+		}
+		if(index >= 0)
+		{
+			spellInvs.remove(index);
+			spellInvs.add(index, t);
+		}
+		return true;
+	}
 
 	@Override
 	public boolean delete(CharacterSheet t) 
@@ -866,6 +946,11 @@ public class TextFile implements DAO<CharacterSheet>
 	public boolean deleteSpell(Spell t) 
 	{
 		spells.remove(t);
+		return true;
+	}
+	public boolean deleteSpellInv(SpellInventory t) 
+	{
+		spellInvs.remove(t);
 		return true;
 	}
 
@@ -942,6 +1027,14 @@ public class TextFile implements DAO<CharacterSheet>
 				out.println(s.getId() + FIELD_SEP + s.getName() + FIELD_SEP + s.getPath());
 			}
 			out.println("$$SpellEnd$$");
+			out.println();
+			// Spell Inventory
+			out.println("$$SpellInventoryBegin$$"); 
+			for (SpellInventory s : spellInvs)
+			{
+				out.println(s.getCharacterSheetId() + FIELD_SEP + s.getSigSplit() + FIELD_SEP + s.getFirstSplit() + FIELD_SEP + s.getSecondSplit() + FIELD_SEP + s.getThirdSplit() + FIELD_SEP + s.getFourthSplit());
+			}
+			out.println("$$SpellInventoryEnd$$");
 			out.println();
 			return true;
 		}

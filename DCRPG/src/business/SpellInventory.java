@@ -13,6 +13,10 @@ public class SpellInventory
 	private List<Integer> second = new ArrayList<Integer>();
 	private List<Integer> third = new ArrayList<Integer>();
 	private List<Integer> fourth = new ArrayList<Integer>();
+	private String slots1;
+	private String slots2;
+	private String slots3;
+	private String slots4;
 	
 	public SpellInventory(int characterSheetId) 
 	{
@@ -175,14 +179,20 @@ public class SpellInventory
 		
 		return ret;
 	}
+	public String getSlotsSplit()
+	{
+		String ret = slots1+"%"+slots2+"%"+slots3+"%"+slots4;
+		return ret;
+	}
 	
-	public void setSpellInventory(String sigS, String firstS, String secondS, String thirdS, String fourthS)
+	public void setSpellInventory(String sigS, String firstS, String secondS, String thirdS, String fourthS, String slots)
 	{
 		String[] sigStr = sigS.split(FIELD_SEP);
 		String[] firstStr = firstS.split(FIELD_SEP);
 		String[] secondStr = secondS.split(FIELD_SEP);
 		String[] thirdStr = thirdS.split(FIELD_SEP);
 		String[] fourthStr = fourthS.split(FIELD_SEP);
+		String[] slotStr = slots.split(FIELD_SEP);
 		
 		for(String s : sigStr)
 		{
@@ -209,5 +219,43 @@ public class SpellInventory
 			if(!s.equals("0"))
 				fourth.add(Integer.parseInt(s));
 		}
+		slots1 = slotStr[0];
+		slots2 = slotStr[1];
+		slots3 = slotStr[2];
+		slots4 = slotStr[3];
 	}
+
+	public String getSlots1() {
+		return slots1;
+	}
+
+	public void setSlots1(String slots1) {
+		this.slots1 = slots1;
+	}
+
+	public String getSlots2() {
+		return slots2;
+	}
+
+	public void setSlots2(String slots2) {
+		this.slots2 = slots2;
+	}
+
+	public String getSlots3() {
+		return slots3;
+	}
+
+	public void setSlots3(String slots3) {
+		this.slots3 = slots3;
+	}
+
+	public String getSlots4() {
+		return slots4;
+	}
+
+	public void setSlots4(String slots4) {
+		this.slots4 = slots4;
+	}
+	
+	
 }

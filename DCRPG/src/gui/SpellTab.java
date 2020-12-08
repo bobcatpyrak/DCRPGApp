@@ -86,9 +86,9 @@ public class SpellTab extends JScrollPane
 		nameLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
 		
 		nameField = new JFormattedTextField();
-		nameField.setBounds(117, 0, 367, 42);
+		nameField.setBounds(117, 0, 340, 42);
 		panel.add(nameField);
-		nameField.setFont(new Font("Dialog", Font.PLAIN, 24));
+		nameField.setFont(new Font("Dialog", Font.PLAIN, 22));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setText(cs.getName());
 		nameField.setEnabled(false);
@@ -116,18 +116,18 @@ public class SpellTab extends JScrollPane
 		});
 		
 		JLabel searchLabel = new JLabel("Search");
-		searchLabel.setBounds(494, 0, 157, 42);
+		searchLabel.setBounds(467, 0, 157, 22);
 		panel.add(searchLabel);
-		searchLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		searchLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
 		
 		JFormattedTextField searchField = new JFormattedTextField();
-		searchField.setBounds(494, 47, 157, 29);
+		searchField.setBounds(searchLabel.getX(), searchLabel.getY()+searchLabel.getHeight()+5, 157, 29);
 		panel.add(searchField);
 		searchField.setHorizontalAlignment(SwingConstants.RIGHT);
 		searchField.setText("(search for spell by name)");
 		
 		search = new Spell();
-		search.setLocation(661, 0);
+		search.setLocation(634, 0);
 		panel.add(search);
 		search.set(0);
 		
@@ -143,23 +143,8 @@ public class SpellTab extends JScrollPane
 		searches.setVisible(false);
 		
 		JButton btnLoad = new JButton("Load");
-		btnLoad.setBounds(494, 81, 65, 24);
+		btnLoad.setBounds(searchField.getX(), searchField.getY()+searchField.getHeight()+5, 65, 24);
 		panel.add(btnLoad);
-		btnLoad.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				for(Spell s : MainWindow.spells)
-				{
-					if(s.getName().toLowerCase().equals(searchField.getText().toLowerCase()))
-					{
-						search.set(s.getId());
-						break;
-					}
-				}
-				
-			}
-		});
 		
 		searchField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -227,6 +212,45 @@ public class SpellTab extends JScrollPane
 			}	
 		};
 		searchesList.addListSelectionListener(listSelectionListener);
+		
+		/*JLabel saveLabel = new JLabel("Save");
+		saveLabel.setBounds(btnLoad.getX(), btnLoad.getY()+btnLoad.getHeight()+10, 157, 22);
+		panel.add(saveLabel);
+		saveLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
+		
+		JFormattedTextField saveField = new JFormattedTextField();
+		saveField.setBounds(saveLabel.getX(), saveLabel.getY()+saveLabel.getHeight()+5, 157, 29);
+		panel.add(saveField);
+		saveField.setHorizontalAlignment(SwingConstants.RIGHT);
+		saveField.setText("(name of spell to save)");
+		
+		JButton btnSaveSpell = new JButton("Save");
+		btnSaveSpell.setBounds(saveField.getX(), saveField.getY()+saveField.getHeight()+5, 65, 24);
+		panel.add(btnSaveSpell);
+		btnSaveSpell.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				saveSpell(saveField.getText(), search);
+			}
+		});*/
+		
+		btnLoad.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				for(Spell s : MainWindow.spells)
+				{
+					if(s.getName().toLowerCase().equals(searchField.getText().toLowerCase()))
+					{
+						search.set(s.getId());
+					//	saveField.setText(s.getName());
+						break;
+					}
+				}
+				
+			}
+		});
 		
 		JLabel slotsLabel = new JLabel("Spell Slots");
 		slotsLabel.setBounds(search.getX()+search.getWidth()+10, 0, 200, 42);
@@ -454,6 +478,7 @@ public class SpellTab extends JScrollPane
 	{
 		this.cs = cs;
 		List<CharacterSheetPower> pwrs = cs.getCSP();
+		nameField.setText(cs.getName());
 		
 		sig.clear();
 		first.clear();
@@ -611,6 +636,11 @@ public class SpellTab extends JScrollPane
 				index += 184;
 			}	
 			level4Spells.setPreferredSize(new Dimension(364, index));
+			
+			level1Current.setText(inv.getSlots1());
+			level2Current.setText(inv.getSlots2());
+			level3Current.setText(inv.getSlots3());
+			level4Current.setText(inv.getSlots4());
 		}
 		
 	}
@@ -710,6 +740,57 @@ public class SpellTab extends JScrollPane
 		scroll.revalidate();
 	}
 	
+	public void saveSpell(String name, Spell save)
+	{
+		boolean rewrite = false;
+	
+		if(!name.equals("(name of spell to save)"))
+		{
+			for(Spell s : MainWindow.spells)
+			{
+				if(s.getName().equals(save.getName()))
+				{
+					rewrite = true;
+					save.setId(s.getId());
+					save.setName(name);
+					save.setPath(save.getName().toLowerCase()+".png");
+					break;
+				}
+			}
+			
+			if(rewrite)
+			{
+				MainWindow.dao.updateSpell(save);
+				MainWindow.dao.saveAll();
+				MainWindow.spells = MainWindow.dao.getAllSpells();
+			}
+			if(!rewrite)
+			{
+				save.setId(MainWindow.nextSpellId);
+				save.setName(name);
+				save.setPath(save.getName().toLowerCase()+".png");
+				MainWindow.dao.addSpell(save);
+				MainWindow.dao.saveAll();
+				MainWindow.spells = MainWindow.dao.getAllSpells();
+			}
+			
+			if(save.retrievePic() != null)
+			{
+				try 
+				{
+				    // retrieve image
+			        BufferedImage img = save.retrievePic();
+			        
+				    					    
+				    File outputfile = new File("images/spells/"+save.getPath());
+				    ImageIO.write(img, "png", outputfile);
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+		}
+	}
+	
 	
 	public void saveSpells(boolean onlySpells)
 	{
@@ -740,6 +821,11 @@ public class SpellTab extends JScrollPane
 		{
 			fourths.add((s.getId()));
 		}
+		
+		save.setSlots1(level1Current.getText());
+		save.setSlots2(level2Current.getText());
+		save.setSlots3(level3Current.getText());
+		save.setSlots4(level4Current.getText());
 		
 		save.save(sigs, firsts, seconds, thirds, fourths);
 		

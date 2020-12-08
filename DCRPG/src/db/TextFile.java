@@ -678,7 +678,7 @@ public class TextFile implements DAO<CharacterSheet>
 						{
 							String[] fields = line.split(FIELD_SEP);
 							SpellInventory i = new SpellInventory(Integer.parseInt(fields[0]));
-							i.setSpellInventory(fields[1], fields[2], fields[3], fields[4], fields[5]);
+							i.setSpellInventory(fields[1], fields[2], fields[3], fields[4], fields[5], fields[6]);
 							spellInvs.add(i);
 							line = in.readLine();
 						}
@@ -1032,7 +1032,7 @@ public class TextFile implements DAO<CharacterSheet>
 			out.println("$$SpellInventoryBegin$$"); 
 			for (SpellInventory s : spellInvs)
 			{
-				out.println(s.getCharacterSheetId() + FIELD_SEP + s.getSigSplit() + FIELD_SEP + s.getFirstSplit() + FIELD_SEP + s.getSecondSplit() + FIELD_SEP + s.getThirdSplit() + FIELD_SEP + s.getFourthSplit());
+				out.println(s.getCharacterSheetId() + FIELD_SEP + s.getSigSplit() + FIELD_SEP + s.getFirstSplit() + FIELD_SEP + s.getSecondSplit() + FIELD_SEP + s.getThirdSplit() + FIELD_SEP + s.getFourthSplit() + FIELD_SEP + s.getSlotsSplit());
 			}
 			out.println("$$SpellInventoryEnd$$");
 			out.println();

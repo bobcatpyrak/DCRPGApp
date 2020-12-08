@@ -32,6 +32,7 @@ import library.Scalr;
 public class Spell extends JPanel 
 {
 	private BufferedImage img;
+	private BufferedImage origImg;
 	private ImageIcon icon;
 	private JLabel imgLabel;
 	
@@ -40,6 +41,7 @@ public class Spell extends JPanel
 	private String path = "blank.png";
 	
 	private boolean imgChange = false;
+	private boolean newPic = false;
 	
 	public Spell()
 	{
@@ -83,13 +85,16 @@ public class Spell extends JPanel
 						flip.set(MainWindow.draggedSpell.getId());
 						MainWindow.draggedSpell.set(0);
 						Spell.this.set(flip.getId());
+						MainWindow.draggedSpell = null;
 					}
 
-					try {
+					try 
+					{
 						icon = (ImageIcon)imgLabel.getIcon();
-					img = Scalr.resize((BufferedImage)icon.getImage(), 360, 180);
-					//origImg = (BufferedImage)icon.getImage();
-					icon.setImage(img);
+						img = Scalr.resize((BufferedImage)icon.getImage(), 360, 180);
+						origImg = (BufferedImage)icon.getImage();
+						icon.setImage(img);
+						newPic = true;
 					}
 					catch (IllegalArgumentException e)
 					{
@@ -124,6 +129,7 @@ public class Spell extends JPanel
 				try 
 				{
 				    img = ImageIO.read(new File("images/spells/"+path));
+				    origImg = img;
 				    img = Scalr.resize(img, 360, 180);
 				    icon.setImage(img);
 				} catch (IOException e) {
@@ -158,5 +164,14 @@ public class Spell extends JPanel
 	public void setPath(String path)
 	{
 		this.path = path;
+	}
+	public boolean newPic()
+	{
+		return newPic;
+	}
+	public BufferedImage retrievePic()
+	{
+		newPic = false;
+		return origImg;
 	}
 }

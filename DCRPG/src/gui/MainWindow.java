@@ -53,6 +53,7 @@ public class MainWindow {
 	public static int nextSpellId;
 	
 	public static Item newItem;
+	public static Spell draggedSpell;
 	
 	public static JFrame dcrpgFrame;
 	public static JPanel panel;
@@ -6494,6 +6495,7 @@ public class MainWindow {
 					}	
 					
 					etab.saveItems(false);
+					stab.saveSpells(false);
 		
 					dao.saveAll();
 					
@@ -6795,7 +6797,8 @@ public class MainWindow {
 				// load the entire dang sheet
 				nameField.setText(currentSheet.getName());
 				demographicsPanel.setNewCharacter(currentSheet);
-				etab.setNewCharacter(currentSheet);				
+				etab.setNewCharacter(currentSheet);	
+				stab.setNewCharacter(currentSheet);
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());

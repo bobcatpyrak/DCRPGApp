@@ -1,6 +1,10 @@
 package business;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,6 +16,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,13 +50,6 @@ public class Spell extends JPanel
 		setLayout(null);
 		
 		icon = new ImageIcon();
-	/*	img = null;
-		try 
-		{
-		    img = ImageIO.read(new File("images/items/blank.png"));
-		    icon.setImage(img);
-		} catch (IOException e) {
-		}*/
 		
 		imgLabel = new JLabel();	
 		imgLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -69,7 +67,7 @@ public class Spell extends JPanel
 				JComponent comp = (JComponent) me.getSource();
 				TransferHandler handler = comp.getTransferHandler();
 				handler.exportAsDrag(comp, me, TransferHandler.COPY);   
-				imgChange = true;
+				MainWindow.draggedSpell = Spell.this;
 			}
 		};
 
@@ -79,22 +77,24 @@ public class Spell extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
-					//newPic = true;
-				/*	if(MainWindow.newItem != null)
+					if(MainWindow.draggedSpell != null)
 					{
-						int flip = MainWindow.newItem.getId();
-						if(!Item.this.getName().equals("(name)"))
-							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
-						Item.this.set(MainWindow.items, flip);
-						Item.this.setPath(path);
-						MainWindow.newItem = null;
-						newPic = false;
-					}*/
-					icon = (ImageIcon)imgLabel.getIcon();
-				    img = Scalr.resize((BufferedImage)icon.getImage(), 360, 180);
+						Spell flip = new Spell();
+						flip.set(MainWindow.draggedSpell.getId());
+						MainWindow.draggedSpell.set(0);
+						Spell.this.set(flip.getId());
+					}
+
+					try {
+						icon = (ImageIcon)imgLabel.getIcon();
+					img = Scalr.resize((BufferedImage)icon.getImage(), 360, 180);
 					//origImg = (BufferedImage)icon.getImage();
 					icon.setImage(img);
-					
+					}
+					catch (IllegalArgumentException e)
+					{
+						
+					}
 				}
 			}
 		});	
@@ -102,8 +102,18 @@ public class Spell extends JPanel
 	
 	public void set(int id)
 	{
+		imgChange = false;
 		for(Spell s : MainWindow.spells)
 		{
+			if(id == 0)
+			{
+				setId(0);
+				setName("null");
+				setPath("null.png");
+				icon = new ImageIcon();
+				imgLabel.setIcon(icon);
+				break;
+			}
 			if(s.getId() == id)
 			{
 				setId(s.getId());
@@ -122,6 +132,7 @@ public class Spell extends JPanel
 			}
 		}
 		repaint();
+		imgChange = true;
 	}
 	
 	public int getId()

@@ -497,9 +497,6 @@ public class EquipmentTab extends JScrollPane
 		
 		
 		storage.removeAll();
-		
-//		int panelHeight = (inv.getStorage().size()/2)*336 + 346;
-//		storage.setPreferredSize(new Dimension(430, panelHeight));
 
 		boolean onLeft = true;
 		int count = 1;

@@ -10,10 +10,14 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -27,6 +31,7 @@ import javax.swing.event.ListSelectionListener;
 
 import business.CharacterSheet;
 import business.CharacterSheetPower;
+import business.Inventory;
 import business.Item;
 import business.Spell;
 import business.SpellInventory;
@@ -56,6 +61,11 @@ public class SpellTab extends JScrollPane
 	private JPanel level4Spells;
 	
 	private CharacterSheet cs;
+	private List<Spell> sig = new ArrayList<Spell>();
+	private List<Spell> first = new ArrayList<Spell>();
+	private List<Spell> second = new ArrayList<Spell>();
+	private List<Spell> third = new ArrayList<Spell>();
+	private List<Spell> fourth = new ArrayList<Spell>();
 	
 	public SpellTab(CharacterSheet cs)
 	{
@@ -90,7 +100,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				//saveSpells(true);
+				saveSpells(true);
 			}
 		});
 		
@@ -119,6 +129,7 @@ public class SpellTab extends JScrollPane
 		search = new Spell();
 		search.setLocation(661, 0);
 		panel.add(search);
+		search.set(0);
 		
 		JPanel searches = new JPanel();
 		searches.setLayout(null);
@@ -312,7 +323,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				addSpell(sigSpells, sigSpellsScroll);
+				addSpell(sigSpells, sigSpellsScroll, sig);
 			}
 		});
 		
@@ -342,7 +353,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				addSpell(level1Spells, level1SpellsScroll);
+				addSpell(level1Spells, level1SpellsScroll, first);
 			}
 		});
 		
@@ -372,7 +383,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				addSpell(level2Spells, level2SpellsScroll);
+				addSpell(level2Spells, level2SpellsScroll, second);
 			}
 		});
 		
@@ -402,7 +413,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				addSpell(level3Spells, level3SpellsScroll);
+				addSpell(level3Spells, level3SpellsScroll, third);
 			}
 		});
 		
@@ -432,7 +443,7 @@ public class SpellTab extends JScrollPane
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				addSpell(level4Spells, level4SpellsScroll);
+				addSpell(level4Spells, level4SpellsScroll, fourth);
 			}
 		});
 		
@@ -443,6 +454,13 @@ public class SpellTab extends JScrollPane
 	{
 		this.cs = cs;
 		List<CharacterSheetPower> pwrs = cs.getCSP();
+		
+		sig.clear();
+		first.clear();
+		second.clear();
+		third.clear();
+		fourth.clear();
+		
 		sigSpells.removeAll();
 		level1Spells.removeAll();
 		level2Spells.removeAll();
@@ -545,6 +563,7 @@ public class SpellTab extends JScrollPane
 				s.setLocation(0, index);
 				s.set(i);
 				sigSpells.add(s);	
+				sig.add(s);
 				index += 184;
 			}
 			sigSpells.setPreferredSize(new Dimension(364, index));
@@ -555,6 +574,7 @@ public class SpellTab extends JScrollPane
 				s.setLocation(0, index);
 				s.set(i);
 				level1Spells.add(s);	
+				first.add(s);
 				index += 184;
 			}
 			level1Spells.setPreferredSize(new Dimension(364, index));
@@ -565,6 +585,7 @@ public class SpellTab extends JScrollPane
 				s.setLocation(0, index);
 				s.set(i);
 				level2Spells.add(s);	
+				second.add(s);
 				index += 184;
 			}
 			level2Spells.setPreferredSize(new Dimension(364, index));
@@ -575,6 +596,7 @@ public class SpellTab extends JScrollPane
 				s.setLocation(0, index);
 				s.set(i);
 				level3Spells.add(s);	
+				third.add(s);
 				index += 184;
 			}
 			level3Spells.setPreferredSize(new Dimension(364, index));
@@ -585,6 +607,7 @@ public class SpellTab extends JScrollPane
 				s.setLocation(0, index);
 				s.set(i);
 				level4Spells.add(s);	
+				fourth.add(s);
 				index += 184;
 			}	
 			level4Spells.setPreferredSize(new Dimension(364, index));
@@ -674,16 +697,61 @@ public class SpellTab extends JScrollPane
 		}
 	}
 	
-	public void addSpell(JPanel pane, JScrollPane scroll)
+	public void addSpell(JPanel pane, JScrollPane scroll, List<Spell> list)
 	{
 		int index = 184*pane.getComponentCount();
 		Spell s = new Spell();
 		s.setLocation(0, index);
 		s.set(0);
 		pane.add(s);
+		list.add(s);
 		pane.setPreferredSize(new Dimension(364, 184+index));
 		pane.repaint();
 		scroll.revalidate();
 	}
 	
+	
+	public void saveSpells(boolean onlySpells)
+	{
+		SpellInventory save = new SpellInventory(cs.getId());
+		
+		List<Integer> sigs = new ArrayList<Integer>();
+		for(Spell s : sig)
+		{
+			sigs.add((s.getId()));
+		}
+		List<Integer> firsts = new ArrayList<Integer>();
+		for(Spell s : first)
+		{
+			firsts.add((s.getId()));
+		}
+		List<Integer> seconds = new ArrayList<Integer>();
+		for(Spell s : second)
+		{
+			seconds.add((s.getId()));
+		}
+		List<Integer> thirds = new ArrayList<Integer>();
+		for(Spell s : third)
+		{
+			thirds.add((s.getId()));
+		}
+		List<Integer> fourths = new ArrayList<Integer>();
+		for(Spell s : fourth)
+		{
+			fourths.add((s.getId()));
+		}
+		
+		save.save(sigs, firsts, seconds, thirds, fourths);
+		
+		if(cs.getSpellInv() != null)
+			MainWindow.dao.updateSpellInv(save);
+		else
+			MainWindow.dao.addSpellInv(save);
+				
+		cs.setSpellInv(MainWindow.spellInvs);
+				
+		if(onlySpells)
+			MainWindow.dao.saveAll();
+	
+	}
 }

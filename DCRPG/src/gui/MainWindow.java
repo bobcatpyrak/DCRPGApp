@@ -346,8 +346,6 @@ public class MainWindow {
 		SpellTab stab = new SpellTab(currentSheet);
 		tabbedPane.addTab("Spells", null, stab, null);
 		
-		
-		
 		panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
@@ -6338,7 +6336,9 @@ public class MainWindow {
 			}
 		});
 	    
-	    
+		EquipmentPanel ePane = new EquipmentPanel();
+		ePane.setBounds(imgLabel.getX(), mentalStatsPanel.getY(), imgLabel.getWidth(), 30);
+		panel.add(ePane);
 		
 		btnSave.addActionListener(new ActionListener() 
 		{
@@ -6574,6 +6574,7 @@ public class MainWindow {
 							demographicsPanel.setNewCharacter(currentSheet);
 							etab.setNewCharacter(currentSheet);
 							stab.setNewCharacter(currentSheet);
+							ePane.setNewCharacter(currentSheet);
 							
 							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());

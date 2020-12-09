@@ -46,6 +46,8 @@ public class Item extends JPanel
 	private BufferedImage origImg;
 
 	private int id = 0;
+	private int width = 206;
+	private int height = 266;
 	private String descStr = "(description)";
 	private String path = "blank";
 	private String name = "(name)";
@@ -293,18 +295,20 @@ public class Item extends JPanel
 		});
 	}
 	
-	public Item(String slotStr, boolean big)
+	public Item(String slotStr, int width, int height)
 	{
 		super();
 		this.big = big;
-		setSize(354, 522);
+		this.width = width;
+		this.height = height;
+		setSize(width+4, height+70);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
 		slot = new JLabel(slotStr);
 		slot.setBackground(Color.WHITE);
 		slot.setFont(new Font("Verdana", Font.BOLD, 11));
-		slot.setBounds(2, 2, 350, 20);
+		slot.setBounds(2, 2, width, 20);
 		slot.setHorizontalAlignment(SwingConstants.CENTER);
 		add(slot);
 		
@@ -324,7 +328,7 @@ public class Item extends JPanel
 		});
 		
 		nameField = new JFormattedTextField();
-		nameField.setBounds(2, 24, 350, 20);
+		nameField.setBounds(2, 24, width, 20);
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setText("(name)");
 		add(nameField);
@@ -342,7 +346,7 @@ public class Item extends JPanel
 		try 
 		{
 		    img = ImageIO.read(new File("images/items/blank.png"));
-		    img = Scalr.resize(img, 350, 452);
+		    img = Scalr.resize(img, width, height);
 		    icon.setImage(img);
 		} catch (IOException e) {
 			
@@ -354,7 +358,7 @@ public class Item extends JPanel
 		imgLabel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(2, 46, 350, 452);
+		imgLabel.setBounds(2, 46, width, height);
 		add(imgLabel);
 
 		imgLabel.setTransferHandler(new ImageSelection());	    
@@ -388,7 +392,7 @@ public class Item extends JPanel
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 					origImg = (BufferedImage)icon.getImage();
-					img = Scalr.resize((BufferedImage)icon.getImage(), 350, 452);
+					img = Scalr.resize((BufferedImage)icon.getImage(), width, height);
 					icon.setImage(img);
 					
 				}
@@ -396,7 +400,7 @@ public class Item extends JPanel
 		});	
 		
 		description = new JFormattedTextField();
-		description.setBounds(2, 500, 350, 20);
+		description.setBounds(2, 46+height+2, width, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
@@ -471,10 +475,7 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
-			    if(!big)
-			    	img = Scalr.resize(img, 206, 266);
-			    else if(big)
-			    	img = Scalr.resize(img, 350, 452);
+			    img = Scalr.resize(img, width, height);
 			    icon.setImage(img);
 			    imgChange = true;
 			} catch (IOException e) {	
@@ -498,10 +499,7 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
-			    if(!big)
-			    	img = Scalr.resize(img, 206, 266);
-			    else if(big)
-			    	img = Scalr.resize(img, 350, 452);
+			    img = Scalr.resize(img, width, height);
 			    icon.setImage(img);
 			    imgChange = true;
 			} catch (IOException e) {	
@@ -538,10 +536,7 @@ public class Item extends JPanel
 		{
 			imgChange = false;
 		    img = ImageIO.read(new File("images/items/"+path));
-		    if(!big)
-		    	img = Scalr.resize(img, 206, 266);
-		    else if(big)
-		    	img = Scalr.resize(img, 350, 452);
+		    img = Scalr.resize(img, width, height);
 		    icon.setImage(img);
 		    imgChange = true;
 		} catch (IOException e) {	

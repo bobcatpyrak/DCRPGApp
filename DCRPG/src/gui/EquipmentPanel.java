@@ -90,12 +90,12 @@ public class EquipmentPanel extends JPanel
 		{
 			JLabel line = new JLabel(s);
 			line.setBounds(2, index, 282, 20);
-			int height = s.length() / 55;
+			int height = (s.length()-20) / 55;
 			height *= 12;
 			line.setSize(282,  height + 20);
 			line.setFont(new Font("Dialog", Font.PLAIN, 12));
 			panel.add(line);
-			index += line.getHeight()+2;
+			index += line.getHeight();
 		}
 		
 		panel.setSize(286, index);

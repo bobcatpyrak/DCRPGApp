@@ -6340,6 +6340,12 @@ public class MainWindow {
 		ePane.setBounds(imgLabel.getX(), mentalStatsPanel.getY(), imgLabel.getWidth(), 30);
 		panel.add(ePane);
 		
+		Item weapon = new Item("Weapon", 296, 382);
+		weapon.set(items, 0);
+		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+		weapon.setDisabled();
+		panel.add(weapon);
+		
 		btnSave.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -6575,6 +6581,9 @@ public class MainWindow {
 							etab.setNewCharacter(currentSheet);
 							stab.setNewCharacter(currentSheet);
 							ePane.setNewCharacter(currentSheet);
+							weapon.set(items, currentSheet.getInv().getWeapon());
+							weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+
 							
 							nameField.setText(currentSheet.getName());					
 							udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());

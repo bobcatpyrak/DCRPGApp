@@ -151,7 +151,7 @@ public class EquipmentTab extends JScrollPane
 			}
 		});
 		
-		search = new Item("Selected", true);
+		search = new Item("Selected", 350, 452);
 		search.setLocation(860, 60);
 		search.setDisabled();
 		panel.add(search);

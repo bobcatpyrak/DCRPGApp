@@ -6809,6 +6809,9 @@ public class MainWindow {
 				demographicsPanel.setNewCharacter(currentSheet);
 				etab.setNewCharacter(currentSheet);	
 				stab.setNewCharacter(currentSheet);
+				ePane.setNewCharacter(currentSheet);
+				weapon.set(items, currentSheet.getInv().getWeapon());
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());

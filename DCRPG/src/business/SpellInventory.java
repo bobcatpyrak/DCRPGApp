@@ -181,6 +181,14 @@ public class SpellInventory
 	}
 	public String getSlotsSplit()
 	{
+		if(slots1.equals(""))
+			slots1 = "$$blank$$";
+		if(slots2.equals(""))
+			slots2 = "$$blank$$";
+		if(slots3.equals(""))
+			slots3 = "$$blank$$";
+		if(slots4.equals(""))
+			slots4 = "$$blank$$";
 		String ret = slots1+"%"+slots2+"%"+slots3+"%"+slots4;
 		return ret;
 	}
@@ -223,6 +231,15 @@ public class SpellInventory
 		slots2 = slotStr[1];
 		slots3 = slotStr[2];
 		slots4 = slotStr[3];
+		
+		if(slots1.equals("$$blank$$"))
+			slots1 = "";
+		if(slots2.equals("$$blank$$"))
+			slots2 = "";
+		if(slots3.equals("$$blank$$"))
+			slots3 = "";
+		if(slots4.equals("$$blank$$"))
+			slots4 = "";
 	}
 
 	public String getSlots1() {

@@ -6978,6 +6978,7 @@ public class MainWindow {
 				newInv.setInventory(currentSheet.getInv().getAllHeld(), currentSheet.getInv().getStorageSplit());
 				invs.add(newInv);
 				newCS.setInv(invs);
+				System.out.println(newCS.getInv().getAllHeld());
 				
 				SpellInventory spellInv = currentSheet.getSpellInv();
 				SpellInventory newSpellInv = new SpellInventory(newCS.getId());

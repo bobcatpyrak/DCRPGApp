@@ -462,6 +462,7 @@ public class EquipmentTab extends JScrollPane
 			System.out.println("null inv");
 			inv = new Inventory(cs.getId());
 			MainWindow.invs.add(inv);
+			cs.setInv(MainWindow.invs);
 		}
 		else
 			inv = cs.getInv();
@@ -615,6 +616,7 @@ public class EquipmentTab extends JScrollPane
 			}
 		}
 		
+		inv.setCharacterSheetId(cs.getId());
 		
 		inv.setCap(l.get(0).getId());
 		inv.setHead(l.get(1).getId());

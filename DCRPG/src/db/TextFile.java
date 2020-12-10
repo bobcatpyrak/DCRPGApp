@@ -47,7 +47,12 @@ public class TextFile implements DAO<CharacterSheet>
 	}
 	public CharacterSheet getSheet(int id) 
 	{
-		return sheets.get(id);
+		for(CharacterSheet t : sheets)
+		{
+			if(t.getId() == id)
+				return t;
+		}
+		return sheets.get(0);
 	}
 	public SkillSpec getSpec(int id) 
 	{

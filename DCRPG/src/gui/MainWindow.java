@@ -6925,6 +6925,219 @@ public class MainWindow {
 				isNew = true;
 			}
 		});
+		// copy
+		btnCopy.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
+				CharacterSheet newCS = new CharacterSheet(nextSheetId);
+				newCS.setName("Copy of " + currentSheet.getName());
+				newCS.setPicture(currentSheet.getPicture());
+				newCS.setAllDemographics(currentSheet.getAllDemographics());
+				newCS.setAllMiscStats(currentSheet.getAllMiscStats());
+				newCS.setAllStats(currentSheet.getAllStats());
+				
+				for(SkillSpec spec : currentSheet.getSkillSpecs())
+				{
+					SkillSpec newSpec = new SkillSpec(nextSpecId, newCS.getId(), spec.getSkill(), spec.getDescription());
+					specs.add(newSpec);
+					nextSpecId++;
+				}			
+				newCS.setSkillSpecs(specs);
+				
+				for(CharacterSheetAdvantage csa : currentSheet.getCSA())
+				{
+					CharacterSheetAdvantage newCSA = new CharacterSheetAdvantage(nextCSAId, newCS.getId(), csa.getAdv(), csa.getDescription());
+					advs.add(newCSA);
+					nextCSAId++;
+				}
+				newCS.setCSA(advs);
+				
+				for(CharacterSheetDisadvantage csd : currentSheet.getCSD())
+				{
+					CharacterSheetDisadvantage newCSD = new CharacterSheetDisadvantage(nextCSDId, newCS.getId(), csd.getDisadv(), csd.getDescription());
+					disadvs.add(newCSD);
+					nextCSDId++;
+				}
+				newCS.setCSD(disadvs);
+				
+				for(CharacterSheetPower csp : currentSheet.getCSP())
+				{
+					CharacterSheetPower newCSP = new CharacterSheetPower(nextCSPId, newCS.getId(), csp.getLevel(), csp.getPower());
+					if(csp.getSpecs() != null)
+						newCSP.setSpecs(csp.getSpecs());
+					if(csp.getWeakness() != null)
+						newCSP.setWeakness(csp.getWeakness());
+					powers.add(newCSP);
+					nextCSPId++;
+				}
+				newCS.setCSP(powers);
+				
+				Inventory newInv = new Inventory(newCS.getId());
+				newInv.setInventory(currentSheet.getInv().getAllHeld(), currentSheet.getInv().getStorageSplit());
+				invs.add(newInv);
+				newCS.setInv(invs);
+				
+				SpellInventory spellInv = currentSheet.getSpellInv();
+				SpellInventory newSpellInv = new SpellInventory(newCS.getId());
+				newSpellInv.setSpellInventory(spellInv.getSigSplit(), spellInv.getFirstSplit(), spellInv.getSecondSplit(), spellInv.getThirdSplit(), spellInv.getFourthSplit(), spellInv.getSlotsSplit());
+				spellInvs.add(newSpellInv);
+				newCS.setSpellInv(spellInvs);
+				
+				
+				newItem = null;
+				currentSheet = newCS;
+				
+				chckbxAcro.setSelected(false);
+				chckbxDodge.setSelected(false);
+				chckbxHandToHand.setSelected(false);
+				chckbxMeleeWeapons.setSelected(false);
+				chckbxStealth.setSelected(false);
+				
+				chckbxCatch.setSelected(false);
+				chckbxClimbing.setSelected(false);
+				chckbxDriving.setSelected(false);
+				chckbxMarksmanship.setSelected(false);
+				chckbxThievery.setSelected(false);
+				chckbxThrownWeapons.setSelected(false);
+				
+				chckbxAthletics.setSelected(false);
+				chckbxLeap.setSelected(false);
+				chckbxLifting.setSelected(false);
+				chckbxResistance.setSelected(false);
+				chckbxRunning.setSelected(false);
+				chckbxSwimming.setSelected(false);
+				
+				chckbxArcaneLore.setSelected(false);
+				chckbxDemolitions.setSelected(false);
+				chckbxLanguages.setSelected(false);
+				chckbxMedicine.setSelected(false);
+				chckbxScholar.setSelected(false);
+				chckbxScience.setSelected(false);
+				chckbxSecurity.setSelected(false);
+				
+				chckbxArtist.setSelected(false);
+				chckbxEngineering.setSelected(false);
+				chckbxSearch.setSelected(false);
+				chckbxStreetwise.setSelected(false);
+				chckbxSurveillance.setSelected(false);
+				chckbxSurvival.setSelected(false);
+				
+				chckbxBluff.setSelected(false);
+				chckbxCharm.setSelected(false);
+				chckbxIntimidation.setSelected(false);
+				chckbxPersuasion.setSelected(false);
+				chckbxWillpower.setSelected(false);
+				
+				
+				nameSearchField.setText("");
+				// load the entire dang sheet
+				nameField.setText(currentSheet.getName());
+				demographicsPanel.setNewCharacter(currentSheet);
+				etab.setNewCharacter(currentSheet);	
+				stab.setNewCharacter(currentSheet);
+				ePane.setNewCharacter(currentSheet);
+				weapon.set(items, currentSheet.getInv().getWeapon());
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
+				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
+				speedField.setValue(currentSheet.getSpeed());
+				locationField.setValue(currentSheet.getLocation());
+				
+				
+
+				
+				reflexesLevel.setValue(currentSheet.getReflexes());
+				acroLevel.setValue(currentSheet.getAcrobatics());
+				dodgeLevel.setValue(currentSheet.getDodge());
+				handToHandLevel.setValue(currentSheet.getHandToHand());
+				meleeWeaponsLevel.setValue(currentSheet.getMeleeWeapons());
+				stealthLevel.setValue(currentSheet.getStealth());
+				acroTotal.setValue(currentSheet.getAcrobatics() + currentSheet.getReflexes());
+				dodgeTotal.setValue(currentSheet.getDodge() + currentSheet.getReflexes());
+				handToHandTotal.setValue(currentSheet.getHandToHand() + currentSheet.getReflexes());
+				meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
+				stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
+				coordinationLevel.setValue(currentSheet.getCoordination());
+				catchLevel.setValue(currentSheet.getCatching());
+				climbingLevel.setValue(currentSheet.getClimb());
+				drivingLevel.setValue(currentSheet.getDrive());
+				marksmanshipLevel.setValue(currentSheet.getMarksmanship());
+				thieveryLevel.setValue(currentSheet.getThievery());
+				thrownWeaponsLevel.setValue(currentSheet.getThrownWeapons());
+				catchTotal.setValue(currentSheet.getCatching() + currentSheet.getCoordination());
+				climbingTotal.setValue(currentSheet.getClimb() + currentSheet.getCoordination());
+				drivingTotal.setValue(currentSheet.getDrive() + currentSheet.getCoordination());
+				marksmanshipTotal.setValue(currentSheet.getMarksmanship() + currentSheet.getCoordination());
+				thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
+				thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
+				physiqueLevel.setValue(currentSheet.getPhysique());
+				athleticsLevel.setValue(currentSheet.getAthletics());
+				leapLevel.setValue(currentSheet.getLeap());
+				liftingLevel.setValue(currentSheet.getLifting());
+				resistanceLevel.setValue(currentSheet.getResistance());
+				runningLevel.setValue(currentSheet.getRunning());
+				swimmingLevel.setValue(currentSheet.getSwimming());
+				athleticsTotal.setValue(currentSheet.getAthletics() + currentSheet.getPhysique());
+				leapTotal.setValue(currentSheet.getLeap() + currentSheet.getPhysique());
+				liftingTotal.setValue(currentSheet.getLifting() + currentSheet.getPhysique());
+				resistanceTotal.setValue(currentSheet.getResistance() + currentSheet.getPhysique());
+				runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
+				swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
+				knowledgeLevel.setValue(currentSheet.getKnowledge());
+				arcaneLoreLevel.setValue(currentSheet.getArcaneLore());
+				demolitionsLevel.setValue(currentSheet.getDemolitions());
+				languagesLevel.setValue(currentSheet.getLanguages());
+				medicineLevel.setValue(currentSheet.getMedicine());
+				scholarLevel.setValue(currentSheet.getScholar());
+				scienceLevel.setValue(currentSheet.getScience());
+				securityLevel.setValue(currentSheet.getSecurity());
+				arcaneLoreTotal.setValue(currentSheet.getArcaneLore() + currentSheet.getKnowledge());
+				demolitionsTotal.setValue(currentSheet.getDemolitions() + currentSheet.getKnowledge());
+				languagesTotal.setValue(currentSheet.getLanguages() + currentSheet.getKnowledge());
+				medicineTotal.setValue(currentSheet.getMedicine() + currentSheet.getKnowledge());
+				scholarTotal.setValue(currentSheet.getScholar() + currentSheet.getKnowledge());
+				scienceTotal.setValue(currentSheet.getScience() + currentSheet.getKnowledge());
+				securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
+				perceptionLevel.setValue(currentSheet.getPerception());
+				artistLevel.setValue(currentSheet.getArtist());
+				engineeringLevel.setValue(currentSheet.getEngineering());
+				searchLevel.setValue(currentSheet.getSearch());
+				streetwiseLevel.setValue(currentSheet.getStreetwise());
+				surveillanceLevel.setValue(currentSheet.getSurveillance());
+				survivalLevel.setValue(currentSheet.getSurvival());
+				artistTotal.setValue(currentSheet.getArtist() + currentSheet.getPerception());
+				engineeringTotal.setValue(currentSheet.getEngineering() + currentSheet.getPerception());
+				searchTotal.setValue(currentSheet.getSearch() + currentSheet.getPerception());
+				streetwiseTotal.setValue(currentSheet.getStreetwise() + currentSheet.getPerception());
+				surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
+				survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());	
+				presenceLevel.setValue(currentSheet.getPresence());
+				bluffLevel.setValue(currentSheet.getBluff());
+				charmLevel.setValue(currentSheet.getCharm());
+				intimidationLevel.setValue(currentSheet.getIntimidation());
+				persuasionLevel.setValue(currentSheet.getPersuasion());
+				willpowerLevel.setValue(currentSheet.getWillpower());
+				bluffTotal.setValue(currentSheet.getBluff() + currentSheet.getPresence());
+				charmTotal.setValue(currentSheet.getCharm() + currentSheet.getPresence());
+				intimidationTotal.setValue(currentSheet.getIntimidation() + currentSheet.getPresence());
+				persuasionTotal.setValue(currentSheet.getPersuasion() + currentSheet.getPresence());
+				willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());	
+				
+				advs = advantagePanel.saveAdvs();
+				disadvs = advantagePanel.saveDisadvs();
+				powers = powerPanel.savePwrs();
+				advantagePanel.setNewCharacter(0, 0, currentSheet, advs, disadvs);
+				powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth()+30, 0, currentSheet, powers);
+				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
+				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
+				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
+				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
+				
+				isNew = true;
+			}
+		});
 
 				
 		nameSearchField.addKeyListener(new KeyAdapter() {

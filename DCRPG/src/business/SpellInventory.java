@@ -242,8 +242,12 @@ public class SpellInventory
 			slots4 = "";
 	}
 
-	public String getSlots1() {
-		return slots1;
+	public String getSlots1() 
+	{
+		if(slots1.equals("$$blank$$"))
+			return "";
+		else
+			return slots1;
 	}
 
 	public void setSlots1(String slots1) {
@@ -251,7 +255,10 @@ public class SpellInventory
 	}
 
 	public String getSlots2() {
-		return slots2;
+		if(slots2.equals("$$blank$$"))
+			return "";
+		else
+			return slots2;
 	}
 
 	public void setSlots2(String slots2) {
@@ -259,7 +266,10 @@ public class SpellInventory
 	}
 
 	public String getSlots3() {
-		return slots3;
+		if(slots3.equals("$$blank$$"))
+			return "";
+		else
+			return slots3;
 	}
 
 	public void setSlots3(String slots3) {
@@ -267,7 +277,10 @@ public class SpellInventory
 	}
 
 	public String getSlots4() {
-		return slots4;
+		if(slots4.equals("$$blank$$"))
+			return "";
+		else
+			return slots4;
 	}
 
 	public void setSlots4(String slots4) {

@@ -657,6 +657,9 @@ public class EquipmentTab extends JScrollPane
 		}
 		
 		cs.setInv(MainWindow.invs);
+		
+		MainWindow.weapon.set(MainWindow.items, cs.getInv().getWeapon());
+
 				
 		if(onlyItems)
 			MainWindow.dao.saveAll();

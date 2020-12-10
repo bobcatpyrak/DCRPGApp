@@ -72,6 +72,7 @@ public class MainWindow {
 	private ImageIcon icon;
 	private AdvantagePanel advantagePanel;
 	private PowerPanel powerPanel;
+	public static Item weapon;
 	
 	private boolean imgChange = true;
 	boolean isNew = false;
@@ -6340,7 +6341,7 @@ public class MainWindow {
 		ePane.setBounds(imgLabel.getX(), mentalStatsPanel.getY(), imgLabel.getWidth(), 30);
 		panel.add(ePane);
 		
-		Item weapon = new Item("Weapon", 296, 382);
+		weapon = new Item("Weapon", 296, 382);
 		weapon.set(items, 0);
 		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
 		weapon.setDisabled();

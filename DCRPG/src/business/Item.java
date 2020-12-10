@@ -145,8 +145,7 @@ public class Item extends JPanel
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();
-						if(!Item.this.getName().equals("(name)"))
-							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						Item.this.setPath(path);
 						MainWindow.newItem = null;
@@ -265,8 +264,7 @@ public class Item extends JPanel
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();
-						if(!Item.this.getName().equals("(name)"))
-							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						MainWindow.newItem = null;
 						newPic = false;
@@ -384,8 +382,7 @@ public class Item extends JPanel
 					if(MainWindow.newItem != null)
 					{
 						int flip = MainWindow.newItem.getId();
-						if(!Item.this.getName().equals("(name)"))
-							MainWindow.newItem.set(MainWindow.items, Item.this.getId());
+						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						MainWindow.newItem = null;
 						newPic = false;

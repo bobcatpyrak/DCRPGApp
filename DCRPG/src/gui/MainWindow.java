@@ -1,4 +1,19 @@
-			//	todo - finish equipment tab, then spells, then rolling
+// TODO
+// When save is clicked, auto-load character image
+// Have images able to be anything other than .png
+// When load a sheet, have Specs with data open 
+// Not display empty box for specs that just load
+// Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
+// Box for extraneous info - below Powers? Text box
+// Index tab for every character, sorted by Location or whatever
+// Search shows EVERY character when box is empty
+// Save all Items updates ePane shorthand
+// Someday: add checkbox to hide all skills that have 0 in stat
+// Solid borders around things
+// Double check spell slots working
+// Add delete character
+// Add social tab
+// add powers tab
 
 
 package gui;
@@ -220,6 +235,7 @@ public class MainWindow {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("deprecation")
 	private void initialize() 
 	{
 		PropertyChangeListener pcl = new PropertyChangeListener()
@@ -3319,6 +3335,30 @@ public class MainWindow {
 		chckbxSwimming.setBounds(187, 5, 97, 23);
 		swimmingPanel.add(chckbxSwimming);		
 		
+		reflexesLevel.setNextFocusableComponent(acroLevel);
+		acroLevel.setNextFocusableComponent(dodgeLevel);
+		dodgeLevel.setNextFocusableComponent(handToHandLevel);
+		handToHandLevel.setNextFocusableComponent(meleeWeaponsLevel);
+		meleeWeaponsLevel.setNextFocusableComponent(stealthLevel);
+		stealthLevel.setNextFocusableComponent(coordinationLevel);
+		coordinationLevel.setNextFocusableComponent(catchLevel);
+		catchLevel.setNextFocusableComponent(climbingLevel);
+		climbingLevel.setNextFocusableComponent(drivingLevel);
+		drivingLevel.setNextFocusableComponent(marksmanshipLevel);
+		marksmanshipLevel.setNextFocusableComponent(thieveryLevel);
+		thieveryLevel.setNextFocusableComponent(thrownWeaponsLevel);
+		thrownWeaponsLevel.setNextFocusableComponent(physiqueLevel);
+		physiqueLevel.setNextFocusableComponent(athleticsLevel);
+		athleticsLevel.setNextFocusableComponent(leapLevel);
+		leapLevel.setNextFocusableComponent(liftingLevel);
+		liftingLevel.setNextFocusableComponent(resistanceLevel);
+		resistanceLevel.setNextFocusableComponent(runningLevel);
+		runningLevel.setNextFocusableComponent(swimmingLevel);
+		swimmingLevel.setNextFocusableComponent(reflexesLevel);
+		
+		
+		
+		
 		mentalStatsPanel = new JPanel();
 		mentalStatsPanel.setBounds(35, 431, 1152, 279);
 		panel.add(mentalStatsPanel);
@@ -6262,6 +6302,30 @@ public class MainWindow {
 		chckbxWillpower.setBackground(new Color(221, 160, 221));
 		chckbxWillpower.setBounds(187, 5, 97, 23);
 		willpowerPanel.add(chckbxWillpower);
+		
+		knowledgeLevel.setNextFocusableComponent(arcaneLoreLevel);
+		arcaneLoreLevel.setNextFocusableComponent(demolitionsLevel);
+		demolitionsLevel.setNextFocusableComponent(languagesLevel);
+		languagesLevel.setNextFocusableComponent(medicineLevel);
+		medicineLevel.setNextFocusableComponent(scholarLevel);
+		scholarLevel.setNextFocusableComponent(scienceLevel);
+		scienceLevel.setNextFocusableComponent(securityLevel);
+		securityLevel.setNextFocusableComponent(perceptionLevel);
+		perceptionLevel.setNextFocusableComponent(artistLevel);
+		artistLevel.setNextFocusableComponent(engineeringLevel);
+		engineeringLevel.setNextFocusableComponent(searchLevel);
+		searchLevel.setNextFocusableComponent(streetwiseLevel);
+		streetwiseLevel.setNextFocusableComponent(surveillanceLevel);
+		surveillanceLevel.setNextFocusableComponent(survivalLevel);
+		survivalLevel.setNextFocusableComponent(presenceLevel);
+		presenceLevel.setNextFocusableComponent(bluffLevel);
+		bluffLevel.setNextFocusableComponent(charmLevel);
+		charmLevel.setNextFocusableComponent(intimidationLevel);
+		intimidationLevel.setNextFocusableComponent(persuasionLevel);
+		persuasionLevel.setNextFocusableComponent(willpowerLevel);
+		willpowerLevel.setNextFocusableComponent(knowledgeLevel);
+		
+		
 		
 		presenceLevel.setValue(currentSheet.getPresence());
 		bluffLevel.setValue(currentSheet.getBluff());

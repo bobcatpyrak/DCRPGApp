@@ -5,7 +5,7 @@ $$CharacterSheetBegin$$
 3	Fields	Fields.png	Transdimensional Traveler%The Clocktower, sometimes%Lost in Multiverse%Male%Human%5'10%163%Gray-Blue%Dark Brown%Alexander "Fields" McKenzie	2d6%0%4%75%0%0%0/0%0/0%30%30	5%1%3%8%1%1%2%1%1%0%1%0%1%4%0%1%1%1%1%1%2%0%0%0%1%0%0%1%5%2%1%1%1%1%0%5%1%1%0%6%5
 4	Russ Wilson	Russ Wilson.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%4%5%0%30%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0
 5	Bloodhound (Travis Clevenger)	Bloodhound (Travis Clevenger).png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0
-6	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%6%0%1/2%5/13%1/5%32%32	4%0%1%0%1%0%4%0%0%0%1%0%0%3%1%0%0%0%1%0%8%3%0%2%0%0%2%1%4%1%0%1%1%0%1%8%2%1%1%1%1
+6	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%7%0%1/3%5/13%0/5%32%32	4%0%1%0%1%0%4%0%0%0%1%0%0%3%1%0%0%0%1%0%8%3%0%2%0%0%2%1%4%1%0%1%1%0%1%8%3%1%1%1%1
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
@@ -95,7 +95,7 @@ $$InventoryBegin$$
 3	1%7%3%0%2%5%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-6	0%0%10%0%11%0%0%0%0%0%0%5%12%13%0%0%0%0%0%0%0%0%0%0%0%0	14%15%0%0
+6	0%0%10%0%11%16%0%0%0%20%0%5%12%13%17%18%19%0%0%0%0%0%0%0%0%0	14%15%0%0
 $$InventoryEnd$$
 
 $$ItemBegin$$
@@ -114,6 +114,11 @@ $$ItemBegin$$
 13	Six-Shooter	1d6, firing rate 2	six-shooter.png
 14	M1897 Trench Gun	1d6+2	m1897 trench gun.png
 15	Warlocks and Warriors	Game manual	warlocks and warriors.png
+16	Twiggy	Magic wand!	twiggy.png
+17	Shotgun	1d4+2 to 2 adjacent targets, range: 2-3. Firing rate of 0.5 - takes two turns	shotgun.png
+18	Pistol	1d6, range 2-4, rate 1	pistol.png
+19	Church of Blood Robe	disguises from Equated?	church of blood robe.png
+20	Shorts of the Nereides	Add 1 sq. of movement in or under water	shorts of the nereides.png
 $$ItemEnd$$
 
 $$SpellBegin$$

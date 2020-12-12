@@ -25,6 +25,7 @@ public class DemographicsPanel extends JPanel
 		setNewCharacter(cs);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void setNewCharacter(CharacterSheet cs)
 	{
 		removeAll();
@@ -60,6 +61,7 @@ public class DemographicsPanel extends JPanel
 				cs.setGender(genderField.getText());
 			}
 		});
+
 		
 		JFormattedTextField heightField = new JFormattedTextField();
 		heightField.setBounds(51, 25, 100, 20);
@@ -301,5 +303,21 @@ public class DemographicsPanel extends JPanel
 			}
 		});
 		skillPointsField.setValue(cs.getSkillPoints());
+		
+		
+		genderField.setNextFocusableComponent(heightField);
+		heightField.setNextFocusableComponent(weightField);
+		weightField.setNextFocusableComponent(raceField);
+		raceField.setNextFocusableComponent(eyeColorField);
+		eyeColorField.setNextFocusableComponent(hairColorField);
+		hairColorField.setNextFocusableComponent(fullNameField);
+		fullNameField.setNextFocusableComponent(occupationField);
+		occupationField.setNextFocusableComponent(baseOfOperationsField);
+		baseOfOperationsField.setNextFocusableComponent(heroPointsField);
+		heroPointsField.setNextFocusableComponent(villainPointsField);
+		villainPointsField.setNextFocusableComponent(availableRenownField);
+		availableRenownField.setNextFocusableComponent(powerPointsField);
+		powerPointsField.setNextFocusableComponent(skillPointsField);
+		skillPointsField.setNextFocusableComponent(genderField);
 	}
 }

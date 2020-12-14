@@ -1,5 +1,4 @@
 // TODO
-// When load a sheet, have Specs with data open 
 // Not display empty box for specs that just load
 // Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
 // Box for extraneous info - below Powers? Text box
@@ -1358,8 +1357,7 @@ public class MainWindow {
 			{		
 				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
 				if(chckbxAcro.isSelected())
-				{fsafsaf 
-					if(acroSpecsList.size() == 0)
+				{
 					blankId = nextSpecId;
 					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
 					acroSpecsList.add(blank);

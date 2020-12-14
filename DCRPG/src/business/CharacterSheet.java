@@ -77,33 +77,33 @@ public class CharacterSheet
 		return picture;
 	}
 	public void setPicture(String picture) {
-		if(picture.equals(""))
-		{
+		try {
+			if(ImageIO.read(new File("images/sheets/"+picture)) != null)
+				this.picture = picture;
+		} catch (IOException i5) {
 			try {
 				System.out.println("Checking file type");
 				if(ImageIO.read(new File("images/sheets/"+name+".png")) != null)
-				setPicture(name+".png");
+					this.picture = name+".png";
 			} catch (IOException i){
 				try {
 					if(ImageIO.read(new File("images/sheets/"+name+".jpg")) != null)
-					setPicture(name+".jpg");
+						this.picture = name+".jpg";
 				} catch (IOException i2) {
 					try {
 						if(ImageIO.read(new File("images/sheets/"+name+".jpeg")) != null)
-							setPicture(name+".jpeg");
+							this.picture = name+".jpeg";
 					} catch (IOException i3) {
 						try {
 							if(ImageIO.read(new File("images/sheets/"+name+".gif")) != null)
-								setPicture(name+".gif");	
+								this.picture = name+".gif";	
 						} catch (IOException i4) {
-							setPicture("");
+							this.picture = "";
 						}
 					}
 				}
 			}
 		}
-		else
-			this.picture = picture;
 	}
 	public String getFullName() {
 		return fullName;

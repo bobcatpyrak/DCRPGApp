@@ -1358,7 +1358,8 @@ public class MainWindow {
 			{		
 				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
 				if(chckbxAcro.isSelected())
-				{
+				{fsafsaf 
+					if(acroSpecsList.size() == 0)
 					blankId = nextSpecId;
 					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
 					acroSpecsList.add(blank);
@@ -6654,7 +6655,7 @@ public class MainWindow {
 							chckbxMedicine.setSelected(false);
 							chckbxScholar.setSelected(false);
 							chckbxScience.setSelected(false);
-							chckbxSecurity.setSelected(false);
+							chckbxSecurity.setSelected(false);	
 							
 							chckbxArtist.setSelected(false);
 							chckbxEngineering.setSelected(false);
@@ -6685,6 +6686,82 @@ public class MainWindow {
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
 							locationField.setValue(currentSheet.getLocation());
+							
+							if (currentSheet.assignSkillSpecs("Acrobatics").size() > 0)
+								chckbxAcro.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Dodge").size() > 0)
+								chckbxDodge.setSelected(true);
+							if (currentSheet.assignSkillSpecs("HandToHand").size() > 0)
+								chckbxHandToHand.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Melee Weapons").size() > 0)
+								chckbxMeleeWeapons.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Stealth").size() > 0)
+								chckbxStealth.setSelected(true);
+							
+							if (currentSheet.assignSkillSpecs("Catch").size() > 0)
+								chckbxCatch.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Climbing").size() > 0)
+								chckbxClimbing.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Driving").size() > 0)
+								chckbxDriving.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Marksmanship").size() > 0)
+								chckbxMarksmanship.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Thievery").size() > 0)
+								chckbxThievery.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Thrown Weapons").size() > 0)
+								chckbxThrownWeapons.setSelected(true);
+							
+							if (currentSheet.assignSkillSpecs("Athletics").size() > 0)
+								chckbxAthletics.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Leap").size() > 0)
+								chckbxLeap.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Lifting").size() > 0)
+								chckbxLifting.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Resistance").size() > 0)
+								chckbxResistance.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Running").size() > 0)
+								chckbxRunning.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Swimming").size() > 0)
+								chckbxSwimming.setSelected(true);
+							
+							if (currentSheet.assignSkillSpecs("Arcane Lore").size() > 0)
+								chckbxArcaneLore.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Demolitions").size() > 0)
+								chckbxDemolitions.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Languages").size() > 0)
+								chckbxLanguages.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Medicine").size() > 0)
+								chckbxMedicine.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Scholar").size() > 0)
+								chckbxScholar.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Science").size() > 0)
+								chckbxScience.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Security").size() > 0)
+								chckbxSecurity.setSelected(true);
+							
+							if (currentSheet.assignSkillSpecs("Artist").size() > 0)
+								chckbxArtist.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Engineering").size() > 0)
+								chckbxEngineering.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Search").size() > 0)
+								chckbxSearch.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Streetwise").size() > 0)
+								chckbxStreetwise.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Surveillance").size() > 0)
+								chckbxSurveillance.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Survival").size() > 0)
+								chckbxSurvival.setSelected(true);
+
+							if (currentSheet.assignSkillSpecs("Bluff").size() > 0)
+								chckbxBluff.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Charm").size() > 0)
+								chckbxCharm.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Intimidation").size() > 0)
+								chckbxIntimidation.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Persuasion").size() > 0)
+								chckbxPersuasion.setSelected(true);
+							if (currentSheet.assignSkillSpecs("Willpower").size() > 0)
+								chckbxWillpower.setSelected(true);
 							
 							
 							imgChange = false;

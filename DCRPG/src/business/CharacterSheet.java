@@ -1,7 +1,13 @@
 package business;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
 
 public class CharacterSheet 
 {
@@ -66,13 +72,38 @@ public class CharacterSheet
 	}
 	public void setName(String name) {
 		this.name = name;
-		setPicture(name+".png");
 	}
 	public String getPicture() {
 		return picture;
 	}
 	public void setPicture(String picture) {
-		this.picture = picture;
+		if(picture.equals(""))
+		{
+			try {
+				System.out.println("Checking file type");
+				if(ImageIO.read(new File("images/sheets/"+name+".png")) != null)
+				setPicture(name+".png");
+			} catch (IOException i){
+				try {
+					if(ImageIO.read(new File("images/sheets/"+name+".jpg")) != null)
+					setPicture(name+".jpg");
+				} catch (IOException i2) {
+					try {
+						if(ImageIO.read(new File("images/sheets/"+name+".jpeg")) != null)
+							setPicture(name+".jpeg");
+					} catch (IOException i3) {
+						try {
+							if(ImageIO.read(new File("images/sheets/"+name+".gif")) != null)
+								setPicture(name+".gif");	
+						} catch (IOException i4) {
+							setPicture("");
+						}
+					}
+				}
+			}
+		}
+		else
+			this.picture = picture;
 	}
 	public String getFullName() {
 		return fullName;

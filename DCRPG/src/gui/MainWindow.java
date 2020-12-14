@@ -1,6 +1,4 @@
 // TODO
-// When save is clicked, auto-load character image
-// Have images able to be anything other than .png
 // When load a sheet, have Specs with data open 
 // Not display empty box for specs that just load
 // Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
@@ -89,7 +87,7 @@ public class MainWindow {
 	private PowerPanel powerPanel;
 	public static Item weapon;
 	
-	private boolean imgChange = true;
+	private boolean imgChange = false;
 	boolean isNew = false;
 	boolean newPic = false;
 
@@ -138,6 +136,7 @@ public class MainWindow {
 		currentSheet = sheets.get(0);
 		
 		EventQueue.invokeLater(new Runnable() {
+			@SuppressWarnings("static-access")
 			public void run() {
 				try {
 					MainWindow window = new MainWindow();
@@ -6570,16 +6569,17 @@ public class MainWindow {
 		
 					dao.saveAll();
 					
+					currentSheet.setPicture("");
 					
 					if(newPic)
 					{
 						try 
 						{
-						    String n = currentSheet.getName().toLowerCase();
-						    
+						    String n = currentSheet.getName();			    
 						    File outputfile = new File("images/sheets/"+n+".png");
 						    ImageIO.write(origImg, "png", outputfile);
 						    newPic = false;
+						    currentSheet.setPicture(n+".png");
 						} catch (IOException e) {
 							System.out.println(e);
 						}
@@ -6587,7 +6587,37 @@ public class MainWindow {
 				}
 				else
 					nameField.setValue(duplicate);
-			}
+				
+				imgChange = false;
+				
+				try 
+				{
+				    origImg = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
+				    imgLabel.setIcon(null);
+					img = null;
+				    img = ImageIO.read(new File("images/sheets/"+currentSheet.getPicture()));
+				    img = Scalr.resize(img, 300, 350);
+				    icon.setImage(img);
+				    imgLabel.setIcon(icon);
+				} catch (IOException e) 
+				{
+					try
+					{
+						imgLabel.setIcon(null);
+						img = null;
+					    img = ImageIO.read(new File("images/sheets/blank.png"));
+					    img = Scalr.resize(img, 300, 350);
+					    icon.setImage(img);
+					    imgLabel.setIcon(icon);
+					    newPic = false;
+					}
+					catch (IOException e2)
+					{
+						
+					}
+				} 
+				imgChange = true;
+			}	
 		});
 
 		btnLoad.addActionListener(new ActionListener() 

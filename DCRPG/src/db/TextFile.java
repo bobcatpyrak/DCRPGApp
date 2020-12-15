@@ -172,6 +172,10 @@ public class TextFile implements DAO<CharacterSheet>
 							cs.setAllDemographics(fields[3]);
 							cs.setAllMiscStats(fields[4]);
 							cs.setAllStats(fields[5]);
+							if(fields.length == 7)
+								cs.setNotesUnescape(fields[6]);
+							else
+								cs.setNotes("");
 							cs.setSkillSpecs(specs);
 							cs.setCSA(advs);
 							cs.setCSD(disadvs);
@@ -969,7 +973,7 @@ public class TextFile implements DAO<CharacterSheet>
 			{
 				out.println(cs.getId() + FIELD_SEP + cs.getName() + FIELD_SEP + cs.getPicture() 
 				+ FIELD_SEP + cs.getAllDemographics() + FIELD_SEP + cs.getAllMiscStats() 
-				+ FIELD_SEP + cs.getAllStats());
+				+ FIELD_SEP + cs.getAllStats() + FIELD_SEP + cs.getNotesEscape());
 			}
 			out.println("$$CharacterSheetEnd$$");
 			out.println();

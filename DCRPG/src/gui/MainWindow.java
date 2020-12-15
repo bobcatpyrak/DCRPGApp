@@ -6612,6 +6612,15 @@ public class MainWindow {
 		notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
 		advPowerPanel.add(notesScroll);
 		
+		notesPanel.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				currentSheet.setNotes(notesPanel.getText());
+			}
+		});
+		
 		icon = new ImageIcon();
 		img = null;
 		try 
@@ -7020,6 +7029,7 @@ public class MainWindow {
 							bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 							speedField.setValue(currentSheet.getSpeed());
 							locationField.setValue(currentSheet.getLocation());
+							notesPanel.setText(currentSheet.getNotes());
 							
 							if (currentSheet.assignSkillSpecs("Acrobatics").size() > 0)
 								chckbxAcro.setSelected(true);
@@ -7212,6 +7222,7 @@ public class MainWindow {
 							int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 							advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 							powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
+							notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
 							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
 							
 							isNew = false;
@@ -7322,6 +7333,7 @@ public class MainWindow {
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
 				locationField.setValue(currentSheet.getLocation());
+				notesPanel.setText("");
 
 
 				imgChange = false;
@@ -7426,6 +7438,7 @@ public class MainWindow {
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
+				notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
 				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
 
 				isNew = true;
@@ -7627,6 +7640,7 @@ public class MainWindow {
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
 				locationField.setValue(currentSheet.getLocation());
+				notesPanel.setText(currentSheet.getNotes());
 				
 				
 
@@ -7716,6 +7730,7 @@ public class MainWindow {
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
+				notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
 				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
 				
 				isNew = true;

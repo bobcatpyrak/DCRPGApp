@@ -9,6 +9,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 public class CharacterSheet 
 {
 	private final String FIELD_SEP = "%";
@@ -52,6 +54,7 @@ public class CharacterSheet
 	List<CharacterSheetPower> pwrs = new ArrayList<CharacterSheetPower>();
 	Inventory inventory;
 	SpellInventory spellInv;
+	String notes;
 	
 	public CharacterSheet(int id)
 	{
@@ -82,7 +85,6 @@ public class CharacterSheet
 				this.picture = picture;
 		} catch (IOException i5) {
 			try {
-				System.out.println("Checking file type");
 				if(ImageIO.read(new File("images/sheets/"+name+".png")) != null)
 					this.picture = name+".png";
 			} catch (IOException i){
@@ -470,6 +472,20 @@ public class CharacterSheet
 	}
 	public void setWillpower(int willpower) {
 		this.willpower = willpower;
+	}
+	public String getNotes() {
+		return notes;
+	}
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	@SuppressWarnings("deprecation")
+	public void setNotesUnescape(String notes) {
+		this.notes = StringEscapeUtils.unescapeJava(notes);
+	}
+	@SuppressWarnings("deprecation")
+	public String getNotesEscape() {
+		return StringEscapeUtils.escapeJava(notes);
 	}
 	
 	// methods for Skill Specializations

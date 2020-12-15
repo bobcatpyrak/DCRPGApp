@@ -1353,16 +1353,24 @@ public class MainWindow {
 		chckbxAcro.addItemListener(new ItemListener() 
 		{
 			int blankId;
+			boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> acroSpecsList = currentSheet.assignSkillSpecs("Acrobatics");
 				if(chckbxAcro.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
-					acroSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					
+					if(acroSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Acrobatics", "");
+						acroSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (acroSpecsList.size())*28;
 					
@@ -1409,6 +1417,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxAcro.setSelected(false);
+										addBlank = true;
 										chckbxAcro.setSelected(true);
 									}
 							}
@@ -1475,16 +1484,23 @@ public class MainWindow {
 		chckbxDodge.addItemListener(new ItemListener() 
 		{
 			int blankId;
+			boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> dodgeSpecsList = currentSheet.assignSkillSpecs("Dodge");
 				if(chckbxDodge.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Dodge", "");
-					dodgeSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(dodgeSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Dodge", "");
+						dodgeSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (dodgeSpecsList.size())*28;
 					
@@ -1529,6 +1545,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxDodge.setSelected(false);
+										addBlank = true;
 										chckbxDodge.setSelected(true);
 									}
 							}
@@ -1592,17 +1609,23 @@ public class MainWindow {
 		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
 		chckbxHandToHand.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> handToHandSpecsList = currentSheet.assignSkillSpecs("HandToHand");
 				if(chckbxHandToHand.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "HandToHand", "");
-					handToHandSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(handToHandSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "HandToHand", "");
+						handToHandSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (handToHandSpecsList.size())*28;
 					
@@ -1646,6 +1669,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxHandToHand.setSelected(false);
+										addBlank = true;
 										chckbxHandToHand.setSelected(true);
 									}
 							}
@@ -1708,17 +1732,23 @@ public class MainWindow {
 		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
 		chckbxMeleeWeapons.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> meleeWeaponsSpecsList = currentSheet.assignSkillSpecs("MeleeWeapons");
 				if(chckbxMeleeWeapons.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "MeleeWeapons", "");
-					meleeWeaponsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(meleeWeaponsSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "MeleeWeapons", "");
+						meleeWeaponsSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (meleeWeaponsSpecsList.size())*28;
 					
@@ -1761,6 +1791,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxMeleeWeapons.setSelected(false);
+										addBlank = true;
 										chckbxMeleeWeapons.setSelected(true);
 									}
 							}
@@ -1822,17 +1853,24 @@ public class MainWindow {
 		JCheckBox chckbxStealth = new JCheckBox("Show specs");
 		chckbxStealth.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> stealthSpecsList = currentSheet.assignSkillSpecs("Stealth");
 				if(chckbxStealth.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Stealth", "");
-					stealthSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(stealthSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Stealth", "");
+						stealthSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
+					
 					int extra = (stealthSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
@@ -1872,6 +1910,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxStealth.setSelected(false);
+										addBlank = true;
 										chckbxStealth.setSelected(true);
 									}
 							}
@@ -1931,17 +1970,23 @@ public class MainWindow {
 		JCheckBox chckbxCatch = new JCheckBox("Show specs");
 		chckbxCatch.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> catchSpecsList = currentSheet.assignSkillSpecs("Catch");
 				if(chckbxCatch.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Catch", "");
-					catchSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(catchSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Catch", "");
+						catchSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (catchSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -1987,6 +2032,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxCatch.setSelected(false);
+										addBlank = true;
 										chckbxCatch.setSelected(true);
 									}
 							}
@@ -2053,17 +2099,23 @@ public class MainWindow {
 		JCheckBox chckbxClimbing = new JCheckBox("Show specs");
 		chckbxClimbing.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> climbingSpecsList = currentSheet.assignSkillSpecs("Climbing");
 				if(chckbxClimbing.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Climbing", "");
-					climbingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(climbingSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Climbing", "");
+						climbingSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (climbingSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -2108,6 +2160,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxClimbing.setSelected(false);
+										addBlank = true;
 										chckbxClimbing.setSelected(true);
 									}
 							}
@@ -2173,17 +2226,23 @@ public class MainWindow {
 		JCheckBox chckbxDriving = new JCheckBox("Show specs");
 		chckbxDriving.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> drivingSpecsList = currentSheet.assignSkillSpecs("Driving");
 				if(chckbxDriving.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Driving", "");
-					drivingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(drivingSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Driving", "");
+						drivingSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (drivingSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -2227,6 +2286,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxDriving.setSelected(false);
+										addBlank = true;
 										chckbxDriving.setSelected(true);
 									}
 							}
@@ -2291,17 +2351,23 @@ public class MainWindow {
 		JCheckBox chckbxMarksmanship = new JCheckBox("Show specs");
 		chckbxMarksmanship.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> marksmanshipSpecsList = currentSheet.assignSkillSpecs("Marksmanship");
 				if(chckbxMarksmanship.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Marksmanship", "");
-					marksmanshipSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(marksmanshipSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Marksmanship", "");
+						marksmanshipSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (marksmanshipSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -2344,6 +2410,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxMarksmanship.setSelected(false);
+										addBlank = true;
 										chckbxMarksmanship.setSelected(true);
 									}
 							}
@@ -2407,17 +2474,23 @@ public class MainWindow {
 		JCheckBox chckbxThievery = new JCheckBox("Show specs");
 		chckbxThievery.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> thieverySpecsList = currentSheet.assignSkillSpecs("Thievery");
 				if(chckbxThievery.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Thievery", "");
-					thieverySpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(thieverySpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Thievery", "");
+						thieverySpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (thieverySpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -2459,6 +2532,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxThievery.setSelected(false);
+										addBlank = true;
 										chckbxThievery.setSelected(true);
 									}
 							}
@@ -2521,17 +2595,23 @@ public class MainWindow {
 		JCheckBox chckbxThrownWeapons = new JCheckBox("Show specs");
 		chckbxThrownWeapons.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> thrownWeaponsSpecsList = currentSheet.assignSkillSpecs("ThrownWeapons");
 				if(chckbxThrownWeapons.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "ThrownWeapons", "");
-					thrownWeaponsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(thrownWeaponsSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "ThrownWeapons", "");
+						thrownWeaponsSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (thrownWeaponsSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
@@ -2572,6 +2652,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxThrownWeapons.setSelected(false);
+										addBlank = true;
 										chckbxThrownWeapons.setSelected(true);
 									}
 							}
@@ -2633,17 +2714,23 @@ public class MainWindow {
 		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
 		chckbxAthletics.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> athleticsSpecsList = currentSheet.assignSkillSpecs("Athletics");
 				if(chckbxAthletics.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Athletics", "");
-					athleticsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(athleticsSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Athletics", "");
+						athleticsSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (athleticsSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -2689,6 +2776,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxAthletics.setSelected(false);
+										addBlank = true;
 										chckbxAthletics.setSelected(true);
 									}
 							}
@@ -2755,17 +2843,23 @@ public class MainWindow {
 		JCheckBox chckbxLeap = new JCheckBox("Show specs");
 		chckbxLeap.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> leapSpecsList = currentSheet.assignSkillSpecs("Leap");
 				if(chckbxLeap.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Leap", "");
-					leapSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(leapSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Leap", "");
+						leapSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (leapSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -2810,6 +2904,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxLeap.setSelected(false);
+										addBlank = true;
 										chckbxLeap.setSelected(true);
 									}
 							}
@@ -2875,17 +2970,23 @@ public class MainWindow {
 		JCheckBox chckbxLifting = new JCheckBox("Show specs");
 		chckbxLifting.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> liftingSpecsList = currentSheet.assignSkillSpecs("Lifting");
 				if(chckbxLifting.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Lifting", "");
-					liftingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(liftingSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Lifting", "");
+						liftingSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (liftingSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -2929,6 +3030,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxLifting.setSelected(false);
+										addBlank = true;
 										chckbxLifting.setSelected(true);
 									}
 							}
@@ -2993,17 +3095,23 @@ public class MainWindow {
 		JCheckBox chckbxResistance = new JCheckBox("Show specs");
 		chckbxResistance.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> resistanceSpecsList = currentSheet.assignSkillSpecs("Resistance");
 				if(chckbxResistance.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Resistance", "");
-					resistanceSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(resistanceSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Resistance", "");
+						resistanceSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (resistanceSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -3046,6 +3154,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxResistance.setSelected(false);
+										addBlank = true;
 										chckbxResistance.setSelected(true);
 									}
 							}
@@ -3109,17 +3218,23 @@ public class MainWindow {
 		JCheckBox chckbxRunning = new JCheckBox("Show specs");
 		chckbxRunning.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> runningSpecsList = currentSheet.assignSkillSpecs("Running");
 				if(chckbxRunning.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Running", "");
-					runningSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(runningSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Running", "");
+						runningSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (runningSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -3161,6 +3276,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxRunning.setSelected(false);
+										addBlank = true;
 										chckbxRunning.setSelected(true);
 									}
 							}
@@ -3223,17 +3339,23 @@ public class MainWindow {
 		JCheckBox chckbxSwimming = new JCheckBox("Show specs");
 		chckbxSwimming.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> swimmingSpecsList = currentSheet.assignSkillSpecs("Swimming");
 				if(chckbxSwimming.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Swimming", "");
-					swimmingSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(swimmingSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Swimming", "");
+						swimmingSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (swimmingSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
@@ -3274,6 +3396,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxSwimming.setSelected(false);
+										addBlank = true;
 										chckbxSwimming.setSelected(true);
 									}
 							}
@@ -4217,18 +4340,23 @@ public class MainWindow {
 		JCheckBox chckbxArcaneLore = new JCheckBox("Show specs");
 		chckbxArcaneLore.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> arcaneLoreSpecsList = currentSheet.assignSkillSpecs("Arcane Lore");
 				if(chckbxArcaneLore.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Arcane Lore", "");
-					arcaneLoreSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
-
+					if(arcaneLoreSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Arcane Lore", "");
+						arcaneLoreSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (arcaneLoreSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
@@ -4274,6 +4402,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxArcaneLore.setSelected(false);
+										addBlank = true;
 										chckbxArcaneLore.setSelected(true);
 									}
 							}
@@ -4340,17 +4469,23 @@ public class MainWindow {
 		JCheckBox chckbxDemolitions = new JCheckBox("Show specs");
 		chckbxDemolitions.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> demolitionsSpecsList = currentSheet.assignSkillSpecs("Demolitions");
 				if(chckbxDemolitions.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Demolitions", "");
-					demolitionsSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(demolitionsSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Demolitions", "");
+						demolitionsSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (demolitionsSpecsList.size())*28;
 					
@@ -4396,6 +4531,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxDemolitions.setSelected(false);
+										addBlank = true;
 										chckbxDemolitions.setSelected(true);
 									}
 							}
@@ -4461,17 +4597,23 @@ public class MainWindow {
 		JCheckBox chckbxLanguages = new JCheckBox("Show specs");
 		chckbxLanguages.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> languagesSpecsList = currentSheet.assignSkillSpecs("Languages");
 				if(chckbxLanguages.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Languages", "");
-					languagesSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(languagesSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Languages", "");
+						languagesSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (languagesSpecsList.size())*28;
 					
@@ -4516,6 +4658,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxLanguages.setSelected(false);
+										addBlank = true;
 										chckbxLanguages.setSelected(true);
 									}
 							}
@@ -4580,17 +4723,23 @@ public class MainWindow {
 		JCheckBox chckbxMedicine = new JCheckBox("Show specs");
 		chckbxMedicine.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> medicineSpecsList = currentSheet.assignSkillSpecs("Medicine");
 				if(chckbxMedicine.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Medicine", "");
-					medicineSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(medicineSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Medicine", "");
+						medicineSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (medicineSpecsList.size())*28;
 					
@@ -4634,6 +4783,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxMedicine.setSelected(false);
+										addBlank = true;
 										chckbxMedicine.setSelected(true);
 									}
 							}
@@ -4697,17 +4847,23 @@ public class MainWindow {
 		JCheckBox chckbxScholar = new JCheckBox("Show specs");
 		chckbxScholar.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> scholarSpecsList = currentSheet.assignSkillSpecs("Scholar");
 				if(chckbxScholar.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Scholar", "");
-					scholarSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(scholarSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Scholar", "");
+						scholarSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (scholarSpecsList.size())*28;
 					
@@ -4750,6 +4906,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxScholar.setSelected(false);
+										addBlank = true;
 										chckbxScholar.setSelected(true);
 									}
 							}
@@ -4812,17 +4969,23 @@ public class MainWindow {
 		JCheckBox chckbxScience = new JCheckBox("Show specs");
 		chckbxScience.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> scienceSpecsList = currentSheet.assignSkillSpecs("Science");
 				if(chckbxScience.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Science", "");
-					scienceSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(scienceSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Science", "");
+						scienceSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (scienceSpecsList.size())*28;
 					
@@ -4864,6 +5027,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxScience.setSelected(false);
+										addBlank = true;
 										chckbxScience.setSelected(true);
 									}
 							}
@@ -4925,17 +5089,23 @@ public class MainWindow {
 		JCheckBox chckbxSecurity = new JCheckBox("Show specs");
 		chckbxSecurity.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> securitySpecsList = currentSheet.assignSkillSpecs("Security");
 				if(chckbxSecurity.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Security", "");
-					securitySpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(securitySpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Security", "");
+						securitySpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (securitySpecsList.size())*28;
 					
@@ -4976,6 +5146,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxSecurity.setSelected(false);
+										addBlank = true;
 										chckbxSecurity.setSelected(true);
 									}
 							}
@@ -5036,17 +5207,23 @@ public class MainWindow {
 		JCheckBox chckbxArtist = new JCheckBox("Show specs");
 		chckbxArtist.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> artistSpecsList = currentSheet.assignSkillSpecs("Artist");
 				if(chckbxArtist.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Artist", "");
-					artistSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(artistSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Artist", "");
+						artistSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (artistSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5091,6 +5268,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxArtist.setSelected(false);
+										addBlank = true;
 										chckbxArtist.setSelected(true);
 									}
 							}
@@ -5156,17 +5334,23 @@ public class MainWindow {
 		JCheckBox chckbxEngineering = new JCheckBox("Show specs");
 		chckbxEngineering.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> engineeringSpecsList = currentSheet.assignSkillSpecs("Engineering");
 				if(chckbxEngineering.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Engineering", "");
-					engineeringSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(engineeringSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Engineering", "");
+						engineeringSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (engineeringSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5210,6 +5394,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxEngineering.setSelected(false);
+										addBlank = true;
 										chckbxEngineering.setSelected(true);
 									}
 							}
@@ -5274,17 +5459,23 @@ public class MainWindow {
 		JCheckBox chckbxSearch = new JCheckBox("Show specs");
 		chckbxSearch.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> searchSpecsList = currentSheet.assignSkillSpecs("Search");
 				if(chckbxSearch.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Search", "");
-					searchSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(searchSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Search", "");
+						searchSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (searchSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5327,6 +5518,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxSearch.setSelected(false);
+										addBlank = true;
 										chckbxSearch.setSelected(true);
 									}
 							}
@@ -5390,17 +5582,23 @@ public class MainWindow {
 		JCheckBox chckbxStreetwise = new JCheckBox("Show specs");
 		chckbxStreetwise.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> streetwiseSpecsList = currentSheet.assignSkillSpecs("Streetwise");
 				if(chckbxStreetwise.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Streetwise", "");
-					streetwiseSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(streetwiseSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Streetwise", "");
+						streetwiseSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (streetwiseSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5442,6 +5640,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxStreetwise.setSelected(false);
+										addBlank = true;
 										chckbxStreetwise.setSelected(true);
 									}
 							}
@@ -5505,17 +5704,23 @@ public class MainWindow {
 		JCheckBox chckbxSurveillance = new JCheckBox("Show specs");
 		chckbxSurveillance.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> surveillanceSpecsList = currentSheet.assignSkillSpecs("Surveillance");
 				if(chckbxSurveillance.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Surveillance", "");
-					surveillanceSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(surveillanceSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Surveillance", "");
+						surveillanceSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (surveillanceSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5556,6 +5761,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxSurveillance.setSelected(false);
+										addBlank = true;
 										chckbxSurveillance.setSelected(true);
 									}
 							}
@@ -5617,17 +5823,23 @@ public class MainWindow {
 		JCheckBox chckbxSurvival = new JCheckBox("Show specs");
 		chckbxSurvival.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> survivalSpecsList = currentSheet.assignSkillSpecs("Survival");
 				if(chckbxSurvival.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Survival", "");
-					survivalSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(survivalSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Survival", "");
+						survivalSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 					int extra = (survivalSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
@@ -5667,6 +5879,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxSurvival.setSelected(false);
+										addBlank = true;
 										chckbxSurvival.setSelected(true);
 									}
 							}
@@ -5727,16 +5940,22 @@ public class MainWindow {
 		JCheckBox chckbxBluff = new JCheckBox("Show specs");
 		chckbxBluff.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> bluffSpecsList = currentSheet.assignSkillSpecs("Bluff");
 				if(chckbxBluff.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Bluff", "");
-					bluffSpecsList.add(blank);
-					specs.add(blank);
+					if(bluffSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Bluff", "");
+						bluffSpecsList.add(blank);
+						specs.add(blank);
+						addBlank = false;
+					}
 					nextSpecId++;
 
 					int extra = (bluffSpecsList.size())*28;
@@ -5782,6 +6001,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxBluff.setSelected(false);
+										addBlank = true;
 										chckbxBluff.setSelected(true);
 									}
 							}
@@ -5846,17 +6066,23 @@ public class MainWindow {
 		JCheckBox chckbxCharm = new JCheckBox("Show specs");
 		chckbxCharm.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> charmSpecsList = currentSheet.assignSkillSpecs("Charm");
 				if(chckbxCharm.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Charm", "");
-					charmSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(charmSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Charm", "");
+						charmSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (charmSpecsList.size())*28;
 					
@@ -5900,6 +6126,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxCharm.setSelected(false);
+										addBlank = true;
 										chckbxCharm.setSelected(true);
 									}
 							}
@@ -5963,17 +6190,23 @@ public class MainWindow {
 		JCheckBox chckbxIntimidation = new JCheckBox("Show specs");
 		chckbxIntimidation.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> intimidationSpecsList = currentSheet.assignSkillSpecs("Intimidation");
 				if(chckbxIntimidation.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Intimidation", "");
-					intimidationSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(intimidationSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Intimidation", "");
+						intimidationSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (intimidationSpecsList.size())*28;
 					
@@ -6016,6 +6249,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxIntimidation.setSelected(false);
+										addBlank = true;
 										chckbxIntimidation.setSelected(true);
 									}
 							}
@@ -6079,17 +6313,23 @@ public class MainWindow {
 		JCheckBox chckbxPersuasion = new JCheckBox("Show specs");
 		chckbxPersuasion.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> persuasionSpecsList = currentSheet.assignSkillSpecs("Persuasion");
 				if(chckbxPersuasion.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Persuasion", "");
-					persuasionSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(persuasionSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Persuasion", "");
+						persuasionSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (persuasionSpecsList.size())*28;
 					
@@ -6131,6 +6371,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxPersuasion.setSelected(false);
+										addBlank = true;
 										chckbxPersuasion.setSelected(true);
 									}
 							}
@@ -6192,17 +6433,23 @@ public class MainWindow {
 		JCheckBox chckbxWillpower = new JCheckBox("Show specs");
 		chckbxWillpower.addItemListener(new ItemListener() 
 		{
-			int blankId;
+			int blankId; boolean addBlank = false;
 			public void itemStateChanged(ItemEvent arg0) 
 			{		
 				List<SkillSpec> willpowerSpecsList = currentSheet.assignSkillSpecs("Willpower");
 				if(chckbxWillpower.isSelected())
 				{
-					blankId = nextSpecId;
-					SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Willpower", "");
-					willpowerSpecsList.add(blank);
-					specs.add(blank);
-					nextSpecId++;
+					if(willpowerSpecsList.size() == 0)
+						addBlank = true;
+					if(addBlank)
+					{
+						blankId = nextSpecId;
+						SkillSpec blank = new SkillSpec(blankId, currentSheet.getId(), "Willpower", "");
+						willpowerSpecsList.add(blank);
+						specs.add(blank);
+						nextSpecId++;
+						addBlank = false;
+					}
 
 					int extra = (willpowerSpecsList.size())*28;
 					
@@ -6243,6 +6490,7 @@ public class MainWindow {
 									if(e.getKeyCode() == KeyEvent.VK_ENTER)
 									{
 										chckbxWillpower.setSelected(false);
+										addBlank = true;
 										chckbxWillpower.setSelected(true);
 									}
 							}
@@ -6691,7 +6939,7 @@ public class MainWindow {
 								chckbxDodge.setSelected(true);
 							if (currentSheet.assignSkillSpecs("HandToHand").size() > 0)
 								chckbxHandToHand.setSelected(true);
-							if (currentSheet.assignSkillSpecs("Melee Weapons").size() > 0)
+							if (currentSheet.assignSkillSpecs("MeleeWeapons").size() > 0)
 								chckbxMeleeWeapons.setSelected(true);
 							if (currentSheet.assignSkillSpecs("Stealth").size() > 0)
 								chckbxStealth.setSelected(true);
@@ -6706,7 +6954,7 @@ public class MainWindow {
 								chckbxMarksmanship.setSelected(true);
 							if (currentSheet.assignSkillSpecs("Thievery").size() > 0)
 								chckbxThievery.setSelected(true);
-							if (currentSheet.assignSkillSpecs("Thrown Weapons").size() > 0)
+							if (currentSheet.assignSkillSpecs("ThrownWeapons").size() > 0)
 								chckbxThrownWeapons.setSelected(true);
 							
 							if (currentSheet.assignSkillSpecs("Athletics").size() > 0)

@@ -1,5 +1,4 @@
 // TODO
-// Not display empty box for specs that just load
 // Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
 // Box for extraneous info - below Powers? Text box
 // Index tab for every character, sorted by Location or whatever
@@ -84,6 +83,7 @@ public class MainWindow {
 	private ImageIcon icon;
 	private AdvantagePanel advantagePanel;
 	private PowerPanel powerPanel;
+	private JTextArea notesPanel;
 	public static Item weapon;
 	
 	private boolean imgChange = false;
@@ -391,6 +391,7 @@ public class MainWindow {
 		JPanel searches = new JPanel();
 		searches.setLayout(null);
 		searches.setBounds(nameSearchField.getX(), nameSearchField.getY()+nameSearchField.getHeight(), nameSearchField.getWidth()+50, 100);
+		@SuppressWarnings("rawtypes")
 		JList searchesList = new JList();
 		searchesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		JScrollPane jsp = new JScrollPane(searchesList);
@@ -6597,8 +6598,19 @@ public class MainWindow {
 		powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
 		advPowerPanel.add(powerPanel);
 		
+
+		
 		int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 		advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
+		
+		notesPanel = new JTextArea();
+		notesPanel.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
+		notesPanel.setAutoscrolls(true);
+		notesPanel.setLineWrap(true);
+		JScrollPane notesScroll = new JScrollPane (notesPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		notesScroll.setBorder(new LineBorder(Color.black, 7));
+		notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
+		advPowerPanel.add(notesScroll);
 		
 		icon = new ImageIcon();
 		img = null;
@@ -6701,6 +6713,82 @@ public class MainWindow {
 				chckbxIntimidation.setSelected(false);
 				chckbxPersuasion.setSelected(false);
 				chckbxWillpower.setSelected(false);
+				
+				if (currentSheet.assignSkillSpecs("Acrobatics").size() > 0)
+					chckbxAcro.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Dodge").size() > 0)
+					chckbxDodge.setSelected(true);
+				if (currentSheet.assignSkillSpecs("HandToHand").size() > 0)
+					chckbxHandToHand.setSelected(true);
+				if (currentSheet.assignSkillSpecs("MeleeWeapons").size() > 0)
+					chckbxMeleeWeapons.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Stealth").size() > 0)
+					chckbxStealth.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Catch").size() > 0)
+					chckbxCatch.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Climbing").size() > 0)
+					chckbxClimbing.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Driving").size() > 0)
+					chckbxDriving.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Marksmanship").size() > 0)
+					chckbxMarksmanship.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Thievery").size() > 0)
+					chckbxThievery.setSelected(true);
+				if (currentSheet.assignSkillSpecs("ThrownWeapons").size() > 0)
+					chckbxThrownWeapons.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Athletics").size() > 0)
+					chckbxAthletics.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Leap").size() > 0)
+					chckbxLeap.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Lifting").size() > 0)
+					chckbxLifting.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Resistance").size() > 0)
+					chckbxResistance.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Running").size() > 0)
+					chckbxRunning.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Swimming").size() > 0)
+					chckbxSwimming.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Arcane Lore").size() > 0)
+					chckbxArcaneLore.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Demolitions").size() > 0)
+					chckbxDemolitions.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Languages").size() > 0)
+					chckbxLanguages.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Medicine").size() > 0)
+					chckbxMedicine.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Scholar").size() > 0)
+					chckbxScholar.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Science").size() > 0)
+					chckbxScience.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Security").size() > 0)
+					chckbxSecurity.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Artist").size() > 0)
+					chckbxArtist.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Engineering").size() > 0)
+					chckbxEngineering.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Search").size() > 0)
+					chckbxSearch.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Streetwise").size() > 0)
+					chckbxStreetwise.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Surveillance").size() > 0)
+					chckbxSurveillance.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Survival").size() > 0)
+					chckbxSurvival.setSelected(true);
+
+				if (currentSheet.assignSkillSpecs("Bluff").size() > 0)
+					chckbxBluff.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Charm").size() > 0)
+					chckbxCharm.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Intimidation").size() > 0)
+					chckbxIntimidation.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Persuasion").size() > 0)
+					chckbxPersuasion.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Willpower").size() > 0)
+					chckbxWillpower.setSelected(true);
 				
 				// Write save code here - should be easy
 				String duplicate = "Did not save: Duplicate Name";
@@ -7449,6 +7537,82 @@ public class MainWindow {
 				chckbxPersuasion.setSelected(false);
 				chckbxWillpower.setSelected(false);
 				
+				if (currentSheet.assignSkillSpecs("Acrobatics").size() > 0)
+					chckbxAcro.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Dodge").size() > 0)
+					chckbxDodge.setSelected(true);
+				if (currentSheet.assignSkillSpecs("HandToHand").size() > 0)
+					chckbxHandToHand.setSelected(true);
+				if (currentSheet.assignSkillSpecs("MeleeWeapons").size() > 0)
+					chckbxMeleeWeapons.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Stealth").size() > 0)
+					chckbxStealth.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Catch").size() > 0)
+					chckbxCatch.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Climbing").size() > 0)
+					chckbxClimbing.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Driving").size() > 0)
+					chckbxDriving.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Marksmanship").size() > 0)
+					chckbxMarksmanship.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Thievery").size() > 0)
+					chckbxThievery.setSelected(true);
+				if (currentSheet.assignSkillSpecs("ThrownWeapons").size() > 0)
+					chckbxThrownWeapons.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Athletics").size() > 0)
+					chckbxAthletics.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Leap").size() > 0)
+					chckbxLeap.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Lifting").size() > 0)
+					chckbxLifting.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Resistance").size() > 0)
+					chckbxResistance.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Running").size() > 0)
+					chckbxRunning.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Swimming").size() > 0)
+					chckbxSwimming.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Arcane Lore").size() > 0)
+					chckbxArcaneLore.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Demolitions").size() > 0)
+					chckbxDemolitions.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Languages").size() > 0)
+					chckbxLanguages.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Medicine").size() > 0)
+					chckbxMedicine.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Scholar").size() > 0)
+					chckbxScholar.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Science").size() > 0)
+					chckbxScience.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Security").size() > 0)
+					chckbxSecurity.setSelected(true);
+				
+				if (currentSheet.assignSkillSpecs("Artist").size() > 0)
+					chckbxArtist.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Engineering").size() > 0)
+					chckbxEngineering.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Search").size() > 0)
+					chckbxSearch.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Streetwise").size() > 0)
+					chckbxStreetwise.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Surveillance").size() > 0)
+					chckbxSurveillance.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Survival").size() > 0)
+					chckbxSurvival.setSelected(true);
+
+				if (currentSheet.assignSkillSpecs("Bluff").size() > 0)
+					chckbxBluff.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Charm").size() > 0)
+					chckbxCharm.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Intimidation").size() > 0)
+					chckbxIntimidation.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Persuasion").size() > 0)
+					chckbxPersuasion.setSelected(true);
+				if (currentSheet.assignSkillSpecs("Willpower").size() > 0)
+					chckbxWillpower.setSelected(true);
+				
 				
 				nameSearchField.setText("");
 				// load the entire dang sheet
@@ -7560,6 +7724,7 @@ public class MainWindow {
 
 				
 		nameSearchField.addKeyListener(new KeyAdapter() {
+			@SuppressWarnings("unchecked")
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{
@@ -7593,6 +7758,7 @@ public class MainWindow {
 		
 		nameSearchField.addFocusListener(new FocusAdapter() 
 		{
+			@SuppressWarnings("unchecked")
 			@Override
 			public void focusGained(FocusEvent e) 
 			{	

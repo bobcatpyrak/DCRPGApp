@@ -94,18 +94,18 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel advPanel = new JPanel();
 		advPanel.setBackground(new Color(255, 99, 71));
-		advPanel.setBounds(7, 7, 645, 20);
+		advPanel.setBounds(5, 5, 649, 20);
 		add(advPanel);
 		advPanel.setLayout(null);
 		
 		JLabel advLabel = new JLabel("Advantages");
-		advLabel.setBounds(7, 7, 83, 16);
+		advLabel.setBounds(5, 5, 83, 16);
 		advLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		advLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		advPanel.add(advLabel);
 		
 		JButton csaAdd = new JButton();
-		csaAdd.setBounds(advLabel.getX()+advLabel.getWidth()+7, advLabel.getY(), 16, 16);
+		csaAdd.setBounds(advLabel.getX()+advLabel.getWidth()+5, advLabel.getY(), 16, 16);
 		csaAdd.setFont(new Font("Dialog", Font.BOLD, 17));
 		csaAdd.setText("+");
 		csaAdd.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -121,12 +121,12 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel disadvPanel = new JPanel();
 		disadvPanel.setBackground(new Color(32, 178, 170));
-		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 645, 20);
+		disadvPanel.setBounds(5, 5+advPanel.getY()+advPanel.getHeight(), 649, 20);
 		add(disadvPanel);
 		disadvPanel.setLayout(null);
 		
 		JLabel disadvLabel = new JLabel("Disadvantages");
-		disadvLabel.setBounds(disadvPanel.getWidth()-111, 7, 104, 16);
+		disadvLabel.setBounds(disadvPanel.getWidth()-111, 5, 104, 16);
 		disadvLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		disadvPanel.add(disadvLabel);
 		
@@ -146,7 +146,7 @@ public class AdvantagePanel extends JPanel
 			}
 		});
 		
-		int advLocation = 27;
+		int advLocation = 25;
 		for(CharacterSheetAdvantage csa : advs)
 		{
 			String csaStr = "<html><b>";
@@ -163,7 +163,7 @@ public class AdvantagePanel extends JPanel
 			csaLabel.setHorizontalAlignment(SwingConstants.LEFT);
 			csaLabel.setVerticalAlignment(SwingConstants.TOP);
 			
-			csaLabel.setBounds(27, advLocation, 500, 0);
+			csaLabel.setBounds(25, advLocation, 500, 0);
 			for(int j = 0; j < csaStr.length()-20; j+=98)
 			{
 				csaLabel.setSize(500, csaLabel.getHeight()+20);
@@ -171,7 +171,7 @@ public class AdvantagePanel extends JPanel
 			advPanel.add(csaLabel);
 			
 			JButton csaX = new JButton();
-			csaX.setBounds(7, advLocation, 16, 20);
+			csaX.setBounds(5, advLocation, 16, 20);
 			csaX.setFont(new Font("Dialog", Font.BOLD, 15));
 			csaX.setText("X");
 			csaX.setHorizontalTextPosition(JButton.LEFT);
@@ -192,10 +192,10 @@ public class AdvantagePanel extends JPanel
 		}
 		if(advs.size()==0)
 			advLocation+=20;
-		advPanel.setBounds(7, 7, 645, advLocation+7);
+		advPanel.setBounds(5, 5, 649, advLocation+5);
 
 		
-		int disadvLocation = 27;
+		int disadvLocation = 25;
 		for(CharacterSheetDisadvantage csd : disadvs)
 		{
 			String csdStr = "<html><b>";
@@ -244,9 +244,9 @@ public class AdvantagePanel extends JPanel
 		}
 		if(disadvs.size()==0)
 			disadvLocation+=20;
-		disadvPanel.setBounds(7, 7+advPanel.getY()+advPanel.getHeight(), 645, disadvLocation+7);
+		disadvPanel.setBounds(5, 5+advPanel.getY()+advPanel.getHeight(), 649, disadvLocation+5);
 		
-	    setBounds(x, y, 659, 21+advPanel.getHeight()+disadvPanel.getHeight());
+	    setBounds(x, y, 659, 15+advPanel.getHeight()+disadvPanel.getHeight());
 	    MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
 	    MainWindow.dcrpgFrame.revalidate();
 	}
@@ -285,7 +285,7 @@ public class AdvantagePanel extends JPanel
 		JScrollPane jsp = new JScrollPane(list);
 		jsp.setBounds(0, 0, 200, 283);
 		l.add(jsp);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		
 		JLabel desc = new JLabel();
 		desc.setBounds(207, 0, 170, 220);

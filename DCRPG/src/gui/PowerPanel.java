@@ -55,7 +55,7 @@ public class PowerPanel extends JPanel
 	public PowerPanel(int x, int y, CharacterSheet cs, List<CharacterSheetPower> pwrsList) 
 	{
 		super();
-		setBorder(new LineBorder(new Color(0, 0, 0), 7));
+		setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		setNewCharacter(x, y, cs, pwrsList);
 	}
 	
@@ -80,13 +80,13 @@ public class PowerPanel extends JPanel
 		setLayout(null);
 		
 		JLabel pwrLabel = new JLabel("Powers");
-		pwrLabel.setBounds(14, 14, 60, 16);
+		pwrLabel.setBounds(10, 10, 60, 16);
 		pwrLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		pwrLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		this.add(pwrLabel);
 
 		JButton cspAdd = new JButton();
-		cspAdd.setBounds(pwrLabel.getX()+pwrLabel.getWidth()+7, pwrLabel.getY(), 16, 16);
+		cspAdd.setBounds(pwrLabel.getX()+pwrLabel.getWidth()+5, pwrLabel.getY(), 16, 16);
 		cspAdd.setFont(new Font("Dialog", Font.BOLD, 17));
 		cspAdd.setText("+");
 		cspAdd.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -118,14 +118,14 @@ public class PowerPanel extends JPanel
 			
 
 
-			pwrPanel.setBounds(14, pwrLocation, this.getWidth()-28, 40);
+			pwrPanel.setBounds(10, pwrLocation, this.getWidth()-20, 40);
 			if(csp.getShorthand().equals(""))
 			{
-				pwrPanel.setSize(this.getWidth()-28, 20);
-				pwrLocation += 27;
+				pwrPanel.setSize(this.getWidth()-20, 20);
+				pwrLocation += 25;
 			}
 			else
-				pwrLocation += 47;
+				pwrLocation += 45;
 
 			add(pwrPanel);
 			pwrPanel.setLayout(null);
@@ -133,7 +133,7 @@ public class PowerPanel extends JPanel
 			JLabel cspLabel = new JLabel(csp.getPower().nameP());
 			cspLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			cspLabel.setHorizontalAlignment(SwingConstants.LEFT);	
-			cspLabel.setBounds(27, 0, 200, 20);
+			cspLabel.setBounds(25, 0, 200, 20);
 			pwrPanel.add(cspLabel);
 			
 			JLabel lvlLabel = new JLabel("Level: " + csp.getLevel());
@@ -145,12 +145,12 @@ public class PowerPanel extends JPanel
 			JLabel shorthandLabel = new JLabel(csp.getShorthand());
 			shorthandLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			shorthandLabel.setHorizontalAlignment(SwingConstants.LEFT);	
-			shorthandLabel.setBounds(7, 20, pwrPanel.getWidth(), 20);
+			shorthandLabel.setBounds(5, 20, pwrPanel.getWidth(), 20);
 			pwrPanel.add(shorthandLabel);
 
 			
 			JButton cspX = new JButton();
-			cspX.setBounds(7, 0, 16, 20);
+			cspX.setBounds(5, 0, 16, 20);
 			cspX.setFont(new Font("Dialog", Font.BOLD, 15));
 			cspX.setText("X");
 			cspX.setHorizontalTextPosition(JButton.LEFT);
@@ -170,7 +170,7 @@ public class PowerPanel extends JPanel
 		if(pwrs.size()==0)
 			pwrLocation+=20;
 		
-	    setBounds(x, y, MainWindow.advPowerPanel.getWidth()-x, pwrLocation+7);
+	    setBounds(x, y, MainWindow.advPowerPanel.getWidth()-x, pwrLocation+5);
 	    
 	   // MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
 	    MainWindow.dcrpgFrame.revalidate();
@@ -211,7 +211,7 @@ public class PowerPanel extends JPanel
 
 
 		JButton add = new JButton();
-		add.setBounds(desc.getX()+(desc.getWidth()/2) - 35,  l.getHeight()-27,  70,  20);
+		add.setBounds(desc.getX()+(desc.getWidth()/2) - 35,  l.getHeight()-25,  70,  20);
 		add.setText("Add");
 		l.add(add);
 		

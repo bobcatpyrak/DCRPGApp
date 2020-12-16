@@ -1,6 +1,5 @@
 // TODO
 // Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
-// Box for extraneous info - below Powers? Text box
 // Index tab for every character, sorted by Location or whatever
 // Search shows EVERY character when box is empty
 // Save all Items updates ePane shorthand
@@ -84,6 +83,7 @@ public class MainWindow {
 	private AdvantagePanel advantagePanel;
 	private PowerPanel powerPanel;
 	private JTextArea notesPanel;
+	private JScrollPane notesScroll;
 	public static Item weapon;
 	
 	private boolean imgChange = false;
@@ -528,7 +528,7 @@ public class MainWindow {
 	    panel.add(btnCopy);
 							
 		physStatsPanel = new JPanel();
-		physStatsPanel.setBounds(35, 154, 1152, 247);
+		physStatsPanel.setBounds(35, 140, 1152, 247);
 		panel.add(physStatsPanel);
 		physStatsPanel.setBackground(new Color(192, 192, 192));
 		physStatsPanel.setLayout(null);
@@ -1382,9 +1382,9 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);	
-					advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);	
+					advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < acroSpecsList.size(); i++)
@@ -1472,8 +1472,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -1511,8 +1511,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < dodgeSpecsList.size(); i++)
@@ -1598,8 +1598,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -1635,8 +1635,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < handToHandSpecsList.size(); i++)
@@ -1721,8 +1721,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -1757,8 +1757,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setSize(354, (32+extra));
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < meleeWeaponsSpecsList.size(); i++)
@@ -1842,8 +1842,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setSize(354, (32));
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -1877,8 +1877,8 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					stealthPanel.setSize(354, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < stealthSpecsList.size(); i++)
@@ -1959,8 +1959,8 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
 					stealthPanel.setSize(354, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -1998,8 +1998,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < catchSpecsList.size(); i++)
@@ -2088,8 +2088,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2126,8 +2126,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < climbingSpecsList.size(); i++)
@@ -2215,8 +2215,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2252,8 +2252,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < drivingSpecsList.size(); i++)
@@ -2340,8 +2340,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2376,8 +2376,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < marksmanshipSpecsList.size(); i++)
@@ -2463,8 +2463,8 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2498,8 +2498,8 @@ public class MainWindow {
 					thieveryPanel.setSize(354, (32+extra));
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < thieverySpecsList.size(); i++)
@@ -2584,8 +2584,8 @@ public class MainWindow {
 					thieveryPanel.setSize(354, (32));
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2618,8 +2618,8 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					thrownWeaponsPanel.setSize(354, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < thrownWeaponsSpecsList.size(); i++)
@@ -2703,8 +2703,8 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
 					thrownWeaponsPanel.setSize(354, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2742,8 +2742,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < athleticsSpecsList.size(); i++)
@@ -2832,8 +2832,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2870,8 +2870,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < leapSpecsList.size(); i++)
@@ -2959,8 +2959,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -2996,8 +2996,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < liftingSpecsList.size(); i++)
@@ -3084,8 +3084,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -3120,8 +3120,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < resistanceSpecsList.size(); i++)
@@ -3207,8 +3207,8 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -3242,8 +3242,8 @@ public class MainWindow {
 					runningPanel.setSize(354, (32+extra));
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < runningSpecsList.size(); i++)
@@ -3328,8 +3328,8 @@ public class MainWindow {
 					runningPanel.setSize(354, (32));
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -3362,8 +3362,8 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					swimmingPanel.setSize(354, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < swimmingSpecsList.size(); i++)
@@ -3447,8 +3447,8 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
 					swimmingPanel.setSize(354, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+30);
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -3482,13 +3482,13 @@ public class MainWindow {
 		
 		
 		mentalStatsPanel = new JPanel();
-		mentalStatsPanel.setBounds(35, 431, 1152, 279);
+		mentalStatsPanel.setBounds(35, physStatsPanel.getY()+physStatsPanel.getHeight()+16, 1152, 279);
 		panel.add(mentalStatsPanel);
 		mentalStatsPanel.setBackground(new Color(192, 192, 192));
 		mentalStatsPanel.setLayout(null);
 		
 		advPowerPanel = new JPanel();
-		advPowerPanel.setBounds(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30, 1152, 300);
+		advPowerPanel.setBounds(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16, 1152, 300);
 		panel.add(advPowerPanel);
 		advPowerPanel.setBackground(new Color(192, 192, 192));
 		advPowerPanel.setLayout(null);
@@ -4369,7 +4369,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < arcaneLoreSpecsList.size(); i++)
@@ -4459,7 +4459,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -4498,7 +4498,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < demolitionsSpecsList.size(); i++)
@@ -4587,7 +4587,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -4625,7 +4625,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < languagesSpecsList.size(); i++)
@@ -4713,7 +4713,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -4750,7 +4750,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < medicineSpecsList.size(); i++)
@@ -4837,7 +4837,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -4873,7 +4873,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < scholarSpecsList.size(); i++)
@@ -4959,7 +4959,7 @@ public class MainWindow {
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -4994,7 +4994,7 @@ public class MainWindow {
 					sciencePanel.setSize(354, (32+extra));
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
 					for(int i = 0; i < scienceSpecsList.size(); i++)
@@ -5079,7 +5079,7 @@ public class MainWindow {
 					sciencePanel.setSize(354, (32));
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5113,7 +5113,7 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
 					securityPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < securitySpecsList.size(); i++)
@@ -5197,7 +5197,7 @@ public class MainWindow {
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(securityPanel.getHeight()-32)));
 					securityPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5235,7 +5235,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < artistSpecsList.size(); i++)
@@ -5324,7 +5324,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5361,7 +5361,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < engineeringSpecsList.size(); i++)
@@ -5449,7 +5449,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5485,7 +5485,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < searchSpecsList.size(); i++)
@@ -5572,7 +5572,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5607,7 +5607,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < streetwiseSpecsList.size(); i++)
@@ -5693,7 +5693,7 @@ public class MainWindow {
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5728,7 +5728,7 @@ public class MainWindow {
 					surveillancePanel.setSize(354, (32+extra));
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < surveillanceSpecsList.size(); i++)
@@ -5813,7 +5813,7 @@ public class MainWindow {
 					surveillancePanel.setSize(354, (32));
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5846,7 +5846,7 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
 					survivalPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < survivalSpecsList.size(); i++)
@@ -5930,7 +5930,7 @@ public class MainWindow {
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(survivalPanel.getHeight()-32)));
 					survivalPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -5968,7 +5968,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < bluffSpecsList.size(); i++)
@@ -6056,7 +6056,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -6093,7 +6093,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < charmSpecsList.size(); i++)
@@ -6180,7 +6180,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -6216,7 +6216,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < intimidationSpecsList.size(); i++)
@@ -6302,7 +6302,7 @@ public class MainWindow {
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -6338,7 +6338,7 @@ public class MainWindow {
 					persuasionPanel.setSize(354, (32+extra));
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < persuasionSpecsList.size(); i++)
@@ -6423,7 +6423,7 @@ public class MainWindow {
 					persuasionPanel.setSize(354, (32));
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -6457,7 +6457,7 @@ public class MainWindow {
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
 					willpowerPanel.setSize(354, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
 					for(int i = 0; i < willpowerSpecsList.size(); i++)
@@ -6541,7 +6541,7 @@ public class MainWindow {
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(willpowerPanel.getHeight()-32)));
 					willpowerPanel.setSize(354, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
-					panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()+30));
+					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
@@ -6604,13 +6604,14 @@ public class MainWindow {
 		advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 		
 		notesPanel = new JTextArea();
-		notesPanel.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
 		notesPanel.setAutoscrolls(true);
 		notesPanel.setLineWrap(true);
-		JScrollPane notesScroll = new JScrollPane (notesPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		notesScroll.setBorder(new LineBorder(Color.black, 7));
-		notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
-		advPowerPanel.add(notesScroll);
+		notesScroll = new JScrollPane (notesPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		notesScroll.setBorder(new LineBorder(Color.black, 5));
+		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+		notesPanel.setBounds(0, 0, notesScroll.getWidth(), notesScroll.getHeight());
+
+		panel.add(notesScroll);
 		
 		notesPanel.addKeyListener(new KeyAdapter() 
 		{
@@ -6640,7 +6641,7 @@ public class MainWindow {
 		imgLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		imgLabel.setBackground(Color.WHITE);
 		imgLabel.setIcon(icon);
-		imgLabel.setBounds(1217, 53, 300, 350);
+		imgLabel.setBounds(1203, 53, 300, 350);
 		panel.add(imgLabel);
 		
 	    imgLabel.setTransferHandler(new ImageSelection());	    
@@ -6669,12 +6670,12 @@ public class MainWindow {
 		});
 	    
 		EquipmentPanel ePane = new EquipmentPanel();
-		ePane.setBounds(imgLabel.getX(), mentalStatsPanel.getY(), imgLabel.getWidth(), 30);
+		ePane.setBounds(imgLabel.getX(), imgLabel.getY()+imgLabel.getHeight()+16, imgLabel.getWidth(), 30);
 		panel.add(ePane);
 		
 		weapon = new Item("Weapon", 296, 382);
 		weapon.set(items, 0);
-		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
 		weapon.setDisabled();
 		panel.add(weapon);
 		
@@ -7021,7 +7022,7 @@ public class MainWindow {
 							stab.setNewCharacter(currentSheet);
 							ePane.setNewCharacter(currentSheet);
 							weapon.set(items, currentSheet.getInv().getWeapon());
-							weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+							weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
 
 							
 							nameField.setText(currentSheet.getName());					
@@ -7222,8 +7223,8 @@ public class MainWindow {
 							int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 							advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 							powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-							notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
-							panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
+							notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+							panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 							
 							isNew = false;
 							break;
@@ -7252,13 +7253,15 @@ public class MainWindow {
 		{
 	        public void componentResized(ComponentEvent e) 
 	        {
-	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
-	        	panel.setSize(panel.getWidth(), advPowerPanel.getY()+advPowerPanel.getHeight()+30);
+	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
+	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+	        	panel.setSize(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()+30);
 	        }
 	        public void componentMoved(ComponentEvent e)
 	        {
-	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+30);
-	        	panel.setSize(panel.getWidth(), advPowerPanel.getY()+advPowerPanel.getHeight()+30);
+	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
+	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+	        	panel.setSize(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()+30);
 	        }
 		}
 		mentalStatsPanel.addComponentListener(new ResizeListener());
@@ -7328,7 +7331,7 @@ public class MainWindow {
 				stab.setNewCharacter(currentSheet);
 				ePane.setNewCharacter(currentSheet);
 				weapon.set(items, currentSheet.getInv().getWeapon());
-				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -7438,8 +7441,8 @@ public class MainWindow {
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-				notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
-				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
+				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+				panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 
 				isNew = true;
 			}
@@ -7635,7 +7638,7 @@ public class MainWindow {
 				stab.setNewCharacter(currentSheet);
 				ePane.setNewCharacter(currentSheet);
 				weapon.set(items, currentSheet.getInv().getWeapon());
-				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+30);
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -7730,8 +7733,8 @@ public class MainWindow {
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-				notesScroll.setBounds(powerPanel.getX(), powerPanel.getY()+powerPanel.getHeight()-7, powerPanel.getWidth(), apPanelHeight - (powerPanel.getY()+powerPanel.getHeight()-7));
-				panel.setPreferredSize(new Dimension(panel.getWidth(), panel.getHeight()+advPowerPanel.getHeight()));
+				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+				panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 				
 				isNew = true;
 			}
@@ -7815,7 +7818,7 @@ public class MainWindow {
 					advPowerPanel.setSize(advPowerPanel.getWidth(), advantagePanel.getHeight());
 				else
 					advPowerPanel.setSize(advPowerPanel.getWidth(), powerPanel.getHeight());
-				resize(panel, advPowerPanel);
+				resize(panel, advPowerPanel, notesScroll);
 			}
 		});
 		powerPanel.addComponentListener(new ComponentAdapter() {
@@ -7826,17 +7829,18 @@ public class MainWindow {
 					advPowerPanel.setSize(advPowerPanel.getWidth(), advantagePanel.getHeight());
 				else
 					advPowerPanel.setSize(advPowerPanel.getWidth(), powerPanel.getHeight());
-				resize(panel, advPowerPanel);
+				resize(panel, advPowerPanel, notesScroll);
 			}
 		});		
 		
-		panel.setPreferredSize(new Dimension(1884, advPowerPanel.getY()+advPowerPanel.getHeight()));
+		panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()));
 
 	}
 	
-	public void resize(JPanel pane, JPanel advPow)
+	public void resize(JPanel pane, JPanel advPow, JScrollPane notes)
 	{
-		pane.setPreferredSize(new Dimension(pane.getWidth(), advPow.getY()+advPow.getHeight()+30));
+		notes.setLocation(notes.getX(), advPow.getY()+advPow.getHeight()+16);
+		pane.setPreferredSize(new Dimension(pane.getWidth(), notes.getY()+notes.getHeight()+30));
 	}
 	
 	public int setPanelSize(int h1, int h2, int h3)

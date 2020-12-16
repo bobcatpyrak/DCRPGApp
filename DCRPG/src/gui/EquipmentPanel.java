@@ -30,7 +30,7 @@ public class EquipmentPanel extends JPanel
 		
 		panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(7, 7, 286, 16);
+		panel.setBounds(5, 5, 290, 20);
 		add(panel);
 		panel.setLayout(null);
 			
@@ -98,8 +98,8 @@ public class EquipmentPanel extends JPanel
 			index += line.getHeight();
 		}
 		
-		panel.setSize(286, index);
-		this.setSize(300, panel.getHeight()+14);
+		panel.setSize(290, index);
+		this.setSize(300, panel.getHeight()+10);
 	}
 
 

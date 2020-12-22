@@ -1,6 +1,9 @@
 // TODO
+// Too big - Can I make this half the size? And then add a roller
+// Combat manager?
+// Add a damage thing to the Equipment page for weapon
 // Advantages, when added, should NOT snap to top of window (OR JUST BE ABLE TO MULTI-SELECT ADVANTAGES AND STUFF)
-// Index tab for every character, sorted by Location or whatever
+// Index tab for every character, sorted by Location or whatever (be able to add tags)
 // Search shows EVERY character when box is empty
 // Save all Items updates ePane shorthand
 // Someday: add checkbox to hide all skills that have 0 in stat
@@ -528,32 +531,34 @@ public class MainWindow {
 	    panel.add(btnCopy);
 							
 		physStatsPanel = new JPanel();
-		physStatsPanel.setBounds(35, 140, 1152, 247);
+		physStatsPanel.setBounds(0, 140, 851, 247);
 		panel.add(physStatsPanel);
 		physStatsPanel.setBackground(new Color(192, 192, 192));
 		physStatsPanel.setLayout(null);
 
-		Panel reflexesPanel = new Panel();
-		reflexesPanel.setBounds(0, 0, 364, 247);
+		JPanel reflexesPanel = new JPanel();
+		reflexesPanel.setBounds(0, 0, 285, 215);
+		reflexesPanel.setBorder(new LineBorder(Color.black, 2));
 		physStatsPanel.add(reflexesPanel);
 		reflexesPanel.setBackground(new Color(255, 51, 51));
 		reflexesPanel.setLayout(null);
 
 		Label reflexesLabel = new Label("Reflexes");
 		reflexesLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		reflexesLabel.setBounds(132, 10, 90, 30);
+		reflexesLabel.setAlignment(SwingConstants.CENTER);
+		reflexesLabel.setBounds(77, 10, 90, 30);
 		reflexesPanel.add(reflexesLabel);
 
 		JFormattedTextField reflexesLevel = new JFormattedTextField(nums);
 		reflexesLevel.setColumns(2);
 		reflexesLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		reflexesLevel.setHorizontalAlignment(SwingConstants.CENTER);
-		reflexesLevel.setBounds(299, 10, 50, 35);
+		reflexesLevel.setBounds(225, 10, 50, 35);
 		reflexesPanel.add(reflexesLevel);
 
 		Panel acroPanel = new Panel();
 		acroPanel.setBackground(new Color(255, 153, 153));
-		acroPanel.setBounds(5, 50, 354, 32);
+		acroPanel.setBounds(5, 50, 275, 32);
 		reflexesPanel.add(acroPanel);
 		acroPanel.setLayout(null);
 
@@ -567,7 +572,7 @@ public class MainWindow {
 		acroTotal.setColumns(2);
 		acroTotal.setEditable(false);
 		acroTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		acroTotal.setBounds(294, 5, 50, 22);
+		acroTotal.setBounds(220, 5, 50, 22);
 		acroPanel.add(acroTotal);
 		
 		JFormattedTextField acroLevel = new JFormattedTextField(nums);
@@ -593,7 +598,7 @@ public class MainWindow {
 		Panel dodgePanel = new Panel();
 		dodgePanel.setLayout(null);
 		dodgePanel.setBackground(new Color(255, 102, 102));
-		dodgePanel.setBounds(5, 82, 354, 32);
+		dodgePanel.setBounds(5, 82, 275, 32);
 		reflexesPanel.add(dodgePanel);
 		
 		Label dodgeLabel = new Label("Dodge");
@@ -606,7 +611,7 @@ public class MainWindow {
 		dodgeTotal.setEditable(false);
 		dodgeTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		dodgeTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		dodgeTotal.setBounds(294, 5, 50, 22);
+		dodgeTotal.setBounds(220, 5, 50, 22);
 		dodgePanel.add(dodgeTotal);
 		
 		JFormattedTextField dodgeLevel = new JFormattedTextField(nums);
@@ -631,7 +636,7 @@ public class MainWindow {
 		Panel handToHandPanel = new Panel();
 		handToHandPanel.setLayout(null);
 		handToHandPanel.setBackground(new Color(255, 153, 153));
-		handToHandPanel.setBounds(5, 114, 354, 32);
+		handToHandPanel.setBounds(5, 114, 275, 32);
 		reflexesPanel.add(handToHandPanel);
 		
 		Label handToHandLabel = new Label("Hand-to-Hand");
@@ -644,7 +649,7 @@ public class MainWindow {
 		handToHandTotal.setEditable(false);
 		handToHandTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		handToHandTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		handToHandTotal.setBounds(294, 5, 50, 22);
+		handToHandTotal.setBounds(220, 5, 50, 22);
 		handToHandPanel.add(handToHandTotal);
 
 		JFormattedTextField handToHandLevel = new JFormattedTextField(nums);
@@ -671,7 +676,7 @@ public class MainWindow {
 		Panel meleeWeaponsPanel = new Panel();
 		meleeWeaponsPanel.setLayout(null);
 		meleeWeaponsPanel.setBackground(new Color(255, 102, 102));
-		meleeWeaponsPanel.setBounds(5, 146, 354, 32);
+		meleeWeaponsPanel.setBounds(5, 146, 275, 32);
 		reflexesPanel.add(meleeWeaponsPanel);
 
 		Label meleeWeaponsLabel = new Label("Melee Weapons");
@@ -684,7 +689,7 @@ public class MainWindow {
 		meleeWeaponsTotal.setEditable(false);
 		meleeWeaponsTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		meleeWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		meleeWeaponsTotal.setBounds(294, 5, 50, 22);
+		meleeWeaponsTotal.setBounds(220, 5, 50, 22);
 		meleeWeaponsPanel.add(meleeWeaponsTotal);
 
 		JFormattedTextField meleeWeaponsLevel = new JFormattedTextField(nums);
@@ -711,7 +716,7 @@ public class MainWindow {
 		Panel stealthPanel = new Panel();
 		stealthPanel.setLayout(null);
 		stealthPanel.setBackground(new Color(255, 153, 153));
-		stealthPanel.setBounds(5, 178, 354, 32);
+		stealthPanel.setBounds(5, 178, 275, 32);
 		reflexesPanel.add(stealthPanel);
 
 		Label stealthLabel = new Label("Stealth");
@@ -724,7 +729,7 @@ public class MainWindow {
 		stealthTotal.setColumns(2);
 		stealthTotal.setEditable(false);
 		stealthTotal.setFont(new Font("Arial", Font.BOLD, 18));
-		stealthTotal.setBounds(294, 5, 50, 22);
+		stealthTotal.setBounds(220, 5, 50, 22);
 		stealthPanel.add(stealthTotal);
 
 		JFormattedTextField stealthLevel = new JFormattedTextField(nums);
@@ -781,28 +786,29 @@ public class MainWindow {
 		meleeWeaponsTotal.setValue(currentSheet.getMeleeWeapons() + currentSheet.getReflexes());
 		stealthTotal.setValue(currentSheet.getStealth() + currentSheet.getReflexes());
 		
-		Panel coordinationPanel = new Panel();
-		coordinationPanel.setBounds(394, 0, 364, 247);
+		JPanel coordinationPanel = new JPanel();
+		coordinationPanel.setBounds(283, 0, 285, 247);
+		coordinationPanel.setBorder(new LineBorder(Color.black, 2));
 		physStatsPanel.add(coordinationPanel);
 		coordinationPanel.setLayout(null);
 		coordinationPanel.setBackground(new Color(255, 133, 0));
 		
 		Label coordinationLabel = new Label("Coordination");
 		coordinationLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		coordinationLabel.setBounds(110, 10, 135, 30);
+		coordinationLabel.setBounds(55, 10, 135, 30);
 		coordinationPanel.add(coordinationLabel);
 		
 		JFormattedTextField coordinationLevel = new JFormattedTextField(nums);
 		coordinationLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		coordinationLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		coordinationLevel.setColumns(2);
-		coordinationLevel.setBounds(299, 10, 50, 35);
+		coordinationLevel.setBounds(225, 10, 50, 35);
 		coordinationPanel.add(coordinationLevel);
 		
 		Panel catchPanel = new Panel();
 		catchPanel.setLayout(null);
 		catchPanel.setBackground(new Color(255, 201, 131));
-		catchPanel.setBounds(5, 50, 354, 32);
+		catchPanel.setBounds(5, 50, 275, 32);
 		coordinationPanel.add(catchPanel);
 		
 		Label catchLabel = new Label("Catch");
@@ -815,7 +821,7 @@ public class MainWindow {
 		catchTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		catchTotal.setEditable(false);
 		catchTotal.setColumns(2);
-		catchTotal.setBounds(294, 5, 50, 22);
+		catchTotal.setBounds(220, 5, 50, 22);
 		catchPanel.add(catchTotal);
 		
 		JFormattedTextField catchLevel = new JFormattedTextField(nums);
@@ -840,7 +846,7 @@ public class MainWindow {
 		Panel climbingPanel = new Panel();
 		climbingPanel.setLayout(null);
 		climbingPanel.setBackground(new Color(255, 173, 84));
-		climbingPanel.setBounds(5, 82, 354, 32);
+		climbingPanel.setBounds(5, 82, 275, 32);
 		coordinationPanel.add(climbingPanel);
 		
 		Label climbingLabel = new Label("Climbing");
@@ -853,7 +859,7 @@ public class MainWindow {
 		climbingTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		climbingTotal.setEditable(false);
 		climbingTotal.setColumns(2);
-		climbingTotal.setBounds(294, 5, 50, 22);
+		climbingTotal.setBounds(220, 5, 50, 22);
 		climbingPanel.add(climbingTotal);
 		
 		JFormattedTextField climbingLevel = new JFormattedTextField(nums);
@@ -878,7 +884,7 @@ public class MainWindow {
 		Panel drivingPanel = new Panel();
 		drivingPanel.setLayout(null);
 		drivingPanel.setBackground(new Color(255, 201, 131));
-		drivingPanel.setBounds(5, 114, 354, 32);
+		drivingPanel.setBounds(5, 114, 275, 32);
 		coordinationPanel.add(drivingPanel);
 		
 		Label drivingLabel = new Label("Driving");
@@ -891,7 +897,7 @@ public class MainWindow {
 		drivingTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		drivingTotal.setEditable(false);
 		drivingTotal.setColumns(2);
-		drivingTotal.setBounds(294, 5, 50, 22);
+		drivingTotal.setBounds(220, 5, 50, 22);
 		drivingPanel.add(drivingTotal);
 		
 		JFormattedTextField drivingLevel = new JFormattedTextField(nums);
@@ -916,7 +922,7 @@ public class MainWindow {
 		Panel marksmanshipPanel = new Panel();
 		marksmanshipPanel.setLayout(null);
 		marksmanshipPanel.setBackground(new Color(255, 173, 84));
-		marksmanshipPanel.setBounds(5, 146, 354, 32);
+		marksmanshipPanel.setBounds(5, 146, 275, 32);
 		coordinationPanel.add(marksmanshipPanel);
 		
 		Label marksmanshipLabel = new Label("Marksmanship");
@@ -929,7 +935,7 @@ public class MainWindow {
 		marksmanshipTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		marksmanshipTotal.setEditable(false);
 		marksmanshipTotal.setColumns(2);
-		marksmanshipTotal.setBounds(294, 5, 50, 22);
+		marksmanshipTotal.setBounds(220, 5, 50, 22);
 		marksmanshipPanel.add(marksmanshipTotal);
 		
 		JFormattedTextField marksmanshipLevel = new JFormattedTextField(nums);
@@ -954,7 +960,7 @@ public class MainWindow {
 		Panel thieveryPanel = new Panel();
 		thieveryPanel.setLayout(null);
 		thieveryPanel.setBackground(new Color(255, 201, 131));
-		thieveryPanel.setBounds(5, 178, 354, 32);
+		thieveryPanel.setBounds(5, 178, 275, 32);
 		coordinationPanel.add(thieveryPanel);
 		
 		Label thieveryLabel = new Label("Thievery");
@@ -967,7 +973,7 @@ public class MainWindow {
 		thieveryTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		thieveryTotal.setEditable(false);
 		thieveryTotal.setColumns(2);
-		thieveryTotal.setBounds(294, 5, 50, 22);
+		thieveryTotal.setBounds(220, 5, 50, 22);
 		thieveryPanel.add(thieveryTotal);
 		
 		JFormattedTextField thieveryLevel = new JFormattedTextField(nums);
@@ -992,7 +998,7 @@ public class MainWindow {
 		Panel thrownWeaponsPanel = new Panel();
 		thrownWeaponsPanel.setLayout(null);
 		thrownWeaponsPanel.setBackground(new Color(255, 173, 84));
-		thrownWeaponsPanel.setBounds(5, 210, 354, 32);
+		thrownWeaponsPanel.setBounds(5, 210, 275, 32);
 		coordinationPanel.add(thrownWeaponsPanel);
 		
 		Label thrownWeaponsLabel = new Label("Thrown Weapons");
@@ -1005,7 +1011,7 @@ public class MainWindow {
 		thrownWeaponsTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		thrownWeaponsTotal.setEditable(false);
 		thrownWeaponsTotal.setColumns(2);
-		thrownWeaponsTotal.setBounds(294, 5, 50, 22);
+		thrownWeaponsTotal.setBounds(220, 5, 50, 22);
 		thrownWeaponsPanel.add(thrownWeaponsTotal);
 		
 		JFormattedTextField thrownWeaponsLevel = new JFormattedTextField(nums);
@@ -1066,28 +1072,29 @@ public class MainWindow {
 		thieveryTotal.setValue(currentSheet.getThievery() + currentSheet.getCoordination());
 		thrownWeaponsTotal.setValue(currentSheet.getThrownWeapons() + currentSheet.getCoordination());
 		
-		Panel physiquePanel = new Panel();
-		physiquePanel.setBounds(788, 0, 364, 247);
+		JPanel physiquePanel = new JPanel();
+		physiquePanel.setBounds(566, 0, 285, 247);
+		physiquePanel.setBorder(new LineBorder(Color.black, 2));
 		physStatsPanel.add(physiquePanel);
 		physiquePanel.setLayout(null);
 		physiquePanel.setBackground(new Color(247, 247, 0));
 		
 		Label physiqueLabel = new Label("Physique");
 		physiqueLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		physiqueLabel.setBounds(110, 10, 135, 30);
+		physiqueLabel.setBounds(70, 10, 135, 30);
 		physiquePanel.add(physiqueLabel);
 		
 		JFormattedTextField physiqueLevel = new JFormattedTextField(nums);
 		physiqueLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		physiqueLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		physiqueLevel.setColumns(2);
-		physiqueLevel.setBounds(299, 10, 50, 35);
+		physiqueLevel.setBounds(225, 10, 50, 35);
 		physiquePanel.add(physiqueLevel);
 		
 		Panel athleticsPanel = new Panel();
 		athleticsPanel.setLayout(null);
 		athleticsPanel.setBackground(new Color(240, 230, 140));
-		athleticsPanel.setBounds(5, 50, 354, 32);
+		athleticsPanel.setBounds(5, 50, 275, 32);
 		physiquePanel.add(athleticsPanel);
 		
 		Label athleticsLabel = new Label("Athletics");
@@ -1100,7 +1107,7 @@ public class MainWindow {
 		athleticsTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		athleticsTotal.setEditable(false);
 		athleticsTotal.setColumns(2);
-		athleticsTotal.setBounds(294, 5, 50, 22);
+		athleticsTotal.setBounds(220, 5, 50, 22);
 		athleticsPanel.add(athleticsTotal);
 		
 		JFormattedTextField athleticsLevel = new JFormattedTextField(nums);
@@ -1125,7 +1132,7 @@ public class MainWindow {
 		Panel leapPanel = new Panel();
 		leapPanel.setLayout(null);
 		leapPanel.setBackground(new Color(255, 255, 153));
-		leapPanel.setBounds(5, 82, 354, 32);
+		leapPanel.setBounds(5, 82, 275, 32);
 		physiquePanel.add(leapPanel);
 		
 		Label leapLabel = new Label("Leap");
@@ -1138,7 +1145,7 @@ public class MainWindow {
 		leapTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		leapTotal.setEditable(false);
 		leapTotal.setColumns(2);
-		leapTotal.setBounds(294, 5, 50, 22);
+		leapTotal.setBounds(220, 5, 50, 22);
 		leapPanel.add(leapTotal);
 		
 		JFormattedTextField leapLevel = new JFormattedTextField(nums);
@@ -1163,7 +1170,7 @@ public class MainWindow {
 		Panel liftingPanel = new Panel();
 		liftingPanel.setLayout(null);
 		liftingPanel.setBackground(new Color(240, 230, 140));
-		liftingPanel.setBounds(5, 114, 354, 32);
+		liftingPanel.setBounds(5, 114, 275, 32);
 		physiquePanel.add(liftingPanel);
 		
 		Label liftingLabel = new Label("Lifting");
@@ -1176,7 +1183,7 @@ public class MainWindow {
 		liftingTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		liftingTotal.setEditable(false);
 		liftingTotal.setColumns(2);
-		liftingTotal.setBounds(294, 5, 50, 22);
+		liftingTotal.setBounds(220, 5, 50, 22);
 		liftingPanel.add(liftingTotal);
 		
 		JFormattedTextField liftingLevel = new JFormattedTextField(nums);
@@ -1201,7 +1208,7 @@ public class MainWindow {
 		Panel resistancePanel = new Panel();
 		resistancePanel.setLayout(null);
 		resistancePanel.setBackground(new Color(255, 255, 153));
-		resistancePanel.setBounds(5, 146, 354, 32);
+		resistancePanel.setBounds(5, 146, 275, 32);
 		physiquePanel.add(resistancePanel);
 		
 		Label resistanceLabel = new Label("Resistance");
@@ -1214,7 +1221,7 @@ public class MainWindow {
 		resistanceTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		resistanceTotal.setEditable(false);
 		resistanceTotal.setColumns(2);
-		resistanceTotal.setBounds(294, 5, 50, 22);
+		resistanceTotal.setBounds(220, 5, 50, 22);
 		resistancePanel.add(resistanceTotal);
 		
 		JFormattedTextField resistanceLevel = new JFormattedTextField(nums);
@@ -1239,7 +1246,7 @@ public class MainWindow {
 		Panel runningPanel = new Panel();
 		runningPanel.setLayout(null);
 		runningPanel.setBackground(new Color(240, 230, 140));
-		runningPanel.setBounds(5, 178, 354, 32);
+		runningPanel.setBounds(5, 178, 275, 32);
 		physiquePanel.add(runningPanel);
 		
 		Label runningLabel = new Label("Running");
@@ -1252,7 +1259,7 @@ public class MainWindow {
 		runningTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		runningTotal.setEditable(false);
 		runningTotal.setColumns(2);
-		runningTotal.setBounds(294, 5, 50, 22);
+		runningTotal.setBounds(220, 5, 50, 22);
 		runningPanel.add(runningTotal);
 		
 		JFormattedTextField runningLevel = new JFormattedTextField(nums);
@@ -1277,7 +1284,7 @@ public class MainWindow {
 		Panel swimmingPanel = new Panel();
 		swimmingPanel.setLayout(null);
 		swimmingPanel.setBackground(new Color(255, 255, 153));
-		swimmingPanel.setBounds(5, 210, 354, 32);
+		swimmingPanel.setBounds(5, 210, 275, 32);
 		physiquePanel.add(swimmingPanel);
 		
 		Label swimmingLabel = new Label("Swimming");
@@ -1290,7 +1297,7 @@ public class MainWindow {
 		swimmingTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		swimmingTotal.setEditable(false);
 		swimmingTotal.setColumns(2);
-		swimmingTotal.setBounds(294, 5, 50, 22);
+		swimmingTotal.setBounds(220, 5, 50, 22);
 		swimmingPanel.add(swimmingTotal);
 		
 		JFormattedTextField swimmingLevel = new JFormattedTextField(nums);
@@ -1350,7 +1357,7 @@ public class MainWindow {
 		runningTotal.setValue(currentSheet.getRunning() + currentSheet.getPhysique());
 		swimmingTotal.setValue(currentSheet.getSwimming() + currentSheet.getPhysique());
 		
-		JCheckBox chckbxAcro = new JCheckBox("Show specs");
+		JCheckBox chckbxAcro = new JCheckBox("Specs");
 		chckbxAcro.addItemListener(new ItemListener() 
 		{
 			int blankId;
@@ -1376,7 +1383,7 @@ public class MainWindow {
 					int extra = (acroSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					acroPanel.setSize(354, (32+extra));
+					acroPanel.setSize(275, (32+extra));
 					dodgePanel.setLocation(5, dodgePanel.getY()+extra);
 					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
@@ -1466,7 +1473,7 @@ public class MainWindow {
 					acroSpecsFields.clear();
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(acroPanel.getHeight()-32)));
-					acroPanel.setSize(354, (32));
+					acroPanel.setSize(275, (32));
 					dodgePanel.setLocation(5, acroPanel.getY()+32);
 					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
@@ -1479,9 +1486,9 @@ public class MainWindow {
 			}
 		});
 		chckbxAcro.setBackground(new Color(255, 153, 153));
-		chckbxAcro.setBounds(187, 5, 97, 23);
+		chckbxAcro.setBounds(155, 5, 67, 23);
 		acroPanel.add(chckbxAcro);
-		JCheckBox chckbxDodge = new JCheckBox("Show specs");
+		JCheckBox chckbxDodge = new JCheckBox("Specs");
 		chckbxDodge.addItemListener(new ItemListener() 
 		{
 			int blankId;
@@ -1506,7 +1513,7 @@ public class MainWindow {
 					int extra = (dodgeSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					dodgePanel.setSize(354, (32+extra));
+					dodgePanel.setSize(275, (32+extra));
 					handToHandPanel.setLocation(5, handToHandPanel.getY()+extra);
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
@@ -1593,7 +1600,7 @@ public class MainWindow {
 					dodgeSpecsFields.clear();
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(dodgePanel.getHeight()-32)));
-					dodgePanel.setSize(354, (32));
+					dodgePanel.setSize(275, (32));
 					handToHandPanel.setLocation(5, dodgePanel.getY()+dodgePanel.getHeight());
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
@@ -1605,9 +1612,9 @@ public class MainWindow {
 			}
 		});
 		chckbxDodge.setBackground(new Color(255, 102, 102));
-		chckbxDodge.setBounds(187, 5, 97, 23);
+		chckbxDodge.setBounds(155, 5, 67, 23);
 		dodgePanel.add(chckbxDodge);
-		JCheckBox chckbxHandToHand = new JCheckBox("Show specs");
+		JCheckBox chckbxHandToHand = new JCheckBox("Specs");
 		chckbxHandToHand.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -1631,7 +1638,7 @@ public class MainWindow {
 					int extra = (handToHandSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					handToHandPanel.setSize(354, (32+extra));
+					handToHandPanel.setSize(275, (32+extra));
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -1717,7 +1724,7 @@ public class MainWindow {
 					handToHandSpecsFields.clear();
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(handToHandPanel.getHeight()-32)));
-					handToHandPanel.setSize(354, (32));
+					handToHandPanel.setSize(275, (32));
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -1728,9 +1735,9 @@ public class MainWindow {
 			}
 		});
 		chckbxHandToHand.setBackground(new Color(255, 153, 153));
-		chckbxHandToHand.setBounds(187, 5, 97, 23);
+		chckbxHandToHand.setBounds(155, 5, 67, 23);
 		handToHandPanel.add(chckbxHandToHand);
-		JCheckBox chckbxMeleeWeapons = new JCheckBox("Show specs");
+		JCheckBox chckbxMeleeWeapons = new JCheckBox("Specs");
 		chckbxMeleeWeapons.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -1754,7 +1761,7 @@ public class MainWindow {
 					int extra = (meleeWeaponsSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					meleeWeaponsPanel.setSize(354, (32+extra));
+					meleeWeaponsPanel.setSize(275, (32+extra));
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -1839,7 +1846,7 @@ public class MainWindow {
 					meleeWeaponsSpecsFields.clear();
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(meleeWeaponsPanel.getHeight()-32)));
-					meleeWeaponsPanel.setSize(354, (32));
+					meleeWeaponsPanel.setSize(275, (32));
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -1849,9 +1856,9 @@ public class MainWindow {
 			}
 		});
 		chckbxMeleeWeapons.setBackground(new Color(255, 102, 102));
-		chckbxMeleeWeapons.setBounds(187, 5, 97, 23);
+		chckbxMeleeWeapons.setBounds(155, 5, 67, 23);
 		meleeWeaponsPanel.add(chckbxMeleeWeapons);
-		JCheckBox chckbxStealth = new JCheckBox("Show specs");
+		JCheckBox chckbxStealth = new JCheckBox("Specs");
 		chckbxStealth.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -1875,7 +1882,7 @@ public class MainWindow {
 					int extra = (stealthSpecsList.size())*28;
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
-					stealthPanel.setSize(354, (32+extra));
+					stealthPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -1957,7 +1964,7 @@ public class MainWindow {
 					stealthSpecsFields.clear();
 					
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
-					stealthPanel.setSize(354, (32));
+					stealthPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -1966,9 +1973,9 @@ public class MainWindow {
 			}
 		});
 		chckbxStealth.setBackground(new Color(255, 153, 153));
-		chckbxStealth.setBounds(187, 5, 97, 23);
+		chckbxStealth.setBounds(155, 5, 67, 23);
 		stealthPanel.add(chckbxStealth);
-		JCheckBox chckbxCatch = new JCheckBox("Show specs");
+		JCheckBox chckbxCatch = new JCheckBox("Specs");
 		chckbxCatch.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -1991,7 +1998,7 @@ public class MainWindow {
 					int extra = (catchSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					catchPanel.setSize(354, (32+extra));
+					catchPanel.setSize(275, (32+extra));
 					climbingPanel.setLocation(5, climbingPanel.getY()+extra);
 					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
 					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
@@ -2081,7 +2088,7 @@ public class MainWindow {
 					catchSpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(catchPanel.getHeight()-32)));
-					catchPanel.setSize(354, (32));
+					catchPanel.setSize(275, (32));
 					climbingPanel.setLocation(5, catchPanel.getY()+32);
 					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
 					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
@@ -2095,9 +2102,9 @@ public class MainWindow {
 			}
 		});
 		chckbxCatch.setBackground(new Color(255, 201, 131));
-		chckbxCatch.setBounds(187, 5, 97, 23);
+		chckbxCatch.setBounds(155, 5, 67, 23);
 		catchPanel.add(chckbxCatch);
-		JCheckBox chckbxClimbing = new JCheckBox("Show specs");
+		JCheckBox chckbxClimbing = new JCheckBox("Specs");
 		chckbxClimbing.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2120,7 +2127,7 @@ public class MainWindow {
 					int extra = (climbingSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					climbingPanel.setSize(354, (32+extra));
+					climbingPanel.setSize(275, (32+extra));
 					drivingPanel.setLocation(5, drivingPanel.getY()+extra);
 					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
@@ -2209,7 +2216,7 @@ public class MainWindow {
 					climbingSpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(climbingPanel.getHeight()-32)));
-					climbingPanel.setSize(354, (32));
+					climbingPanel.setSize(275, (32));
 					drivingPanel.setLocation(5, climbingPanel.getY()+climbingPanel.getHeight());
 					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
@@ -2222,9 +2229,9 @@ public class MainWindow {
 			}
 		});
 		chckbxClimbing.setBackground(new Color(255, 173, 84));
-		chckbxClimbing.setBounds(187, 5, 97, 23);
+		chckbxClimbing.setBounds(155, 5, 67, 23);
 		climbingPanel.add(chckbxClimbing);		
-		JCheckBox chckbxDriving = new JCheckBox("Show specs");
+		JCheckBox chckbxDriving = new JCheckBox("Specs");
 		chckbxDriving.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2247,7 +2254,7 @@ public class MainWindow {
 					int extra = (drivingSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					drivingPanel.setSize(354, (32+extra));
+					drivingPanel.setSize(275, (32+extra));
 					marksmanshipPanel.setLocation(5, marksmanshipPanel.getY()+extra);
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
@@ -2335,7 +2342,7 @@ public class MainWindow {
 					drivingSpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(drivingPanel.getHeight()-32)));
-					drivingPanel.setSize(354, (32));
+					drivingPanel.setSize(275, (32));
 					marksmanshipPanel.setLocation(5, drivingPanel.getY()+drivingPanel.getHeight());
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
@@ -2347,9 +2354,9 @@ public class MainWindow {
 			}
 		});
 		chckbxDriving.setBackground(new Color(255, 201, 131));
-		chckbxDriving.setBounds(187, 5, 97, 23);
+		chckbxDriving.setBounds(155, 5, 67, 23);
 		drivingPanel.add(chckbxDriving);		
-		JCheckBox chckbxMarksmanship = new JCheckBox("Show specs");
+		JCheckBox chckbxMarksmanship = new JCheckBox("Specs");
 		chckbxMarksmanship.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2372,7 +2379,7 @@ public class MainWindow {
 					int extra = (marksmanshipSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					marksmanshipPanel.setSize(354, (32+extra));
+					marksmanshipPanel.setSize(275, (32+extra));
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -2459,7 +2466,7 @@ public class MainWindow {
 					marksmanshipSpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(marksmanshipPanel.getHeight()-32)));
-					marksmanshipPanel.setSize(354, (32));
+					marksmanshipPanel.setSize(275, (32));
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -2470,9 +2477,9 @@ public class MainWindow {
 			}
 		});
 		chckbxMarksmanship.setBackground(new Color(255, 173, 84));
-		chckbxMarksmanship.setBounds(187, 5, 97, 23);
+		chckbxMarksmanship.setBounds(155, 5, 67, 23);
 		marksmanshipPanel.add(chckbxMarksmanship);
-		JCheckBox chckbxThievery = new JCheckBox("Show specs");
+		JCheckBox chckbxThievery = new JCheckBox("Specs");
 		chckbxThievery.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2495,7 +2502,7 @@ public class MainWindow {
 					int extra = (thieverySpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					thieveryPanel.setSize(354, (32+extra));
+					thieveryPanel.setSize(275, (32+extra));
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -2581,7 +2588,7 @@ public class MainWindow {
 					thieverySpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thieveryPanel.getHeight()-32)));
-					thieveryPanel.setSize(354, (32));
+					thieveryPanel.setSize(275, (32));
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -2591,9 +2598,9 @@ public class MainWindow {
 			}
 		});
 		chckbxThievery.setBackground(new Color(255, 201, 131));
-		chckbxThievery.setBounds(187, 5, 97, 23);
+		chckbxThievery.setBounds(155, 5, 67, 23);
 		thieveryPanel.add(chckbxThievery);
-		JCheckBox chckbxThrownWeapons = new JCheckBox("Show specs");
+		JCheckBox chckbxThrownWeapons = new JCheckBox("Specs");
 		chckbxThrownWeapons.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2616,7 +2623,7 @@ public class MainWindow {
 					int extra = (thrownWeaponsSpecsList.size())*28;
 					
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
-					thrownWeaponsPanel.setSize(354, (32+extra));
+					thrownWeaponsPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -2701,7 +2708,7 @@ public class MainWindow {
 					thrownWeaponsSpecsFields.clear();
 							
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
-					thrownWeaponsPanel.setSize(354, (32));
+					thrownWeaponsPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -2710,9 +2717,9 @@ public class MainWindow {
 			}
 		});
 		chckbxThrownWeapons.setBackground(new Color(255, 173, 84));
-		chckbxThrownWeapons.setBounds(187, 5, 97, 23);
+		chckbxThrownWeapons.setBounds(155, 5, 67, 23);
 		thrownWeaponsPanel.add(chckbxThrownWeapons);	
-		JCheckBox chckbxAthletics = new JCheckBox("Show specs");
+		JCheckBox chckbxAthletics = new JCheckBox("Specs");
 		chckbxAthletics.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2735,7 +2742,7 @@ public class MainWindow {
 					int extra = (athleticsSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					athleticsPanel.setSize(354, (32+extra));
+					athleticsPanel.setSize(275, (32+extra));
 					leapPanel.setLocation(5, leapPanel.getY()+extra);
 					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
 					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
@@ -2825,7 +2832,7 @@ public class MainWindow {
 					athleticsSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(athleticsPanel.getHeight()-32)));
-					athleticsPanel.setSize(354, (32));
+					athleticsPanel.setSize(275, (32));
 					leapPanel.setLocation(5, athleticsPanel.getY()+32);
 					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
 					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
@@ -2839,9 +2846,9 @@ public class MainWindow {
 			}
 		});
 		chckbxAthletics.setBackground(new Color(240, 230, 140));
-		chckbxAthletics.setBounds(187, 5, 97, 23);
+		chckbxAthletics.setBounds(155, 5, 67, 23);
 		athleticsPanel.add(chckbxAthletics);		
-		JCheckBox chckbxLeap = new JCheckBox("Show specs");
+		JCheckBox chckbxLeap = new JCheckBox("Specs");
 		chckbxLeap.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2864,7 +2871,7 @@ public class MainWindow {
 					int extra = (leapSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					leapPanel.setSize(354, (32+extra));
+					leapPanel.setSize(275, (32+extra));
 					liftingPanel.setLocation(5, liftingPanel.getY()+extra);
 					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
@@ -2953,7 +2960,7 @@ public class MainWindow {
 					leapSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(leapPanel.getHeight()-32)));
-					leapPanel.setSize(354, (32));
+					leapPanel.setSize(275, (32));
 					liftingPanel.setLocation(5, leapPanel.getY()+leapPanel.getHeight());
 					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
@@ -2966,9 +2973,9 @@ public class MainWindow {
 			}
 		});
 		chckbxLeap.setBackground(new Color(255, 255, 153));
-		chckbxLeap.setBounds(187, 5, 97, 23);
+		chckbxLeap.setBounds(155, 5, 67, 23);
 		leapPanel.add(chckbxLeap);		
-		JCheckBox chckbxLifting = new JCheckBox("Show specs");
+		JCheckBox chckbxLifting = new JCheckBox("Specs");
 		chckbxLifting.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -2991,7 +2998,7 @@ public class MainWindow {
 					int extra = (liftingSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					liftingPanel.setSize(354, (32+extra));
+					liftingPanel.setSize(275, (32+extra));
 					resistancePanel.setLocation(5, resistancePanel.getY()+extra);
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
@@ -3079,7 +3086,7 @@ public class MainWindow {
 					liftingSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(liftingPanel.getHeight()-32)));
-					liftingPanel.setSize(354, (32));
+					liftingPanel.setSize(275, (32));
 					resistancePanel.setLocation(5, liftingPanel.getY()+liftingPanel.getHeight());
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
@@ -3091,9 +3098,9 @@ public class MainWindow {
 			}
 		});
 		chckbxLifting.setBackground(new Color(240, 230, 140));
-		chckbxLifting.setBounds(187, 5, 97, 23);
+		chckbxLifting.setBounds(155, 5, 67, 23);
 		liftingPanel.add(chckbxLifting);	
-		JCheckBox chckbxResistance = new JCheckBox("Show specs");
+		JCheckBox chckbxResistance = new JCheckBox("Specs");
 		chckbxResistance.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -3116,7 +3123,7 @@ public class MainWindow {
 					int extra = (resistanceSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					resistancePanel.setSize(354, (32+extra));
+					resistancePanel.setSize(275, (32+extra));
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -3203,7 +3210,7 @@ public class MainWindow {
 					resistanceSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(resistancePanel.getHeight()-32)));
-					resistancePanel.setSize(354, (32));
+					resistancePanel.setSize(275, (32));
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
@@ -3214,9 +3221,9 @@ public class MainWindow {
 			}
 		});
 		chckbxResistance.setBackground(new Color(255, 255, 153));
-		chckbxResistance.setBounds(187, 5, 97, 23);
+		chckbxResistance.setBounds(155, 5, 67, 23);
 		resistancePanel.add(chckbxResistance);		
-		JCheckBox chckbxRunning = new JCheckBox("Show specs");
+		JCheckBox chckbxRunning = new JCheckBox("Specs");
 		chckbxRunning.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -3239,7 +3246,7 @@ public class MainWindow {
 					int extra = (runningSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					runningPanel.setSize(354, (32+extra));
+					runningPanel.setSize(275, (32+extra));
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -3325,7 +3332,7 @@ public class MainWindow {
 					runningSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(runningPanel.getHeight()-32)));
-					runningPanel.setSize(354, (32));
+					runningPanel.setSize(275, (32));
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
@@ -3335,9 +3342,9 @@ public class MainWindow {
 			}
 		});
 		chckbxRunning.setBackground(new Color(240, 230, 140));
-		chckbxRunning.setBounds(187, 5, 97, 23);
+		chckbxRunning.setBounds(155, 5, 67, 23);
 		runningPanel.add(chckbxRunning);	
-		JCheckBox chckbxSwimming = new JCheckBox("Show specs");
+		JCheckBox chckbxSwimming = new JCheckBox("Specs");
 		chckbxSwimming.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -3360,7 +3367,7 @@ public class MainWindow {
 					int extra = (swimmingSpecsList.size())*28;
 					
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
-					swimmingPanel.setSize(354, (32+extra));
+					swimmingPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -3445,7 +3452,7 @@ public class MainWindow {
 					swimmingSpecsFields.clear();
 							
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
-					swimmingPanel.setSize(354, (32));
+					swimmingPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
 					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -3454,7 +3461,7 @@ public class MainWindow {
 			}
 		});
 		chckbxSwimming.setBackground(new Color(255, 255, 153));
-		chckbxSwimming.setBounds(187, 5, 97, 23);
+		chckbxSwimming.setBounds(155, 5, 67, 23);
 		swimmingPanel.add(chckbxSwimming);		
 		
 		reflexesLevel.setNextFocusableComponent(acroLevel);
@@ -3482,7 +3489,7 @@ public class MainWindow {
 		
 		
 		mentalStatsPanel = new JPanel();
-		mentalStatsPanel.setBounds(35, physStatsPanel.getY()+physStatsPanel.getHeight()+16, 1152, 279);
+		mentalStatsPanel.setBounds(0, physStatsPanel.getY()+physStatsPanel.getHeight(), 851, 279);
 		panel.add(mentalStatsPanel);
 		mentalStatsPanel.setBackground(new Color(192, 192, 192));
 		mentalStatsPanel.setLayout(null);
@@ -3495,28 +3502,29 @@ public class MainWindow {
 		
 		
 		
-		Panel knowledgePanel = new Panel();
-		knowledgePanel.setBounds(0, 0, 364, 279);
+		JPanel knowledgePanel = new JPanel();
+		knowledgePanel.setBounds(0, 0, 285, 279);
+		knowledgePanel.setBorder(new LineBorder(Color.black, 2));
 		mentalStatsPanel.add(knowledgePanel);
 		knowledgePanel.setLayout(null);
 		knowledgePanel.setBackground(new Color(34, 139, 34));
 		
 		Label knowledgeLabel = new Label("Knowledge");
 		knowledgeLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		knowledgeLabel.setBounds(115, 10, 143, 30);
+		knowledgeLabel.setBounds(75, 10, 143, 30);
 		knowledgePanel.add(knowledgeLabel);
 		
 		JFormattedTextField knowledgeLevel = new JFormattedTextField(nums);
 		knowledgeLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		knowledgeLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		knowledgeLevel.setColumns(2);
-		knowledgeLevel.setBounds(299, 10, 50, 35);
+		knowledgeLevel.setBounds(225, 10, 50, 35);
 		knowledgePanel.add(knowledgeLevel);
 		
 		Panel arcaneLorePanel = new Panel();
 		arcaneLorePanel.setLayout(null);
 		arcaneLorePanel.setBackground(new Color(144, 238, 144));
-		arcaneLorePanel.setBounds(5, 50, 354, 32);
+		arcaneLorePanel.setBounds(5, 50, 275, 32);
 		knowledgePanel.add(arcaneLorePanel);
 		
 		Label arcaneLoreLabel = new Label("Arcane Lore");
@@ -3529,7 +3537,7 @@ public class MainWindow {
 		arcaneLoreTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		arcaneLoreTotal.setEditable(false);
 		arcaneLoreTotal.setColumns(2);
-		arcaneLoreTotal.setBounds(294, 5, 50, 22);
+		arcaneLoreTotal.setBounds(220, 5, 50, 22);
 		arcaneLorePanel.add(arcaneLoreTotal);
 		
 		JFormattedTextField arcaneLoreLevel = new JFormattedTextField(nums);
@@ -3554,7 +3562,7 @@ public class MainWindow {
 		Panel demolitionsPanel = new Panel();
 		demolitionsPanel.setLayout(null);
 		demolitionsPanel.setBackground(new Color(50, 205, 50));
-		demolitionsPanel.setBounds(5, 82, 354, 32);
+		demolitionsPanel.setBounds(5, 82, 275, 32);
 		knowledgePanel.add(demolitionsPanel);
 		
 		Label demolitionsLabel = new Label("Demolitions");
@@ -3567,7 +3575,7 @@ public class MainWindow {
 		demolitionsTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		demolitionsTotal.setEditable(false);
 		demolitionsTotal.setColumns(2);
-		demolitionsTotal.setBounds(294, 5, 50, 22);
+		demolitionsTotal.setBounds(220, 5, 50, 22);
 		demolitionsPanel.add(demolitionsTotal);
 		
 		JFormattedTextField demolitionsLevel = new JFormattedTextField(nums);
@@ -3592,7 +3600,7 @@ public class MainWindow {
 		Panel languagesPanel = new Panel();
 		languagesPanel.setLayout(null);
 		languagesPanel.setBackground(new Color(144, 238, 144));
-		languagesPanel.setBounds(5, 114, 354, 32);
+		languagesPanel.setBounds(5, 114, 275, 32);
 		knowledgePanel.add(languagesPanel);
 		
 		Label languagesLabel = new Label("Languages");
@@ -3605,7 +3613,7 @@ public class MainWindow {
 		languagesTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		languagesTotal.setEditable(false);
 		languagesTotal.setColumns(2);
-		languagesTotal.setBounds(294, 5, 50, 22);
+		languagesTotal.setBounds(220, 5, 50, 22);
 		languagesPanel.add(languagesTotal);
 		
 		JFormattedTextField languagesLevel = new JFormattedTextField(nums);
@@ -3630,7 +3638,7 @@ public class MainWindow {
 		Panel medicinePanel = new Panel();
 		medicinePanel.setLayout(null);
 		medicinePanel.setBackground(new Color(50, 205, 50));
-		medicinePanel.setBounds(5, 146, 354, 32);
+		medicinePanel.setBounds(5, 146, 275, 32);
 		knowledgePanel.add(medicinePanel);
 		
 		Label medicineLabel = new Label("Medicine");
@@ -3643,7 +3651,7 @@ public class MainWindow {
 		medicineTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		medicineTotal.setEditable(false);
 		medicineTotal.setColumns(2);
-		medicineTotal.setBounds(294, 5, 50, 22);
+		medicineTotal.setBounds(220, 5, 50, 22);
 		medicinePanel.add(medicineTotal);
 		
 		JFormattedTextField medicineLevel = new JFormattedTextField(nums);
@@ -3668,7 +3676,7 @@ public class MainWindow {
 		Panel scholarPanel = new Panel();
 		scholarPanel.setLayout(null);
 		scholarPanel.setBackground(new Color(144, 238, 144));
-		scholarPanel.setBounds(5, 178, 354, 32);
+		scholarPanel.setBounds(5, 178, 275, 32);
 		knowledgePanel.add(scholarPanel);
 		
 		Label scholarLabel = new Label("Scholar");
@@ -3681,7 +3689,7 @@ public class MainWindow {
 		scholarTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		scholarTotal.setEditable(false);
 		scholarTotal.setColumns(2);
-		scholarTotal.setBounds(294, 5, 50, 22);
+		scholarTotal.setBounds(220, 5, 50, 22);
 		scholarPanel.add(scholarTotal);
 		
 		JFormattedTextField scholarLevel = new JFormattedTextField(nums);
@@ -3706,7 +3714,7 @@ public class MainWindow {
 		Panel sciencePanel = new Panel();
 		sciencePanel.setLayout(null);
 		sciencePanel.setBackground(new Color(50, 205, 50));
-		sciencePanel.setBounds(5, 210, 354, 32);
+		sciencePanel.setBounds(5, 210, 275, 32);
 		knowledgePanel.add(sciencePanel);
 		
 		Label scienceLabel = new Label("Science");
@@ -3719,7 +3727,7 @@ public class MainWindow {
 		scienceTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		scienceTotal.setEditable(false);
 		scienceTotal.setColumns(2);
-		scienceTotal.setBounds(294, 5, 50, 22);
+		scienceTotal.setBounds(220, 5, 50, 22);
 		sciencePanel.add(scienceTotal);
 		
 		JFormattedTextField scienceLevel = new JFormattedTextField(nums);
@@ -3744,7 +3752,7 @@ public class MainWindow {
 		Panel securityPanel = new Panel();
 		securityPanel.setLayout(null);
 		securityPanel.setBackground(new Color(144, 238, 144));
-		securityPanel.setBounds(5, 242, 354, 32);
+		securityPanel.setBounds(5, 242, 275, 32);
 		knowledgePanel.add(securityPanel);
 		
 		Label securityLabel = new Label("Security");
@@ -3757,7 +3765,7 @@ public class MainWindow {
 		securityTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		securityTotal.setEditable(false);
 		securityTotal.setColumns(2);
-		securityTotal.setBounds(294, 5, 50, 22);
+		securityTotal.setBounds(220, 5, 50, 22);
 		securityPanel.add(securityTotal);
 		
 		JFormattedTextField securityLevel = new JFormattedTextField(nums);
@@ -3823,28 +3831,29 @@ public class MainWindow {
 		scienceTotal.setValue(currentSheet.getScience() + currentSheet.getKnowledge());
 		securityTotal.setValue(currentSheet.getSecurity() + currentSheet.getKnowledge());
 		
-		Panel perceptionPanel = new Panel();
-		perceptionPanel.setBounds(394, 0, 364, 279);
+		JPanel perceptionPanel = new JPanel();
+		perceptionPanel.setBounds(283, 0, 285, 247);
+		perceptionPanel.setBorder(new LineBorder(Color.black, 2));
 		mentalStatsPanel.add(perceptionPanel);
 		perceptionPanel.setLayout(null);
 		perceptionPanel.setBackground(new Color(25, 128, 255));
 		
 		Label perceptionLabel = new Label("Perception");
 		perceptionLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		perceptionLabel.setBounds(110, 10, 135, 30);
+		perceptionLabel.setBounds(70, 10, 135, 30);
 		perceptionPanel.add(perceptionLabel);
 		
 		JFormattedTextField perceptionLevel = new JFormattedTextField(nums);
 		perceptionLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		perceptionLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		perceptionLevel.setColumns(2);
-		perceptionLevel.setBounds(299, 10, 50, 35);
+		perceptionLevel.setBounds(225, 10, 50, 35);
 		perceptionPanel.add(perceptionLevel);
 		
 		Panel artistPanel = new Panel();
 		artistPanel.setLayout(null);
 		artistPanel.setBackground(new Color(135, 206, 250));
-		artistPanel.setBounds(5, 50, 354, 32);
+		artistPanel.setBounds(5, 50, 275, 32);
 		perceptionPanel.add(artistPanel);
 		
 		Label artistLabel = new Label("Artist");
@@ -3857,7 +3866,7 @@ public class MainWindow {
 		artistTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		artistTotal.setEditable(false);
 		artistTotal.setColumns(2);
-		artistTotal.setBounds(294, 5, 50, 22);
+		artistTotal.setBounds(220, 5, 50, 22);
 		artistPanel.add(artistTotal);
 		
 		JFormattedTextField artistLevel = new JFormattedTextField(nums);
@@ -3882,7 +3891,7 @@ public class MainWindow {
 		Panel engineeringPanel = new Panel();
 		engineeringPanel.setLayout(null);
 		engineeringPanel.setBackground(new Color(0, 191, 255));
-		engineeringPanel.setBounds(5, 82, 354, 32);
+		engineeringPanel.setBounds(5, 82, 275, 32);
 		perceptionPanel.add(engineeringPanel);
 		
 		Label engineeringLabel = new Label("Engineering");
@@ -3895,7 +3904,7 @@ public class MainWindow {
 		engineeringTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		engineeringTotal.setEditable(false);
 		engineeringTotal.setColumns(2);
-		engineeringTotal.setBounds(294, 5, 50, 22);
+		engineeringTotal.setBounds(220, 5, 50, 22);
 		engineeringPanel.add(engineeringTotal);
 		
 		JFormattedTextField engineeringLevel = new JFormattedTextField(nums);
@@ -3920,7 +3929,7 @@ public class MainWindow {
 		Panel searchPanel = new Panel();
 		searchPanel.setLayout(null);
 		searchPanel.setBackground(new Color(135, 206, 235));
-		searchPanel.setBounds(5, 114, 354, 32);
+		searchPanel.setBounds(5, 114, 275, 32);
 		perceptionPanel.add(searchPanel);
 		
 		Label searchLabel = new Label("Search");
@@ -3933,7 +3942,7 @@ public class MainWindow {
 		searchTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		searchTotal.setEditable(false);
 		searchTotal.setColumns(2);
-		searchTotal.setBounds(294, 5, 50, 22);
+		searchTotal.setBounds(220, 5, 50, 22);
 		searchPanel.add(searchTotal);
 		
 		JFormattedTextField searchLevel = new JFormattedTextField(nums);
@@ -3958,7 +3967,7 @@ public class MainWindow {
 		Panel streetwisePanel = new Panel();
 		streetwisePanel.setLayout(null);
 		streetwisePanel.setBackground(new Color(0, 191, 255));
-		streetwisePanel.setBounds(5, 146, 354, 32);
+		streetwisePanel.setBounds(5, 146, 275, 32);
 		perceptionPanel.add(streetwisePanel);
 		
 		Label streetwiseLabel = new Label("Streetwise");
@@ -3971,7 +3980,7 @@ public class MainWindow {
 		streetwiseTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		streetwiseTotal.setEditable(false);
 		streetwiseTotal.setColumns(2);
-		streetwiseTotal.setBounds(294, 5, 50, 22);
+		streetwiseTotal.setBounds(220, 5, 50, 22);
 		streetwisePanel.add(streetwiseTotal);
 		
 		JFormattedTextField streetwiseLevel = new JFormattedTextField(nums);
@@ -3996,7 +4005,7 @@ public class MainWindow {
 		Panel surveillancePanel = new Panel();
 		surveillancePanel.setLayout(null);
 		surveillancePanel.setBackground(new Color(135, 206, 235));
-		surveillancePanel.setBounds(5, 178, 354, 32);
+		surveillancePanel.setBounds(5, 178, 275, 32);
 		perceptionPanel.add(surveillancePanel);
 		
 		Label surveillanceLabel = new Label("Surveillance");
@@ -4009,7 +4018,7 @@ public class MainWindow {
 		surveillanceTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		surveillanceTotal.setEditable(false);
 		surveillanceTotal.setColumns(2);
-		surveillanceTotal.setBounds(294, 5, 50, 22);
+		surveillanceTotal.setBounds(220, 5, 50, 22);
 		surveillancePanel.add(surveillanceTotal);
 		
 		JFormattedTextField surveillanceLevel = new JFormattedTextField(nums);
@@ -4034,7 +4043,7 @@ public class MainWindow {
 		Panel survivalPanel = new Panel();
 		survivalPanel.setLayout(null);
 		survivalPanel.setBackground(new Color(0, 191, 255));
-		survivalPanel.setBounds(5, 210, 354, 32);
+		survivalPanel.setBounds(5, 210, 275, 32);
 		perceptionPanel.add(survivalPanel);
 		
 		Label survivalLabel = new Label("Survival");
@@ -4047,7 +4056,7 @@ public class MainWindow {
 		survivalTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		survivalTotal.setEditable(false);
 		survivalTotal.setColumns(2);
-		survivalTotal.setBounds(294, 5, 50, 22);
+		survivalTotal.setBounds(220, 5, 50, 22);
 		survivalPanel.add(survivalTotal);
 		
 		JFormattedTextField survivalLevel = new JFormattedTextField(nums);
@@ -4109,28 +4118,29 @@ public class MainWindow {
 		surveillanceTotal.setValue(currentSheet.getSurveillance() + currentSheet.getPerception());
 		survivalTotal.setValue(currentSheet.getSurvival() + currentSheet.getPerception());		
 		
-		Panel presencePanel = new Panel();
-		presencePanel.setBounds(788, 0, 364, 279);
+		JPanel presencePanel = new JPanel();
+		presencePanel.setBounds(566, 0, 285, 215);
+		presencePanel.setBorder(new LineBorder(Color.black, 2));
 		mentalStatsPanel.add(presencePanel);
 		presencePanel.setLayout(null);
 		presencePanel.setBackground(new Color(186, 85, 211));
 		
 		Label presenceLabel = new Label("Presence");
 		presenceLabel.setFont(new Font("Verdana", Font.BOLD, 22));
-		presenceLabel.setBounds(110, 10, 135, 30);
+		presenceLabel.setBounds(70, 10, 135, 30);
 		presencePanel.add(presenceLabel);
 		
 		JFormattedTextField presenceLevel = new JFormattedTextField(nums);
 		presenceLevel.setHorizontalAlignment(SwingConstants.CENTER);
 		presenceLevel.setFont(new Font("Arial", Font.BOLD, 22));
 		presenceLevel.setColumns(2);
-		presenceLevel.setBounds(299, 10, 50, 35);
+		presenceLevel.setBounds(225, 10, 50, 35);
 		presencePanel.add(presenceLevel);
 		
 		Panel bluffPanel = new Panel();
 		bluffPanel.setLayout(null);
 		bluffPanel.setBackground(new Color(221, 160, 221));
-		bluffPanel.setBounds(5, 50, 354, 32);
+		bluffPanel.setBounds(5, 50, 275, 32);
 		presencePanel.add(bluffPanel);
 		
 		Label bluffLabel = new Label("Bluff");
@@ -4143,7 +4153,7 @@ public class MainWindow {
 		bluffTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		bluffTotal.setEditable(false);
 		bluffTotal.setColumns(2);
-		bluffTotal.setBounds(294, 5, 50, 22);
+		bluffTotal.setBounds(220, 5, 50, 22);
 		bluffPanel.add(bluffTotal);
 		
 		JFormattedTextField bluffLevel = new JFormattedTextField(nums);
@@ -4168,7 +4178,7 @@ public class MainWindow {
 		Panel charmPanel = new Panel();
 		charmPanel.setLayout(null);
 		charmPanel.setBackground(new Color(218, 112, 214));
-		charmPanel.setBounds(5, 82, 354, 32);
+		charmPanel.setBounds(5, 82, 275, 32);
 		presencePanel.add(charmPanel);
 		
 		Label charmLabel = new Label("Charm");
@@ -4181,7 +4191,7 @@ public class MainWindow {
 		charmTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		charmTotal.setEditable(false);
 		charmTotal.setColumns(2);
-		charmTotal.setBounds(294, 5, 50, 22);
+		charmTotal.setBounds(220, 5, 50, 22);
 		charmPanel.add(charmTotal);
 		
 		JFormattedTextField charmLevel = new JFormattedTextField(nums);
@@ -4206,7 +4216,7 @@ public class MainWindow {
 		Panel intimidationPanel = new Panel();
 		intimidationPanel.setLayout(null);
 		intimidationPanel.setBackground(new Color(221, 160, 221));
-		intimidationPanel.setBounds(5, 114, 354, 32);
+		intimidationPanel.setBounds(5, 114, 275, 32);
 		presencePanel.add(intimidationPanel);
 		
 		Label intimidationLabel = new Label("Intimidation");
@@ -4219,7 +4229,7 @@ public class MainWindow {
 		intimidationTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		intimidationTotal.setEditable(false);
 		intimidationTotal.setColumns(2);
-		intimidationTotal.setBounds(294, 5, 50, 22);
+		intimidationTotal.setBounds(220, 5, 50, 22);
 		intimidationPanel.add(intimidationTotal);
 		
 		JFormattedTextField intimidationLevel = new JFormattedTextField(nums);
@@ -4244,7 +4254,7 @@ public class MainWindow {
 		Panel persuasionPanel = new Panel();
 		persuasionPanel.setLayout(null);
 		persuasionPanel.setBackground(new Color(218, 112, 214));
-		persuasionPanel.setBounds(5, 146, 354, 32);
+		persuasionPanel.setBounds(5, 146, 275, 32);
 		presencePanel.add(persuasionPanel);
 		
 		Label persuasionLabel = new Label("Persuasion");
@@ -4257,7 +4267,7 @@ public class MainWindow {
 		persuasionTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		persuasionTotal.setEditable(false);
 		persuasionTotal.setColumns(2);
-		persuasionTotal.setBounds(294, 5, 50, 22);
+		persuasionTotal.setBounds(220, 5, 50, 22);
 		persuasionPanel.add(persuasionTotal);
 		
 		JFormattedTextField persuasionLevel = new JFormattedTextField(nums);
@@ -4282,7 +4292,7 @@ public class MainWindow {
 		Panel willpowerPanel = new Panel();
 		willpowerPanel.setLayout(null);
 		willpowerPanel.setBackground(new Color(221, 160, 221));
-		willpowerPanel.setBounds(5, 178, 354, 32);
+		willpowerPanel.setBounds(5, 178, 275, 32);
 		presencePanel.add(willpowerPanel);
 		
 		Label willpowerLabel = new Label("Willpower");
@@ -4295,7 +4305,7 @@ public class MainWindow {
 		willpowerTotal.setFont(new Font("Arial", Font.BOLD, 18));
 		willpowerTotal.setEditable(false);
 		willpowerTotal.setColumns(2);
-		willpowerTotal.setBounds(294, 5, 50, 22);
+		willpowerTotal.setBounds(220, 5, 50, 22);
 		willpowerPanel.add(willpowerTotal);
 		
 		JFormattedTextField willpowerLevel = new JFormattedTextField(nums);
@@ -4338,7 +4348,7 @@ public class MainWindow {
 				}
 			}
 		});
-		JCheckBox chckbxArcaneLore = new JCheckBox("Show specs");
+		JCheckBox chckbxArcaneLore = new JCheckBox("Specs");
 		chckbxArcaneLore.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4361,7 +4371,7 @@ public class MainWindow {
 					int extra = (arcaneLoreSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					arcaneLorePanel.setSize(354, (32+extra));
+					arcaneLorePanel.setSize(275, (32+extra));
 					demolitionsPanel.setLocation(5, demolitionsPanel.getY()+extra);
 					languagesPanel.setLocation(5, languagesPanel.getY()+extra);
 					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
@@ -4451,7 +4461,7 @@ public class MainWindow {
 					arcaneLoreSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(arcaneLorePanel.getHeight()-32)));
-					arcaneLorePanel.setSize(354, (32));
+					arcaneLorePanel.setSize(275, (32));
 					demolitionsPanel.setLocation(5, arcaneLorePanel.getY()+32);
 					languagesPanel.setLocation(5, demolitionsPanel.getY()+demolitionsPanel.getHeight());
 					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
@@ -4465,9 +4475,9 @@ public class MainWindow {
 			}
 		});
 		chckbxArcaneLore.setBackground(new Color(144, 238, 144));
-		chckbxArcaneLore.setBounds(187, 5, 97, 23);
+		chckbxArcaneLore.setBounds(155, 5, 67, 23);
 		arcaneLorePanel.add(chckbxArcaneLore);		
-		JCheckBox chckbxDemolitions = new JCheckBox("Show specs");
+		JCheckBox chckbxDemolitions = new JCheckBox("Specs");
 		chckbxDemolitions.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4491,7 +4501,7 @@ public class MainWindow {
 					int extra = (demolitionsSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					demolitionsPanel.setSize(354, (32+extra));
+					demolitionsPanel.setSize(275, (32+extra));
 					languagesPanel.setLocation(5, languagesPanel.getY()+extra);
 					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
 					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
@@ -4580,7 +4590,7 @@ public class MainWindow {
 					demolitionsSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(demolitionsPanel.getHeight()-32)));
-					demolitionsPanel.setSize(354, (32));
+					demolitionsPanel.setSize(275, (32));
 					languagesPanel.setLocation(5, demolitionsPanel.getY()+demolitionsPanel.getHeight());
 					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
 					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
@@ -4593,9 +4603,9 @@ public class MainWindow {
 			}
 		});
 		chckbxDemolitions.setBackground(new Color(50, 205, 50));
-		chckbxDemolitions.setBounds(187, 5, 97, 23);
+		chckbxDemolitions.setBounds(155, 5, 67, 23);
 		demolitionsPanel.add(chckbxDemolitions);	
-		JCheckBox chckbxLanguages = new JCheckBox("Show specs");
+		JCheckBox chckbxLanguages = new JCheckBox("Specs");
 		chckbxLanguages.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4619,7 +4629,7 @@ public class MainWindow {
 					int extra = (languagesSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					languagesPanel.setSize(354, (32+extra));
+					languagesPanel.setSize(275, (32+extra));
 					medicinePanel.setLocation(5, medicinePanel.getY()+extra);
 					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
@@ -4707,7 +4717,7 @@ public class MainWindow {
 					languagesSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(languagesPanel.getHeight()-32)));
-					languagesPanel.setSize(354, (32));
+					languagesPanel.setSize(275, (32));
 					medicinePanel.setLocation(5, languagesPanel.getY()+languagesPanel.getHeight());
 					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
@@ -4719,9 +4729,9 @@ public class MainWindow {
 			}
 		});
 		chckbxLanguages.setBackground(new Color(144, 238, 144));
-		chckbxLanguages.setBounds(187, 5, 97, 23);
+		chckbxLanguages.setBounds(155, 5, 67, 23);
 		languagesPanel.add(chckbxLanguages);	
-		JCheckBox chckbxMedicine = new JCheckBox("Show specs");
+		JCheckBox chckbxMedicine = new JCheckBox("Specs");
 		chckbxMedicine.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4745,7 +4755,7 @@ public class MainWindow {
 					int extra = (medicineSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					medicinePanel.setSize(354, (32+extra));
+					medicinePanel.setSize(275, (32+extra));
 					scholarPanel.setLocation(5, scholarPanel.getY()+extra);
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
@@ -4832,7 +4842,7 @@ public class MainWindow {
 					medicineSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(medicinePanel.getHeight()-32)));
-					medicinePanel.setSize(354, (32));
+					medicinePanel.setSize(275, (32));
 					scholarPanel.setLocation(5, medicinePanel.getY()+medicinePanel.getHeight());
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
@@ -4843,9 +4853,9 @@ public class MainWindow {
 			}
 		});
 		chckbxMedicine.setBackground(new Color(50, 205, 50));
-		chckbxMedicine.setBounds(187, 5, 97, 23);
+		chckbxMedicine.setBounds(155, 5, 67, 23);
 		medicinePanel.add(chckbxMedicine);		
-		JCheckBox chckbxScholar = new JCheckBox("Show specs");
+		JCheckBox chckbxScholar = new JCheckBox("Specs");
 		chckbxScholar.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4869,7 +4879,7 @@ public class MainWindow {
 					int extra = (scholarSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					scholarPanel.setSize(354, (32+extra));
+					scholarPanel.setSize(275, (32+extra));
 					sciencePanel.setLocation(5, sciencePanel.getY()+extra);
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -4955,7 +4965,7 @@ public class MainWindow {
 					scholarSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(scholarPanel.getHeight()-32)));
-					scholarPanel.setSize(354, (32));
+					scholarPanel.setSize(275, (32));
 					sciencePanel.setLocation(5, scholarPanel.getY()+scholarPanel.getHeight());
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -4965,9 +4975,9 @@ public class MainWindow {
 			}
 		});
 		chckbxScholar.setBackground(new Color(144, 238, 144));
-		chckbxScholar.setBounds(187, 5, 97, 23);
+		chckbxScholar.setBounds(155, 5, 67, 23);
 		scholarPanel.add(chckbxScholar);
-		JCheckBox chckbxScience = new JCheckBox("Show specs");
+		JCheckBox chckbxScience = new JCheckBox("Specs");
 		chckbxScience.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -4991,7 +5001,7 @@ public class MainWindow {
 					int extra = (scienceSpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					sciencePanel.setSize(354, (32+extra));
+					sciencePanel.setSize(275, (32+extra));
 					securityPanel.setLocation(5, securityPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -5076,7 +5086,7 @@ public class MainWindow {
 					scienceSpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(sciencePanel.getHeight()-32)));
-					sciencePanel.setSize(354, (32));
+					sciencePanel.setSize(275, (32));
 					securityPanel.setLocation(5, sciencePanel.getY()+sciencePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -5085,9 +5095,9 @@ public class MainWindow {
 			}
 		});
 		chckbxScience.setBackground(new Color(50, 205, 50));
-		chckbxScience.setBounds(187, 5, 97, 23);
+		chckbxScience.setBounds(155, 5, 67, 23);
 		sciencePanel.add(chckbxScience);		
-		JCheckBox chckbxSecurity = new JCheckBox("Show specs");
+		JCheckBox chckbxSecurity = new JCheckBox("Specs");
 		chckbxSecurity.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5111,7 +5121,7 @@ public class MainWindow {
 					int extra = (securitySpecsList.size())*28;
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()+extra));
-					securityPanel.setSize(354, (32+extra));
+					securityPanel.setSize(275, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
@@ -5195,7 +5205,7 @@ public class MainWindow {
 					securitySpecsFields.clear();
 					
 					knowledgePanel.setSize(knowledgePanel.getWidth(), (knowledgePanel.getHeight()-(securityPanel.getHeight()-32)));
-					securityPanel.setSize(354, (32));
+					securityPanel.setSize(275, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
@@ -5203,9 +5213,9 @@ public class MainWindow {
 			}
 		});
 		chckbxSecurity.setBackground(new Color(144, 238, 144));
-		chckbxSecurity.setBounds(187, 5, 97, 23);
+		chckbxSecurity.setBounds(155, 5, 67, 23);
 		securityPanel.add(chckbxSecurity);
-		JCheckBox chckbxArtist = new JCheckBox("Show specs");
+		JCheckBox chckbxArtist = new JCheckBox("Specs");
 		chckbxArtist.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5228,7 +5238,7 @@ public class MainWindow {
 					int extra = (artistSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					artistPanel.setSize(354, (32+extra));
+					artistPanel.setSize(275, (32+extra));
 					engineeringPanel.setLocation(5, engineeringPanel.getY()+extra);
 					searchPanel.setLocation(5, searchPanel.getY()+extra);
 					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
@@ -5317,7 +5327,7 @@ public class MainWindow {
 					artistSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(artistPanel.getHeight()-32)));
-					artistPanel.setSize(354, (32));
+					artistPanel.setSize(275, (32));
 					engineeringPanel.setLocation(5, artistPanel.getY()+32);
 					searchPanel.setLocation(5, engineeringPanel.getY()+engineeringPanel.getHeight());
 					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
@@ -5330,9 +5340,9 @@ public class MainWindow {
 			}
 		});
 		chckbxArtist.setBackground(new Color(135, 206, 235));
-		chckbxArtist.setBounds(187, 5, 97, 23);
+		chckbxArtist.setBounds(155, 5, 67, 23);
 		artistPanel.add(chckbxArtist);			
-		JCheckBox chckbxEngineering = new JCheckBox("Show specs");
+		JCheckBox chckbxEngineering = new JCheckBox("Specs");
 		chckbxEngineering.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5355,7 +5365,7 @@ public class MainWindow {
 					int extra = (engineeringSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					engineeringPanel.setSize(354, (32+extra));
+					engineeringPanel.setSize(275, (32+extra));
 					searchPanel.setLocation(5, searchPanel.getY()+extra);
 					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
@@ -5443,7 +5453,7 @@ public class MainWindow {
 					engineeringSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(engineeringPanel.getHeight()-32)));
-					engineeringPanel.setSize(354, (32));
+					engineeringPanel.setSize(275, (32));
 					searchPanel.setLocation(5, engineeringPanel.getY()+engineeringPanel.getHeight());
 					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
@@ -5455,9 +5465,9 @@ public class MainWindow {
 			}
 		});
 		chckbxEngineering.setBackground(new Color(5, 191, 255));
-		chckbxEngineering.setBounds(187, 5, 97, 23);
+		chckbxEngineering.setBounds(155, 5, 67, 23);
 		engineeringPanel.add(chckbxEngineering);	
-		JCheckBox chckbxSearch = new JCheckBox("Show specs");
+		JCheckBox chckbxSearch = new JCheckBox("Specs");
 		chckbxSearch.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5480,7 +5490,7 @@ public class MainWindow {
 					int extra = (searchSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					searchPanel.setSize(354, (32+extra));
+					searchPanel.setSize(275, (32+extra));
 					streetwisePanel.setLocation(5, streetwisePanel.getY()+extra);
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
@@ -5567,7 +5577,7 @@ public class MainWindow {
 					searchSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(searchPanel.getHeight()-32)));
-					searchPanel.setSize(354, (32));
+					searchPanel.setSize(275, (32));
 					streetwisePanel.setLocation(5, searchPanel.getY()+searchPanel.getHeight());
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
@@ -5578,9 +5588,9 @@ public class MainWindow {
 			}
 		});
 		chckbxSearch.setBackground(new Color(135, 206, 235));
-		chckbxSearch.setBounds(187, 5, 97, 23);
+		chckbxSearch.setBounds(155, 5, 67, 23);
 		searchPanel.add(chckbxSearch);		
-		JCheckBox chckbxStreetwise = new JCheckBox("Show specs");
+		JCheckBox chckbxStreetwise = new JCheckBox("Specs");
 		chckbxStreetwise.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5603,7 +5613,7 @@ public class MainWindow {
 					int extra = (streetwiseSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					streetwisePanel.setSize(354, (32+extra));
+					streetwisePanel.setSize(275, (32+extra));
 					surveillancePanel.setLocation(5, surveillancePanel.getY()+extra);
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -5689,7 +5699,7 @@ public class MainWindow {
 					streetwiseSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(streetwisePanel.getHeight()-32)));
-					streetwisePanel.setSize(354, (32));
+					streetwisePanel.setSize(275, (32));
 					surveillancePanel.setLocation(5, streetwisePanel.getY()+streetwisePanel.getHeight());
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -5699,10 +5709,10 @@ public class MainWindow {
 			}
 		});
 		chckbxStreetwise.setBackground(new Color(5, 191, 255));
-		chckbxStreetwise.setBounds(187, 5, 97, 23);
+		chckbxStreetwise.setBounds(155, 5, 67, 23);
 		streetwisePanel.add(chckbxStreetwise);		
 		
-		JCheckBox chckbxSurveillance = new JCheckBox("Show specs");
+		JCheckBox chckbxSurveillance = new JCheckBox("Specs");
 		chckbxSurveillance.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5725,7 +5735,7 @@ public class MainWindow {
 					int extra = (surveillanceSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					surveillancePanel.setSize(354, (32+extra));
+					surveillancePanel.setSize(275, (32+extra));
 					survivalPanel.setLocation(5, survivalPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -5810,7 +5820,7 @@ public class MainWindow {
 					surveillanceSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(surveillancePanel.getHeight()-32)));
-					surveillancePanel.setSize(354, (32));
+					surveillancePanel.setSize(275, (32));
 					survivalPanel.setLocation(5, surveillancePanel.getY()+surveillancePanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -5819,9 +5829,9 @@ public class MainWindow {
 			}
 		});
 		chckbxSurveillance.setBackground(new Color(135, 206, 235));
-		chckbxSurveillance.setBounds(187, 5, 97, 23);
+		chckbxSurveillance.setBounds(155, 5, 67, 23);
 		surveillancePanel.add(chckbxSurveillance);		
-		JCheckBox chckbxSurvival = new JCheckBox("Show specs");
+		JCheckBox chckbxSurvival = new JCheckBox("Specs");
 		chckbxSurvival.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5844,7 +5854,7 @@ public class MainWindow {
 					int extra = (survivalSpecsList.size())*28;
 					
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()+extra));
-					survivalPanel.setSize(354, (32+extra));
+					survivalPanel.setSize(275, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
@@ -5928,7 +5938,7 @@ public class MainWindow {
 					survivalSpecsFields.clear();
 							
 					perceptionPanel.setSize(perceptionPanel.getWidth(), (perceptionPanel.getHeight()-(survivalPanel.getHeight()-32)));
-					survivalPanel.setSize(354, (32));
+					survivalPanel.setSize(275, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
@@ -5936,9 +5946,9 @@ public class MainWindow {
 			}
 		});
 		chckbxSurvival.setBackground(new Color(5, 191, 255));
-		chckbxSurvival.setBounds(187, 5, 97, 23);
+		chckbxSurvival.setBounds(155, 5, 67, 23);
 		survivalPanel.add(chckbxSurvival);		
-		JCheckBox chckbxBluff = new JCheckBox("Show specs");
+		JCheckBox chckbxBluff = new JCheckBox("Specs");
 		chckbxBluff.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -5962,7 +5972,7 @@ public class MainWindow {
 					int extra = (bluffSpecsList.size())*28;
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
-					bluffPanel.setSize(354, (32+extra));
+					bluffPanel.setSize(275, (32+extra));
 					charmPanel.setLocation(5, charmPanel.getY()+extra);
 					intimidationPanel.setLocation(5, intimidationPanel.getY()+extra);
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
@@ -6050,7 +6060,7 @@ public class MainWindow {
 					bluffSpecsFields.clear();
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(bluffPanel.getHeight()-32)));
-					bluffPanel.setSize(354, (32));
+					bluffPanel.setSize(275, (32));
 					charmPanel.setLocation(5, bluffPanel.getY()+32);
 					intimidationPanel.setLocation(5, charmPanel.getY()+charmPanel.getHeight());
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
@@ -6061,10 +6071,10 @@ public class MainWindow {
 				}
 			}
 		});
-		chckbxBluff.setBackground(new Color(221, 160, 221));
-		chckbxBluff.setBounds(187, 5, 97, 23);
+		chckbxBluff.setBackground(new Color(221, 155, 221));
+		chckbxBluff.setBounds(155, 5, 67, 23);
 		bluffPanel.add(chckbxBluff);	
-		JCheckBox chckbxCharm = new JCheckBox("Show specs");
+		JCheckBox chckbxCharm = new JCheckBox("Specs");
 		chckbxCharm.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -6088,7 +6098,7 @@ public class MainWindow {
 					int extra = (charmSpecsList.size())*28;
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
-					charmPanel.setSize(354, (32+extra));
+					charmPanel.setSize(275, (32+extra));
 					intimidationPanel.setLocation(5, intimidationPanel.getY()+extra);
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
@@ -6175,7 +6185,7 @@ public class MainWindow {
 					charmSpecsFields.clear();
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(charmPanel.getHeight()-32)));
-					charmPanel.setSize(354, (32));
+					charmPanel.setSize(275, (32));
 					intimidationPanel.setLocation(5, charmPanel.getY()+charmPanel.getHeight());
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
@@ -6186,9 +6196,9 @@ public class MainWindow {
 			}
 		});
 		chckbxCharm.setBackground(new Color(218, 112, 214));
-		chckbxCharm.setBounds(187, 5, 97, 23);
+		chckbxCharm.setBounds(155, 5, 67, 23);
 		charmPanel.add(chckbxCharm);		
-		JCheckBox chckbxIntimidation = new JCheckBox("Show specs");
+		JCheckBox chckbxIntimidation = new JCheckBox("Specs");
 		chckbxIntimidation.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -6212,7 +6222,7 @@ public class MainWindow {
 					int extra = (intimidationSpecsList.size())*28;
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
-					intimidationPanel.setSize(354, (32+extra));
+					intimidationPanel.setSize(275, (32+extra));
 					persuasionPanel.setLocation(5, persuasionPanel.getY()+extra);
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -6298,7 +6308,7 @@ public class MainWindow {
 					intimidationSpecsFields.clear();
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(intimidationPanel.getHeight()-32)));
-					intimidationPanel.setSize(354, (32));
+					intimidationPanel.setSize(275, (32));
 					persuasionPanel.setLocation(5, intimidationPanel.getY()+intimidationPanel.getHeight());
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
@@ -6307,11 +6317,11 @@ public class MainWindow {
 				}
 			}
 		});
-		chckbxIntimidation.setBackground(new Color(221, 160, 221));
-		chckbxIntimidation.setBounds(187, 5, 97, 23);
+		chckbxIntimidation.setBackground(new Color(221, 155, 221));
+		chckbxIntimidation.setBounds(155, 5, 67, 23);
 		intimidationPanel.add(chckbxIntimidation);	
 		
-		JCheckBox chckbxPersuasion = new JCheckBox("Show specs");
+		JCheckBox chckbxPersuasion = new JCheckBox("Specs");
 		chckbxPersuasion.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -6335,7 +6345,7 @@ public class MainWindow {
 					int extra = (persuasionSpecsList.size())*28;
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
-					persuasionPanel.setSize(354, (32+extra));
+					persuasionPanel.setSize(275, (32+extra));
 					willpowerPanel.setLocation(5, willpowerPanel.getY()+extra);
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -6420,7 +6430,7 @@ public class MainWindow {
 					persuasionSpecsFields.clear();
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(persuasionPanel.getHeight()-32)));
-					persuasionPanel.setSize(354, (32));
+					persuasionPanel.setSize(275, (32));
 					willpowerPanel.setLocation(5, persuasionPanel.getY()+persuasionPanel.getHeight());
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
@@ -6429,9 +6439,9 @@ public class MainWindow {
 			}
 		});
 		chckbxPersuasion.setBackground(new Color(218, 112, 214));
-		chckbxPersuasion.setBounds(187, 5, 97, 23);
+		chckbxPersuasion.setBounds(155, 5, 67, 23);
 		persuasionPanel.add(chckbxPersuasion);		
-		JCheckBox chckbxWillpower = new JCheckBox("Show specs");
+		JCheckBox chckbxWillpower = new JCheckBox("Specs");
 		chckbxWillpower.addItemListener(new ItemListener() 
 		{
 			int blankId; boolean addBlank = false;
@@ -6455,7 +6465,7 @@ public class MainWindow {
 					int extra = (willpowerSpecsList.size())*28;
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()+extra));
-					willpowerPanel.setSize(354, (32+extra));
+					willpowerPanel.setSize(275, (32+extra));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
@@ -6539,15 +6549,15 @@ public class MainWindow {
 					willpowerSpecsFields.clear();
 					
 					presencePanel.setSize(presencePanel.getWidth(), (presencePanel.getHeight()-(willpowerPanel.getHeight()-32)));
-					willpowerPanel.setSize(354, (32));
+					willpowerPanel.setSize(275, (32));
 					mentalStatsPanel.setSize(mentalStatsPanel.getWidth(), setPanelSize(knowledgePanel.getHeight(), perceptionPanel.getHeight(), presencePanel.getHeight()));
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
 			}
 		});
-		chckbxWillpower.setBackground(new Color(221, 160, 221));
-		chckbxWillpower.setBounds(187, 5, 97, 23);
+		chckbxWillpower.setBackground(new Color(221, 155, 221));
+		chckbxWillpower.setBounds(155, 5, 67, 23);
 		willpowerPanel.add(chckbxWillpower);
 		
 		knowledgeLevel.setNextFocusableComponent(arcaneLoreLevel);

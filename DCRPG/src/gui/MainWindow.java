@@ -1389,8 +1389,8 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);	
-					advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());	
+					advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -1401,7 +1401,7 @@ public class MainWindow {
 						JFormattedTextField acroSpecs = acroSpecsFields.get(i);
 						acroSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						acroSpecs.setBackground(new Color(255, 204, 204));
-						acroSpecs.setBounds(5, 33+(i*28), 279, 22);
+						acroSpecs.setBounds(5, 33+(i*28), 267, 22);
 						acroPanel.add(acroSpecs);
 						acroSpecs.setText(acroSpecsList.get(i).getDescription());
 						acroSpecs.requestFocus();	
@@ -1479,7 +1479,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -1518,7 +1518,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
@@ -1529,7 +1529,7 @@ public class MainWindow {
 						JFormattedTextField dodgeSpecs = dodgeSpecsFields.get(i);
 						dodgeSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						dodgeSpecs.setBackground(new Color(255, 204, 204));
-						dodgeSpecs.setBounds(5, 33+(i*28), 279, 22);
+						dodgeSpecs.setBounds(5, 33+(i*28), 267, 22);
 						dodgePanel.add(dodgeSpecs);
 						dodgeSpecs.setText(dodgeSpecsList.get(i).getDescription());
 						dodgeSpecs.requestFocus();	
@@ -1605,7 +1605,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -1642,7 +1642,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, meleeWeaponsPanel.getY()+extra);
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
@@ -1653,7 +1653,7 @@ public class MainWindow {
 						JFormattedTextField handToHandSpecs = handToHandSpecsFields.get(i);
 						handToHandSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						handToHandSpecs.setBackground(new Color(255, 204, 204));
-						handToHandSpecs.setBounds(5, 33+(i*28), 279, 22);
+						handToHandSpecs.setBounds(5, 33+(i*28), 267, 22);
 						handToHandPanel.add(handToHandSpecs);
 						handToHandSpecs.setText(handToHandSpecsList.get(i).getDescription());
 						handToHandSpecs.requestFocus();	
@@ -1728,7 +1728,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setLocation(5, handToHandPanel.getY()+handToHandPanel.getHeight());
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -1764,7 +1764,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setSize(275, (32+extra));
 					stealthPanel.setLocation(5, stealthPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 
@@ -1775,7 +1775,7 @@ public class MainWindow {
 						JFormattedTextField meleeWeaponsSpecs = meleeWeaponsSpecsFields.get(i);
 						meleeWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						meleeWeaponsSpecs.setBackground(new Color(255, 204, 204));
-						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						meleeWeaponsSpecs.setBounds(5, 33+(i*28), 267, 22);
 						meleeWeaponsPanel.add(meleeWeaponsSpecs);
 						meleeWeaponsSpecs.setText(meleeWeaponsSpecsList.get(i).getDescription());
 						meleeWeaponsSpecs.requestFocus();	
@@ -1849,7 +1849,7 @@ public class MainWindow {
 					meleeWeaponsPanel.setSize(275, (32));
 					stealthPanel.setLocation(5, meleeWeaponsPanel.getY()+meleeWeaponsPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -1884,7 +1884,7 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()+extra));
 					stealthPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -1895,7 +1895,7 @@ public class MainWindow {
 						JFormattedTextField stealthSpecs = stealthSpecsFields.get(i);
 						stealthSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						stealthSpecs.setBackground(new Color(255, 204, 204));
-						stealthSpecs.setBounds(5, 33+(i*28), 279, 22);
+						stealthSpecs.setBounds(5, 33+(i*28), 267, 22);
 						stealthPanel.add(stealthSpecs);
 						stealthSpecs.setText(stealthSpecsList.get(i).getDescription());
 						stealthSpecs.requestFocus();	
@@ -1966,7 +1966,7 @@ public class MainWindow {
 					reflexesPanel.setSize(reflexesPanel.getWidth(), (reflexesPanel.getHeight()-(stealthPanel.getHeight()-32)));
 					stealthPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2005,7 +2005,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2016,7 +2016,7 @@ public class MainWindow {
 						JFormattedTextField catchSpecs = catchSpecsFields.get(i);
 						catchSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						catchSpecs.setBackground(new Color(255, 235, 209));
-						catchSpecs.setBounds(5, 33+(i*28), 279, 22);
+						catchSpecs.setBounds(5, 33+(i*28), 267, 22);
 						catchPanel.add(catchSpecs);
 						catchSpecs.setText(catchSpecsList.get(i).getDescription());
 						catchSpecs.requestFocus();	
@@ -2095,7 +2095,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2133,7 +2133,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2144,7 +2144,7 @@ public class MainWindow {
 						JFormattedTextField climbingSpecs = climbingSpecsFields.get(i);
 						climbingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						climbingSpecs.setBackground(new Color(255, 235, 209));
-						climbingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						climbingSpecs.setBounds(5, 33+(i*28), 267, 22);
 						climbingPanel.add(climbingSpecs);
 						climbingSpecs.setText(climbingSpecsList.get(i).getDescription());
 						climbingSpecs.requestFocus();	
@@ -2222,7 +2222,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2259,7 +2259,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2270,7 +2270,7 @@ public class MainWindow {
 						JFormattedTextField drivingSpecs = drivingSpecsFields.get(i);
 						drivingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						drivingSpecs.setBackground(new Color(255, 235, 209));
-						drivingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						drivingSpecs.setBounds(5, 33+(i*28), 267, 22);
 						drivingPanel.add(drivingSpecs);
 						drivingSpecs.setText(drivingSpecsList.get(i).getDescription());
 						drivingSpecs.requestFocus();	
@@ -2347,7 +2347,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2383,7 +2383,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, thieveryPanel.getY()+extra);
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2394,7 +2394,7 @@ public class MainWindow {
 						JFormattedTextField marksmanshipSpecs = marksmanshipSpecsFields.get(i);
 						marksmanshipSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						marksmanshipSpecs.setBackground(new Color(255, 235, 209));
-						marksmanshipSpecs.setBounds(5, 33+(i*28), 279, 22);
+						marksmanshipSpecs.setBounds(5, 33+(i*28), 267, 22);
 						marksmanshipPanel.add(marksmanshipSpecs);
 						marksmanshipSpecs.setText(marksmanshipSpecsList.get(i).getDescription());
 						marksmanshipSpecs.requestFocus();	
@@ -2470,7 +2470,7 @@ public class MainWindow {
 					thieveryPanel.setLocation(5, marksmanshipPanel.getY()+marksmanshipPanel.getHeight());
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2505,7 +2505,7 @@ public class MainWindow {
 					thieveryPanel.setSize(275, (32+extra));
 					thrownWeaponsPanel.setLocation(5, thrownWeaponsPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2516,7 +2516,7 @@ public class MainWindow {
 						JFormattedTextField thieverySpecs = thieverySpecsFields.get(i);
 						thieverySpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						thieverySpecs.setBackground(new Color(255, 235, 209));
-						thieverySpecs.setBounds(5, 33+(i*28), 279, 22);
+						thieverySpecs.setBounds(5, 33+(i*28), 267, 22);
 						thieveryPanel.add(thieverySpecs);
 						thieverySpecs.setText(thieverySpecsList.get(i).getDescription());
 						thieverySpecs.requestFocus();	
@@ -2591,7 +2591,7 @@ public class MainWindow {
 					thieveryPanel.setSize(275, (32));
 					thrownWeaponsPanel.setLocation(5, thieveryPanel.getY()+thieveryPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2625,7 +2625,7 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()+extra));
 					thrownWeaponsPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2636,7 +2636,7 @@ public class MainWindow {
 						JFormattedTextField thrownWeaponsSpecs = thrownWeaponsSpecsFields.get(i);
 						thrownWeaponsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						thrownWeaponsSpecs.setBackground(new Color(255, 235, 209));
-						thrownWeaponsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						thrownWeaponsSpecs.setBounds(5, 33+(i*28), 267, 22);
 						thrownWeaponsPanel.add(thrownWeaponsSpecs);
 						thrownWeaponsSpecs.setText(thrownWeaponsSpecsList.get(i).getDescription());
 						thrownWeaponsSpecs.requestFocus();	
@@ -2710,7 +2710,7 @@ public class MainWindow {
 					coordinationPanel.setSize(coordinationPanel.getWidth(), (coordinationPanel.getHeight()-(thrownWeaponsPanel.getHeight()-32)));
 					thrownWeaponsPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2749,7 +2749,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2760,7 +2760,7 @@ public class MainWindow {
 						JFormattedTextField athleticsSpecs = athleticsSpecsFields.get(i);
 						athleticsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						athleticsSpecs.setBackground(new Color(255, 255, 204));
-						athleticsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						athleticsSpecs.setBounds(5, 33+(i*28), 267, 22);
 						athleticsPanel.add(athleticsSpecs);
 						athleticsSpecs.setText(athleticsSpecsList.get(i).getDescription());
 						athleticsSpecs.requestFocus();	
@@ -2839,7 +2839,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -2877,7 +2877,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -2888,7 +2888,7 @@ public class MainWindow {
 						JFormattedTextField leapSpecs = leapSpecsFields.get(i);
 						leapSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						leapSpecs.setBackground(new Color(255, 255, 204));
-						leapSpecs.setBounds(5, 33+(i*28), 279, 22);
+						leapSpecs.setBounds(5, 33+(i*28), 267, 22);
 						leapPanel.add(leapSpecs);
 						leapSpecs.setText(leapSpecsList.get(i).getDescription());
 						leapSpecs.requestFocus();	
@@ -2966,7 +2966,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -3003,7 +3003,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -3014,7 +3014,7 @@ public class MainWindow {
 						JFormattedTextField liftingSpecs = liftingSpecsFields.get(i);
 						liftingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						liftingSpecs.setBackground(new Color(255, 255, 204));
-						liftingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						liftingSpecs.setBounds(5, 33+(i*28), 267, 22);
 						liftingPanel.add(liftingSpecs);
 						liftingSpecs.setText(liftingSpecsList.get(i).getDescription());
 						liftingSpecs.requestFocus();	
@@ -3091,7 +3091,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -3127,7 +3127,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, runningPanel.getY()+extra);
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -3138,7 +3138,7 @@ public class MainWindow {
 						JFormattedTextField resistanceSpecs = resistanceSpecsFields.get(i);
 						resistanceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						resistanceSpecs.setBackground(new Color(255, 255, 204));
-						resistanceSpecs.setBounds(5, 33+(i*28), 279, 22);
+						resistanceSpecs.setBounds(5, 33+(i*28), 267, 22);
 						resistancePanel.add(resistanceSpecs);
 						resistanceSpecs.setText(resistanceSpecsList.get(i).getDescription());
 						resistanceSpecs.requestFocus();	
@@ -3214,7 +3214,7 @@ public class MainWindow {
 					runningPanel.setLocation(5, resistancePanel.getY()+resistancePanel.getHeight());
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -3249,7 +3249,7 @@ public class MainWindow {
 					runningPanel.setSize(275, (32+extra));
 					swimmingPanel.setLocation(5, swimmingPanel.getY()+extra);
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -3260,7 +3260,7 @@ public class MainWindow {
 						JFormattedTextField runningSpecs = runningSpecsFields.get(i);
 						runningSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						runningSpecs.setBackground(new Color(255, 255, 204));
-						runningSpecs.setBounds(5, 33+(i*28), 279, 22);
+						runningSpecs.setBounds(5, 33+(i*28), 267, 22);
 						runningPanel.add(runningSpecs);
 						runningSpecs.setText(runningSpecsList.get(i).getDescription());
 						runningSpecs.requestFocus();	
@@ -3335,7 +3335,7 @@ public class MainWindow {
 					runningPanel.setSize(275, (32));
 					swimmingPanel.setLocation(5, runningPanel.getY()+runningPanel.getHeight());
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -3369,7 +3369,7 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()+extra));
 					swimmingPanel.setSize(275, (32+extra));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 					
@@ -3380,7 +3380,7 @@ public class MainWindow {
 						JFormattedTextField swimmingSpecs = swimmingSpecsFields.get(i);
 						swimmingSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						swimmingSpecs.setBackground(new Color(255, 255, 204));
-						swimmingSpecs.setBounds(5, 33+(i*28), 279, 22);
+						swimmingSpecs.setBounds(5, 33+(i*28), 267, 22);
 						swimmingPanel.add(swimmingSpecs);
 						swimmingSpecs.setText(swimmingSpecsList.get(i).getDescription());
 						swimmingSpecs.requestFocus();	
@@ -3454,7 +3454,7 @@ public class MainWindow {
 					physiquePanel.setSize(physiquePanel.getWidth(), (physiquePanel.getHeight()-(swimmingPanel.getHeight()-32)));
 					swimmingPanel.setSize(275, (32));
 					physStatsPanel.setSize(physStatsPanel.getWidth(), setPanelSize(reflexesPanel.getHeight(), coordinationPanel.getHeight(), physiquePanel.getHeight()));
-					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight()+16);
+					mentalStatsPanel.setLocation(mentalStatsPanel.getX(), physStatsPanel.getY()+physStatsPanel.getHeight());
 					panel.setPreferredSize(new Dimension(1884, notesScroll.getY()+notesScroll.getHeight()+30));
 					dcrpgFrame.revalidate();
 				}
@@ -3495,7 +3495,7 @@ public class MainWindow {
 		mentalStatsPanel.setLayout(null);
 		
 		advPowerPanel = new JPanel();
-		advPowerPanel.setBounds(35, mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16, 1152, 300);
+		advPowerPanel.setBounds(0, mentalStatsPanel.getY()+mentalStatsPanel.getHeight(), 851, 300);
 		panel.add(advPowerPanel);
 		advPowerPanel.setBackground(new Color(192, 192, 192));
 		advPowerPanel.setLayout(null);
@@ -4389,7 +4389,7 @@ public class MainWindow {
 						JFormattedTextField arcaneLoreSpecs = arcaneLoreSpecsFields.get(i);
 						arcaneLoreSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						arcaneLoreSpecs.setBackground(new Color(240, 255, 240));
-						arcaneLoreSpecs.setBounds(5, 33+(i*28), 279, 22);
+						arcaneLoreSpecs.setBounds(5, 33+(i*28), 267, 22);
 						arcaneLorePanel.add(arcaneLoreSpecs);
 						arcaneLoreSpecs.setText(arcaneLoreSpecsList.get(i).getDescription());
 						arcaneLoreSpecs.requestFocus();	
@@ -4518,7 +4518,7 @@ public class MainWindow {
 						JFormattedTextField demolitionsSpecs = demolitionsSpecsFields.get(i);
 						demolitionsSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						demolitionsSpecs.setBackground(new Color(240, 255, 240));
-						demolitionsSpecs.setBounds(5, 33+(i*28), 279, 22);
+						demolitionsSpecs.setBounds(5, 33+(i*28), 267, 22);
 						demolitionsPanel.add(demolitionsSpecs);
 						demolitionsSpecs.setText(demolitionsSpecsList.get(i).getDescription());
 						demolitionsSpecs.requestFocus();	
@@ -4645,7 +4645,7 @@ public class MainWindow {
 						JFormattedTextField languagesSpecs = languagesSpecsFields.get(i);
 						languagesSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						languagesSpecs.setBackground(new Color(240, 255, 240));
-						languagesSpecs.setBounds(5, 33+(i*28), 279, 22);
+						languagesSpecs.setBounds(5, 33+(i*28), 267, 22);
 						languagesPanel.add(languagesSpecs);
 						languagesSpecs.setText(languagesSpecsList.get(i).getDescription());
 						languagesSpecs.requestFocus();	
@@ -4770,7 +4770,7 @@ public class MainWindow {
 						JFormattedTextField medicineSpecs = medicineSpecsFields.get(i);
 						medicineSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						medicineSpecs.setBackground(new Color(240, 255, 240));
-						medicineSpecs.setBounds(5, 33+(i*28), 279, 22);
+						medicineSpecs.setBounds(5, 33+(i*28), 267, 22);
 						medicinePanel.add(medicineSpecs);
 						medicineSpecs.setText(medicineSpecsList.get(i).getDescription());
 						medicineSpecs.requestFocus();	
@@ -4893,7 +4893,7 @@ public class MainWindow {
 						JFormattedTextField scholarSpecs = scholarSpecsFields.get(i);
 						scholarSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						scholarSpecs.setBackground(new Color(240, 255, 240));
-						scholarSpecs.setBounds(5, 33+(i*28), 279, 22);
+						scholarSpecs.setBounds(5, 33+(i*28), 267, 22);
 						scholarPanel.add(scholarSpecs);
 						scholarSpecs.setText(scholarSpecsList.get(i).getDescription());
 						scholarSpecs.requestFocus();	
@@ -5014,7 +5014,7 @@ public class MainWindow {
 						JFormattedTextField scienceSpecs = scienceSpecsFields.get(i);
 						scienceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						scienceSpecs.setBackground(new Color(240, 255, 240));
-						scienceSpecs.setBounds(5, 33+(i*28), 279, 22);
+						scienceSpecs.setBounds(5, 33+(i*28), 267, 22);
 						sciencePanel.add(scienceSpecs);
 						scienceSpecs.setText(scienceSpecsList.get(i).getDescription());
 						scienceSpecs.requestFocus();	
@@ -5133,7 +5133,7 @@ public class MainWindow {
 						JFormattedTextField securitySpecs = securitySpecsFields.get(i);
 						securitySpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						securitySpecs.setBackground(new Color(240, 255, 240));
-						securitySpecs.setBounds(5, 33+(i*28), 279, 22);
+						securitySpecs.setBounds(5, 33+(i*28), 267, 22);
 						securityPanel.add(securitySpecs);
 						securitySpecs.setText(securitySpecsList.get(i).getDescription());
 						securitySpecs.requestFocus();	
@@ -5255,7 +5255,7 @@ public class MainWindow {
 						JFormattedTextField artistSpecs = artistSpecsFields.get(i);
 						artistSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						artistSpecs.setBackground(new Color(224, 255, 255));
-						artistSpecs.setBounds(5, 33+(i*28), 279, 22);
+						artistSpecs.setBounds(5, 33+(i*28), 267, 22);
 						artistPanel.add(artistSpecs);
 						artistSpecs.setText(artistSpecsList.get(i).getDescription());
 						artistSpecs.requestFocus();	
@@ -5381,7 +5381,7 @@ public class MainWindow {
 						JFormattedTextField engineeringSpecs = engineeringSpecsFields.get(i);
 						engineeringSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						engineeringSpecs.setBackground(new Color(224, 255, 255));
-						engineeringSpecs.setBounds(5, 33+(i*28), 279, 22);
+						engineeringSpecs.setBounds(5, 33+(i*28), 267, 22);
 						engineeringPanel.add(engineeringSpecs);
 						engineeringSpecs.setText(engineeringSpecsList.get(i).getDescription());
 						engineeringSpecs.requestFocus();	
@@ -5505,7 +5505,7 @@ public class MainWindow {
 						JFormattedTextField searchSpecs = searchSpecsFields.get(i);
 						searchSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						searchSpecs.setBackground(new Color(224, 255, 255));
-						searchSpecs.setBounds(5, 33+(i*28), 279, 22);
+						searchSpecs.setBounds(5, 33+(i*28), 267, 22);
 						searchPanel.add(searchSpecs);
 						searchSpecs.setText(searchSpecsList.get(i).getDescription());
 						searchSpecs.requestFocus();	
@@ -5627,7 +5627,7 @@ public class MainWindow {
 						JFormattedTextField streetwiseSpecs = streetwiseSpecsFields.get(i);
 						streetwiseSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						streetwiseSpecs.setBackground(new Color(224, 255, 255));
-						streetwiseSpecs.setBounds(5, 33+(i*28), 279, 22);
+						streetwiseSpecs.setBounds(5, 33+(i*28), 267, 22);
 						streetwisePanel.add(streetwiseSpecs);
 						streetwiseSpecs.setText(streetwiseSpecsList.get(i).getDescription());
 						streetwiseSpecs.requestFocus();	
@@ -5748,7 +5748,7 @@ public class MainWindow {
 						JFormattedTextField surveillanceSpecs = surveillanceSpecsFields.get(i);
 						surveillanceSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						surveillanceSpecs.setBackground(new Color(224, 255, 255));
-						surveillanceSpecs.setBounds(5, 33+(i*28), 279, 22);
+						surveillanceSpecs.setBounds(5, 33+(i*28), 267, 22);
 						surveillancePanel.add(surveillanceSpecs);
 						surveillanceSpecs.setText(surveillanceSpecsList.get(i).getDescription());
 						surveillanceSpecs.requestFocus();	
@@ -5866,7 +5866,7 @@ public class MainWindow {
 						JFormattedTextField survivalSpecs = survivalSpecsFields.get(i);
 						survivalSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						survivalSpecs.setBackground(new Color(224, 255, 255));
-						survivalSpecs.setBounds(5, 33+(i*28), 279, 22);
+						survivalSpecs.setBounds(5, 33+(i*28), 267, 22);
 						survivalPanel.add(survivalSpecs);
 						survivalSpecs.setText(survivalSpecsList.get(i).getDescription());
 						survivalSpecs.requestFocus();	
@@ -5988,7 +5988,7 @@ public class MainWindow {
 						JFormattedTextField bluffSpecs = bluffSpecsFields.get(i);
 						bluffSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						bluffSpecs.setBackground(new Color(230, 230, 250));
-						bluffSpecs.setBounds(5, 33+(i*28), 279, 22);
+						bluffSpecs.setBounds(5, 33+(i*28), 267, 22);
 						bluffPanel.add(bluffSpecs);
 						bluffSpecs.setText(bluffSpecsList.get(i).getDescription());
 						bluffSpecs.requestFocus();	
@@ -6113,7 +6113,7 @@ public class MainWindow {
 						JFormattedTextField charmSpecs = charmSpecsFields.get(i);
 						charmSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						charmSpecs.setBackground(new Color(230, 230, 250));
-						charmSpecs.setBounds(5, 33+(i*28), 279, 22);
+						charmSpecs.setBounds(5, 33+(i*28), 267, 22);
 						charmPanel.add(charmSpecs);
 						charmSpecs.setText(charmSpecsList.get(i).getDescription());
 						charmSpecs.requestFocus();	
@@ -6236,7 +6236,7 @@ public class MainWindow {
 						JFormattedTextField intimidationSpecs = intimidationSpecsFields.get(i);
 						intimidationSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						intimidationSpecs.setBackground(new Color(230, 230, 250));
-						intimidationSpecs.setBounds(5, 33+(i*28), 279, 22);
+						intimidationSpecs.setBounds(5, 33+(i*28), 267, 22);
 						intimidationPanel.add(intimidationSpecs);
 						intimidationSpecs.setText(intimidationSpecsList.get(i).getDescription());
 						intimidationSpecs.requestFocus();	
@@ -6358,7 +6358,7 @@ public class MainWindow {
 						JFormattedTextField persuasionSpecs = persuasionSpecsFields.get(i);
 						persuasionSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						persuasionSpecs.setBackground(new Color(230, 230, 250));
-						persuasionSpecs.setBounds(5, 33+(i*28), 279, 22);
+						persuasionSpecs.setBounds(5, 33+(i*28), 267, 22);
 						persuasionPanel.add(persuasionSpecs);
 						persuasionSpecs.setText(persuasionSpecsList.get(i).getDescription());
 						persuasionSpecs.requestFocus();	
@@ -6477,7 +6477,7 @@ public class MainWindow {
 						JFormattedTextField willpowerSpecs = willpowerSpecsFields.get(i);
 						willpowerSpecs.setFont(new Font("Verdana", Font.PLAIN, 13));
 						willpowerSpecs.setBackground(new Color(230, 230, 250));
-						willpowerSpecs.setBounds(5, 33+(i*28), 279, 22);
+						willpowerSpecs.setBounds(5, 33+(i*28), 267, 22);
 						willpowerPanel.add(willpowerSpecs);
 						willpowerSpecs.setText(willpowerSpecsList.get(i).getDescription());
 						willpowerSpecs.requestFocus();	
@@ -6604,7 +6604,7 @@ public class MainWindow {
 	    advantagePanel = new AdvantagePanel(0, 0, currentSheet, advs, disadvs);
 	    advPowerPanel.add(advantagePanel);
 		
-		powerPanel = new PowerPanel(advantagePanel.getX()+advantagePanel.getWidth()+30, 0, currentSheet, powers);
+		powerPanel = new PowerPanel(advantagePanel.getX()+advantagePanel.getWidth(), 0, currentSheet, powers);
 		powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
 		advPowerPanel.add(powerPanel);
 		
@@ -6617,8 +6617,8 @@ public class MainWindow {
 		notesPanel.setAutoscrolls(true);
 		notesPanel.setLineWrap(true);
 		notesScroll = new JScrollPane (notesPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		notesScroll.setBorder(new LineBorder(Color.black, 5));
-		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+		notesScroll.setBorder(new LineBorder(Color.black, 2));
+		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 		notesPanel.setBounds(0, 0, notesScroll.getWidth(), notesScroll.getHeight());
 
 		panel.add(notesScroll);
@@ -6680,12 +6680,12 @@ public class MainWindow {
 		});
 	    
 		EquipmentPanel ePane = new EquipmentPanel();
-		ePane.setBounds(imgLabel.getX(), imgLabel.getY()+imgLabel.getHeight()+16, imgLabel.getWidth(), 30);
+		ePane.setBounds(imgLabel.getX(), imgLabel.getY()+imgLabel.getHeight(), imgLabel.getWidth(), 30);
 		panel.add(ePane);
 		
 		weapon = new Item("Weapon", 296, 382);
 		weapon.set(items, 0);
-		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
+		weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight());
 		weapon.setDisabled();
 		panel.add(weapon);
 		
@@ -7032,7 +7032,7 @@ public class MainWindow {
 							stab.setNewCharacter(currentSheet);
 							ePane.setNewCharacter(currentSheet);
 							weapon.set(items, currentSheet.getInv().getWeapon());
-							weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
+							weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight());
 
 							
 							nameField.setText(currentSheet.getName());					
@@ -7229,11 +7229,11 @@ public class MainWindow {
 							disadvs = advantagePanel.saveDisadvs();
 							powers = powerPanel.savePwrs();
 							advantagePanel.setNewCharacter(0, 0, currentSheet, advs, disadvs);
-							powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth()+30, 0, currentSheet, powers);
+							powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth(), 0, currentSheet, powers);
 							int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 							advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 							powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-							notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+							notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 							panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 							
 							isNew = false;
@@ -7263,14 +7263,14 @@ public class MainWindow {
 		{
 	        public void componentResized(ComponentEvent e) 
 	        {
-	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
-	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight());
+	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 	        	panel.setSize(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()+30);
 	        }
 	        public void componentMoved(ComponentEvent e)
 	        {
-	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight()+16);
-	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+	        	advPowerPanel.setLocation(advPowerPanel.getX(), mentalStatsPanel.getY()+mentalStatsPanel.getHeight());
+	    		notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 	        	panel.setSize(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()+30);
 	        }
 		}
@@ -7341,7 +7341,7 @@ public class MainWindow {
 				stab.setNewCharacter(currentSheet);
 				ePane.setNewCharacter(currentSheet);
 				weapon.set(items, currentSheet.getInv().getWeapon());
-				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight());
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -7447,11 +7447,11 @@ public class MainWindow {
 				disadvs = advantagePanel.saveDisadvs();
 				powers = powerPanel.savePwrs();
 				advantagePanel.setNewCharacter(0, 0, currentSheet, advs, disadvs);
-				powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth()+30, 0, currentSheet, powers);
+				powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth(), 0, currentSheet, powers);
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 				panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 
 				isNew = true;
@@ -7648,7 +7648,7 @@ public class MainWindow {
 				stab.setNewCharacter(currentSheet);
 				ePane.setNewCharacter(currentSheet);
 				weapon.set(items, currentSheet.getInv().getWeapon());
-				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight()+16);
+				weapon.setLocation(ePane.getX(), ePane.getY()+ePane.getHeight());
 				udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 				bodyPointsField.setText(currentSheet.getBodyPointsCurrent() + "/" + currentSheet.getBodyPointsMax());
 				speedField.setValue(currentSheet.getSpeed());
@@ -7739,11 +7739,11 @@ public class MainWindow {
 				disadvs = advantagePanel.saveDisadvs();
 				powers = powerPanel.savePwrs();
 				advantagePanel.setNewCharacter(0, 0, currentSheet, advs, disadvs);
-				powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth()+30, 0, currentSheet, powers);
+				powerPanel.setNewCharacter(advantagePanel.getX()+advantagePanel.getWidth(), 0, currentSheet, powers);
 				int apPanelHeight = advantagePanel.getHeight() >= powerPanel.getHeight() ? advantagePanel.getHeight() : powerPanel.getHeight();
 				advPowerPanel.setSize(advPowerPanel.getWidth(), apPanelHeight);
 				powerPanel.setSize(advPowerPanel.getWidth()-powerPanel.getX(), powerPanel.getHeight());
-				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight()+16, advPowerPanel.getWidth(), 200);
+				notesScroll.setBounds(advPowerPanel.getX(), advPowerPanel.getY()+advPowerPanel.getHeight(), advPowerPanel.getWidth(), 200);
 				panel.setPreferredSize(new Dimension(panel.getWidth(), notesScroll.getY()+notesScroll.getHeight()));
 				
 				isNew = true;
@@ -7849,7 +7849,7 @@ public class MainWindow {
 	
 	public void resize(JPanel pane, JPanel advPow, JScrollPane notes)
 	{
-		notes.setLocation(notes.getX(), advPow.getY()+advPow.getHeight()+16);
+		notes.setLocation(notes.getX(), advPow.getY()+advPow.getHeight());
 		pane.setPreferredSize(new Dimension(pane.getWidth(), notes.getY()+notes.getHeight()+30));
 	}
 	

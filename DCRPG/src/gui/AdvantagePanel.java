@@ -94,7 +94,7 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel advPanel = new JPanel();
 		advPanel.setBackground(new Color(255, 99, 71));
-		advPanel.setBounds(5, 5, 649, 20);
+		advPanel.setBounds(2, 2, 496, 20);
 		add(advPanel);
 		advPanel.setLayout(null);
 		
@@ -121,7 +121,7 @@ public class AdvantagePanel extends JPanel
 		
 		JPanel disadvPanel = new JPanel();
 		disadvPanel.setBackground(new Color(32, 178, 170));
-		disadvPanel.setBounds(5, 5+advPanel.getY()+advPanel.getHeight(), 649, 20);
+		disadvPanel.setBounds(2, 2+advPanel.getY()+advPanel.getHeight(), 500, 20);
 		add(disadvPanel);
 		disadvPanel.setLayout(null);
 		
@@ -163,10 +163,10 @@ public class AdvantagePanel extends JPanel
 			csaLabel.setHorizontalAlignment(SwingConstants.LEFT);
 			csaLabel.setVerticalAlignment(SwingConstants.TOP);
 			
-			csaLabel.setBounds(25, advLocation, 500, 0);
+			csaLabel.setBounds(25, advLocation, 466, 0);
 			for(int j = 0; j < csaStr.length()-20; j+=98)
 			{
-				csaLabel.setSize(500, csaLabel.getHeight()+20);
+				csaLabel.setSize(466, csaLabel.getHeight()+20);
 			}
 			advPanel.add(csaLabel);
 			
@@ -192,7 +192,7 @@ public class AdvantagePanel extends JPanel
 		}
 		if(advs.size()==0)
 			advLocation+=20;
-		advPanel.setBounds(5, 5, 649, advLocation+5);
+		advPanel.setBounds(2, 2, 496, advLocation+5);
 
 		
 		int disadvLocation = 25;
@@ -213,10 +213,10 @@ public class AdvantagePanel extends JPanel
 			csdLabel.setVerticalAlignment(SwingConstants.TOP);
 
 			
-			csdLabel.setBounds(128, disadvLocation, 500, 0);
+			csdLabel.setBounds(25, disadvLocation, 466, 0);
 			for(int j = 0; j < csdStr.length(); j+=98)
 			{
-				csdLabel.setSize(500, csdLabel.getHeight()+20);
+				csdLabel.setSize(466, csdLabel.getHeight()+20);
 			}
 			if(csdStr.length() < 110)
 				csdLabel.setSize(500, 30);
@@ -244,9 +244,9 @@ public class AdvantagePanel extends JPanel
 		}
 		if(disadvs.size()==0)
 			disadvLocation+=20;
-		disadvPanel.setBounds(5, 5+advPanel.getY()+advPanel.getHeight(), 649, disadvLocation+5);
+		disadvPanel.setBounds(2, 2+advPanel.getY()+advPanel.getHeight(), 496, disadvLocation+5);
 		
-	    setBounds(x, y, 659, 15+advPanel.getHeight()+disadvPanel.getHeight());
+	    setBounds(x, y, 500, 6+advPanel.getHeight()+disadvPanel.getHeight());
 	    MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
 	    MainWindow.dcrpgFrame.revalidate();
 	}

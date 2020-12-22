@@ -55,7 +55,7 @@ public class PowerPanel extends JPanel
 	public PowerPanel(int x, int y, CharacterSheet cs, List<CharacterSheetPower> pwrsList) 
 	{
 		super();
-		setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		setNewCharacter(x, y, cs, pwrsList);
 	}
 	
@@ -80,13 +80,13 @@ public class PowerPanel extends JPanel
 		setLayout(null);
 		
 		JLabel pwrLabel = new JLabel("Powers");
-		pwrLabel.setBounds(10, 10, 60, 16);
+		pwrLabel.setBounds(5, 5, 60, 16);
 		pwrLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 		pwrLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		this.add(pwrLabel);
 
 		JButton cspAdd = new JButton();
-		cspAdd.setBounds(pwrLabel.getX()+pwrLabel.getWidth()+5, pwrLabel.getY(), 16, 16);
+		cspAdd.setBounds(pwrLabel.getX()+pwrLabel.getWidth(), pwrLabel.getY(), 16, 16);
 		cspAdd.setFont(new Font("Dialog", Font.BOLD, 17));
 		cspAdd.setText("+");
 		cspAdd.setHorizontalTextPosition(SwingConstants.CENTER);

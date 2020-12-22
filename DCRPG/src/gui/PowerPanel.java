@@ -100,7 +100,7 @@ public class PowerPanel extends JPanel
 			}
 		});
 		
-		int pwrLocation = 34;
+		int pwrLocation = 24;
 		boolean color = true;
 		for(CharacterSheetPower csp : pwrs)
 		{
@@ -118,10 +118,10 @@ public class PowerPanel extends JPanel
 			
 
 
-			pwrPanel.setBounds(10, pwrLocation, this.getWidth()-20, 40);
+			pwrPanel.setBounds(5, pwrLocation, this.getWidth()-10, 40);
 			if(csp.getShorthand().equals(""))
 			{
-				pwrPanel.setSize(this.getWidth()-20, 20);
+				pwrPanel.setSize(this.getWidth()-10, 20);
 				pwrLocation += 25;
 			}
 			else
@@ -170,7 +170,7 @@ public class PowerPanel extends JPanel
 		if(pwrs.size()==0)
 			pwrLocation+=20;
 		
-	    setBounds(x, y, MainWindow.advPowerPanel.getWidth()-x, pwrLocation+5);
+	    setBounds(x, y, MainWindow.advPowerPanel.getWidth()-x, pwrLocation);
 	    
 	   // MainWindow.panel.setPreferredSize(new Dimension(MainWindow.panel.getWidth(), this.getY()+this.getHeight()+30));
 	    MainWindow.dcrpgFrame.revalidate();

@@ -19,7 +19,7 @@ public class DemographicsPanel extends JPanel
 	public DemographicsPanel(CharacterSheet cs)
 	{
 		this.cs = cs;
-		setBounds(0, 54, 851, 70);
+		setBounds(0, 97, 851, 70);
 		setBackground(new Color(204, 255, 255));
 		setBorder(new LineBorder(Color.black, 2));
 		setLayout(null);

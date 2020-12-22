@@ -63,6 +63,7 @@ public class Item extends JPanel
 		this.id = id;
 		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
+		setBorder(new LineBorder(Color.black, 2));
 		setLayout(null);
 		
 		slot = new JLabel();
@@ -184,6 +185,8 @@ public class Item extends JPanel
 		setSize(210, 336);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		setBorder(new LineBorder(Color.black, 2));
+
 		
 		slot = new JLabel(slotStr);
 		slot.setBackground(Color.WHITE);
@@ -302,6 +305,8 @@ public class Item extends JPanel
 		setSize(width+4, height+70);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		setBorder(new LineBorder(Color.black, 2));
+
 		
 		slot = new JLabel(slotStr);
 		slot.setBackground(Color.WHITE);

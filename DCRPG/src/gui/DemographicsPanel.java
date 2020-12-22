@@ -8,6 +8,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import business.CharacterSheet;
 
@@ -18,8 +19,9 @@ public class DemographicsPanel extends JPanel
 	public DemographicsPanel(CharacterSheet cs)
 	{
 		this.cs = cs;
-		setBounds(35, 54, 1152, 70);
+		setBounds(0, 54, 851, 70);
 		setBackground(new Color(204, 255, 255));
+		setBorder(new LineBorder(Color.black, 2));
 		setLayout(null);
 		
 		setNewCharacter(cs);
@@ -33,23 +35,23 @@ public class DemographicsPanel extends JPanel
 		this.cs = cs;
 		
 		JLabel lblGender = new JLabel("Gender");
-		lblGender.setBounds(1, 1, 54, 20);
+		lblGender.setBounds(3, 3, 54, 20);
 		add(lblGender);
 		
 		JLabel lblHeight = new JLabel("Height");
-		lblHeight.setBounds(1, 25, 90, 20);
+		lblHeight.setBounds(3, 25, 54, 20);
 		add(lblHeight);
 		
 		JLabel lblWeight = new JLabel("Weight");
-		lblWeight.setBounds(1, 49, 90, 20);
+		lblWeight.setBounds(3, 47, 54, 20);
 		add(lblWeight);
 		
 		JLabel lblHairColor = new JLabel("Hair Color");
-		lblHairColor.setBounds(171, 49, 74, 20);
+		lblHairColor.setBounds(130, 47, 74, 20);
 		add(lblHairColor);
 		
 		JFormattedTextField genderField = new JFormattedTextField();
-		genderField.setBounds(51, 1, 100, 20);
+		genderField.setBounds(45, 3, 80, 20);
 		add(genderField);
 		genderField.setHorizontalAlignment(SwingConstants.RIGHT);
 		genderField.setColumns(10);
@@ -64,7 +66,7 @@ public class DemographicsPanel extends JPanel
 
 		
 		JFormattedTextField heightField = new JFormattedTextField();
-		heightField.setBounds(51, 25, 100, 20);
+		heightField.setBounds(45, 25, 80, 20);
 		add(heightField);
 		heightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heightField.setColumns(10);
@@ -78,7 +80,7 @@ public class DemographicsPanel extends JPanel
 		});
 		
 		JFormattedTextField weightField = new JFormattedTextField();
-		weightField.setBounds(51, 49, 100, 20);
+		weightField.setBounds(45, 47, 80, 20);
 		add(weightField);
 		weightField.setHorizontalAlignment(SwingConstants.RIGHT);
 		weightField.setColumns(10);
@@ -92,7 +94,7 @@ public class DemographicsPanel extends JPanel
 		});
 		
 		JFormattedTextField hairColorField = new JFormattedTextField();
-		hairColorField.setBounds(238, 49, 100, 20);
+		hairColorField.setBounds(190, 47, 80, 20);
 		add(hairColorField);
 		hairColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 		hairColorField.setColumns(10);
@@ -110,11 +112,11 @@ public class DemographicsPanel extends JPanel
 		hairColorField.setText(cs.getHairColor());
 		
 		JLabel lblRace = new JLabel("Race");
-		lblRace.setBounds(171, 1, 90, 20);
+		lblRace.setBounds(130, 3, 90, 20);
 		add(lblRace);
 		
 		JFormattedTextField raceField = new JFormattedTextField();
-		raceField.setBounds(238, 1, 100, 20);
+		raceField.setBounds(190, 3, 80, 20);
 		add(raceField);
 		raceField.setHorizontalAlignment(SwingConstants.RIGHT);
 		raceField.setColumns(10);
@@ -129,11 +131,11 @@ public class DemographicsPanel extends JPanel
 		raceField.setText(cs.getRace());
 		
 		JLabel lblEyeColor = new JLabel("Eye Color");
-		lblEyeColor.setBounds(171, 25, 90, 20);
+		lblEyeColor.setBounds(130, 25, 90, 20);
 		add(lblEyeColor);
 		
 		JFormattedTextField eyeColorField = new JFormattedTextField();
-		eyeColorField.setBounds(238, 25, 100, 20);
+		eyeColorField.setBounds(190, 25, 80, 20);
 		add(eyeColorField);
 		eyeColorField.setHorizontalAlignment(SwingConstants.RIGHT);
 		eyeColorField.setColumns(10);
@@ -148,11 +150,11 @@ public class DemographicsPanel extends JPanel
 		eyeColorField.setText(cs.getEyeColor());
 		
 		JLabel lblFullName = new JLabel("Full Name");
-		lblFullName.setBounds(395, 1, 90, 20);
+		lblFullName.setBounds(275, 3, 90, 20);
 		add(lblFullName);
 		
 		JFormattedTextField fullNameField = new JFormattedTextField();
-		fullNameField.setBounds(473, 1, 245, 20);
+		fullNameField.setBounds(345, 3, 211, 20);
 		add(fullNameField);
 		fullNameField.setHorizontalAlignment(SwingConstants.RIGHT);
 		fullNameField.setColumns(10);
@@ -167,11 +169,11 @@ public class DemographicsPanel extends JPanel
 		fullNameField.setText(cs.getFullName());
 		
 		JLabel lblOccupation = new JLabel("Occupation");
-		lblOccupation.setBounds(395, 25, 74, 20);
+		lblOccupation.setBounds(275, 25, 74, 20);
 		add(lblOccupation);
 		
 		JFormattedTextField occupationField = new JFormattedTextField();
-		occupationField.setBounds(473, 25, 245, 20);
+		occupationField.setBounds(345, 25, 211, 20);
 		add(occupationField);
 		occupationField.setHorizontalAlignment(SwingConstants.RIGHT);
 		occupationField.setColumns(10);
@@ -187,11 +189,11 @@ public class DemographicsPanel extends JPanel
 		
 				
 		JLabel lblHomeBase = new JLabel("Home Base");
-		lblHomeBase.setBounds(395, 49, 90, 20);
+		lblHomeBase.setBounds(275, 47, 90, 20);
 		add(lblHomeBase);
 		
 		JFormattedTextField baseOfOperationsField = new JFormattedTextField();
-		baseOfOperationsField.setBounds(473, 49, 245, 20);
+		baseOfOperationsField.setBounds(345, 47, 211, 20);
 		add(baseOfOperationsField);
 		baseOfOperationsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		baseOfOperationsField.setColumns(10);
@@ -206,20 +208,20 @@ public class DemographicsPanel extends JPanel
 		baseOfOperationsField.setText(cs.getBaseOfOperations());
 		
 		JLabel lblHeroPoints = new JLabel("Hero Points");
-		lblHeroPoints.setBounds(788, 1, 90, 20);
+		lblHeroPoints.setBounds(561, 3, 90, 20);
 		add(lblHeroPoints);
 		
 				
 		JLabel lblVillainPoints = new JLabel("Villain Points");
-		lblVillainPoints.setBounds(788, 25, 74, 20);
+		lblVillainPoints.setBounds(561, 25, 74, 20);
 		add(lblVillainPoints);
 		
 		JLabel lblAvailableRenown = new JLabel("Renown");
-		lblAvailableRenown.setBounds(788, 49, 90, 20);
+		lblAvailableRenown.setBounds(561, 47, 90, 20);
 		add(lblAvailableRenown);
 		
 		JFormattedTextField heroPointsField = new JFormattedTextField();
-		heroPointsField.setBounds(871, 1, 86, 20);
+		heroPointsField.setBounds(646, 3, 50, 20);
 		add(heroPointsField);
 		heroPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		heroPointsField.setColumns(10);
@@ -234,7 +236,7 @@ public class DemographicsPanel extends JPanel
 		heroPointsField.setValue(cs.getHeroPoints());
 		
 		JFormattedTextField villainPointsField = new JFormattedTextField();
-		villainPointsField.setBounds(871, 25, 86, 20);
+		villainPointsField.setBounds(646, 25, 50, 20);
 		add(villainPointsField);
 		villainPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		villainPointsField.setColumns(10);
@@ -249,7 +251,7 @@ public class DemographicsPanel extends JPanel
 		villainPointsField.setValue(cs.getVillainPoints());
 		
 		JFormattedTextField availableRenownField = new JFormattedTextField();
-		availableRenownField.setBounds(871, 49, 86, 20);
+		availableRenownField.setBounds(646, 47, 50, 20);
 		add(availableRenownField);
 		availableRenownField.setHorizontalAlignment(SwingConstants.RIGHT);
 		availableRenownField.setColumns(10);
@@ -265,16 +267,16 @@ public class DemographicsPanel extends JPanel
 		
 				
 		JLabel lblPowerPoints = new JLabel("Power Points");
-		lblPowerPoints.setBounds(973, 1, 90, 20);
+		lblPowerPoints.setBounds(701, 3, 90, 20);
 		add(lblPowerPoints);
 		
 				
 		JLabel lblSkillPoints = new JLabel("Skill Points");
-		lblSkillPoints.setBounds(973, 25, 90, 20);
+		lblSkillPoints.setBounds(701, 25, 90, 20);
 		add(lblSkillPoints);
 		
 		JFormattedTextField powerPointsField = new JFormattedTextField();
-		powerPointsField.setBounds(1056, 1, 86, 20);
+		powerPointsField.setBounds(791, 3, 50, 20);
 		add(powerPointsField);
 		powerPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		powerPointsField.setColumns(10);
@@ -290,7 +292,7 @@ public class DemographicsPanel extends JPanel
 		
 				
 		JFormattedTextField skillPointsField = new JFormattedTextField();
-		skillPointsField.setBounds(1056, 25, 86, 20);
+		skillPointsField.setBounds(791, 25, 50, 20);
 		add(skillPointsField);
 		skillPointsField.setHorizontalAlignment(SwingConstants.RIGHT);
 		skillPointsField.setColumns(10);

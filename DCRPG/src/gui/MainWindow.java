@@ -6597,7 +6597,7 @@ public class MainWindow {
 		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
 		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
-		chckbxDemographics.setBounds(35, 33, 164, 20);
+		chckbxDemographics.setBounds(0, 33, 164, 20);
 		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
 		

@@ -200,7 +200,7 @@ public class PowerPanel extends JPanel
 		
 		JList list = new JList(s.toArray());
 		JScrollPane jsp = new JScrollPane(list);
-		jsp.setBounds(0, 0, l.getWidth()/8, l.getHeight());
+		jsp.setBounds(0, 0, l.getWidth()/7, l.getHeight());
 		l.add(jsp);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		

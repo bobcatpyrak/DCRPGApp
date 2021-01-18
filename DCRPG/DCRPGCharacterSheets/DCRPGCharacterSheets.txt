@@ -1,17 +1,65 @@
 $$CharacterSheetBegin$$
 0	Character Name	blank.png	Occupation%Base%Location%Gender%Race%Height%Weight%EyeColor%EyeColor%Full Character Name	0d6%0%3%0%0%0%0%0%0%0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	
-1	Batman	Batman.jpg	CEO%Batcave%45%Male%Human%Tall%Muscular%Dark%Dark%Bruce Wayne	2d6%6%3%68%3%250%0%17%45%46	6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6	
-2	Alfred	Alfred.png	Butler%Wayne Manor%45%Male%Human%Tallish%Lean%Black%Grey%Alfred Pennyworth	1d6%3%3%37%0%12%0%14%30%30	4%1%4%5%6%2%5%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%6%4%6%5%6%6%6%6%6%7%6%2	
+1	Batman	Batman.jpg	CEO%Batcave%???%Male%Human%Tall%Muscular%Dark%Dark%Bruce Wayne	2d6%6%5%68%3%250%0%17%45%45	9%7%8%8%6%10%9%6%8%8%6%6%8%9%7%8%7%7%7%6%8%5%7%8%5%6%6%7%8%7%7%7%7%8%8%9%8%7%9%8%6	
+2	Alfred	Alfred.png	Butler%Wayne Manor%%Male%Human%Tallish%Lean%Black%Grey%Alfred Pennyworth	1d6%3%4%37%0%12%0%14%30%30	4%1%4%4%4%2%6%2%1%6%5%0%0%3%0%0%0%3%3%4%6%5%6%6%7%5%5%5%6%6%3%3%2%7%6%6%2%4%0%3%6	
 3	Fields	Fields.png	Transdimensional Traveler%The Clocktower, sometimes%Lost in Multiverse%Male%Human%5'10%163%Gray-Blue%Dark Brown%Alexander "Fields" McKenzie	2d6%0%4%75%0%0%0/0%0/0%30%30	5%1%3%8%1%1%2%1%1%0%1%0%1%4%0%1%1%1%1%1%2%0%0%0%1%0%0%1%5%2%1%1%1%1%0%5%1%1%0%6%5	
 4	Russ Wilson	Russ Wilson.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%4%5%0%30%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0	
 5	Bloodhound (Travis Clevenger)	Bloodhound (Travis Clevenger).png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0	
-6	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%8%0%1/3%6/14%0/5%32%32	4%0%1%0%1%0%4%0%0%0%1%0%0%3%1%0%0%0%1%0%8%3%0%2%0%0%2%1%4%1%0%1%1%0%1%8%3%1%1%1%1	
+6	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%9%0%1/3%8/16%0/5%32%32	4%0%1%0%1%0%4%0%0%0%1%0%0%3%1%0%0%0%1%0%10%3%0%2%0%0%2%1%4%1%0%1%1%0%1%8%3%1%1%1%1	Knowledge +2 while wearing top.
 7	Fake Fields	blank.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0	
+8	Nightwing	Nightwing.png	Cop%Bludhaven% %Male%Human% % % %Black%Richard "Dick" Grayson	2d6%5%5%0%0%0%0%0%45%45	7%8%8%6%7%7%6%6%6%7%4%6%8%7%7%7%6%6%6%6%4%2%5%3%2%7%5%6%6%3%0%5%5%6%4%6%7%7%5%6%6	null
+9	Robin	Robin.png	High School Student%Drake Manor% %Male %Human% % % %Black%Timothy Drake	2d6%1%5%0%0%0%0%0%30%30	5%4%6%5%5%5%5%3%4%6%1%2%5%4%2%2%2%5%5%2%7%0%2%3%2%6%5%3%6%5%1%4%3%6%3%4%6%2%0%3%5	null
+10	Oracle	Oracle.png	Information Broker%Clocktower%Clocktower%Female%Human% % %Green%Red%Barbara Gordon	16d%2%1(4 in chair)%0%0%0%0%0%30%30	5%0%3%3%7%0%4%3%1%8%3%3%8%5%0%0%5%0%0%0%9%4%5%7%5%8%8%8%6%5%5%7%4%6%5%6%6%4%3%6%7	null
+11	Huntress	Huntress.png	Schoolteacher% % %Female%Human% % %Brown %Black%Helena Bertinelli	2d6%2%5%0%0%0%0%0%45%45	6%4%6%5%6%7%7%3%4%3%7%3%2%5%3%4%3%5%5%4%6%0%0%4%3%8%6%4%6%0%2%4%3%6%3%4%5%0%7%4%6	null
+12	Spoiler	Spoiler.png	High School Student% % %Female%Human% % % %Blonde%Stephanie Brown	2d6%2%5%0%0%0%0%0%30%30	5%2%6%5%3%6%4%2%2%1%1%1%3%5%3%4%3%2%5%4%3%0%0%0%0%3%0%4%5%0%0%4%3%5%3%7%5%7%4%6%7	null
+13	Jim Gordon	Jim Gordon.png	Police Commissioner%One Gotham Center% %Male%Human% % % % %James Gordon	1d6%1%3%0%0%0%0%0%45%45	3%0%5%4%4%2%5%3%0%3%6%0%0%3%3%3%3%3%4%3%2%0%3%0%0%0%0%3%3%0%0%3%5%5%0%3%1%2%2%2%3	null
+14	Sarah Essen-Gordon	Sarah Essen-Gordon.png	GCPD Detective% % %Female%Human% % % %Blonde%Sarah Essen-Gordon	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+15	Harvey Bullock	Harvey Bullock.png	GCPD Detective% % %Male%Human% % % %%Harvey Bullock	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+16	Mackenzie Bock	Mackenzie Bock.png	GCPD Detective% % %Male%Human% % % %%Mackenzie "Hardback" Bock	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+17	Billy Pettit	Billy Pettit.png	GCPD Detective% % %Male%Human% % % %%William Pettit	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+18	Clarence Foley	Clarence Foley.png	GCPD Detective% % %Male%Human% % % %%Clarence Foley	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+19	Renee Montoya	Renee Montoya.png	GCPD Detective% % %Female%Human% % % %%Renee Montoya	1d6%1%4%0%0%0%0%0%30%30	4%0%3%2%3%2%5%1%1%3%5%0%0%4%2%2%2%2%2%2%4%0%2%0%0%2%0%2%4%0%0%3%4%3%2%4%2%2%2%2%2	null
+20	Marcus Driver	Marcus Driver.png	GCPD Detective% % %Male%Human% % % %%Marcus Driver	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+21	Dagmar Procjnow	Dagmar Procjnow.png	GCPD Detective% % %Female%Human% % % %%Dagmar Procjnow	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+22	Crispus Allen	Crispus Allen.png	GCPD Detective% % %Male%Human% % % %%Crispus Allen	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+23	Maggie Sawyer	Maggie Sawyer.png	GCPD Detective% % %Female%Human% % % %%Margaret Sawyer	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+24	Romy Chandler	Romy Chandler.png	GCPD Detective% % %Female%Human% % % %%Romy Chandler	1d6%0%4%0%0%0%0%0%30%30	2%0%3%2%3%2%3%1%1%3%5%0%0%2%2%2%2%2%2%2%2%0%2%0%0%2%0%2%2%0%0%3%4%3%2%2%2%2%2%2%2	null
+25	GCPD Officer	GCPD Officer.png	GCPD Officer% % %Any%Human% % % % % 	1d6%0%3%0%0%0%0%0%15%15	1%1%3%2%2%1%2%1%1%2%4%1%1%2%1%1%1%1%2%1%1%1%1%1%1%1%1%2%2%0%0%1%1%1%1%1%1%1%1%1%1	null
+26	Tommy Mangles	Tommy Mangles.png	 % % %Male%Human% % % % %Tommy Mangles 	2d6%1%3%0%0%0%0%0%30%30	3%2%3%5%3%3%3%3%3%0%0%0%3%4%3%3%3%3%3%3%1%1%1%0%0%1%1%1%3%3%3%3%3%3%3%3%3%3%3%3%3	null
+27	Wrecker	Wrecker.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1	null
+28	Loboy	Loboy.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1	null
+29	Momo	Momo.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%2%4%4%4%2%2%2%2%3%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2	null
+30	Street Demon	Street Demon.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1%1	null
+31	Billy Wildman	Billy Wildman.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%30%30	2%2%4%4%4%2%2%2%2%3%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2	null
+32	Squish	Squish.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0	null
+33	Magpie	Magpie.png	 % % % % % % % % %Margaret Pye	1d6%0%3%0%0%0%0%0%30%30	3%3%4%3%3%3%4%3%3%3%3%6%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%2	null
+34	Nite-Wing	Nite-Wing.png	 % % % % % % % % %Tad Ryerstad	1d6%1%4%0%0%0%0%0%30%30	2%2%4%4%5%2%2%2%3%2%2%2%2%3%3%3%3%3%3%3%2%0%0%0%2%2%0%0%2%2%0%2%2%2%2%2%2%2%2%2%2	null
+35	Danny Lucas	Danny Lucas.png	 % % % % % % % % %Daniel Lucas 	1d6%0%4%0%0%0%0%0%30%30	3%0%3%3%5%0%3%3%0%0%0%0%3%3%3%3%3%3%3%3%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%3%3%3%3%3%3	null
+36	Hoss	Hoss.png	 % % % % % % % % %Daniel Lucas 	2d6%2%4%0%0%0%0%0%20%20	3%0%3%5%3%0%3%3%0%0%0%0%3%4%3%3%3%3%3%3%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%3%3%3%3%3%3	null
+37	Nicholas Scratch	Nicholas Scratch.png	Rock Star% % % % % % % % %Nicholas Scratch	2d6%2%4%0%0%0%0%0%45%45	4%5%5%5%4%4%4%5%4%4%4%4%5%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%7	Power is Suggestion.
+38	Scratch's Thug	Scratch's Thug.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2	null
+39	Narcosis	Narcosis.png	 % % % % % % % % % 	1d6%1%3%0%0%0%0%0%30%30	3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%5%3%3%3%3%3%3%3%3%3%3%3%3%3%3	Dream Gas - Roll Science vs. Willpower. People who fail are knocked into a dream state.
+40	Ventriloquist (Peyton Riley)	Ventriloquist (Peyton Riley).png	 % % % % % % % % %Peyton Riley	1d6%0%3%0%0%0%0%0%45%45	4%4%4%4%4%4%4%4%4%4%6%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%6%4%6%4%6%6	Can only combat w/ Scarface.
+41	Scarface Goon	Scarface Goon.jpg	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%15%15	3%3%3%3%3%3%3%3%3%3%3%3%3%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2%2	null
+42	Black Manta	Black Manta.png	 % % % % % % % % %David Hyde	2d6%5%5%0%0%0%0%0%45%45	8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8%8	null
+43	Vox	Vox.png	 % % % % % % % % %Lisa	1d6%3%3%0%0%0%0%0%30%30	3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%3%4%4%4%4%0%4	null
+44	Samantha Voz	Samantha Voz.png	 % % % % % % % % %Samantha Voz	1d6%9%5%0%0%0%0%0%45%45	4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4	null
+45	Doctor Phosphorous	Doctor Phosphorous.png	 % % % % % % % % %Alexander Sartorius	1d6%4%3%0%0%0%0%0%45%45	4%4%4%4%4%4%4%4%4%4%4%4%4%6%6%6%6%6%6%6%4%4%4%4%4%4%4%4%4%4%4%4%0%4%4%4%4%4%4%4%4	Mostly Invulnerable\nEnergy Projection\nResistance vs. Resistance if get close to not get radiation poisoning
+46	Mad Hatter	Mad Hatter.png	 % % % % % % % % %Jervis Tetch	2d6%3%3%0%0%0%0%0%45%45	5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5	null
+47	False Mad Hatter	False Mad Hatter.jpg	 % % % % % % % % %Norman Fugate	2d6%3%3%0%0%0%0%0%45%45	5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5	null
+48	Tweedledee	Tweedledee.png	 % % % % % % % % %Deever Tweed	1d6%2%3%0%0%0%0%0%30%30	4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%0%0%4%4%4%4%0%4	null
+49	Tweedledum	Tweedledum.png	 % % % % % % % % %Dumfrey Tweed	1d6%2%3%0%0%0%0%0%30%30	4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%0%0%4%4%4%4%0%4	null
+50	Humpty Dumpty	Humpty Dumpty.png	 % % % % % % % % %Deever Tweed	1d6%2%3%0%0%0%0%0%30%30	4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%4%0%0%4%4%4%4%0%4	null
+51	Two-Face	Two-Face.png	 % % % % % % % % %Harvey Dent	1d6%0%5%0%0%0%0%0%45%45	5%5%5%5%5%5%5%5%5%5%7%5%5%5%5%5%5%5%5%5%8%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%6%6%7	null
+52	Tally Man	Tally Man.png	 % % % % % % % % % 	1d6%0%5%0%0%0%0%0%30%30	4%4%4%4%4%4%4%4%4%4%7%4%4%4%5%4%4%5%4%4%8%4%5%4%4%4%4%4%4%4%4%4%4%5%4%4%5%5%6%6%7	null
+53	Steeljacket	Steeljacket.png	 % % % % % % % % % 	1d6%0%3%0%0%0%0%0%45%45	5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%2%0%0%0%0%0%0%0%5%5%5%5%5%5%5%2%0%0%0%0%5	null
+54	Ventriloquist	Ventriloquist.png	 % % % % % % % % %Arnold Wesker	1d6%0%5%0%0%0%0%0%45%45	5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5%5	null
+55	Sgt. Riley	Sgt. Riley.png	 % % % % % % % % %William S. Riley	1d6%0%3%0%0%0%0%0%45%45	3%3%3%3%3%3%3%3%3%3%5%3%3%3%3%3%3%3%3%3%3%3%0%0%0%0%0%0%2%0%0%0%3%0%3%3%3%3%3%3%3	null
+56	Solomon Grundy	Solomon Grundy.png	 % % % % % % % % %Solomon Grundy	1d6%0%3%0%0%0%0%0%45%45	8%1%4%8%4%1%5%5%4%0%0%0%5%9%5%6%8%6%4%1%2%0%0%2%0%0%0%0%5%0%0%2%0%0%3%3%0%0%8%0%3	null
+57	Poison Ivy	blank.png	 % % % % % % % % % 	1d6%0%5%0%0%0%0%0%45%45	2%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0%0%0%2%0%0%0%0%0%0%2%0%0%0%0%0	null
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
-0	1	Acrobatics	Gymnastics 2
-1	2	Acrobatics	Yes, Quite 1
 2	3	Climbing	Rock Climbing 1
 3	3	Dodge	Melee Weapons 2
 4	3	Dodge	Hand-to-Hand 2
@@ -38,16 +86,30 @@ $$SkillSpecBegin$$
 25	6	Artist	Guitar (1)
 26	6	Artist	Singing (1)
 27	6	Charm	Seduction (1)
+28	1	ThrownWeapons	Batarangs 3
+29	1	Thievery	Escape Artist 2
+30	1	Driving	Batmobile 3
+31	1	Driving	Batsub 1
+32	1	Resistance	Poisons 2
+33	1	Artist	Disguise 3
+34	1	Streetwise	Gotham 3
+35	1	Intimidation	In Darkness 2
+36	1	Charm	Bruce Wayne 3
+37	8	Acrobatics	Circus Acrobatics 2
+38	8	MeleeWeapons	Escrima 2
+39	8	ThrownWeapons	Batarangs 2
+40	10	MeleeWeapons	Escrima 2
+41	10	Driving	Wheelchair 3
+42	10	ThrownWeapons	Batarangs 2
+43	10	Security	Computer Ops 3
+44	51	Scholar	Law 2
+45	52	Scholar	Law 2
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$
 0	0	WEALTH	null
 1	1	WEALTH	null
-2	2	COURAGE	null
 3	1	COURAGE	null
-4	2	ACUTE_SENSE	Sight
-5	2	PHOTOGRAPHIC_MEMORY	null
-6	2	STATUS	null
 7	3	WEALTH	null
 8	3	CHARISMATIC	null
 9	3	ACUTE_SENSE	Hearing
@@ -60,15 +122,22 @@ $$CharacterSheetAdvantageBegin$$
 16	6	OBSCURE_KNOWLEDGE	null
 17	6	PREPAREDNESS	null
 18	6	SPEED_DRAW	wand
+19	1	ACTING_ABILITY	null
+20	1	ACUTE_BALANCE	null
+21	1	ATTRACTIVE_APPEARANCE	null
+22	1	CHARISMATIC	null
+23	1	LEADERSHIP_ABILITY	null
+24	1	OBSCURE_KNOWLEDGE	null
+25	1	OBSERVANT	null
+26	1	PREPAREDNESS	null
+27	51	INTIMIDATING_GRIN	null
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
 0	0	SECRET_IDENTITY	null
 1	1	SECRET_IDENTITY	null
-2	2	SECRET_IDENTITY	null
 3	1	HIDES_EMOTIONS	null
 4	3	SECRET_IDENTITY	null
-5	2	COWARDICE	null
 6	3	DARK_SECRET	Martin Blank is Marcus Driver, under cover!
 7	3	DARK_SECRET	Black Spider is Batman, under cover!
 8	3	EXTREMELY_COMPETITIVE	null
@@ -87,17 +156,62 @@ $$CharacterSheetPowerBegin$$
 4	5	8	WIZARDRY	8	null	null
 5	5	2	SUPER_COORDINATION	3	null	null
 6	6	1	WIZARDRY	8	null	null
+7	37	5	EMPATHY	2	null	null
+8	42	5	SUPER_PHYSIQUE	4	null	null
+8	43	2	SUPER_PHYSIQUE	4	null	null
+8	44	2	SUPER_PHYSIQUE	4	null	null
+8	44	3	NATURAL_WEAPONS	2	null	null
+9	57	7	PLANT_MIMESIS	2	null	null
+9	57	8	PLANT_MANIPULATION	5	null	null
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
 0	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-1	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+1	0%0%0%0%0%31%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 2	0%0%0%0%2%14%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 3	1%7%3%0%2%5%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-6	0%0%10%0%11%16%0%0%0%0%0%5%12%13%19%0%0%0%0%0%0%0%0%0%0%0	14%15%18%0%0
+6	0%0%10%0%38%5%0%0%0%0%0%16%26%13%19%41%0%0%0%0%0%0%0%0%0%0	14%15%18%12%23%24%0%0
 7	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+8	0%0%0%0%0%28%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+9	0%0%0%0%0%27%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+10	0%0%0%0%0%29%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+12	0%0%0%0%0%27%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+11	0%0%0%0%0%30%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+13	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+14	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+15	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+16	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+17	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+18	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+18	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+19	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+20	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+21	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+22	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+23	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+24	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+26	0%0%0%0%32%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+27	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+28	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+29	0%0%0%0%0%33%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+30	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+31	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+34	0%0%0%0%0%34%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+35	0%0%0%0%0%35%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+36	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+37	0%0%0%36%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+40	0%0%0%0%0%37%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+46	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+47	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+48	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+49	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+50	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+51	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+52	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+53	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+42	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 $$InventoryEnd$$
 
 $$ItemBegin$$
@@ -121,6 +235,27 @@ $$ItemBegin$$
 18	Pistol	1d6, range 2-4, rate 1	pistol.png
 19	Church of Blood Robe	disguises from Equated?	church of blood robe.png
 20	Shorts of the Nereides	Add 1 sq. of movement in or under water	shorts of the nereides.png
+21	Flashlight	(description)	flashlight.png
+22	Unstrung Bow	Possibly Chindi's?	unstrung bow.png
+23	Containment Box (for holding OMAC bits)	contains Old woman OMAC finger, and OwlMAC’s head. And OMAC boot sample	containment box (for holding omac bits).png
+24	Beard Belt	(description)	beard belt.png
+25	Coonskin Cap	+1 to survival. Negates penalty from Nat 1 made with tracking specialization.	coonskin cap.png
+26	Native American Knife	1d4+3 damage	native american knife.png
+27	Bo Staff	1d8+4	bo staff.png
+28	Nightwing's Escrima	2 attacks, 1d6+4, DC 14 resist or stun	nightwing's escrima.png
+29	Escrima	2 attacks, 1d4+4, can be thrown	escrima.png
+30	Huntress's Crossbows	2 attacks, 1d6+4	huntress's crossbows.png
+31	Batarang	up to 3 thrown, 1d4+3	batarang.png
+32	Tommy Mangles's Armor	Reduce Hand-to-Hand damage by 1	tommy mangles's armor.png
+33	Momo's Club	1d6+4, +1 to bluff, grants Storytelling spec	momo's club.png
+34	Nitewing's Pipe	1d8+4, requires less than 5 Intelligence to wield	nitewing's pipe.png
+35	Bloody Cleaver	1d4+4 damage	bloody cleaver.png
+36	Scratch's Wristguards	Grant +2 to persuasion	scratch's wristguards.png
+37	Tiny Tommy Gun	1d6, range 2-6, firing rate 3	tiny tommy gun.png
+38	Fur Halter Top	+1 to seduction, +2 to knowledge	fur halter top.png
+39	Two-Face Patch	equipped on Fur Halter Top	two-face patch.png
+40	Two-Face Gang Patch	equipped to Fur Halter Top	two-face gang patch.png
+41	Water Bottle	filled with water from river coming from Orlando	water bottle.png
 $$ItemEnd$$
 
 $$SpellBegin$$
@@ -140,7 +275,58 @@ $$SpellInventoryBegin$$
 4	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
 1	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
 2	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
-6	7%0	3%2%0	1%0	0	0	7%1%0%$$blank$$
+6	7%0	3%2%0	1%0	0	0	7%2%1%$$blank$$
 7	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+8	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+9	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+10	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+11	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+12	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+13	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+14	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+15	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+16	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+17	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+18	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+18	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+19	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+20	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+21	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+22	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+23	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+24	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+25	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+26	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+27	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+28	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+29	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+30	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+31	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+32	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+33	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+34	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+35	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+36	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+37	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+38	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+39	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+40	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+41	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+42	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+43	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+44	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+45	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+46	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+47	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+48	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+49	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+50	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+51	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+52	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+53	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+54	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+55	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+56	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+57	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
 $$SpellInventoryEnd$$
 

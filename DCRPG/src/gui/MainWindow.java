@@ -424,26 +424,26 @@ public class MainWindow {
 		nameField.setText(currentSheet.getName());
 		
 		JLabel udoLabel = new JLabel("UDO");
-		udoLabel.setBounds(644, 35, 60, 20);
+		udoLabel.setBounds(644, 50, 60, 20);
 		panel.add(udoLabel);
 		
 		JLabel locationLabel = new JLabel("Location");
-		locationLabel.setBounds(644, 58, 60, 20);
+		locationLabel.setBounds(644, 73, 60, 20);
 		panel.add(locationLabel);
 		
 		JLabel bodyPointsLabel = new JLabel(" Body Points");
-		bodyPointsLabel.setBounds(494, 35, 75, 20);
+		bodyPointsLabel.setBounds(494, 50, 75, 20);
 		panel.add(bodyPointsLabel);
 		
 		JLabel speedLabel = new JLabel("Speed");
-		speedLabel.setBounds(494, 58, 75, 20);
+		speedLabel.setBounds(494, 73, 75, 20);
 		panel.add(speedLabel);
 		
 		demographicsPanel = new DemographicsPanel(currentSheet);
 		panel.add(demographicsPanel);	
 		
 		udoField = new JFormattedTextField();
-		udoField.setBounds(704, 35, 110, 20);
+		udoField.setBounds(704, 50, 110, 20);
 		panel.add(udoField);
 		udoField.setHorizontalAlignment(SwingConstants.LEFT);
 		udoField.setColumns(10);
@@ -462,7 +462,7 @@ public class MainWindow {
 		udoField.setText(currentSheet.getUdoDice() + "+" + currentSheet.getUdoBonus());
 		
 		JFormattedTextField locationField = new JFormattedTextField();
-		locationField.setBounds(704, 58, 110, 20);
+		locationField.setBounds(704, 73, 110, 20);
 		panel.add(locationField);
 		locationField.setHorizontalAlignment(SwingConstants.LEFT);
 		locationField.setColumns(10);
@@ -477,7 +477,7 @@ public class MainWindow {
 		locationField.setValue(currentSheet.getLocation());	
 		
 		bodyPointsField = new JFormattedTextField();
-		bodyPointsField.setBounds(574, 35, 60, 20);
+		bodyPointsField.setBounds(574, 50, 60, 20);
 		panel.add(bodyPointsField);
 		bodyPointsField.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		bodyPointsField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -501,7 +501,7 @@ public class MainWindow {
 			
 					
 		speedField = new JFormattedTextField();
-		speedField.setBounds(574, 58, 60, 20);
+		speedField.setBounds(574, 73, 60, 20);
 		panel.add(speedField);
 		speedField.setHorizontalAlignment(SwingConstants.LEFT);
 		speedField.setColumns(10);
@@ -6599,7 +6599,7 @@ public class MainWindow {
 		willpowerTotal.setValue(currentSheet.getWillpower() + currentSheet.getPresence());
 		
 		JCheckBox chckbxDemographics = new JCheckBox("Show Demographics");
-		chckbxDemographics.setBounds(700, 77, 150, 20);
+		chckbxDemographics.setBounds(0, 77, 150, 20);
 		panel.add(chckbxDemographics);
 		chckbxDemographics.setSelected(true);
 		

@@ -6,8 +6,9 @@ import javax.swing.JPanel;
 
 public class Roller extends JPanel {
 
-	public Roller() {
-		// TODO Auto-generated constructor stub
+	public Roller() 
+	{
+	
 	}
 
 	public Roller(LayoutManager layout) {

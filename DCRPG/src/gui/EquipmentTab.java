@@ -513,6 +513,7 @@ public class EquipmentTab extends JScrollPane
 				y += 341;
 			}
 			item.set(MainWindow.items, i);
+			item.setFirstLoad();
 			storageList.add(item);
 			storage.add(item);
 			

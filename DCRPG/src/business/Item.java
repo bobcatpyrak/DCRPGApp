@@ -48,6 +48,7 @@ public class Item extends JPanel
 	private int id = 0;
 	private int width = 206;
 	private int height = 266;
+	private int firstLoadCount = 0;
 	private String descStr = "(description)";
 	private String path = "blank";
 	private String name = "(name)";
@@ -55,7 +56,6 @@ public class Item extends JPanel
 	private boolean imgChange = false;
 	private boolean newPic = false;
 	private boolean big = false;
-
 
 	public Item(int id)
 	{	
@@ -143,8 +143,10 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					newPic = true;
+					icon = (ImageIcon)imgLabel.getIcon();
 					if(MainWindow.newItem != null)
 					{
+						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
 						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
@@ -152,8 +154,10 @@ public class Item extends JPanel
 						MainWindow.newItem = null;
 						newPic = false;
 					}
-					icon = (ImageIcon)imgLabel.getIcon();
-					origImg = (BufferedImage)icon.getImage();
+					else 
+					{
+						origImg = (BufferedImage)icon.getImage();
+					}
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
 					
@@ -263,17 +267,27 @@ public class Item extends JPanel
 			public void propertyChange(PropertyChangeEvent arg0) {
 				if(imgChange)
 				{
-					newPic = true;
+					if (firstLoadCount > 1) {
+						newPic = true;
+					}
+					else {
+						firstLoadCount++;
+					}
+					
+					icon = (ImageIcon)imgLabel.getIcon();
 					if(MainWindow.newItem != null)
 					{
+						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
 						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						MainWindow.newItem = null;
 						newPic = false;
 					}
-					icon = (ImageIcon)imgLabel.getIcon();
-					origImg = (BufferedImage)icon.getImage();
+					else
+					{
+						origImg = (BufferedImage)icon.getImage();
+					}
 					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
 					icon.setImage(img);
 					
@@ -384,16 +398,21 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					newPic = true;
+					icon = (ImageIcon)imgLabel.getIcon();
 					if(MainWindow.newItem != null)
 					{
+						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
 						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
 						Item.this.set(MainWindow.items, flip);
 						MainWindow.newItem = null;
 						newPic = false;
 					}
-					icon = (ImageIcon)imgLabel.getIcon();
-					origImg = (BufferedImage)icon.getImage();
+					else
+					{
+						origImg = (BufferedImage)icon.getImage();
+					}
+					//origImg = (BufferedImage)icon.getImage();
 					img = Scalr.resize((BufferedImage)icon.getImage(), width, height);
 					icon.setImage(img);
 					
@@ -452,6 +471,10 @@ public class Item extends JPanel
 		this.path = path;
 	}
 	
+	public void setFirstLoad() {
+		firstLoadCount = 0;
+	}
+	
 	public void set(List<Item> items, int itemId)
 	{
 
@@ -477,6 +500,7 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
+			    origImg = ImageIO.read(new File("images/items/"+path));
 			    img = Scalr.resize(img, width, height);
 			    icon.setImage(img);
 			    imgChange = true;

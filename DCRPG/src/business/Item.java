@@ -108,8 +108,8 @@ public class Item extends JPanel
 		img = null;
 		try 
 		{
-		    img = ImageIO.read(new File("images/items/blank.png"));
-		    img = Scalr.resize(img, 206, 266);
+		    origImg = ImageIO.read(new File("images/items/blank.png"));
+		    img = origImg;
 		    icon.setImage(img);
 		} catch (IOException e) {
 		}
@@ -143,7 +143,7 @@ public class Item extends JPanel
 				if(imgChange)
 				{
 					newPic = true;
-					icon = (ImageIcon)imgLabel.getIcon();
+					
 					if(MainWindow.newItem != null)
 					{
 						origImg = MainWindow.newItem.origImg;
@@ -158,8 +158,9 @@ public class Item extends JPanel
 					{
 						origImg = (BufferedImage)icon.getImage();
 					}
-					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
-					icon.setImage(img);
+					img = (BufferedImage)icon.getImage(); // Use the original image
+					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
+					icon.setImage(displayImg); // Set the resized image for the icon
 					
 				}
 			}
@@ -273,8 +274,8 @@ public class Item extends JPanel
 					else {
 						firstLoadCount++;
 					}
-					
 					icon = (ImageIcon)imgLabel.getIcon();
+
 					if(MainWindow.newItem != null)
 					{
 						origImg = MainWindow.newItem.origImg;
@@ -288,8 +289,9 @@ public class Item extends JPanel
 					{
 						origImg = (BufferedImage)icon.getImage();
 					}
-					img = Scalr.resize((BufferedImage)icon.getImage(), 206, 266);
-					icon.setImage(img);
+					img = (BufferedImage)icon.getImage(); // Use the original image
+					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
+					icon.setImage(displayImg); // Set the resized image for the icon
 					
 				}
 			}
@@ -412,9 +414,9 @@ public class Item extends JPanel
 					{
 						origImg = (BufferedImage)icon.getImage();
 					}
-					//origImg = (BufferedImage)icon.getImage();
-					img = Scalr.resize((BufferedImage)icon.getImage(), width, height);
-					icon.setImage(img);
+					img = (BufferedImage)icon.getImage(); // Use the original image
+					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
+					icon.setImage(displayImg); // Set the resized image for the icon
 					
 				}
 			}
@@ -525,6 +527,7 @@ public class Item extends JPanel
 			{
 				imgChange = false;
 			    img = ImageIO.read(new File("images/items/"+path));
+			    origImg = ImageIO.read(new File("images/items/"+path));
 			    img = Scalr.resize(img, width, height);
 			    icon.setImage(img);
 			    imgChange = true;
@@ -562,6 +565,7 @@ public class Item extends JPanel
 		{
 			imgChange = false;
 		    img = ImageIO.read(new File("images/items/"+path));
+		    origImg = img;
 		    img = Scalr.resize(img, width, height);
 		    icon.setImage(img);
 		    imgChange = true;

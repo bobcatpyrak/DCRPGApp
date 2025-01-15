@@ -562,12 +562,12 @@ public class EquipmentTab extends JScrollPane
 		l.add(pack13);			
 		l.add(pack14);			
 		l.add(pack15);
+	
 		for(Item i : storageList)
 		{
-			storageSave.add(i.getId());
 			l.add(i);
 		}
-	
+		
 		for(Item li : l)
 		{
 			if(!li.getName().equals("(name)"))
@@ -615,6 +615,11 @@ public class EquipmentTab extends JScrollPane
 					}
 				}
 			}
+		}
+		
+		for(Item i : storageList)
+		{
+			storageSave.add(i.getId());
 		}
 		
 		inv.setCharacterSheetId(cs.getId());

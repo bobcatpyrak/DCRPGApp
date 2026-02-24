@@ -140,11 +140,11 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange && "icon".equals(arg0.getPropertyName()))
+				if(imgChange)
 				{
 					newPic = true;
 
-					if(MainWindow.newItem != null)
+					if(MainWindow.newItem != null && MainWindow.newItem != Item.this)
 					{
 						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
@@ -156,8 +156,8 @@ public class Item extends JPanel
 					}
 					else
 					{
-						origImg = (BufferedImage)icon.getImage();
-						imgLabel.putClientProperty("origImg", origImg);
+						if ("icon".equals(arg0.getPropertyName()))
+							origImg = (BufferedImage)icon.getImage();
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
@@ -172,7 +172,7 @@ public class Item extends JPanel
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
-		description.addKeyListener(new KeyAdapter() 
+		description.addKeyListener(new KeyAdapter()
 		{
 			@Override
 			public void keyReleased(KeyEvent e) 
@@ -267,7 +267,7 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange && "icon".equals(arg0.getPropertyName()))
+				if(imgChange)
 				{
 					if (firstLoadCount > 1) {
 						newPic = true;
@@ -277,19 +277,35 @@ public class Item extends JPanel
 					}
 					icon = (ImageIcon)imgLabel.getIcon();
 
-					if(MainWindow.newItem != null)
+					if(MainWindow.newItem != null && MainWindow.newItem != Item.this)
 					{
 						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
+						String srcName = MainWindow.newItem.getName();
+						String srcDesc = MainWindow.newItem.getDescStr();
+						String srcPath = MainWindow.newItem.getPath();
 						MainWindow.newItem.set(MainWindow.items, Item.this.getId());
-						Item.this.set(MainWindow.items, flip);
-						MainWindow.newItem = null;
-						newPic = false;
+						if (flip != 0)
+						{
+							Item.this.set(MainWindow.items, flip);
+							MainWindow.newItem = null;
+							newPic = false;
+						}
+						else
+						{
+							name = srcName;
+							nameField.setText(srcName);
+							descStr = srcDesc;
+							description.setText(srcDesc);
+							path = srcPath;
+							MainWindow.newItem = null;
+							newPic = true;
+						}
 					}
 					else
 					{
-						origImg = (BufferedImage)icon.getImage();
-						imgLabel.putClientProperty("origImg", origImg);
+						if ("icon".equals(arg0.getPropertyName()))
+							origImg = (BufferedImage)icon.getImage();
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
@@ -399,11 +415,11 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange && "icon".equals(arg0.getPropertyName()))
+				if(imgChange)
 				{
 					newPic = true;
 					icon = (ImageIcon)imgLabel.getIcon();
-					if(MainWindow.newItem != null)
+					if(MainWindow.newItem != null && MainWindow.newItem != Item.this)
 					{
 						origImg = MainWindow.newItem.origImg;
 						int flip = MainWindow.newItem.getId();
@@ -414,8 +430,8 @@ public class Item extends JPanel
 					}
 					else
 					{
-						origImg = (BufferedImage)icon.getImage();
-						imgLabel.putClientProperty("origImg", origImg);
+						if ("icon".equals(arg0.getPropertyName()))
+							origImg = (BufferedImage)icon.getImage();
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display

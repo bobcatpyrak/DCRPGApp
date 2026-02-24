@@ -49,12 +49,6 @@ public class ImageSelection extends TransferHandler implements Transferable {
 
     if (comp instanceof JLabel) {
       JLabel label = (JLabel) comp;
-      // Use the stored original image if available, so we don't transfer the scaled display image
-      Object stored = label.getClientProperty("origImg");
-      if (stored instanceof java.awt.image.BufferedImage) {
-        image = (java.awt.image.BufferedImage) stored;
-        return this;
-      }
       Icon icon = label.getIcon();
       if (icon instanceof ImageIcon) {
         image = ((ImageIcon) icon).getImage();

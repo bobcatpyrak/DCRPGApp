@@ -140,10 +140,10 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange)
+				if(imgChange && "icon".equals(arg0.getPropertyName()))
 				{
 					newPic = true;
-					
+
 					if(MainWindow.newItem != null)
 					{
 						origImg = MainWindow.newItem.origImg;
@@ -154,18 +154,19 @@ public class Item extends JPanel
 						MainWindow.newItem = null;
 						newPic = false;
 					}
-					else 
+					else
 					{
 						origImg = (BufferedImage)icon.getImage();
+						imgLabel.putClientProperty("origImg", origImg);
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
 					icon.setImage(displayImg); // Set the resized image for the icon
-					
+
 				}
 			}
-		});	
-		
+		});
+
 		description = new JFormattedTextField();
 		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
@@ -266,7 +267,7 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange)
+				if(imgChange && "icon".equals(arg0.getPropertyName()))
 				{
 					if (firstLoadCount > 1) {
 						newPic = true;
@@ -288,30 +289,31 @@ public class Item extends JPanel
 					else
 					{
 						origImg = (BufferedImage)icon.getImage();
+						imgLabel.putClientProperty("origImg", origImg);
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
 					icon.setImage(displayImg); // Set the resized image for the icon
-					
+
 				}
 			}
-		});	
-		
+		});
+
 		description = new JFormattedTextField();
 		description.setBounds(2, 314, 206, 20);
 		description.setHorizontalAlignment(SwingConstants.CENTER);
 		description.setText("(description)");
 		add(description);
-		description.addKeyListener(new KeyAdapter() 
+		description.addKeyListener(new KeyAdapter()
 		{
 			@Override
-			public void keyReleased(KeyEvent e) 
+			public void keyReleased(KeyEvent e)
 			{
 				setDescStr(description.getText());
 			}
 		});
 	}
-	
+
 	public Item(String slotStr, int width, int height)
 	{
 		super();
@@ -397,7 +399,7 @@ public class Item extends JPanel
 
 		imgLabel.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
-				if(imgChange)
+				if(imgChange && "icon".equals(arg0.getPropertyName()))
 				{
 					newPic = true;
 					icon = (ImageIcon)imgLabel.getIcon();
@@ -413,14 +415,15 @@ public class Item extends JPanel
 					else
 					{
 						origImg = (BufferedImage)icon.getImage();
+						imgLabel.putClientProperty("origImg", origImg);
 					}
 					img = (BufferedImage)icon.getImage(); // Use the original image
 					BufferedImage displayImg = Scalr.resize(img, 206, 266); // Resize only for display
 					icon.setImage(displayImg); // Set the resized image for the icon
-					
+
 				}
 			}
-		});	
+		});
 		
 		description = new JFormattedTextField();
 		description.setBounds(2, 46+height+2, width, 20);

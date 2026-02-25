@@ -86,8 +86,12 @@ $$CharacterSheetBegin$$
 84	Skartaris Saoirse 4	Skartaris Saoirse 4.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%33%9%2/14%6.5/34.5%2/33%32%32	1%0%1%0%1%1%1%0%0%1%1%0%0%2%1%0%0%1%1%1%4%2%1%1%1%0%1%1%1%1%0%1%1%0%1%2%3%3%3%3%2	null
 85	Skartaris Saoirse 5	Skartaris Saoirse 5.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%36%10%3/16%1/37%1.5/34.5%32%32	1%0%1%0%1%1%1%0%0%1%1%0%0%2%1%0%0%1%1%1%4%2%1%1%1%0%1%1%1%1%0%1%1%0%1%2%3%3%3%3%2	null
 86	Skartaris Saoirse 6	Skartaris Saoirse 6.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%44%14%1/22%6/42%1.5/42.5%33%33	1%0%1%0%1%1%1%0%0%1%1%0%0%2%1%0%0%1%1%3%4%2%1%1%1%0%1%1%1%1%0%1%1%0%1%2%3%3%3%3%3	null
-87	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%112%20%12/47%7/67%2.5/70.5%27%33	4%1%1%2%4%1%4%0%1%4%3%0%2%4%1%2%0%3%2%3%10%5%1%2%1%0%5%1%4%1%0%1%1%0%1%8%5%7%4%7%10	null
+87	Saoirse	Saoirse.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%157%25%11/64%2.5/76.5%3/83%11%33	4%1%1%2%4%1%4%1%1%4%3%0%2%4%1%2%0%3%2%3%10%5%1%2%1%0%5%1%4%1%0%3%1%0%1%10%7%7%4%7%8	null
 88	Skartaris Saoirse 8	Skartaris Saoirse 8.png	Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%96%20%8/42%10.5/62.5%0/61%33%33	1%1%1%0%1%1%1%0%0%1%1%0%0%2%1%2%0%2%2%3%4%2%1%1%1%0%2%1%1%1%0%1%1%0%1%2%3%3%3%3%3	null
+89	Skartaris Saoirse 9		Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Saoirse Leonie Aebischer nee Hopler	1d6%0%4%126%22%14/53%5.5/71.5%1.5/72.5%23%33	1%1%1%2%3%1%1%0%1%1%3%0%2%2%1%2%0%3%2%3%2%2%1%1%1%0%2%1%1%1%0%1%1%0%1%4%3%4%3%4%3	null
+90	Cherry Bomb		Vagabond%Z'onn Z'orr%Z'onn Z'orr%Female%Human%5'7%132%Green%Red%Gloria James	1d6%0%4%135%23%8/55%6.5/72.5%0/77%6%33	5%0%6%6%0%0%5%0%0%0%0%0%0%9%0%0%0%10%0%0%10%5%1%2%1%0%5%1%4%1%0%1%1%0%1%10%6%7%4%7%10	null
+91	Lumberjack		 % % % % % % % % %Paul Conway	2d6%7%3%0%0%0%0%0%68%68	4%0%2%7%10%0%3%5%0%0%0%0%6%8%7%3%10%5%1%1%2%0%0%0%0%1%0%0%5%0%3%5%1%4%10%5%1%2%6%1%4	null
+92	Manousas Seisdedos		Masseuse%Kooeykooeykooey%Kooeykooeykooey%Male%Human%6'1%220%Brown%Black% 	1d6%4%5%0%0%0%0%0%18%35	4%0%1%0%1%0%7%5%0%0%0%0%7%7%5%1%1%0%5%1%6%0%0%1%7%0%0%0%3%0%0%0%0%0%0%6%0%3%0%0%1	null
 $$CharacterSheetEnd$$
 
 $$SkillSpecBegin$$
@@ -242,13 +246,13 @@ $$SkillSpecBegin$$
 151	87	Artist	Piano (1)
 152	87	Artist	Guitar (2) (Legendary +1 with spell)
 153	87	Artist	Singing (1)
-154	87	Charm	Seduction (1) +2
+154	87	Charm	Seduction (2) +2
 155	87	Driving	Piloting (3) +2 on broom
 156	87	MeleeWeapons	Block (2) +4 with shield
 157	87	Languages	Irish (1)
 158	87	Resistance	Magic (1)
 159	87	Athletics	Golf (1)
-160	87	Survival	Animal Handling (1)
+160	87	Survival	Animal Handling (2)
 161	87	Driving	Starships (2)
 162	87	Artist	Ballroom Dancing (1)
 163	87	Marksmanship	Wands (2)
@@ -256,7 +260,7 @@ $$SkillSpecBegin$$
 165	87	Charm	Flirt (1)
 166	87	Resistance	+1 against sleeping
 167	87	Intimidation	+3 while on broom
-168	87	Persuasion	Command (1)
+168	87	Persuasion	Command (1)+3
 169	88	Athletics	Skiing (1)
 170	88	Languages	French (1)
 171	88	Languages	Italian (1)
@@ -282,6 +286,66 @@ $$SkillSpecBegin$$
 191	88	Intimidation	+3 while on broom
 192	88	Persuasion	Command (1)
 193	87	Science	Xenobiology (1)
+194	89	Athletics	Skiing (1)
+195	89	Languages	French (1)
+196	89	Languages	Italian (1)
+197	89	Science	Biology (2)
+198	89	Science	Genetics (1)
+199	89	Security	Computer Ops (1)
+200	89	Artist	Piano (1)
+201	89	Artist	Guitar (2) (Legendary +1 with spell)
+202	89	Artist	Singing (1)
+203	89	Charm	Seduction (1) +2
+204	89	Driving	Piloting (3) +2 on broom
+205	89	MeleeWeapons	Block (2) +4 with shield
+206	89	Languages	Irish (1)
+207	89	Resistance	Magic (1)
+208	89	Athletics	Golf (1)
+209	89	Survival	Animal Handling (1)
+210	89	Driving	Starships (2)
+211	89	Artist	Ballroom Dancing (1)
+212	89	Marksmanship	Wands (2)
+213	89	Driving	Riding (1) +1 on Stormwind
+214	89	Charm	Flirt (1)
+215	89	Resistance	+1 against sleeping
+216	89	Intimidation	+3 while on broom
+217	89	Persuasion	Command (1)
+218	89	Science	Xenobiology (1)
+219	87	Charm	General Friendliness (1)
+220	87	Stealth	Hide (1)
+221	90	Athletics	Skiing (1)
+222	90	Languages	French (1)
+223	90	Languages	Italian (1)
+224	90	Science	Biology (2)
+225	90	Science	Genetics (1)
+226	90	Security	Computer Ops (1)
+227	90	Artist	Piano (1)
+228	90	Artist	Guitar (2) (Legendary +1 with spell)
+229	90	Artist	Singing (1)
+230	90	Charm	Seduction (2) +2
+231	90	Driving	Piloting (3) +2 on broom
+232	90	MeleeWeapons	Block (2) +4 with shield
+233	90	Languages	Irish (1)
+234	90	Resistance	Magic (1)
+235	90	Athletics	Golf (1)
+236	90	Survival	Animal Handling (2)
+237	90	Driving	Starships (2)
+238	90	Artist	Ballroom Dancing (1)
+239	90	Marksmanship	Wands (2)
+240	90	Driving	Riding (1) +1 on Stormwind
+241	90	Charm	Flirt (1)
+242	90	Resistance	+1 against sleeping
+243	90	Intimidation	+3 while on broom
+244	90	Persuasion	Command (1)
+245	90	Science	Xenobiology (1)
+246	90	Charm	General Friendliness (1)
+247	90	Stealth	Hide (1)
+248	91	Scholar	Forests (2)
+249	91	Survival	Forestry (3)
+250	87	Survival	Marrowmouth (1)
+251	87	Languages	Betrassian (1)
+252	92	Medicine	Massage (3)
+253	92	Athletics	Baseball (1)
 $$SkillSpecEnd$$
 
 $$CharacterSheetAdvantageBegin$$
@@ -359,6 +423,18 @@ $$CharacterSheetAdvantageBegin$$
 75	88	OBSCURE_KNOWLEDGE	null
 76	88	PREPAREDNESS	null
 77	88	SPEED_DRAW	wand
+78	89	ATTRACTIVE_APPEARANCE	null
+79	89	COURAGE	null
+80	89	LEADERSHIP_ABILITY	null
+81	89	OBSCURE_KNOWLEDGE	null
+82	89	PREPAREDNESS	null
+83	89	SPEED_DRAW	wand
+84	90	ATTRACTIVE_APPEARANCE	null
+85	90	COURAGE	null
+86	90	LEADERSHIP_ABILITY	null
+87	90	OBSCURE_KNOWLEDGE	null
+88	90	PREPAREDNESS	null
+89	90	SPEED_DRAW	wand
 $$CharacterSheetAdvantageEnd$$
 
 $$CharacterSheetDisadvantageBegin$$
@@ -406,6 +482,14 @@ $$CharacterSheetDisadvantageBegin$$
 43	88	HIDES_EMOTIONS	null
 44	88	LOW_SELF_ESTEEM	null
 45	88	PATHOLOGICAL_LIAR	null
+46	89	DARK_SECRET	Twiggy keeps Thorn alive
+47	89	HIDES_EMOTIONS	null
+48	89	LOW_SELF_ESTEEM	null
+49	89	PATHOLOGICAL_LIAR	null
+50	90	DARK_SECRET	Twiggy keeps Thorn alive
+51	90	HIDES_EMOTIONS	null
+52	90	LOW_SELF_ESTEEM	null
+53	90	PATHOLOGICAL_LIAR	null
 $$CharacterSheetDisadvantageEnd$$
 
 $$CharacterSheetPowerBegin$$
@@ -449,7 +533,15 @@ $$CharacterSheetPowerBegin$$
 34	87	1	POSSESSION	5	null	null
 36	88	1	POSSESSION	5	null	null
 37	88	6	WIZARDRY	8	null	null
-38	87	7	WIZARDRY	8	null	null
+39	87	2	SUPER_PRESENCE	3	null	null
+40	89	1	POSSESSION	5	null	null
+41	89	7	WIZARDRY	8	null	null
+42	89	2	SUPER_PRESENCE	3	null	null
+43	90	1	POSSESSION	5	null	null
+44	90	7	WIZARDRY	8	null	null
+45	90	2	SUPER_PRESENCE	3	null	null
+46	87	8	WIZARDRY	8	null	null
+47	92	1	EXTRA_BODY_PART	1	null	null
 $$CharacterSheetPowerEnd$$
 
 $$InventoryBegin$$
@@ -457,7 +549,7 @@ $$InventoryBegin$$
 1	0%0%0%0%0%31%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 2	0%0%0%0%2%14%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 3	1%7%3%0%2%5%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
-4	0%0%0%0%0%0%0%0%0%0%0%248%0%0%84%0%0%0%0%0%0%0%0%0%0%0	0%0
+4	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 5	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 6	167%96%145%169%38%139%111%24%0%89%154%143%84%90%0%91%107%0%79%65%0%0%0%0%192%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%78%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%146%43%86%148%170%153%57%164%163%165%168%60%171%174%173%175%50%182%189%184%180%179%188%156%187%149%54%112%0%0
 7	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
@@ -522,8 +614,12 @@ $$InventoryBegin$$
 84	54%96%0%0%38%91%57%24%0%89%86%43%84%50%61%105%90%103%104%0%0%0%0%0%0%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%87%77%78%94%98%0%0
 85	54%96%0%0%38%107%57%24%0%89%86%43%84%50%90%79%79%91%0%0%0%0%0%0%0%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%78%94%105%87%106%98%0%0
 86	54%96%112%132%38%139%57%24%111%89%86%43%84%79%90%98%91%143%79%144%145%0%0%0%0%110	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%60%94%105%109%108%78%107%116%115%125%127%126%106%128%131%87%135%134%122%140%141%113%142%0%0
-87	167%96%112%169%38%139%227%210%242%89%154%194%84%65%91%216%195%145%143%0%0%0%0%0%192%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%43%148%170%153%164%163%165%168%171%174%173%175%50%182%189%184%180%179%188%156%187%149%54%199%107%200%213%202%203%204%205%206%208%212%214%218%60%220%221%222%78%197%217%223%233%24%146%239%241%236%224%243%240%244%0%0
+87	167%96%112%169%38%139%239%210%242%89%154%194%84%302%143%145%274%195%91%290%296%65%297%298%192%252	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%43%148%170%153%164%163%168%171%174%173%175%189%184%180%179%188%156%187%149%54%107%200%213%202%203%204%205%206%208%212%214%218%60%220%221%78%197%217%223%233%259%241%236%224%240%244%248%250%251%253%254%255%256%257%261%260%264%267%268%269%270%271%216%266%277%276%278%279%282%283%286%291%265%288%292%50%293%146%227%24%0%0
 88	167%96%145%169%38%139%227%210%0%89%154%194%84%112%91%143%195%216%98%0%0%0%0%0%193%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%146%43%86%148%170%153%164%163%165%168%171%174%173%175%50%182%189%184%180%179%188%156%187%149%54%199%107%65%200%213%202%203%204%205%206%208%24%212%214%218%60%220%221%222%78%197%217%223%224%233%238%236%0%0
+89	167%96%112%169%38%139%227%210%242%89%154%194%84%65%91%216%195%145%143%265%266%288%289%290%192%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%43%148%170%153%164%163%168%171%174%173%175%182%189%184%180%179%188%156%187%149%54%107%200%213%202%203%204%205%206%208%212%214%218%60%220%221%78%197%217%223%233%24%146%259%241%236%224%243%240%244%248%250%251%252%253%254%255%256%257%263%261%222%260%264%50%0%0
+90	167%96%112%169%38%139%227%210%242%89%154%194%84%65%91%216%195%145%143%252%117%0%0%0%192%0	14%15%18%12%23%22%49%47%48%13%62%56%64%67%71%68%72%75%74%73%83%52%85%69%95%94%105%109%108%116%115%125%127%126%106%144%131%87%135%134%140%141%113%142%43%148%170%153%164%163%168%171%174%173%175%182%189%184%180%179%188%156%187%149%54%107%200%213%202%203%204%205%206%208%212%214%218%60%220%221%78%197%217%223%233%24%146%259%241%236%224%243%240%244%248%250%251%253%254%255%256%257%263%261%222%260%264%267%50%268%269%270%271%272%0%0
+91	0%0%0%0%0%280%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
+92	0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0%0	0%0
 $$InventoryEnd$$
 
 $$ItemBegin$$
@@ -549,7 +645,7 @@ $$ItemBegin$$
 20	Shorts of the Nereides	Add 1 sq. of movement in or under water	shorts of the nereides.png
 21	Flashlight	(description)	flashlight.png
 22	Unstrung Bow	Possibly Chindi's?	unstrung bow.png
-23	Containment Box (for holding OMAC bits)	contains Old woman OMAC finger, and OwlMAC’s head. And OMAC boot sample	containment box (for holding omac bits).png
+23	Containment Box (for holding OMAC bits)	contains Old woman OMAC finger, and OwlMACÂ’s head. And OMAC boot sample	containment box (for holding omac bits).png
 24	Beard Belt	Level 1 Supertaste (Beards)	beard belt.png
 25	Coonskin Cap	+1 to survival. Negates penalty from Nat 1 made with tracking specialization.	coonskin cap.png
 26	Native American Knife	1d4+3 damage	native american knife.png
@@ -718,7 +814,7 @@ $$ItemBegin$$
 189	Broken Accordion	de nier ce qui est, et d'expliquer ce qui n'est pas	broken accordion.png
 190	Witchazel's Hat	(description)	witchazel's hat.png
 191	2 Zatanna Costumes	(description)	2 zatanna costumes.png
-192	Prairie Witch's Roving Dread	6 move, 18 BP, intimidation +3	prairie witch's roving dread.png
+192	Prairie Witch's Roving Dread	6 move, 18 BP, intimidation +3, Piloting +2	prairie witch's roving dread.png
 193	Prairie Witchs Roving Dread	6 move, 18 BP, intimidation +3, Flight +2	prairie witchs roving dread.png
 194	Beeper	Use to contact other beepers	beeper.png
 195	Wonder Wand	1d8+5, 1-4 range, magic damage	wonder wand.png
@@ -739,16 +835,16 @@ $$ItemBegin$$
 210	Hip Fantasia	+1 Block, +1 seduction, +1 resistance to sleeping	hip fantasia.png
 211	OMAC Dodecoplegia	Fixes OMAC	omac dodecoplegia.png
 212	Scarlett Johanssons Pants Borrowed From Jade	+2 to Charm or Seduction while having attractive appearance, so long as modeling	scarlett johanssons pants borrowed from jade.png
-213	Nothing Says I Love You Like This Emerald Charm!	Equipment Upgrade	nothing says i love you like this emerald charm!.png
+213	Nothing Says I Love You Like This Emerald Charm!	CONSUMED - on Band of Exploratory Folivora	nothing says i love you like this emerald charm!.png
 214	Blue Lantern Oathstone Tablet	(description)	blue lantern oathstone tablet.png
 215	Healing Tincture 1d4+1	heal 1d4+1	healing tincture 1d4+1.png
 216	Scepter of the Threat that Seemed Dangerous	50 - 33+1d10	scepter of the threat that seemed dangerous.png
 217	Hassium	Can turn into a shield	hassium.png
 218	Einsteinium	Can turn into explosive	einsteinium.png
 219	Silver Swan's Remote	(description)	silver swan's remote.png
-220	Genetically Modified Seed	Can upgrade a location in Z'onn Z'orr	genetically modified seed.png
+220	Genetically Modified Seed	CONSUMED to make armored knotweed	genetically modified seed.png
 221	Ye Olde Devo T-Shirt	+2 to Whip it	ye olde devo t-shirt.png
-222	Binary Wrathweavers	+1 BP, +2 Telekinesis and Air Manip	binary wrathweavers.png
+222	Binary Wrathweavers	+1 BP, +2 Telekinesis and Air Manip, +1 Flying(self) spec	binary wrathweavers.png
 223	Justifier Helmet	Turned off	justifier helmet.png
 224	1d12 OMAC Dodecoplegia	Fixes OMAC, shaped like a wand	1d12 omac dodecoplegia.png
 225	Above Alien Influence Mug	(description)	Above Alien Influence Mug.png
@@ -774,7 +870,61 @@ $$ItemBegin$$
 245	Mortal Coil	Speak to snakes, +3 Animal Handling vs snakes, +2 poison damage	mortal coil.png
 246	spoontest	(description)	spoontest.png
 247	witch queen scepter	(description)	witch queen scepter.webp
-248	The Powers That Bee	(description)	the powers that bee.png
+248	Montezuma's Xocoyotzin	1d8+10, +2 in games of Imperil	montezuma's xocoyotzin.png
+249	Could you be the one? Could you purchase this red fabric belt?	does nothing	could you be the one? could you purchase this red fabric belt?.png
+250	It is so Sharp and Threatening	+3 damage headbutt, -1BP per attack	it is so sharp and threatening.png
+251	Your shower will appear canine-friendly	Move dog into a pre-fab	your shower will appear canine-friendly.png
+252	Band of the Exploratory Folivora	+1 Perception, +1 Streetwish, -1 move, Scholar (Green Lantern), destroy to gain double advantage	band of the exploratory folivora.png
+253	Could even a shy crazy canary become a genius	Give NPC to give level 1 genetics spec	could even a shy crazy canary become a genius.png
+254	Look at this Cherrywood Piano Bench	+2 piano rolls if attached to piano in zz	look at this cherrywood piano bench.png
+255	Sonar's Cybernetic Implants	Gain ability but disadvantage too	sonar's cybernetic implants.png
+256	Strum pluck or bow make music for fun and profit	upright bass	strum pluck or bow make music for fun and profit.png
+257	Jonesarang	1d6+5, 3-4 range, set of 5	jonesarang.png
+258	Vandal Savage's_Praetorian Helm	(description)	Vandal Savage's_Praetorian Helm.png
+259	Could you be the one Could you purchase this red fabric belt	does nothing	could you be the one could you purchase this red fabric belt.png
+260	Picture of Dorian Gray	Has a spell?	picture of dorian gray.png
+261	Roma Wine	Gain adv to Knowledge, Disadv to Willp	roma wine.png
+262	Goldstar Costume	Lots of good stuff	goldstar costume.png
+263	Lil'verine	Adds to the Balverine's damage	lil'verine.png
+264	Metropolis Press Badge	+1 Presence in Metropolis	metropolis press badge.png
+265	Scrolls of Blood	Turn someone into a dragon	scrolls of blood.png
+266	Mister Freeze's Freeze Ray	(description)	mister freeze's freeze ray.png
+267	I Discovered an Old VHS Tape in my Attic	NPC Gift	i discovered an old vhs tape in my attic.png
+268	Powerax	4d6+1, 0.5 fire rate	powerax.png
+269	Batman Baseball Cap	+1 Superpresence rolls, Adv Baseball rolls	batman baseball cap.png
+270	Pixie Lavender Salve	+2 Seduction, +5 Charm, -5 Willpower, -1 BP next sesh	pixie lavender salve.png
+271	Celery of Healing Stalk	Heal 4 party members 4 BP	celery of healing stalk.png
+272	Red Tornado Locator	Points in the direction of Red Tornado	red tornado locator.png
+273	Video Game System	Which one?	video game system.png
+274	Il n'y a pas de Pistolet	Willpower vs wp, difference is damage in psychic	il n'y a pas de pistolet.png
+275	Charm of Persephone's Wedding Veil	(description)	Charm of Persephone's Wedding Veil.png
+276	Radio Signal Amplifier	Change a recording.	radio signal amplifier.png
+277	Talon Trotter	3 fire rate, 1d8 damage, +2 with Courtesan mask	talon trotter.png
+278	Reachworld Spindler	2 damage, 10 fire rate	reachworld spindler.png
+279	You have convinced yourself to buy into superstition	trap item	you have convinced yourself to buy into superstition.png
+280	Bunyan's Bit	1d10+8, range 2	bunyan's bit.png
+281	Photo of Kyle Rayner and Radu	(description)	photo of kyle rayner and radu.png
+282	Bag of syringes for Mora Rayner	(description)	bag of syringes for mora rayner.png
+283	LA Rams Helmet	Adv on Athletics and +3 to Football Spec	la rams helmet.png
+284	Vibrator	For Lush, after washing	vibrator.png
+285	T-Shaped Titans Belly Button Ring	-1 BP +1 Presence +3 Willpower and Intimidation	t-shaped titans belly button ring.png
+286	Nothing But A Scratch	UDO +3, +2 damage with Nat Weapons (Claws), Competitive Disadvantage with siblings	nothing but a scratch.png
+287	Heel Turn	+2 BP, Hero Points become Villain points	heel turn.png
+288	Hood of Faaldran	Use to ride a bird	hood of faaldran.png
+289	A Feather	Turn this into armor	a feather.png
+290	Black Magic	(description)	black magic.png
+291	Apokoliptian Las-Rifle	1d8+1, Firing Rate 3, Energy damage	apokoliptian las-rifle.png
+292	Devil May Care Duster	+2 Flight power rolls, -1 damange from Wind/Air attacks	devil may care duster.png
+293	Gaggys Trip Up Pearlies	x+5 damage	gaggys trip up pearlies.png
+294	Heart of Iron	Upgrade to Chest Slot	heart of iron.png
+295	Bag of Trix	Shoulder item that produces gear	bag of trix.png
+296	Serp	1d10+8, +1 Supercoordination	serp.png
+297	Broken Banjo	It's broken	broken banjo.png
+298	Saber Armor	All slots except rings.	saber armor.png
+299	Jahanpurian Qahwah	Heal 1d6+4BP, +1 move, -1 Willpower	jahanpurian qahwah.png
+300	test shoe	(description)	test shoe.png
+301	the powers that bee	(description)	the powers that bee.png
+302	Zsaszasztersz	Have a spell in them	zsaszasztersz.png
 $$ItemEnd$$
 
 $$SpellBegin$$
@@ -839,6 +989,20 @@ $$SpellBegin$$
 58	Circular Motion	Circular Motion.png
 59	Green Gauntlet	Green Gauntlet.png
 60	Surgical Removal	Surgical Removal.png
+61	Emerald Shield	Emerald Shield.png
+62	Ratsichord	Ratsichord.png
+63	Blood-Red Chainsaw	Blood-Red Chainsaw.png
+64	Upright Citizen	Upright Citizen.png
+65	Crimson Tide	Crimson Tide.png
+66	Siphon Insight	Siphon Insight.png
+67	Searing Touch	Searing Touch.png
+68	Gloom	Gloom.png
+69	No Way Rose	No Way Rose.png
+70	Waltz of Screams	Waltz of Screams.png
+71	Dark Matters	Dark Matters.png
+72	Intimidation Bolt	Intimidation Bolt.png
+73	Tour of London	Tour of London.png
+74	New Moon	New Moon.png
 $$SpellEnd$$
 
 $$SpellInventoryBegin$$
@@ -929,7 +1093,11 @@ $$SpellInventoryBegin$$
 84	7%0	3%26%9%13%17%23%24%2%0	1%8%10%11%14%16%18%19%20%22%0	12%25%0	15%21%0	5%3%1%1
 85	7%0	3%2%9%13%17%23%24%26%0	1%8%10%11%14%16%18%19%20%22%0	12%25%0	15%21%0	10%4%2%1
 86	7%0	3%2%9%13%17%23%24%26%27%31%37%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%0	12%25%30%34%38%0	15%21%29%0	8%4%2%1
-87	7%39%0	3%2%9%13%17%23%24%27%31%37%43%48%52%58%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%40%41%42%47%49%50%55%56%57%59%0	12%25%30%34%45%38%44%46%51%53%54%60%0	15%21%29%0	X%9%4%2
+87	7%39%0	3%2%9%13%17%23%24%27%31%37%43%48%52%58%62%65%66%70%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%40%41%42%47%49%50%55%56%57%59%64%0	12%25%30%34%45%38%44%46%51%53%54%60%61%63%67%69%72%73%74%0	15%21%29%68%71%0	X%4%1%0
 88	7%39%0	3%2%9%13%17%23%24%27%31%37%43%48%52%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%40%41%42%47%49%50%55%56%57%0	12%25%30%34%45%38%44%46%51%53%54%0	15%21%29%0	X%7%4%2
+89	7%39%0	3%2%9%13%17%23%24%27%31%37%43%48%52%58%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%40%41%42%47%49%50%55%56%57%59%0	12%25%30%34%45%38%44%46%51%53%54%60%61%0	15%21%29%0	X%10%5%1
+90	7%39%0	3%2%9%13%17%23%24%27%31%37%43%48%52%58%62%0	1%8%10%11%14%16%18%19%20%22%28%32%33%35%36%40%41%42%47%49%50%55%56%57%59%64%0	12%25%30%34%45%38%44%46%51%53%54%60%61%63%0	15%21%29%0	X%9%3%1
+91	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
+92	0	0	0	0	0	$$blank$$%$$blank$$%$$blank$$%$$blank$$
 $$SpellInventoryEnd$$
 
